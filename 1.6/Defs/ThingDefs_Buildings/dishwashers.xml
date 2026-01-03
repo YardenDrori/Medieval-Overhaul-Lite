@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<Defs>
+  <ThingDef>
+    <defName>MOL_NeolithicDishWasher</defName>
+    <label>dish washing barrel</label>
+    <description>TODO</description>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/MOL_Dishwasher</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.5,1.5)</drawSize>
+      <!-- <shadowData> -->
+      <!--   <volume>(2.8, 0.35, 0.59)</volume> -->
+      <!--   <offset>(0, 0, 0.08)</offset> -->
+      <!-- </shadowData> -->
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <!-- <uiIconPath>Things/Building/Production/BlastFurnace/BlastFurnace</uiIconPath> -->
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>70</costStuffCount>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <fillPercent>1.0</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>900</WorkToBuild>
+      <MaxHitPoints>80</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <surfaceType>Item</surfaceType>
+    <tickerType>Rare</tickerType>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <techLevel>Neolithic</techLevel>
+  </ThingDef>
+  <ThingDef>
+    <defName>MOL_IndustrialDishWasher</defName>
+    <label>sink</label>
+    <description>TODO</description>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/MOL_KitchenSink/MOL_KitchenSink</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(4,2)</drawSize>
+      <shadowData>
+        <volume>(2.8, 0.35, 0.59)</volume>
+        <offset>(0, 0, 0.08)</offset>
+      </shadowData>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <!-- <uiIconPath>Things/Building/Production/BlastFurnace/BlastFurnace</uiIconPath> -->
+    <costList>
+      <Steel>60</Steel>
+    </costList>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <fillPercent>1.0</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>1900</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <surfaceType>Item</surfaceType>
+    <tickerType>Rare</tickerType>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <techLevel>Industrial</techLevel>
+  </ThingDef>
+</Defs>

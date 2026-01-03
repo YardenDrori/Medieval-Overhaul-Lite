@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Defs>
+  <RecipeDef>
+    <defName>MOL_WashPlate</defName>
+    <label>wash dishes</label>
+    <description>TODO</description>
+    <jobString>Doing the dishes.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <!-- <effectWorking>Smelt</effectWorking> -->
+    <!-- <soundWorking>Recipe_Smelt</soundWorking> -->
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>60</workAmount>
+    <targetCountAdjustment>1</targetCountAdjustment>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_PlateDirty</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <MOL_PlateClean>1</MOL_PlateClean>
+    </products>
+    <recipeUsers>
+      <li>MOL_NeolithicDishWasher</li>
+      <li>MOL_IndustrialDishWasher</li>
+    </recipeUsers>
+    <displayPriority>1</displayPriority>
+  </RecipeDef>
+</Defs>
