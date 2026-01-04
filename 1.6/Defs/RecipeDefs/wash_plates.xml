@@ -9,7 +9,7 @@
     <!-- <effectWorking>Smelt</effectWorking> -->
     <!-- <soundWorking>Recipe_Smelt</soundWorking> -->
     <allowMixingIngredients>true</allowMixingIngredients>
-    <workAmount>60</workAmount>
+    <workAmount>90</workAmount>
     <targetCountAdjustment>1</targetCountAdjustment>
     <ingredients>
       <li>

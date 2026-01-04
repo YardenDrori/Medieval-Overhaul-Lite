@@ -1,18 +1,23 @@
 <?xml version="1.0"?>
 <Defs>
-  <ThingDef>
+  <ThingDef ParentName="BenchBase">
     <defName>MOL_NeolithicDishWasher</defName>
     <label>dish washing barrel</label>
     <description>TODO</description>
     <inspectorTabs>
       <li>ITab_Bills</li>
     </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
       <texPath>Things/Building/Production/MOL_Dishwasher</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
+      <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
-      <drawSize>(1.5,1.5)</drawSize>
+      <drawSize>(1.2,1.2)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>
       <!-- <shadowData> -->
       <!--   <volume>(2.8, 0.35, 0.59)</volume> -->
       <!--   <offset>(0, 0, 0.08)</offset> -->
@@ -28,7 +33,7 @@
     <stuffCategories>
       <li>Woody</li>
     </stuffCategories>
-    <costStuffCount>70</costStuffCount>
+    <costStuffCount>60</costStuffCount>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <fillPercent>1.0</fillPercent>
     <useHitPoints>True</useHitPoints>
@@ -46,25 +51,31 @@
     <defaultPlacingRot>North</defaultPlacingRot>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <surfaceType>Item</surfaceType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
     <tickerType>Rare</tickerType>
     <placeWorkers>
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
     <techLevel>Neolithic</techLevel>
   </ThingDef>
-  <ThingDef>
+  <ThingDef ParentName="BenchBase">
     <defName>MOL_IndustrialDishWasher</defName>
     <label>sink</label>
     <description>TODO</description>
     <inspectorTabs>
       <li>ITab_Bills</li>
     </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
       <texPath>Things/Building/Production/MOL_KitchenSink/MOL_KitchenSink</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutComplex</shaderType>
-      <drawSize>(4,2)</drawSize>
+      <drawSize>(3.5,1.5)</drawSize>
       <shadowData>
         <volume>(2.8, 0.35, 0.59)</volume>
         <offset>(0, 0, 0.08)</offset>
@@ -77,9 +88,10 @@
       </damageData>
     </graphicData>
     <!-- <uiIconPath>Things/Building/Production/BlastFurnace/BlastFurnace</uiIconPath> -->
-    <costList>
-      <Steel>60</Steel>
-    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>80</costStuffCount>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <fillPercent>1.0</fillPercent>
     <useHitPoints>True</useHitPoints>
@@ -88,15 +100,18 @@
       <MaxHitPoints>180</MaxHitPoints>
       <Flammability>0.2</Flammability>
     </statBases>
-    <size>(1,1)</size>
+    <size>(3,1)</size>
     <designationCategory>Production</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
-    <defaultPlacingRot>North</defaultPlacingRot>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <defaultPlacingRot>South</defaultPlacingRot>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <surfaceType>Item</surfaceType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
     <tickerType>Rare</tickerType>
     <placeWorkers>
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>

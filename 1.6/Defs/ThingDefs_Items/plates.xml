@@ -5,7 +5,7 @@
     <label>bowl</label>
     <description>TODO</description>
     <graphicData>
-      <texPath>Things/Item/Resource/MOL_BowlClean/MOL_BowlClean</texPath>
+      <texPath>Things/Item/Resource/MOL_BowlClean</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
@@ -21,13 +21,14 @@
       <Flammability>0.8</Flammability>
       <MaxHitPoints>25</MaxHitPoints>
     </statBases>
+    <pathCost>14</pathCost>
   </ThingDef>
   <ThingDef ParentName="ResourceBase">
     <defName>MOL_PlateDirty</defName>
-    <label>bowl</label>
+    <label>dirty bowl</label>
     <description>TODO</description>
     <graphicData>
-      <texPath>Things/Item/Resource/MOL_BowlDirty/MOL_BowlDirty</texPath>
+      <texPath>Things/Item/Resource/MOL_BowlDirty</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
@@ -44,5 +45,6 @@
       <MaxHitPoints>25</MaxHitPoints>
       <Beauty>-4</Beauty>
     </statBases>
+    <pathCost>14</pathCost>
   </ThingDef>
 </Defs>

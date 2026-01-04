@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Defs>
+  <WorkGiverDef>
+    <defName>MOL_WorkDishwasher</defName>
+    <label>do the dishes</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>100</priorityInType>
+    <fixedBillGiverDefs>
+      <li>MOL_NeolithicDishWasher</li>
+      <li>MOL_IndustrialDishWasher</li>
+    </fixedBillGiverDefs>
+    <verb>do the dishes at</verb>
+    <gerund>doing the dishes at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>false</prioritizeSustains>
+  </WorkGiverDef>
+</Defs>
