@@ -14,5 +14,8 @@
       <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
     </li>
   </modDependencies>
+  <loadAfter>
+    <li>blacksparrow.productionexpanded</li>
+  </loadAfter>
   <description>Medieval overhaul but better imo tho i love the original</description>
 </ModMetaData>
