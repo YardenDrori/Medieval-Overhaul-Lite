@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Pemmican"]/modExtensions</xpath>
+    <value>
+      <modExtensions>
+        <li Class="MOExpandedLite.NoBowlOnIngest"/>
+      </modExtensions>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="MealSurvivalPack"]/modExtensions</xpath>
+    <value>
+      <modExtensions>
+        <li Class="MOExpandedLite.NoBowlOnIngest"/>
+      </modExtensions>
+    </value>
+  </Operation>
+</Patch>

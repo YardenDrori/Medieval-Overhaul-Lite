@@ -16,6 +16,7 @@ namespace MOExpandedLite
       if (
         __instance.def.ingestible.foodType.HasFlag(FoodTypeFlags.Meal)
         && __instance.def.ingestible.tableDesired
+        && __instance.def.GetModExtension<MOExpandedLite.NoBowlOnIngest>() == null
       )
       {
         Thing bowl = ThingMaker.MakeThing(bowlDef, null);
@@ -24,11 +25,11 @@ namespace MOExpandedLite
 
         Verse.AI.Job haulJob = Verse.AI.HaulAIUtility.HaulToStorageJob(ingester, bowl, true);
 
-        haulJob.count = bowl.stackCount;
-        haulJob.targetA = bowl;
-
         if (haulJob != null)
         {
+          haulJob.count = bowl.stackCount;
+          haulJob.targetA = bowl;
+
           ingester.jobs.jobQueue.EnqueueFirst(haulJob);
         }
       }

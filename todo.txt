@@ -1,3 +1,4 @@
 add to kitchen sink OPTIONAL dubs hygiene compat
 add sfx for washing dishes
 make bowls stuffable
+fix bowl texture
