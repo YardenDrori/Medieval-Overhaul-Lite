@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Patch>
   <Operation Class="PatchOperationAdd">
-    <xpath>Defs/ThingDef[defName="Pemmican"]/modExtensions</xpath>
+    <xpath>Defs/ThingDef[defName="Pemmican"]</xpath>
     <value>
       <modExtensions>
         <li Class="MOExpandedLite.NoBowlOnIngest"/>
@@ -9,7 +9,7 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationAdd">
-    <xpath>Defs/ThingDef[defName="MealSurvivalPack"]/modExtensions</xpath>
+    <xpath>Defs/ThingDef[defName="MealSurvivalPack"]</xpath>
     <value>
       <modExtensions>
         <li Class="MOExpandedLite.NoBowlOnIngest"/>
