@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="ElectricStove"]/comps</xpath>
+    <value>
+      <li>CompProperties_BowlStorage</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="FueledStove"]/comps</xpath>
+    <value>
+      <li>CompProperties_BowlStorage</li>
+    </value>
+  </Operation>
+</Patch>
