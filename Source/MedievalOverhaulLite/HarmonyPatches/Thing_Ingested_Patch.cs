@@ -16,7 +16,7 @@ namespace MOExpandedLite
       if (
         __instance.def.ingestible.foodType.HasFlag(FoodTypeFlags.Meal)
         && __instance.def.ingestible.tableDesired
-        && __instance.def.GetModExtension<MOExpandedLite.NoBowlOnIngest>() == null
+        && !__instance.def.HasModExtension<MOExpandedLite.NoBowlOnIngest>()
       )
       {
         Thing bowl = ThingMaker.MakeThing(bowlDef, null);

@@ -1,0 +1,135 @@
+using System.Collections.Generic;
+using RimWorld;
+using UnityEngine;
+using Verse;
+using Verse.Sound;
+
+namespace MOExpandedLite
+{
+  public class CompProperties_BowlStorage : CompProperties
+  {
+    public int capacity = 10;
+
+    public CompProperties_BowlStorage()
+    {
+      this.compClass = typeof(CompBowlStorage);
+    }
+  }
+
+  public class CompBowlStorage : ThingComp, IThingHolder
+  {
+    private CompProperties_BowlStorage Props => (CompProperties_BowlStorage)props;
+
+    // private int bowls = 0;
+    private ThingOwner<Thing> bowls;
+
+    public override void PostSpawnSetup(bool respawningAfterLoad)
+    {
+      if (bowls == null)
+      {
+        bowls = new ThingOwner<Thing>(this);
+      }
+      base.PostSpawnSetup(respawningAfterLoad);
+    }
+
+    public override void PostExposeData()
+    {
+      base.PostExposeData();
+      Scribe_Deep.Look(ref bowls, "bowls", this);
+    }
+
+    public override string CompInspectStringExtra()
+    {
+      if (bowls == null)
+        return null;
+      return $"Bowls: {bowls.Count}/{Props.capacity}";
+    }
+
+    public override void PostDestroy(DestroyMode mode, Map previousMap)
+    {
+      base.PostDestroy(mode, previousMap);
+      if (bowls != null && bowls.Count > 0)
+      {
+        bowls.TryDropAll(parent.Position, previousMap, ThingPlaceMode.Near);
+      }
+    }
+
+    public bool HasBowls()
+    {
+      if (bowls == null)
+      {
+        Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
+        return false;
+      }
+      return bowls.Count > 0;
+    }
+
+    public int CapacityRemaining()
+    {
+      if (bowls == null)
+      {
+        Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
+        return 0;
+      }
+      return Props.capacity - bowls.Count;
+    }
+
+    public void AddBowls(Thing bowlsToAdd)
+    {
+      if (bowls == null)
+      {
+        Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
+        return;
+      }
+      if (bowls.Count + bowlsToAdd.stackCount > Props.capacity)
+      {
+        Log.Error($"[Medieval Overhaul Lite] Attempted to add more bowls than availble capacity");
+        return;
+      }
+      int bowlsAdded = bowls.TryAdd(bowlsToAdd, bowlsToAdd.stackCount, true);
+      if (bowlsAdded != bowlsToAdd.stackCount)
+      {
+        Log.Error(
+          $"[Medieval Overhaul Lite] Failed to add sufficient bowls to ThingOwner attempted to add {bowlsToAdd.stackCount} but added {bowlsAdded}"
+        );
+        bowls.TryDropAll(parent.Position, parent.Map, ThingPlaceMode.Direct);
+      }
+    }
+
+    public void ConsumeBowls(int count)
+    {
+      if (bowls == null)
+      {
+        Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
+        return;
+      }
+      if (bowls.Count - count < 0)
+      {
+        Log.Error(
+          $"[Medieval Overhaul Lite] Attempt at removing bowls resulted in negative number"
+        );
+        return;
+      }
+      for (int i = 0; i < count; i++)
+      {
+        bowls.RemoveAt(0);
+      }
+    }
+
+    public void CookedRecipe(RecipeDef recipe)
+    {
+      if (!recipe.ProducedThingDef.HasModExtension<MOExpandedLite.NoBowlOnIngest>())
+        ConsumeBowls(recipe.products[0].count);
+    }
+
+    public void GetChildHolders(List<IThingHolder> outChildren)
+    {
+      ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
+    }
+
+    public ThingOwner GetDirectlyHeldThings()
+    {
+      return bowls;
+    }
+  }
+}
