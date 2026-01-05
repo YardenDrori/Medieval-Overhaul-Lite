@@ -4,7 +4,7 @@
     <xpath>Defs/ThingDef[defName="Pemmican"]</xpath>
     <value>
       <modExtensions>
-        <li Class="MOExpandedLite.NoBowlOnIngest"/>
+        <li Class="MOExpandedLite.NoBowlOnIngest, MOExpandedLite"/>
       </modExtensions>
     </value>
   </Operation>
@@ -12,7 +12,7 @@
     <xpath>Defs/ThingDef[defName="MealSurvivalPack"]</xpath>
     <value>
       <modExtensions>
-        <li Class="MOExpandedLite.NoBowlOnIngest"/>
+        <li Class="MOExpandedLite.NoBowlOnIngest, MOExpandedLite"/>
       </modExtensions>
     </value>
   </Operation>
