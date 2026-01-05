@@ -19,12 +19,21 @@ namespace MOExpandedLite
   public class CompBowlStorage : ThingComp, IThingHolder
   {
     private CompProperties_BowlStorage Props => (CompProperties_BowlStorage)props;
-
-    // private int bowls = 0;
     private ThingOwner<Thing> bowls;
+    private MapComponent_StoveTracker stoveTracker = null;
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
+      stoveTracker = parent.Map?.GetComponent<MapComponent_StoveTracker>();
+      if (stoveTracker != null)
+      {
+        stoveTracker.allStoves.Add((Building_WorkTable)parent);
+      }
+      else
+      {
+        Log.Error($"[Medieval Overhaul Lite] No MapComponent_StoveTracker found");
+      }
+
       if (bowls == null)
       {
         bowls = new ThingOwner<Thing>(this);
@@ -51,6 +60,14 @@ namespace MOExpandedLite
       if (bowls != null && bowls.Count > 0)
       {
         bowls.TryDropAll(parent.Position, previousMap, ThingPlaceMode.Near);
+      }
+      if (stoveTracker != null)
+      {
+        stoveTracker.allStoves.Remove((Building_WorkTable)parent);
+      }
+      else
+      {
+        Log.Error($"[Medieval Overhaul Lite] No MapComponent_StoveTracker found");
       }
     }
 
