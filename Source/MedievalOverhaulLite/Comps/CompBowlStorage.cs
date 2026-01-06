@@ -9,8 +9,20 @@ namespace MOExpandedLite
   {
     public int capacity = 10;
 
-    // do we need to cache this? how often does this runs if you see this please answer me lol
-    public ThingDef dishTypeFallback = DefDatabase<ThingDef>.GetNamed("MOL_PlateClean");
+    // Lazy-loaded static cache to avoid accessing DefDatabase before defs are loaded
+    // Static so all instances share the same cached def
+    private static ThingDef dishTypeFallbackCached = null;
+    public ThingDef dishTypeFallback
+    {
+      get
+      {
+        if (dishTypeFallbackCached == null)
+        {
+          dishTypeFallbackCached = DefDatabase<ThingDef>.GetNamedSilentFail("MOL_PlateClean");
+        }
+        return dishTypeFallbackCached;
+      }
+    }
 
     public CompProperties_BowlStorage()
     {
@@ -83,6 +95,10 @@ namespace MOExpandedLite
       {
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return false;
+      }
+      if (recipe == null || recipe.products.NullOrEmpty())
+      {
+        return true; // If there's no recipe or no products, no bowls are needed
       }
       if (bowls.Sum(thing => thing.stackCount) >= recipe.products[0].count)
         return true;
