@@ -4,8 +4,8 @@
     <defName>MOL_FillBowls</defName>
     <label>refill bowls</label>
     <giverClass>MOExpandedLite.WorkGiver_FillBowls</giverClass>
-    <workType>Hauling</workType>
-    <priorityInType>20</priorityInType>
+    <workType>Cooking</workType>
+    <priorityInType>300</priorityInType>
     <verb>stock up </verb>
     <gerund>stocking up</gerund>
   </WorkGiverDef>

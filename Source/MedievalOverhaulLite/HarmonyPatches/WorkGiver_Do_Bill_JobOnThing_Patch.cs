@@ -5,46 +5,35 @@ using Verse.AI;
 
 namespace MOExpandedLite
 {
-  [HarmonyPatch(typeof(WorkGiver_DoBill), nameof(WorkGiver_DoBill.JobOnThing))]
-  public static class JobOnThing_Patch
+  [HarmonyPatch(typeof(Bill), nameof(Bill.PawnAllowedToStartAnew))]
+  public static class Bill_PawnAllowedToStartAnew_Patch
   {
     [HarmonyPostfix]
-    public static Verse.AI.Job Postfix(Verse.AI.Job __result, Thing thing)
+    public static void Postfix(Bill __instance, ref bool __result)
     {
+      // If vanilla already said no, don't bother checking
+      if (!__result)
+        return;
+
+      // Check if this bill's workbench requires bowls
+      Building_WorkTable workTable = __instance.billStack?.billGiver as Building_WorkTable;
       if (
-        thing.def.building?.isMealSource == true
-        || thing.def.HasModExtension<RequireDishesToFunction>()
+        workTable != null
+        && (
+          workTable.def.building?.isMealSource == true
+          || workTable.def.HasModExtension<RequireDishesToFunction>()
+        )
       )
       {
-        Building_WorkTable stove = thing as Building_WorkTable;
-        if (stove != null)
+        CompBowlStorage bowlStorage = workTable.TryGetComp<CompBowlStorage>();
+        if (bowlStorage != null)
         {
-          CompBowlStorage bowlStorage = thing.TryGetComp<CompBowlStorage>();
-          if (bowlStorage != null)
+          if (!bowlStorage.HasBowlForRecipe(__instance.recipe))
           {
-            if (!bowlStorage.HasBowlForRecipe(stove.billStack.FirstShouldDoNow?.recipe))
-            {
-              JobFailReason.Is("No clean bowls in storage");
-              return null;
-            }
+            __result = false;
           }
-          else
-          {
-            Log.Warning(
-              $"[Medieval Overhaul Lite] {thing.def.defName} requires dishes but is missing CompBowlStorage"
-            );
-            return __result;
-          }
-        }
-        else
-        {
-          Log.Warning(
-            $"[Medieval Overhaul Lite] {thing.def.defName} requires dishes but is not a Building_WorkTable"
-          );
-          return __result;
         }
       }
-      return __result;
     }
   }
 }
