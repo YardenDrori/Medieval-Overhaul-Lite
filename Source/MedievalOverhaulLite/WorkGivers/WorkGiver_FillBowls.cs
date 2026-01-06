@@ -69,7 +69,7 @@ namespace MOExpandedLite
       {
         dishType = stove
           .billStack.FirstShouldDoNow?.recipe.GetModExtension<RequireDishesToFunction>()
-          .dishType;
+          ?.dishType;
       }
       if (dishType == null)
       {
@@ -101,7 +101,7 @@ namespace MOExpandedLite
       {
         dishType = stove
           .billStack.FirstShouldDoNow?.recipe.GetModExtension<RequireDishesToFunction>()
-          .dishType;
+          ?.dishType;
       }
       if (dishType == null)
       {

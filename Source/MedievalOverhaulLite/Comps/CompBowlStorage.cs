@@ -161,9 +161,23 @@ namespace MOExpandedLite
         );
         return;
       }
-      for (int i = 0; i < count; i++)
+
+      int remaining = count;
+      while (remaining > 0 && bowls.Count > 0)
       {
-        bowls.RemoveAt(0);
+        Thing bowl = bowls[0];
+        if (bowl.stackCount <= remaining)
+        {
+          // Remove the entire stack
+          remaining -= bowl.stackCount;
+          bowls.RemoveAt(0);
+        }
+        else
+        {
+          // Split the stack - reduce stackCount
+          bowl.stackCount -= remaining;
+          remaining = 0;
+        }
       }
     }
 
