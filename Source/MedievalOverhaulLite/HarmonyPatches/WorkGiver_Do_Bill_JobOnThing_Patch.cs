@@ -11,7 +11,10 @@ namespace MOExpandedLite
     [HarmonyPostfix]
     public static Verse.AI.Job Postfix(Verse.AI.Job __result, Thing thing)
     {
-      if (thing.def.building?.isMealSource == true || thing.def.HasModExtension<RequiresDishes>())
+      if (
+        thing.def.building?.isMealSource == true
+        || thing.def.HasModExtension<RequireDishesToFunction>()
+      )
       {
         Building_WorkTable stove = thing as Building_WorkTable;
         if (stove != null)

@@ -9,6 +9,9 @@ namespace MOExpandedLite
   {
     public int capacity = 10;
 
+    // do we need to cache this? how often does this runs if you see this please answer me lol
+    public ThingDef dishTypeFallback = DefDatabase<ThingDef>.GetNamed("MOL_PlateClean");
+
     public CompProperties_BowlStorage()
     {
       this.compClass = typeof(CompBowlStorage);
@@ -20,7 +23,9 @@ namespace MOExpandedLite
     private CompProperties_BowlStorage Props => (CompProperties_BowlStorage)props;
     private ThingOwner<Thing> bowls;
     private MapComponent_StoveTracker stoveTracker = null;
-    int bowlThreshold;
+    private int bowlThreshold;
+
+    public ThingDef DishTypeFallBack => Props.dishTypeFallback;
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
