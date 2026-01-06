@@ -2,5 +2,8 @@ add sfx for washing dishes
 make bowls stuffable
 test nutrient paste dispenser
 
+fix industrial dishwasher spot texture
+fix industrial dishwasher not accepting water from pipes
+
 add plants
 add biome

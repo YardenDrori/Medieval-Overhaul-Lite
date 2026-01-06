@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- Beer -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Beer"]graphicData/texpPath</xpath>
+    <value>
+      <texPath>Things/Item/Drug/MOL_Beer</texPath>
+    </value>
+  </Operation>
+</Patch>
