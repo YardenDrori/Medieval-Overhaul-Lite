@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Defs>
+  <RecipeDef>
+    <defName>MOL_MakeCup</defName>
+    <label>make pint</label>
+    <description>TODO</description>
+    <jobString>making pint.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <!-- <effectWorking>Smelt</effectWorking> -->
+    <!-- <soundWorking>Recipe_Smelt</soundWorking> -->
+    <workAmount>1400</workAmount>
+    <targetCountAdjustment>1</targetCountAdjustment>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+    </ingredients>
+    <products>
+      <MOL_CupClean>1</MOL_CupClean>
+    </products>
+    <recipeUsers>
+      <li>CraftingSpot</li>
+      <li>ElectricSmithy</li>
+      <li>FueledSmithy</li>
+    </recipeUsers>
+    <displayPriority>1</displayPriority>
+  </RecipeDef>
+</Defs>

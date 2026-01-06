@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <Defs>
   <ThingDef ParentName="ResourceBase">
-    <defName>MOL_PlateClean</defName>
-    <label>bowl</label>
+    <defName>MOL_CupClean</defName>
+    <label>pint</label>
     <description>TODO</description>
     <graphicData>
-      <texPath>Things/Item/Resource/MOL_BowlClean</texPath>
+      <texPath>Things/Item/Resource/MOL_CupClean</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
-    <stackLimit>10</stackLimit>
+    <stackLimit>25</stackLimit>
     <thingCategories>
       <li>FoodMeals</li>
     </thingCategories>
@@ -19,20 +19,20 @@
       <MarketValue>0.1</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0.8</Flammability>
-      <MaxHitPoints>25</MaxHitPoints>
+      <MaxHitPoints>20</MaxHitPoints>
     </statBases>
     <pathCost>14</pathCost>
   </ThingDef>
   <ThingDef ParentName="ResourceBase">
-    <defName>MOL_PlateDirty</defName>
-    <label>dirty bowl</label>
+    <defName>MOL_CupDirty</defName>
+    <label>dirty pint</label>
     <description>TODO</description>
     <graphicData>
-      <texPath>Things/Item/Resource/MOL_BowlDirty</texPath>
+      <texPath>Things/Item/Resource/MOL_CupDirty</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <rotatable>false</rotatable>
-    <stackLimit>10</stackLimit>
+    <stackLimit>25</stackLimit>
     <thingCategories>
       <li>FoodMeals</li>
     </thingCategories>
@@ -42,7 +42,7 @@
       <MarketValue>0.1</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0.8</Flammability>
-      <MaxHitPoints>25</MaxHitPoints>
+      <MaxHitPoints>20</MaxHitPoints>
       <Beauty>-8</Beauty>
     </statBases>
     <pathCost>14</pathCost>

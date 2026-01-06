@@ -11,7 +11,7 @@ namespace MOExpandedLite
     [HarmonyPostfix]
     public static Verse.AI.Job Postfix(Verse.AI.Job __result, Thing thing)
     {
-      if (thing.def.building?.isMealSource == true)
+      if (thing.def.building?.isMealSource == true || thing.def.HasModExtension<RequiresDishes>())
       {
         Building_WorkTable stove = thing as Building_WorkTable;
         if (stove != null)
@@ -28,7 +28,7 @@ namespace MOExpandedLite
           else
           {
             Log.Warning(
-              $"[Medieval Overhaul Lite] {thing.def.defName} has isMealSource property but is missing CompBowlStorage"
+              $"[Medieval Overhaul Lite] {thing.def.defName} requires dishes but is missing CompBowlStorage"
             );
             return __result;
           }
@@ -36,7 +36,7 @@ namespace MOExpandedLite
         else
         {
           Log.Warning(
-            $"[Medieval Overhaul Lite] {thing.def.defName} has proprty isMealSource but is not a Building_WorkTable"
+            $"[Medieval Overhaul Lite] {thing.def.defName} requires dishes but is not a Building_WorkTable"
           );
           return __result;
         }

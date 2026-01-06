@@ -52,7 +52,7 @@ namespace MOExpandedLite
     {
       if (bowls == null)
         return null;
-      return $"Bowls: {bowls.Sum(thing => thing.stackCount)}/{Props.capacity}";
+      return $"Dishes: {bowls.Sum(thing => thing.stackCount)}/{Props.capacity}";
     }
 
     public override void PostDestroy(DestroyMode mode, Map previousMap)
