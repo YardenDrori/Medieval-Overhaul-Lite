@@ -71,14 +71,16 @@ namespace MOExpandedLite
       }
     }
 
-    public bool HasBowls()
+    public bool HasBowlForRecipe(RecipeDef recipe)
     {
       if (bowls == null)
       {
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return false;
       }
-      return bowls.Count > 0;
+      if (bowls.Count >= recipe.products[0].count)
+        return true;
+      return false;
     }
 
     public int CapacityRemaining()
@@ -89,6 +91,16 @@ namespace MOExpandedLite
         return 0;
       }
       return Props.capacity - bowls.Count;
+    }
+
+    public bool IsNeedRefuel()
+    {
+      if (bowls == null)
+      {
+        Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
+        return false;
+      }
+      return bowls.Count <= Props.capacity * 0.3;
     }
 
     public void AddBowls(Thing bowlsToAdd)

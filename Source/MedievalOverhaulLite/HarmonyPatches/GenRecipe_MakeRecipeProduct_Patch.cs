@@ -9,14 +9,23 @@ namespace MOExpandedLite
   public static class RecipeProducts_StovesUseBowls_Patch
   {
     [HarmonyPostfix]
-    public static bool Postfix(RecipeDef recipeDef, Pawn worker, List<Thing> ingredients, Thing dominantIngredient, IBillGiver billGiver) {
+    public static void Postfix(
+      RecipeDef recipeDef,
+      Pawn worker,
+      List<Thing> ingredients,
+      Thing dominantIngredient,
+      IBillGiver billGiver
+    )
+    {
       Building_WorkTable billGiverWorkTable = billGiver as Building_WorkTable;
-      if (billGiverWorkTable == null){
-        return true;
+      if (billGiverWorkTable == null)
+      {
+        return;
       }
       CompBowlStorage comp = billGiverWorkTable.TryGetComp<CompBowlStorage>();
-      if (comp == null){
-        return true;
+      if (comp == null)
+      {
+        return;
       }
       comp.CookedRecipe(recipeDef);
     }

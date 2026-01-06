@@ -8,6 +8,7 @@ namespace MOExpandedLite
 {
   public class WorkGiver_FillBowls : WorkGiver_Scanner
   {
+    private static ThingDef bowlDef = DefDatabase<ThingDef>.GetNamed("MOL_PlateClean");
     public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForUndefined();
 
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
@@ -38,6 +39,16 @@ namespace MOExpandedLite
         JobFailReason.IsSilent();
         return false;
       }
+      if (!comp.IsNeedRefuel() && !forced)
+      {
+        JobFailReason.IsSilent();
+        return false;
+      }
+      if (!forced || comp.CapacityRemaining() <= 0)
+      {
+        JobFailReason.Is("Already full");
+        return false;
+      }
       if (!pawn.CanReserve(t, 1, -1, null, forced))
       {
         return false;
@@ -50,24 +61,28 @@ namespace MOExpandedLite
       {
         return false;
       }
+      if (FindBowl(pawn) == null)
+      {
+        return false;
+      }
       return true;
     }
 
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
     {
-      Building_FermentingBarrel barrel = (Building_FermentingBarrel)t;
-      Thing thing = FindWort(pawn, barrel);
-      return JobMaker.MakeJob(JobDefOf.FillFermentingBarrel, t, thing);
+      Building_WorkTable stove = (Building_WorkTable)t;
+      Thing thing = FindBowl(pawn);
+      return JobMaker.MakeJob(JobDefOf_MedievalOverhaulLite.MOL_FillBowl, t, thing);
     }
 
-    private Thing FindWort(Pawn pawn, Building_FermentingBarrel barrel)
+    private Thing FindBowl(Pawn pawn)
     {
       Predicate<Thing> validator = (Thing x) =>
         (!x.IsForbidden(pawn) && pawn.CanReserve(x)) ? true : false;
       return GenClosest.ClosestThingReachable(
         pawn.Position,
         pawn.Map,
-        ThingRequest.ForDef(ThingDefOf.Wort),
+        ThingRequest.ForDef(bowlDef),
         PathEndMode.ClosestTouch,
         TraverseParms.For(pawn),
         9999f,
