@@ -22,10 +22,12 @@ namespace MOExpandedLite
     private CompProperties_BowlStorage Props => (CompProperties_BowlStorage)props;
     private ThingOwner<Thing> bowls;
     private MapComponent_StoveTracker stoveTracker = null;
+    int bowlThreshold;
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
       stoveTracker = parent.Map?.GetComponent<MapComponent_StoveTracker>();
+      bowlThreshold = Props.capacity * 0.3 > 4 ? (int)(Props.capacity * 0.3) : 4;
       if (stoveTracker != null)
       {
         stoveTracker.allStoves.Add((Building_WorkTable)parent);
@@ -101,7 +103,7 @@ namespace MOExpandedLite
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return false;
       }
-      return bowls.Sum(thing => thing.stackCount) <= Props.capacity * 0.3;
+      return (bowls.Sum(thing => thing.stackCount) <= bowlThreshold);
     }
 
     public void AddBowls(Thing bowlsToAdd)
