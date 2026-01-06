@@ -21,7 +21,7 @@ namespace MOExpandedLite
           {
             if (!bowlStorage.HasBowlForRecipe(stove.billStack.FirstShouldDoNow?.recipe))
             {
-              JobFailReason.Is("NoBowlsInStove".Translate()); // Or just the string
+              JobFailReason.Is("No clean bowls in storage");
               return null;
             }
           }

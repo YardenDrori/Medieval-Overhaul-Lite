@@ -52,7 +52,17 @@
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <surfaceType>Item</surfaceType>
     <comps>
-      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Refuelable" MayRequire="dubwise.dubsbadhygiene">
+        <fuelConsumptionRate>1</fuelConsumptionRate>
+        <fuelCapacity>15.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li MayRequire="dubwise.dubsbadhygiene">DBH_WaterBottle</li>
+          </thingDefs>
+        </fuelFilter>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+      </li>
     </comps>
     <tickerType>Rare</tickerType>
     <placeWorkers>
@@ -110,7 +120,9 @@
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <surfaceType>Item</surfaceType>
     <comps>
-      <li Class="CompProperties_Forbiddable"/>
+      <li Class="DubsBadHygiene.CompProperties_Pipe" MayRequire="dubwise.dubsbadhygiene">
+        <mode>Sewage</mode>
+      </li>
     </comps>
     <tickerType>Rare</tickerType>
     <placeWorkers>
