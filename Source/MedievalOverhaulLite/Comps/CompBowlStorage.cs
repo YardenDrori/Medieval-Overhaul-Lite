@@ -8,18 +8,7 @@ namespace MOExpandedLite
   public class CompProperties_BowlStorage : CompProperties
   {
     public int capacity = 10;
-    private static ThingDef dishTypeFallbackCached = null;
-    public ThingDef dishType
-    {
-      get
-      {
-        if (dishTypeFallbackCached == null)
-        {
-          dishTypeFallbackCached = DefDatabase<ThingDef>.GetNamedSilentFail("MOL_PlateClean");
-        }
-        return dishTypeFallbackCached;
-      }
-    }
+    public ThingDef dishType;
 
     public CompProperties_BowlStorage()
     {
@@ -42,7 +31,7 @@ namespace MOExpandedLite
       bowlThreshold = Props.capacity * 0.3 > 4 ? (int)(Props.capacity * 0.3) : 4;
       if (stoveTracker != null)
       {
-        stoveTracker.allStoves.Add((Building_WorkTable)parent);
+        stoveTracker.AddStove(parent);
       }
       else
       {
@@ -78,7 +67,7 @@ namespace MOExpandedLite
       }
       if (stoveTracker != null)
       {
-        stoveTracker.allStoves.Remove((Building_WorkTable)parent);
+        stoveTracker.RemoveStove(parent);
       }
       else
       {

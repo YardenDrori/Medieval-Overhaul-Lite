@@ -19,11 +19,11 @@ namespace MOExpandedLite
         );
         return;
       }
-      Building building = dishWasher as Building;
+      Building_WorkTable building = dishWasher as Building_WorkTable;
       if (building == null)
       {
         Log.Error(
-          $"[Medieval Overhaul Lite] dishwasher is not a Building: {dishWasher.def.defName}"
+          $"[Medieval Overhaul Lite] dishwasher is not a Building_WorkTable: {dishWasher.def.defName}"
         );
         return;
       }

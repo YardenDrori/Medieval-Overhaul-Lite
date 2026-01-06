@@ -5,6 +5,7 @@
     <value>
       <li Class="MOExpandedLite.CompProperties_BowlStorage">
         <capacity>10</capacity>
+        <dishType>MOL_PlateClean</dishType>
       </li>
     </value>
   </Operation>
@@ -13,16 +14,38 @@
     <value>
       <li Class="MOExpandedLite.CompProperties_BowlStorage">
         <capacity>10</capacity>
+        <dishType>MOL_PlateClean</dishType>
       </li>
     </value>
   </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/ThingDef[defName="Brewery"]/comps</xpath>
-    <value>
-      <li Class="MOExpandedLite.CompProperties_BowlStorage">
-        <capacity>15</capacity>
-        <dishTypeFallbackCached>MOL_CupClean</dishTypeFallbackCached>
+  <!-- Brewery -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <!-- Add comps element if it doesn't exist -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Brewery"][not(comps)]</xpath>
+        <value>
+          <comps/>
+        </value>
       </li>
+      <!-- Add our comp to the comps element -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Brewery"]/comps</xpath>
+        <value>
+          <li Class="MOExpandedLite.CompProperties_BowlStorage">
+            <capacity>15</capacity>
+            <dishType>MOL_CupClean</dishType>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Brewery"]</xpath>
+    <value>
+      <modExtensions>
+        <li Class="MOExpandedLite.UsesDishes, MOExpandedLite"/>
+      </modExtensions>
     </value>
   </Operation>
 </Patch>

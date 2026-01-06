@@ -15,7 +15,7 @@ namespace MOExpandedLite
       MapComponent_StoveTracker stoveTracker = pawn.Map.GetComponent<MapComponent_StoveTracker>();
       if (stoveTracker != null)
       {
-        foreach (Building_WorkTable stove in stoveTracker.allStoves)
+        foreach (Building_WorkTable stove in stoveTracker.AllStoves)
         {
           yield return stove;
         }
@@ -63,9 +63,11 @@ namespace MOExpandedLite
 
       ThingDef dishType = null;
       Building_WorkTable stove = t as Building_WorkTable;
-      if (stove != null)
+      if (stove == null)
       {
-        Log.Error($"[Medieval Overhaul Lite] {t.def.defName} is not a Building_WorkTable");
+        Log.Error(
+          $"[Medieval Overhaul Lite] {t.def.defName} is not a Building_WorkTable it is a {t.GetType()}"
+        );
         return false;
       }
       dishType = comp.DishType;
@@ -89,7 +91,7 @@ namespace MOExpandedLite
 
       ThingDef dishType = null;
       Building_WorkTable stove = t as Building_WorkTable;
-      if (stove != null)
+      if (stove == null)
       {
         Log.Error($"[Medieval Overhaul Lite] {t.def.defName} is not a Building_WorkTable");
         return null;
