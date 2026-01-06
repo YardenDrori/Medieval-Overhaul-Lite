@@ -6,7 +6,7 @@
     <giverClass>MOExpandedLite.WorkGiver_FillBowls</giverClass>
     <workType>Hauling</workType>
     <priorityInType>20</priorityInType>
-    <verb>stock up with bowls</verb>
-    <gerund>stocking up with bowls</gerund>
+    <verb>stock up </verb>
+    <gerund>stocking up</gerund>
   </WorkGiverDef>
 </Defs>
