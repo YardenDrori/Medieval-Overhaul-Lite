@@ -4,6 +4,7 @@
     <defName>MOL_WashPlate</defName>
     <label>wash dishes</label>
     <description>TODO</description>
+    <workerClass>MOExpandedLite.RecipeWorker_WashDishes</workerClass>
     <jobString>Doing the dishes.</jobString>
     <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <!-- <effectWorking>Smelt</effectWorking> -->

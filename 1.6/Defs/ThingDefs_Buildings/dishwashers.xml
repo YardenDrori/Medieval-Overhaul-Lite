@@ -53,8 +53,8 @@
     <surfaceType>Item</surfaceType>
     <comps>
       <li Class="CompProperties_Refuelable" MayRequire="dubwise.dubsbadhygiene">
-        <fuelConsumptionRate>1</fuelConsumptionRate>
-        <fuelCapacity>15.0</fuelCapacity>
+        <fuelConsumptionRate>0</fuelConsumptionRate>
+        <fuelCapacity>20.0</fuelCapacity>
         <fuelFilter>
           <thingDefs>
             <li MayRequire="dubwise.dubsbadhygiene">DBH_WaterBottle</li>
@@ -120,6 +120,18 @@
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <surfaceType>Item</surfaceType>
     <comps>
+      <li Class="CompProperties_Refuelable" MayRequire="dubwise.dubsbadhygiene">
+        <fuelConsumptionRate>0</fuelConsumptionRate>
+        <fuelCapacity>100</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+            <!-- Dummy, CompPipe handles actual refilling -->
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showFuelGizmo>true</showFuelGizmo>
+      </li>
       <li Class="DubsBadHygiene.CompProperties_Pipe" MayRequire="dubwise.dubsbadhygiene">
         <mode>Sewage</mode>
       </li>

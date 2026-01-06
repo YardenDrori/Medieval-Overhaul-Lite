@@ -1,107 +1,76 @@
-using System;
-using System.Reflection;
+using RimWorld;
 using Verse;
 
 namespace MOExpandedLite.Compatibility
 {
+  /// <summary>
+  /// Handles optional integration with Dubs Bad Hygiene water system
+  /// DBH uses CompRefuelable to store water, much simpler than we thought!
+  /// </summary>
   public static class DubsBadHygieneCompat
   {
     private static bool isLoaded;
-    private static MethodInfo tryUseWaterMethod;
 
     static DubsBadHygieneCompat()
     {
-      Initialize();
-    }
-
-    private static void Initialize()
-    {
-      // Check if DBH is loaded
       isLoaded = ModsConfig.IsActive("dubwise.dubsbadhygiene");
 
-      if (!isLoaded)
+      if (isLoaded)
       {
-        Log.Message("[Medieval Overhaul Lite] DBH not loaded, water integration disabled");
-        return;
-      }
-
-      try
-      {
-        // Find DBH assembly
-        Assembly dbhAssembly = null;
-        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-        {
-          if (assembly.GetName().Name == "BadHygiene")
-          {
-            dbhAssembly = assembly;
-            break;
-          }
-        }
-
-        if (dbhAssembly == null)
-        {
-          Log.Warning(
-            "[Medieval Overhaul Lite] DBH mod loaded but assembly not found"
-          );
-          return;
-        }
-
-        // Find PlumbingNet class
-        Type plumbingNetType = dbhAssembly.GetType("DubsBadHygiene.PlumbingNet");
-        if (plumbingNetType == null)
-        {
-          Log.Warning("[Medieval Overhaul Lite] Could not find PlumbingNet type in DBH");
-          return;
-        }
-
-        // Find TryUseWater method
-        tryUseWaterMethod = plumbingNetType.GetMethod(
-          "TryUseWater",
-          BindingFlags.Public | BindingFlags.Static
-        );
-
-        if (tryUseWaterMethod == null)
-        {
-          Log.Warning(
-            "[Medieval Overhaul Lite] Could not find TryUseWater method in PlumbingNet"
-          );
-          return;
-        }
-
-        Log.Message("[Medieval Overhaul Lite] Successfully initialized DBH integration");
-      }
-      catch (Exception ex)
-      {
-        Log.Error($"[Medieval Overhaul Lite] Failed to initialize DBH compatibility: {ex}");
+        Log.Message("[Medieval Overhaul Lite] DBH detected, water integration enabled");
       }
     }
 
     /// <summary>
-    /// Attempts to consume water from the plumbing network
+    /// Check if building has enough water available
     /// </summary>
-    /// <param name="building">The building consuming water</param>
-    /// <param name="amount">Amount of water to consume</param>
-    /// <returns>True if water was consumed or DBH not loaded, false if not enough water</returns>
+    public static bool HasWater(Building building, float amount)
+    {
+      if (!isLoaded)
+        return true; // No DBH = always has water
+
+      CompRefuelable waterStorage = building.GetComp<CompRefuelable>();
+      if (waterStorage == null)
+        return true; // No water comp = not using DBH water system
+
+      return waterStorage.Fuel >= amount;
+    }
+
+    /// <summary>
+    /// Try to consume water from building's storage
+    /// </summary>
     public static bool TryConsumeWater(Building building, float amount)
     {
-      if (!isLoaded || tryUseWaterMethod == null)
+      CompRefuelable waterStorage = building.GetComp<CompRefuelable>();
+      if (waterStorage == null)
+        return true; // No water comp = always succeed
+
+      if (waterStorage.Fuel < amount)
       {
-        return true; // No DBH or failed init = always succeed
+        // Not enough water!
+        waterStorage.ConsumeFuel(100);
+        return false;
       }
 
-      try
-      {
-        // Call PlumbingNet.TryUseWater(building, amount)
-        object result = tryUseWaterMethod.Invoke(null, new object[] { building, amount });
-        return (bool)result;
-      }
-      catch (Exception ex)
-      {
-        Log.Warning(
-          $"[Medieval Overhaul Lite] Error calling DBH TryUseWater: {ex.Message}"
-        );
-        return true; // On error, don't block gameplay
-      }
+      waterStorage.ConsumeFuel(amount);
+      return true;
+    }
+
+    /// <summary>
+    /// Check if building can currently work (has water OR DBH not loaded)
+    /// Use this in WorkGiver checks to prevent jobs when no water
+    /// </summary>
+    public static bool CanWork(Building building, float waterNeeded)
+    {
+      if (!isLoaded)
+        return true; // No DBH = always can work
+
+      CompRefuelable waterStorage = building.GetComp<CompRefuelable>();
+      if (waterStorage == null)
+        return true; // No water system = always can work
+
+      // Can work if has enough water
+      return waterStorage.Fuel >= waterNeeded;
     }
   }
 }
