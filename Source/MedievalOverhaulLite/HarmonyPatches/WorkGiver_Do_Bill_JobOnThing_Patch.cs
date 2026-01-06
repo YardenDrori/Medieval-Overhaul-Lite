@@ -1,6 +1,7 @@
 using HarmonyLib;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace MOExpandedLite
 {
@@ -20,6 +21,7 @@ namespace MOExpandedLite
           {
             if (!bowlStorage.HasBowlForRecipe(stove.billStack.FirstShouldDoNow?.recipe))
             {
+              JobFailReason.Is("NoBowlsInStove".Translate()); // Or just the string
               return null;
             }
           }
