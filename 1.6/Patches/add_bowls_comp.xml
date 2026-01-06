@@ -16,4 +16,13 @@
       </li>
     </value>
   </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Brewery"]/comps</xpath>
+    <value>
+      <li Class="MOExpandedLite.CompProperties_BowlStorage">
+        <capacity>15</capacity>
+        <dishTypeFallbackCached>MOL_CupClean</dishTypeFallbackCached>
+      </li>
+    </value>
+  </Operation>
 </Patch>

@@ -8,11 +8,8 @@ namespace MOExpandedLite
   public class CompProperties_BowlStorage : CompProperties
   {
     public int capacity = 10;
-
-    // Lazy-loaded static cache to avoid accessing DefDatabase before defs are loaded
-    // Static so all instances share the same cached def
     private static ThingDef dishTypeFallbackCached = null;
-    public ThingDef dishTypeFallback
+    public ThingDef dishType
     {
       get
       {
@@ -37,7 +34,7 @@ namespace MOExpandedLite
     private MapComponent_StoveTracker stoveTracker = null;
     private int bowlThreshold;
 
-    public ThingDef DishTypeFallBack => Props.dishTypeFallback;
+    public ThingDef DishType => Props.dishType;
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
@@ -98,7 +95,7 @@ namespace MOExpandedLite
       }
       if (recipe == null || recipe.products.NullOrEmpty())
       {
-        return true; // If there's no recipe or no products, no bowls are needed
+        return true;
       }
       if (bowls.Sum(thing => thing.stackCount) >= recipe.products[0].count)
         return true;

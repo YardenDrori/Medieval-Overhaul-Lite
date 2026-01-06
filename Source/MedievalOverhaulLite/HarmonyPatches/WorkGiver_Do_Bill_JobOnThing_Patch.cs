@@ -1,7 +1,6 @@
 using HarmonyLib;
 using RimWorld;
 using Verse;
-using Verse.AI;
 
 namespace MOExpandedLite
 {
@@ -17,13 +16,7 @@ namespace MOExpandedLite
 
       // Check if this bill's workbench requires bowls
       Building_WorkTable workTable = __instance.billStack?.billGiver as Building_WorkTable;
-      if (
-        workTable != null
-        && (
-          workTable.def.building?.isMealSource == true
-          || workTable.def.HasModExtension<RequireDishesToFunction>()
-        )
-      )
+      if (workTable != null && (workTable.def.building?.isMealSource == true))
       {
         CompBowlStorage bowlStorage = workTable.TryGetComp<CompBowlStorage>();
         if (bowlStorage != null)

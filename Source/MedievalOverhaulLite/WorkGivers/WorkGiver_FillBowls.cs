@@ -61,20 +61,14 @@ namespace MOExpandedLite
         return false;
       }
 
-      ///Get the def of the dishtype either from the recipe if it is a building_worktable
-      ///or from the fallback defined in the comp (default is a bowl)
       ThingDef dishType = null;
       Building_WorkTable stove = t as Building_WorkTable;
       if (stove != null)
       {
-        dishType = stove
-          .billStack.FirstShouldDoNow?.recipe.GetModExtension<RequireDishesToFunction>()
-          ?.dishType;
+        Log.Error($"[Medieval Overhaul Lite] {t.def.defName} is not a Building_WorkTable");
+        return false;
       }
-      if (dishType == null)
-      {
-        dishType = comp.DishTypeFallBack;
-      }
+      dishType = comp.DishType;
 
       if (FindBowl(pawn, dishType) == null)
       {
@@ -93,20 +87,14 @@ namespace MOExpandedLite
         return null;
       }
 
-      ///Get the def of the dishtype either from the recipe if it is a building_worktable
-      ///or from the fallback defined in the comp (default is a bowl)
       ThingDef dishType = null;
       Building_WorkTable stove = t as Building_WorkTable;
       if (stove != null)
       {
-        dishType = stove
-          .billStack.FirstShouldDoNow?.recipe.GetModExtension<RequireDishesToFunction>()
-          ?.dishType;
+        Log.Error($"[Medieval Overhaul Lite] {t.def.defName} is not a Building_WorkTable");
+        return null;
       }
-      if (dishType == null)
-      {
-        dishType = comp.DishTypeFallBack;
-      }
+      dishType = comp.DishType;
 
       Thing thing = FindBowl(pawn, dishType);
       return JobMaker.MakeJob(JobDefOf_MedievalOverhaulLite.MOL_FillBowl, t, thing);
