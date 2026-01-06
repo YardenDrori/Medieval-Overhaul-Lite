@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -51,13 +52,13 @@ namespace MOExpandedLite
     {
       if (bowls == null)
         return null;
-      return $"Bowls: {bowls.Count}/{Props.capacity}";
+      return $"Bowls: {bowls.Sum(thing => thing.stackCount)}/{Props.capacity}";
     }
 
     public override void PostDestroy(DestroyMode mode, Map previousMap)
     {
       base.PostDestroy(mode, previousMap);
-      if (bowls != null && bowls.Count > 0)
+      if (bowls != null && bowls.Sum(thing => thing.stackCount) > 0)
       {
         bowls.TryDropAll(parent.Position, previousMap, ThingPlaceMode.Near);
       }
@@ -78,7 +79,7 @@ namespace MOExpandedLite
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return false;
       }
-      if (bowls.Count >= recipe.products[0].count)
+      if (bowls.Sum(thing => thing.stackCount) >= recipe.products[0].count)
         return true;
       return false;
     }
@@ -90,7 +91,7 @@ namespace MOExpandedLite
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return 0;
       }
-      return Props.capacity - bowls.Count;
+      return Props.capacity - bowls.Sum(thing => thing.stackCount);
     }
 
     public bool IsNeedRefuel()
@@ -100,7 +101,7 @@ namespace MOExpandedLite
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return false;
       }
-      return bowls.Count <= Props.capacity * 0.3;
+      return bowls.Sum(thing => thing.stackCount) <= Props.capacity * 0.3;
     }
 
     public void AddBowls(Thing bowlsToAdd)
@@ -110,12 +111,12 @@ namespace MOExpandedLite
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return;
       }
-      if (bowls.Count + bowlsToAdd.stackCount > Props.capacity)
+      if (bowls.Sum(thing => thing.stackCount) + bowlsToAdd.stackCount > Props.capacity)
       {
         Log.Error($"[Medieval Overhaul Lite] Attempted to add more bowls than availble capacity");
         return;
       }
-      int bowlsAdded = bowls.TryAdd(bowlsToAdd, bowlsToAdd.stackCount, true);
+      int bowlsAdded = bowls.TryAddOrTransfer(bowlsToAdd, bowlsToAdd.stackCount, true);
       if (bowlsAdded != bowlsToAdd.stackCount)
       {
         Log.Error(
@@ -132,7 +133,7 @@ namespace MOExpandedLite
         Log.Error($"[Medieval Overhaul Lite] no ThingHolder");
         return;
       }
-      if (bowls.Count - count < 0)
+      if (bowls.Sum(thing => thing.stackCount) - count < 0)
       {
         Log.Error(
           $"[Medieval Overhaul Lite] Attempt at removing bowls resulted in negative number"

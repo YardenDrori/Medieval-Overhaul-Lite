@@ -44,7 +44,7 @@ namespace MOExpandedLite
         JobFailReason.IsSilent();
         return false;
       }
-      if (!forced || comp.CapacityRemaining() <= 0)
+      if (comp.CapacityRemaining() <= 0)
       {
         JobFailReason.Is("Already full");
         return false;
@@ -63,6 +63,7 @@ namespace MOExpandedLite
       }
       if (FindBowl(pawn) == null)
       {
+        JobFailReason.Is("No Bowls in storage");
         return false;
       }
       return true;
