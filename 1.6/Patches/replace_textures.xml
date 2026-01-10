@@ -7,4 +7,11 @@
       <texPath>Things/Item/Drug/MOL_Beer</texPath>
     </value>
   </Operation>
+  <!-- Yayo -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Yayo"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Drug/MOL_Yayo</texPath>
+    </value>
+  </Operation>
 </Patch>
