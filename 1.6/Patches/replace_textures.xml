@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <!-- Beer -->
   <Operation Class="PatchOperationReplace">
@@ -14,52 +14,47 @@
       <texPath>Things/Item/Drug/MOL_Yayo</texPath>
     </value>
   </Operation>
-  <!-- cloth -->
+  <!-- Cloth -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="Cloth"]/graphicData/texPath</xpath>
     <value>
       <texPath>Things/Item/Resource/MOL_Cloth</texPath>
     </value>
   </Operation>
-  <!-- Heal root -->
+  <!-- Healroot -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="MedicineHerbal"]/graphicData/texPath</xpath>
     <value>
       <texPath>Things/Item/Resource/MOL_Healroot</texPath>
     </value>
   </Operation>
-  <!-- steel -->
+  <!-- Steel -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="Steel"]/graphicData/texPath</xpath>
     <value>
       <texPath>Things/Item/Resource/MOL_Steel</texPath>
     </value>
   </Operation>
-  <!-- plasteel -->
+  <!-- Plasteel -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="Plasteel"]/graphicData/texPath</xpath>
     <value>
       <texPath>Things/Item/Resource/MOL_PlasteelIngot</texPath>
     </value>
   </Operation>
-  <!-- gold -->
+  <!-- Gold -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="Gold"]/graphicData/texPath</xpath>
     <value>
       <texPath>Things/Item/Resource/MOL_Gold</texPath>
     </value>
   </Operation>
-  <!-- iron -->
-  <Operation Class="PatchOperationFindMod">
-    <mods>
-      <li>blacksparrow.productionexpanded</li>
-    </mods>
-    <match Class="PatchOperationReplace">
-      <xpath>Defs/ThingDef[defName="PE_Iron"]/graphicData/texPath</xpath>
-      <value>
-        <texPath>Things/Item/Resource/MOL_IronIngot</texPath>
-      </value>
-    </match>
+  <!-- Iron (Production Expanded) -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="PE_Iron"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/MOL_IronIngot</texPath>
+    </value>
   </Operation>
   <!-- Leather -->
   <Operation Class="PatchOperationReplace">
@@ -75,18 +70,21 @@
       <texPath>Things/Item/Resource/PlantFoodRaw/MOL_Hay</texPath>
     </value>
   </Operation>
+  <!-- Potatoes -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="RawPotatoes"]/graphicData/texPath</xpath>
     <value>
       <texPath>Things/Item/Resource/PlantFoodRaw/MOL_Potatoes</texPath>
     </value>
   </Operation>
+  <!-- Psychoid Leaves -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="PsychoidLeaves"]/graphicData/texPath</xpath>
     <value>
       <texPath>Things/Item/Resource/PlantFoodRaw/MOL_PsychoidLeaves</texPath>
     </value>
   </Operation>
+  <!-- Raw Fungus -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="RawFungus"]/graphicData/texPath</xpath>
     <value>
