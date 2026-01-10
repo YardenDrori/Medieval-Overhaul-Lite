@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Defs>
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>MOL_Fat</defName>
+    <label>fat</label>
+    <description>Raw animal fat harvested during butchering. Must be rendered into tallow before it can be used for candle-making or fuel production. In desperate times, it can be cooked into a greasy emergency stew, though most find it unappetizing and the heavy meal leaves them feeling bloated.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/MOL_Fat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <thingCategories>
+      <li>AnimalProductRaw</li>
+    </thingCategories>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Beauty>-1</Beauty>
+      <MarketValue>1</MarketValue>
+      <Mass>0.02</Mass>
+      <Nutrition>0.01</Nutrition>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Ingredients"/>
+      <li Class="CompProperties_FoodPoisonable"/>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>8</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <preferability>DesperateOnlyForHumanlikes</preferability>
+      <tasteThought>AteRawFood</tasteThought>
+      <foodType>Meal</foodType>
+    </ingestible>
+  </ThingDef>
+  <ThingDef ParentName="RoughPlantBase">
+    <defName>MOL_Tallow</defName>
+    <label>tallow</label>
+    <description>Rendered animal fat. Can be molded into candles for lighting or further processed into chemfuel. A versatile byproduct of livestock management.</description>
+    <stackLimit>75</stackLimit>
+    <graphicData>
+      <texPath>Things/Item/Resource/MOL_Tallow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.5</MarketValue>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <thingCategories>
+      <li>Foods</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>90</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
+  </ThingDef>
+</Defs>

@@ -1,6 +1,7 @@
 add sfx for washing dishes
 make bowls stuffable
 test nutrient paste dispenser
+add disges to campfire
 
 fix industrial dishwasher spot texture
 fix industrial dishwasher not accepting water from pipes
