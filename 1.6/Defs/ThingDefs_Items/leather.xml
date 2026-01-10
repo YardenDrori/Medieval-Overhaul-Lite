@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="LeatherBase">
+    <defName>MOL_Leather_Daer</defName>
+    <label>daer leather</label>
+    <description>The fabled leather of a daer, made from skinning one of the mighty beasts. Though somewhat rough in its raw form, none can deny its incredible insulating capabilities due to the sheer density of daer hairs. That same density as well as innate composition makes it surprisingly flame- retardent, preventing oxygen from reaching any smoldering embers on the fur. That said, it is a heavy material to work with.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Leather</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(80,75,72)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>17.0</MarketValue>
+      <StuffPower_Armor_Sharp>2.20</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.40</StuffPower_Armor_Blunt>
+      <StuffPower_Insulation_Cold>34</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>22</StuffPower_Insulation_Heat>
+    </statBases>
+    <stuffProps>
+      <color>(80,75,72)</color>
+      <commonality>0.0005</commonality>
+      <statFactors>
+        <MaxHitPoints>2.15</MaxHitPoints>
+        <Beauty>6</Beauty>
+      </statFactors>
+    </stuffProps>
+  </ThingDef>
+</Defs>
