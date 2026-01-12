@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<Defs>
-  <JobDef>
-    <defName>MOL_FillBowl</defName>
-    <driverClass>MOExpandedLite.JobDriver_FillBowl</driverClass>
-    <reportString>Stocking up bowls.</reportString>
-    <playerInterruptible>true</playerInterruptible>
-  </JobDef>
-</Defs>

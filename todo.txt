@@ -1,14 +1,5 @@
-add sfx for washing dishes
-make bowls stuffable
-test nutrient paste dispenser
-add disges to campfire
-
-fix industrial dishwasher spot texture
-fix industrial dishwasher not accepting water from pipes
-
 add plants
 add biome
-
 
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
