@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Defs>
+  <RecipeDef>
+    <defName>MOL_GrindBonesToMeal</defName>
+    <label>grind bones to meal</label>
+    <workAmount>1800</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_Bone</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <products>
+      <MOL_BoneMeal>8</MOL_BoneMeal>
+    </products>
+    <recipeUsers>
+      <li>TableButcher</li>
+    </recipeUsers>
+  </RecipeDef>
+</Defs>

@@ -3,7 +3,7 @@
   <ThingDef ParentName="OrganicProductBase">
     <defName>MOL_Fat</defName>
     <label>fat</label>
-    <description>Raw animal fat harvested during butchering. Must be rendered into tallow before it can be used for candle-making or fuel production. In desperate times, it can be cooked into a greasy emergency stew, though most find it unappetizing and the heavy meal leaves them feeling bloated.</description>
+    <description>Raw animal fat harvested during butchering. Must be rendered into tallow before it can be used for candle-making or fuel production. it can be used as an meaty ingredient for the purpose of cooking.</description>
     <graphicData>
       <texPath>Things/Item/Resource/MOL_Fat</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
@@ -18,7 +18,7 @@
       <Beauty>-1</Beauty>
       <MarketValue>1</MarketValue>
       <Mass>0.02</Mass>
-      <Nutrition>0.01</Nutrition>
+      <Nutrition>0.05</Nutrition>
     </statBases>
     <comps>
       <li Class="CompProperties_Ingredients"/>

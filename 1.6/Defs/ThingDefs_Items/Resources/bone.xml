@@ -31,6 +31,29 @@
       <ingestEffect>EatMeat</ingestEffect>
       <ingestSound>RawMeat_Eat</ingestSound>
     </ingestible>
+    <stuffProps>
+      <stuffAdjective>boney</stuffAdjective>
+      <categories>
+        <li>Woody</li>
+      </categories>
+      <commonality>0.07</commonality>
+      <color>(227,218,201)</color>
+      <constructEffect>ConstructWood</constructEffect>
+      <appearance>Planks</appearance>
+      <soundImpactBullet>BulletImpact_Wood</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
+      <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Wood</soundImpactMelee>
+      <statFactors>
+        <MaxHitPoints>0.15</MaxHitPoints>
+        <Beauty>-4</Beauty>
+        <Flammability>1.2</Flammability>
+        <WorkToMake>0.7</WorkToMake>
+        <WorkToBuild>0.7</WorkToBuild>
+        <DoorOpenSpeed>1.4</DoorOpenSpeed>
+      </statFactors>
+      <canSuggestUseDefaultStuff>true</canSuggestUseDefaultStuff>
+    </stuffProps>
     <thingCategories>
       <li>ResourcesRaw</li>
     </thingCategories>
@@ -46,5 +69,30 @@
         <cooldownTime>2.2</cooldownTime>
       </li>
     </tools>
+  </ThingDef>
+  <!--=============== Bone Meal================-->
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>MOL_BoneMeal</defName>
+    <label>bone meal</label>
+    <description>Ground animal bones processed into a fine powder. Rich in phosphorus and calcium, bone meal can be used to create enriched soil that significantly boosts plant growth rates. A common fertilizer used throughout human history.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/MOL_BoneMeal</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <soundInteract>Wood_Drop</soundInteract>
+    <soundDrop>Wood_Drop</soundDrop>
+    <statBases>
+      <MarketValue>1.8</MarketValue>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Mass>0.55</Mass>
+      <Flammability>0.01</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <techHediffsTags>
+      <li>Poor</li>
+    </techHediffsTags>
   </ThingDef>
 </Defs>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TerrainDef Name="MOL_TerrainBase" Abstract="True">
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>335</renderPrecedence>
+    <designationCategory>Floors</designationCategory>
+    <constructEffect>ConstructDirt</constructEffect>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>GrowSoil</li>
+      <li>Diggable</li>
+      <li>Walkable</li>
+    </affordances>
+    <generatedFilth>Filth_Dirt</generatedFilth>
+    <filthAcceptanceMask>
+      <li>Unnatural</li>
+    </filthAcceptanceMask>
+    <tags>
+      <li>GT_TS</li>
+    </tags>
+    <takeFootprints>True</takeFootprints>
+    <tools>
+      <li>
+        <label>dirt</label>
+        <capacities>
+          <li>KickMaterialInEyes</li>
+        </capacities>
+        <hediff>DirtInEyes</hediff>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+    </tools>
+  </TerrainDef>
+  <TerrainDef ParentName="MOL_TerrainBase" Name="TS_Tilled">
+    <defName>MOL_SoilTilled</defName>
+    <label>enriched soil</label>
+    <description>Enriched soil. Allows crops to grow faster.</description>
+    <texturePath>Terrain/MOL_SoilTilled</texturePath>
+    <pathCost>12</pathCost>
+    <layerable>true</layerable>
+    <statBases>
+      <Beauty>1</Beauty>
+      <WorkToBuild>85</WorkToBuild>
+    </statBases>
+    <fertility>1.6</fertility>
+    <terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
+  </TerrainDef>
+</Defs>

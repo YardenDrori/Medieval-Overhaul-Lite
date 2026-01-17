@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Defs>
+  <!-- Tallow -->
+  <RecipeDef>
+    <defName>MOL_RenderFatToTallow</defName>
+    <label>render fat to tallow</label>
+    <workAmount>900</workAmount>
+    <!-- 10 seconds -->
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_Fat</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <products>
+      <MOL_Tallow>4</MOL_Tallow>
+    </products>
+    <recipeUsers>
+      <li>ElectricStove</li>
+      <li>FueledStove</li>
+    </recipeUsers>
+  </RecipeDef>
+</Defs>
