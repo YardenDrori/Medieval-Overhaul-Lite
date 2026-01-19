@@ -5,7 +5,8 @@ namespace MOExpandedLite;
 
 public class TerrainCompProperties_Expiring : TerrainCompProperties
 {
-  public int hoursToExpire = 360; // 15 days default
+  public int hoursToExpire = 720;
+  public bool isBaseVariant = false;
 
   public TerrainCompProperties_Expiring()
   {
@@ -20,8 +21,21 @@ public class TerrainComp_Expiring : TerrainComp
   public override void Initialize(TerrainCompProperties props)
   {
     base.Initialize(props);
+
     var manager = parent.Map.GetComponent<MapComponent_TilledSoilLifetimeCache>()?.Manager;
-    manager?.RegisterSoil(parent.Position, Props.hoursToExpire);
+    if (manager == null)
+      return;
+
+    // If this is the base buildable variant, queue swap to correct fertility variant
+    // We delay to next TickLong because VEF hasn't finished registering this terrain yet
+    if (Props.isBaseVariant)
+    {
+      manager.QueueFertilitySwap(parent.Position, Props.hoursToExpire);
+      return;
+    }
+
+    // Register for expiration tracking
+    manager.RegisterSoil(parent.Position, Props.hoursToExpire);
   }
 
   public override void PostRemove()

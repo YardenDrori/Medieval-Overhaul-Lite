@@ -9,7 +9,7 @@
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <thingCategories>
-      <li>AnimalProductRaw</li>
+      <li>MeatRaw</li>
     </thingCategories>
     <socialPropernessMatters>true</socialPropernessMatters>
     <statBases>
@@ -31,7 +31,9 @@
     <ingestible>
       <preferability>DesperateOnlyForHumanlikes</preferability>
       <tasteThought>AteRawFood</tasteThought>
-      <foodType>Meal</foodType>
+      <foodType>Meat</foodType>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
     </ingestible>
   </ThingDef>
   <ThingDef ParentName="RoughPlantBase">

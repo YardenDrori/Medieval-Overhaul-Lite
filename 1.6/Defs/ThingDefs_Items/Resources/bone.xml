@@ -19,17 +19,13 @@
       <Mass>0.25</Mass>
       <Flammability>0.02</Flammability>
       <DeteriorationRate>1</DeteriorationRate>
-      <Nutrition>0.01</Nutrition>
+      <Nutrition>0.02</Nutrition>
     </statBases>
     <ingestible>
       <preferability>NeverForNutrition</preferability>
-      <foodType>CarnivoreAnimalStrict</foodType>
+      <foodType>Meat</foodType>
       <canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
       <showIngestFloatOption>false</showIngestFloatOption>
-      <optimalityOffsetHumanlikes>-20</optimalityOffsetHumanlikes>
-      <optimalityOffsetFeedingAnimals>-10</optimalityOffsetFeedingAnimals>
-      <ingestEffect>EatMeat</ingestEffect>
-      <ingestSound>RawMeat_Eat</ingestSound>
     </ingestible>
     <stuffProps>
       <stuffAdjective>boney</stuffAdjective>
@@ -56,6 +52,7 @@
     </stuffProps>
     <thingCategories>
       <li>ResourcesRaw</li>
+      <li>MeatRaw</li>
     </thingCategories>
     <techHediffsTags>
       <li>Poor</li>
