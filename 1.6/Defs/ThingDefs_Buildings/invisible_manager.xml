@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef>
+    <defName>MOL_TilledSoilManager</defName>
+    <label>soil manager</label>
+    <thingClass>MOExpandedLite.Thing_TilledSoilManager</thingClass>
+    <tickerType>Long</tickerType>
+    <isSaveable>true</isSaveable>
+    <drawerType>None</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <category>Mote</category>
+    <seeThroughFog>true</seeThroughFog>
+  </ThingDef>
+</Defs>

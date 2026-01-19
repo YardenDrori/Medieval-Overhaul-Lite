@@ -29,5 +29,9 @@
       <HintPath>../../1.6/Assemblies/0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="VEF">
+      <HintPath>/home/jordan/.local/share/Steam/steamapps/workshop/content/294100/2023507013/1.6/Assemblies/VEF.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
 </Project>

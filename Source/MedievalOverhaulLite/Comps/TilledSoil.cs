@@ -1,52 +1,32 @@
-using System.Collections.Generic;
-using RimWorld;
-using UnityEngine;
+using VEF.Maps;
 using Verse;
 
 namespace MOExpandedLite;
 
-public class CompProperties_TilledSoil : CompProperties
+public class TerrainCompProperties_Expiring : TerrainCompProperties
 {
-  public int ticksToExpire = 900000;
+  public int hoursToExpire = 360; // 15 days default
 
-  public CompProperties_TilledSoil()
+  public TerrainCompProperties_Expiring()
   {
-    this.compClass = typeof(CompTilledSoil);
+    compClass = typeof(TerrainComp_Expiring);
   }
 }
 
-public class CompTilledSoil : ThingComp
+public class TerrainComp_Expiring : TerrainComp
 {
-  private CompProperties_TilledSoil Props => (CompProperties_TilledSoil)props;
-  private int ticksToExpire;
-  private int ticksPassed = 0;
+  public TerrainCompProperties_Expiring Props => (TerrainCompProperties_Expiring)props;
 
-  public override void PostSpawnSetup(bool respawningAfterLoad)
+  public override void Initialize(TerrainCompProperties props)
   {
-    base.PostSpawnSetup(respawningAfterLoad);
-    if (!respawningAfterLoad)
-    {
-      ticksPassed = 0;
-    }
+    base.Initialize(props);
+    var manager = parent.Map.GetComponent<MapComponent_TilledSoilLifetimeCache>()?.Manager;
+    manager?.RegisterSoil(parent.Position, Props.hoursToExpire);
   }
 
-  public override void PostDestroy(DestroyMode mode, Map previousMap)
+  public override void PostRemove()
   {
-    base.PostDestroy(mode, previousMap);
-  }
-
-  public override void CompTickRare()
-  {
-    base.CompTickRare();
-    ticksPassed += 250;
-    if (ticksPassed >= ticksToExpire) { }
-  }
-
-  private void Expire() { }
-
-  public override void PostExposeData()
-  {
-    base.PostExposeData();
-    Scribe_Values.Look(ref ticksPassed, "ticksPassed", 0);
+    var manager = parent.Map.GetComponent<MapComponent_TilledSoilLifetimeCache>()?.Manager;
+    manager?.UnregisterSoil(parent.Position);
   }
 }

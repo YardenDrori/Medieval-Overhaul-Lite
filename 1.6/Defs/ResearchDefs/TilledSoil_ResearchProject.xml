@@ -3,7 +3,7 @@
   <ResearchProjectDef>
     <defName>MOL_TilledSoil</defName>
     <label>Enrich Soil</label>
-    <description> Soil enriched with bone meal fertilizer. Plants grow faster in this nutrient-rich ground, but the enrichment is consumed during the harvest and must be reapplied for the next crop.</description>
+    <description>Soil enriched with bone meal fertilizer. Plants grow faster in this nutrient-rich ground, but the enrichment is consumed during the harvest and must be reapplied for the next crop.</description>
     <baseCost>400</baseCost>
     <techLevel>Medieval</techLevel>
     <researchViewX>2.00</researchViewX>

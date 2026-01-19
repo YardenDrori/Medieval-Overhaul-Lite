@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <TerrainDef Name="MOL_TerrainBase" Abstract="True">
+  <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainBase" Abstract="True">
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>335</renderPrecedence>
     <designationCategory>Floors</designationCategory>
@@ -31,8 +31,8 @@
         <cooldownTime>1.5</cooldownTime>
       </li>
     </tools>
-  </TerrainDef>
-  <TerrainDef ParentName="MOL_TerrainBase" Name="TS_Tilled">
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
     <defName>MOL_SoilTilled</defName>
     <label>enriched soil</label>
     <description>Enriched soil. Allows crops to grow faster.</description>
@@ -43,7 +43,17 @@
       <Beauty>1</Beauty>
       <WorkToBuild>85</WorkToBuild>
     </statBases>
+    <costList>
+      <MOL_BoneMeal>2</MOL_BoneMeal>
+    </costList>
     <fertility>1.6</fertility>
     <terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
-  </TerrainDef>
+    <tickerType>Never</tickerType>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>720</hoursToExpire>
+      </li>
+    </terrainComps>
+    <researchPrerequisites>MOL_TilledSoil</researchPrerequisites>
+  </VEF.Maps.ActiveTerrainDef>
 </Defs>
