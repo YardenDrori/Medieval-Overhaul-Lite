@@ -45,20 +45,16 @@
       <li Class="MOExpandedLite.TerrainCompProperties_Expiring"/>
     </terrainComps>
   </VEF.Maps.ActiveTerrainDef>
-
   <!-- Abstract parents for each soil state (different textures) -->
   <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainRich" ParentName="MOL_TerrainBase" Abstract="True">
     <texturePath>Terrain/MOL_SoilTilledRich</texturePath>
   </VEF.Maps.ActiveTerrainDef>
-
   <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainWeathered" ParentName="MOL_TerrainBase" Abstract="True">
     <texturePath>Terrain/MOL_SoilTilled</texturePath>
   </VEF.Maps.ActiveTerrainDef>
-
   <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainDepleted" ParentName="MOL_TerrainBase" Abstract="True">
     <texturePath>Terrain/MOL_SoilTilledDepleted</texturePath>
   </VEF.Maps.ActiveTerrainDef>
-
   <!-- ========================================== -->
   <!-- Player-buildable version                   -->
   <!-- Gets swapped to correct Rich variant       -->
@@ -70,7 +66,7 @@
     <designationCategory>Floors</designationCategory>
     <fertility>1.0</fertility>
     <costList>
-      <MOL_BoneMeal>4</MOL_BoneMeal>
+      <MOL_BoneMeal>3</MOL_BoneMeal>
     </costList>
     <statBases>
       <Beauty>1</Beauty>

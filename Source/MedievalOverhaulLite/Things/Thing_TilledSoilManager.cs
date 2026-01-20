@@ -166,7 +166,7 @@ public class Thing_TilledSoilManager : Thing
 
     nextDepletedCheckTick = currentTick + DepletedCheckIntervalTicks;
 
-    int availableBoneMeal = CountAvailableBoneMeal() / 4;
+    int availableBoneMeal = CountAvailableBoneMeal() / 3;
     if (availableBoneMeal <= 0)
       return;
 
@@ -279,7 +279,7 @@ public class Thing_TilledSoilManager : Thing
     foreach (Thing thing in Map.listerThings.ThingsInGroup(ThingRequestGroup.Blueprint))
     {
       if (thing.def.entityDefToBuild == MOL_DefOf.MOL_SoilTilled)
-        count -= 4;
+        count -= 3;
     }
 
     return Mathf.Max(0, count);
