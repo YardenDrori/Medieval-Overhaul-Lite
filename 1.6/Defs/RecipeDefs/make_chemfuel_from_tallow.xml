@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Defs>
+  <RecipeDef>
+    <defName>MOL_Make_ChemfuelFromTallow</defName>
+    <label>make chemfuel from tallow</label>
+    <description>Make a batch of chemfuel from tallow.</description>
+    <jobString>Refining chemfuel from tallow.</jobString>
+    <effectWorking>Cremate</effectWorking>
+    <soundWorking>Recipe_Cremate</soundWorking>
+    <workAmount>2400</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_Tallow</li>
+          </thingDefs>
+        </filter>
+        <count>25</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MOL_Tallow</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Chemfuel>35</Chemfuel>
+    </products>
+  </RecipeDef>
+</Defs>

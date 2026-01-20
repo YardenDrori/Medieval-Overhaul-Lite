@@ -84,7 +84,9 @@ public class Thing_TilledSoilManager : Thing
 
       if (variantDef == null)
       {
-        Log.Warning($"[MOL] Could not find terrain variant for {targetState} at {fertilityPercent}%");
+        Log.Warning(
+          $"[MOL] Could not find terrain variant for {targetState} at {fertilityPercent}%"
+        );
         continue;
       }
 
@@ -129,9 +131,8 @@ public class Thing_TilledSoilManager : Thing
     }
 
     // Update next check time
-    nextExpirationTick = trackedExpirationTicks.Count > 0
-      ? trackedExpirationTicks.Min()
-      : int.MaxValue;
+    nextExpirationTick =
+      trackedExpirationTicks.Count > 0 ? trackedExpirationTicks.Min() : int.MaxValue;
   }
 
   private void TransitionToNextState(IntVec3 cell)
@@ -149,7 +150,7 @@ public class Thing_TilledSoilManager : Thing
     {
       SoilState.Rich => SoilState.Weathered,
       SoilState.Weathered => SoilState.Depleted,
-      _ => SoilState.Depleted
+      _ => SoilState.Depleted,
     };
 
     // Queue the swap for next tick (consistent with initial placement)
@@ -165,7 +166,7 @@ public class Thing_TilledSoilManager : Thing
 
     nextDepletedCheckTick = currentTick + DepletedCheckIntervalTicks;
 
-    int availableBoneMeal = CountAvailableBoneMeal();
+    int availableBoneMeal = CountAvailableBoneMeal() / 4;
     if (availableBoneMeal <= 0)
       return;
 
@@ -228,7 +229,7 @@ public class Thing_TilledSoilManager : Thing
       SoilState.Rich => 0.2f,
       SoilState.Weathered => 0.1f,
       SoilState.Depleted => 0f,
-      _ => 0f
+      _ => 0f,
     };
 
     float targetFertility = baseFertility + bonus;
@@ -243,7 +244,7 @@ public class Thing_TilledSoilManager : Thing
       SoilState.Rich => "R",
       SoilState.Weathered => "W",
       SoilState.Depleted => "D",
-      _ => "R"
+      _ => "R",
     };
 
     string defName = $"MOL_SoilTilled{prefix}_{fertilityPercent}";
@@ -278,7 +279,7 @@ public class Thing_TilledSoilManager : Thing
     foreach (Thing thing in Map.listerThings.ThingsInGroup(ThingRequestGroup.Blueprint))
     {
       if (thing.def.entityDefToBuild == MOL_DefOf.MOL_SoilTilled)
-        count -= 2;
+        count -= 4;
     }
 
     return Mathf.Max(0, count);
