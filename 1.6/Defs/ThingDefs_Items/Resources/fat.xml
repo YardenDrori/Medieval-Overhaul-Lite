@@ -24,7 +24,7 @@
       <li Class="CompProperties_Ingredients"/>
       <li Class="CompProperties_FoodPoisonable"/>
       <li Class="CompProperties_Rottable">
-        <daysToRotStart>8</daysToRotStart>
+        <daysToRotStart>1</daysToRotStart>
         <rotDestroys>true</rotDestroys>
       </li>
     </comps>
@@ -48,14 +48,22 @@
     </graphicData>
     <statBases>
       <MarketValue>1.5</MarketValue>
-      <Nutrition>0.05</Nutrition>
+      <Nutrition>0.1</Nutrition>
     </statBases>
     <thingCategories>
-      <li>Foods</li>
+      <li>MeatRaw</li>
     </thingCategories>
+    <ingestible>
+      <preferability>DesperateOnlyForHumanlikes</preferability>
+      <tasteThought>AteRawFood</tasteThought>
+      <foodType>Meat</foodType>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
     <comps>
+      <li Class="CompProperties_Ingredients"/>
       <li Class="CompProperties_Rottable">
-        <daysToRotStart>90</daysToRotStart>
+        <daysToRotStart>20</daysToRotStart>
         <rotDestroys>true</rotDestroys>
       </li>
     </comps>

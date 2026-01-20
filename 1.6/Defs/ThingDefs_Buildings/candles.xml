@@ -4,9 +4,9 @@
   <ThingDef Name="MOL_CandleBase" ParentName="BuildingBase" Abstract="True">
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <pathCost>14</pathCost>
+    <pathCost>8</pathCost>
     <constructEffect>ConstructWood</constructEffect>
-    <tickerType>Normal</tickerType>
+    <tickerType>Rare</tickerType>
     <drawerType>RealtimeOnly</drawerType>
     <fillPercent>0.15</fillPercent>
     <rotatable>true</rotatable>
@@ -14,6 +14,7 @@
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
     <clearBuildingArea>false</clearBuildingArea>
+    <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>BuildingsFurniture</li>
     </thingCategories>
@@ -31,8 +32,7 @@
       <li>Furniture</li>
     </researchPrerequisites>
   </ThingDef>
-
-  <!-- Single Candle -->
+  <!-- Single Candle - cheapest, dimmest -->
   <ThingDef ParentName="MOL_CandleBase">
     <defName>MOL_Candle</defName>
     <label>candle</label>
@@ -40,30 +40,27 @@
     <graphicData>
       <texPath>Things/Building/Furniture/MOL_RusticCandle/RusticCandle</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(3,3)</drawSize>
-      <drawOffset>(0,0,-0.5)</drawOffset>
-      <damageData>
-        <rect>(0.35,0.35,0.3,0.3)</rect>
-      </damageData>
+      <drawSize>(2.3,2.3)</drawSize>
+      <drawOffset>(0,0,-0.08)</drawOffset>
     </graphicData>
     <uiIconPath>Things/Building/Furniture/MOL_RusticCandle/RusticCandle_MenuIcon</uiIconPath>
-    <uiIconScale>0.85</uiIconScale>
+    <uiIconScale>0.9</uiIconScale>
     <statBases>
-      <MaxHitPoints>60</MaxHitPoints>
-      <WorkToBuild>250</WorkToBuild>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>150</WorkToBuild>
       <Flammability>0</Flammability>
       <Mass>0.5</Mass>
-      <Beauty>3</Beauty>
+      <Beauty>2</Beauty>
     </statBases>
     <costList>
       <MOL_Tallow>10</MOL_Tallow>
     </costList>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>1.0</fuelConsumptionRate>
-        <fuelCapacity>20</fuelCapacity>
+        <fuelConsumptionRate>0.5</fuelConsumptionRate>
+        <fuelCapacity>10</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
-        <fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+        <fuelConsumptionPerTickInRain>0.002</fuelConsumptionPerTickInRain>
         <fuelFilter>
           <thingDefs>
             <li>MOL_Tallow</li>
@@ -72,25 +69,19 @@
         <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
       </li>
       <li Class="CompProperties_Glower">
-        <glowRadius>4</glowRadius>
-        <glowColor>(247,172,65,0)</glowColor>
+        <glowRadius>6</glowRadius>
+        <glowColor>(252,187,113,0)</glowColor>
       </li>
       <li Class="CompProperties_HeatPusher">
         <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>1</heatPerSecond>
-        <heatPushMaxTemperature>13</heatPushMaxTemperature>
-      </li>
-      <li Class="CompProperties_FireOverlay">
-        <fireSize>0.4</fireSize>
-        <offsetNorth>(0,0,-0.4)</offsetNorth>
-        <offsetSouth>(0,0,-0.4)</offsetSouth>
-        <offsetWest>(0,0,-0.4)</offsetWest>
-        <offsetEast>(0,0,-0.4)</offsetEast>
+        <heatPerSecond>0.5</heatPerSecond>
+        <heatPushMaxTemperature>18</heatPushMaxTemperature>
       </li>
     </comps>
+    <minifiedDef/>
+    <clearBuildingArea>true</clearBuildingArea>
   </ThingDef>
-
-  <!-- Multiple Candles -->
+  <!-- Multiple Candles - brighter -->
   <ThingDef ParentName="MOL_CandleBase">
     <defName>MOL_Candles</defName>
     <label>candles</label>
@@ -98,17 +89,14 @@
     <graphicData>
       <texPath>Things/Building/Furniture/MOL_RusticCandles/RusticCandles</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(3,3)</drawSize>
-      <drawOffset>(0,0,-0.5)</drawOffset>
-      <damageData>
-        <rect>(0.35,0.35,0.3,0.3)</rect>
-      </damageData>
+      <drawSize>(2.3,2.3)</drawSize>
+      <drawOffset>(0,0,-0.08)</drawOffset>
     </graphicData>
     <uiIconPath>Things/Building/Furniture/MOL_RusticCandles/RusticCandles_MenuIcon</uiIconPath>
-    <uiIconScale>0.85</uiIconScale>
+    <uiIconScale>0.9</uiIconScale>
     <statBases>
-      <MaxHitPoints>60</MaxHitPoints>
-      <WorkToBuild>250</WorkToBuild>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>200</WorkToBuild>
       <Flammability>0</Flammability>
       <Mass>1</Mass>
       <Beauty>3</Beauty>
@@ -118,10 +106,10 @@
     </costList>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>1.0</fuelConsumptionRate>
-        <fuelCapacity>20</fuelCapacity>
+        <fuelConsumptionRate>0.5</fuelConsumptionRate>
+        <fuelCapacity>15</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
-        <fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+        <fuelConsumptionPerTickInRain>0.003</fuelConsumptionPerTickInRain>
         <fuelFilter>
           <thingDefs>
             <li>MOL_Tallow</li>
@@ -130,25 +118,19 @@
         <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
       </li>
       <li Class="CompProperties_Glower">
-        <glowRadius>6</glowRadius>
-        <glowColor>(247,172,65,0)</glowColor>
+        <glowRadius>8</glowRadius>
+        <glowColor>(252,187,113,0)</glowColor>
       </li>
       <li Class="CompProperties_HeatPusher">
         <compClass>CompHeatPusherPowered</compClass>
         <heatPerSecond>1</heatPerSecond>
-        <heatPushMaxTemperature>16</heatPushMaxTemperature>
-      </li>
-      <li Class="CompProperties_FireOverlay">
-        <fireSize>0.4</fireSize>
-        <offsetNorth>(0,0,-0.4)</offsetNorth>
-        <offsetSouth>(0,0,-0.4)</offsetSouth>
-        <offsetWest>(0,0,-0.4)</offsetWest>
-        <offsetEast>(0,0,-0.4)</offsetEast>
+        <heatPushMaxTemperature>20</heatPushMaxTemperature>
       </li>
     </comps>
+    <minifiedDef/>
+    <clearBuildingArea>true</clearBuildingArea>
   </ThingDef>
-
-  <!-- Candle Stand -->
+  <!-- Candle Stand - tall, uses stuff material -->
   <ThingDef ParentName="MOL_CandleBase">
     <defName>MOL_CandleStand</defName>
     <label>candle stand</label>
@@ -157,17 +139,14 @@
       <texPath>Things/Building/Furniture/MOL_CandleStand/CandleStand</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <shaderType>CutoutComplex</shaderType>
-      <drawSize>(4,4)</drawSize>
-      <drawOffset>(0,0,-0.5)</drawOffset>
-      <damageData>
-        <rect>(0.35,0.35,0.3,0.3)</rect>
-      </damageData>
+      <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,0.2)</drawOffset>
     </graphicData>
-    <uiIconScale>0.65</uiIconScale>
-    <uiIconOffset>(0,0.5)</uiIconOffset>
+    <uiIconScale>0.7</uiIconScale>
+    <uiIconOffset>(0,0.15)</uiIconOffset>
     <statBases>
-      <MaxHitPoints>75</MaxHitPoints>
-      <WorkToBuild>1500</WorkToBuild>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
       <Flammability>0</Flammability>
       <Mass>5</Mass>
       <Beauty>5</Beauty>
@@ -175,51 +154,36 @@
     <stuffCategories>
       <li>Metallic</li>
       <li>Woody</li>
-      <li>Stony</li>
     </stuffCategories>
     <costStuffCount>45</costStuffCount>
     <costList>
-      <MOL_Tallow>15</MOL_Tallow>
+      <MOL_Tallow>20</MOL_Tallow>
     </costList>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <building>
-      <isEdifice>true</isEdifice>
-      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
-    </building>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>1.0</fuelConsumptionRate>
+        <fuelConsumptionRate>0.5</fuelConsumptionRate>
         <fuelCapacity>20</fuelCapacity>
-        <initialFuelPercent>0</initialFuelPercent>
-        <fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+        <initialFuelPercent>1</initialFuelPercent>
+        <fuelConsumptionPerTickInRain>0.004</fuelConsumptionPerTickInRain>
         <fuelFilter>
           <thingDefs>
             <li>MOL_Tallow</li>
           </thingDefs>
         </fuelFilter>
-        <destroyOnNoFuel>false</destroyOnNoFuel>
         <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
       </li>
       <li Class="CompProperties_Glower">
-        <glowRadius>6</glowRadius>
-        <glowColor>(247,172,65,0)</glowColor>
+        <glowRadius>10</glowRadius>
+        <glowColor>(252,187,113,0)</glowColor>
       </li>
       <li Class="CompProperties_HeatPusher">
         <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>1</heatPerSecond>
-        <heatPushMaxTemperature>16</heatPushMaxTemperature>
-      </li>
-      <li Class="CompProperties_FireOverlay">
-        <fireSize>0.4</fireSize>
-        <offsetNorth>(0,0,0.5)</offsetNorth>
-        <offsetSouth>(0,0,-0.3)</offsetSouth>
-        <offsetWest>(-0.25,0,0.1)</offsetWest>
-        <offsetEast>(0.25,0,0.1)</offsetEast>
+        <heatPerSecond>1.5</heatPerSecond>
+        <heatPushMaxTemperature>22</heatPushMaxTemperature>
       </li>
     </comps>
   </ThingDef>
-
-  <!-- Royal Candle Stand -->
+  <!-- Royal Candle Stand - fancy, expensive -->
   <ThingDef ParentName="MOL_CandleBase">
     <defName>MOL_RoyalCandleStand</defName>
     <label>ornate candelabra</label>
@@ -227,63 +191,44 @@
     <graphicData>
       <texPath>Things/Building/Furniture/MOL_RoyalCandleStand/AncientCandleStand</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(4,4)</drawSize>
-      <drawOffset>(0,0,-0.5)</drawOffset>
-      <damageData>
-        <rect>(0.35,0.35,0.3,0.3)</rect>
-      </damageData>
+      <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,0.2)</drawOffset>
     </graphicData>
-    <uiIconScale>0.65</uiIconScale>
-    <uiIconOffset>(0,0.5)</uiIconOffset>
+    <uiIconScale>0.7</uiIconScale>
+    <uiIconOffset>(0,0.15)</uiIconOffset>
     <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
-      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
       <Flammability>0</Flammability>
       <Mass>8</Mass>
       <Beauty>15</Beauty>
     </statBases>
-    <stuffCategories>
-      <li>Metallic</li>
-    </stuffCategories>
-    <costStuffCount>30</costStuffCount>
     <costList>
       <Gold>5</Gold>
+      <Steel>25</Steel>
       <MOL_Tallow>20</MOL_Tallow>
     </costList>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <building>
-      <isEdifice>true</isEdifice>
-      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
-    </building>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>1.0</fuelConsumptionRate>
-        <fuelCapacity>25</fuelCapacity>
-        <initialFuelPercent>0</initialFuelPercent>
-        <fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+        <fuelConsumptionRate>0.5</fuelConsumptionRate>
+        <fuelCapacity>20</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <fuelConsumptionPerTickInRain>0.005</fuelConsumptionPerTickInRain>
         <fuelFilter>
           <thingDefs>
             <li>MOL_Tallow</li>
           </thingDefs>
         </fuelFilter>
-        <destroyOnNoFuel>false</destroyOnNoFuel>
         <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
       </li>
       <li Class="CompProperties_Glower">
-        <glowRadius>8</glowRadius>
-        <glowColor>(247,172,65,0)</glowColor>
+        <glowRadius>12</glowRadius>
+        <glowColor>(252,187,113,0)</glowColor>
       </li>
       <li Class="CompProperties_HeatPusher">
         <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>1</heatPerSecond>
-        <heatPushMaxTemperature>16</heatPushMaxTemperature>
-      </li>
-      <li Class="CompProperties_FireOverlay">
-        <fireSize>0.4</fireSize>
-        <offsetNorth>(0,0,0.5)</offsetNorth>
-        <offsetSouth>(0,0,-0.3)</offsetSouth>
-        <offsetWest>(-0.25,0,0.1)</offsetWest>
-        <offsetEast>(0.25,0,0.1)</offsetEast>
+        <heatPerSecond>2</heatPerSecond>
+        <heatPushMaxTemperature>24</heatPushMaxTemperature>
       </li>
     </comps>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
