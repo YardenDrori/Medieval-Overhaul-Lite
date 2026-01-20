@@ -5,7 +5,7 @@ namespace MOExpandedLite;
 
 public class TerrainCompProperties_Expiring : TerrainCompProperties
 {
-  public int hoursToExpire = 720;
+  public int hoursToExpire = 24;
   public bool isBaseVariant = false;
 
   public TerrainCompProperties_Expiring()

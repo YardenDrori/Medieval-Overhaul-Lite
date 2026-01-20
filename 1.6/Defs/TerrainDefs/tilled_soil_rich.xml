@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Abstract base for all tilled soil variants -->
+  <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainBase" Abstract="True">
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>335</renderPrecedence>
+    <constructEffect>ConstructDirt</constructEffect>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>GrowSoil</li>
+      <li>Diggable</li>
+      <li>Walkable</li>
+    </affordances>
+    <generatedFilth>Filth_Dirt</generatedFilth>
+    <filthAcceptanceMask>
+      <li>Unnatural</li>
+    </filthAcceptanceMask>
+    <tags>
+      <li>GT_TS</li>
+    </tags>
+    <takeFootprints>True</takeFootprints>
+    <texturePath>Terrain/MOL_SoilTilled</texturePath>
+    <pathCost>12</pathCost>
+    <layerable>true</layerable>
+    <statBases>
+      <Beauty>1</Beauty>
+    </statBases>
+    <terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
+    <tickerType>Never</tickerType>
+    <tools>
+      <li>
+        <label>dirt</label>
+        <capacities>
+          <li>KickMaterialInEyes</li>
+        </capacities>
+        <hediff>DirtInEyes</hediff>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+    </tools>
+  </VEF.Maps.ActiveTerrainDef>
+  <!-- Player-buildable version (gets swapped to correct fertility variant) -->
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilled</defName>
+    <label>enriched soil</label>
+    <description>Enriched soil. Allows crops to grow faster. Fertility depends on the underlying soil quality.</description>
+    <designationCategory>Floors</designationCategory>
+    <fertility>1.2</fertility>
+    <costList>
+      <MOL_BoneMeal>2</MOL_BoneMeal>
+    </costList>
+    <statBases>
+      <Beauty>1</Beauty>
+      <WorkToBuild>85</WorkToBuild>
+    </statBases>
+    <researchPrerequisites>
+      <li>MOL_TilledSoil</li>
+    </researchPrerequisites>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>720</hoursToExpire>
+        <isBaseVariant>true</isBaseVariant>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <!-- Fertility variants (not directly buildable) -->
+  <!--            RICH -->
+  <!-- =========================== -->
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_20</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 20% fertility.</description>
+    <fertility>0.2</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_30</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 30% fertility.</description>
+    <fertility>0.3</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_40</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 40% fertility.</description>
+    <fertility>0.4</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_50</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 50% fertility.</description>
+    <fertility>0.5</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_60</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 60% fertility.</description>
+    <fertility>0.6</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_70</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 70% fertility.</description>
+    <fertility>0.7</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_80</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 80% fertility.</description>
+    <fertility>0.8</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_90</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 90% fertility.</description>
+    <fertility>0.9</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_100</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 100% fertility.</description>
+    <fertility>1.0</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_110</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 110% fertility.</description>
+    <fertility>1.1</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_120</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 120% fertility.</description>
+    <fertility>1.2</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_130</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 130% fertility.</description>
+    <fertility>1.3</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_140</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 140% fertility.</description>
+    <fertility>1.4</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_150</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 150% fertility.</description>
+    <fertility>1.5</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_160</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 160% fertility.</description>
+    <fertility>1.6</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_170</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 170% fertility.</description>
+    <fertility>1.7</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_180</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 180% fertility.</description>
+    <fertility>1.8</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_190</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 190% fertility.</description>
+    <fertility>1.9</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_200</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 200% fertility.</description>
+    <fertility>2.0</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <!-- Fertility variants (not directly buildable) -->
+  <!--            Wheathered -->
+  <!-- =========================== -->
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_20</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 20% fertility.</description>
+    <fertility>0.2</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_30</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 30% fertility.</description>
+    <fertility>0.3</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_40</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 40% fertility.</description>
+    <fertility>0.4</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_50</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 50% fertility.</description>
+    <fertility>0.5</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_60</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 60% fertility.</description>
+    <fertility>0.6</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_70</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 70% fertility.</description>
+    <fertility>0.7</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_80</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 80% fertility.</description>
+    <fertility>0.8</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_90</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 90% fertility.</description>
+    <fertility>0.9</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_100</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 100% fertility.</description>
+    <fertility>1.0</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_110</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 110% fertility.</description>
+    <fertility>1.1</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_120</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 120% fertility.</description>
+    <fertility>1.2</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_130</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 130% fertility.</description>
+    <fertility>1.3</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_140</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 140% fertility.</description>
+    <fertility>1.4</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_150</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 150% fertility.</description>
+    <fertility>1.5</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_160</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 160% fertility.</description>
+    <fertility>1.6</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_170</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 170% fertility.</description>
+    <fertility>1.7</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_180</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 180% fertility.</description>
+    <fertility>1.8</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_190</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 190% fertility.</description>
+    <fertility>1.9</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_200</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 200% fertility.</description>
+    <fertility>2.0</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_210</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 210% fertility.</description>
+    <fertility>2.1</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_220</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Enriched soil with 220% fertility.</description>
+    <fertility>2.2</fertility>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <hoursToExpire>480</hoursToExpire>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+</Defs>
