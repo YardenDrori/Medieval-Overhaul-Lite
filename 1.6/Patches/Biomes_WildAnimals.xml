@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- ==================== TEMPERATE FOREST ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
+    <value>
+      <MOL_Angus>0.08</MOL_Angus>
+      <MOL_Gloucestershire>0.07</MOL_Gloucestershire>
+      <MOL_Hampshire>0.08</MOL_Hampshire>
+      <MOL_Rox>0.03</MOL_Rox>
+      <MOL_LargeCobra_Cave>0.05</MOL_LargeCobra_Cave>
+      <MOL_GiantConstrictor_Forest>0.03</MOL_GiantConstrictor_Forest>
+      <MOL_DireBoar>0.4</MOL_DireBoar>
+      <MOL_Direwolf>0.05</MOL_Direwolf>
+    </value>
+  </Operation>
+  <!-- ==================== TEMPERATE SWAMP ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TemperateSwamp"]/wildAnimals</xpath>
+    <value>
+      <MOL_Angus>0.06</MOL_Angus>
+      <MOL_Gloucestershire>0.06</MOL_Gloucestershire>
+      <MOL_Rox>0.02</MOL_Rox>
+      <MOL_GiantConstrictor_Cave>0.04</MOL_GiantConstrictor_Cave>
+    </value>
+  </Operation>
+  <!-- ==================== BOREAL FOREST ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="BorealForest"]/wildAnimals</xpath>
+    <value>
+      <MOL_Angus>0.07</MOL_Angus>
+      <MOL_Hampshire>0.08</MOL_Hampshire>
+      <MOL_Rox>0.03</MOL_Rox>
+      <MOL_DireBoar>0.35</MOL_DireBoar>
+      <MOL_NorthernBoar>0.4</MOL_NorthernBoar>
+      <MOL_Direwolf>0.06</MOL_Direwolf>
+      <MOL_Direwolf_White>0.03</MOL_Direwolf_White>
+    </value>
+  </Operation>
+  <!-- ==================== TROPICAL RAINFOREST ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TropicalRainforest"]/wildAnimals</xpath>
+    <value>
+      <MOL_LargeCobra_Cave>0.06</MOL_LargeCobra_Cave>
+      <MOL_LargeCobra_Forest>0.04</MOL_LargeCobra_Forest>
+      <MOL_GiantConstrictor_Cave>0.05</MOL_GiantConstrictor_Cave>
+      <MOL_GiantConstrictor_Forest>0.06</MOL_GiantConstrictor_Forest>
+      <MOL_DireBoar>0.3</MOL_DireBoar>
+    </value>
+  </Operation>
+  <!-- ==================== TROPICAL SWAMP ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TropicalSwamp"]/wildAnimals</xpath>
+    <value>
+      <MOL_GiantConstrictor_Cave>0.06</MOL_GiantConstrictor_Cave>
+      <MOL_GiantConstrictor_Forest>0.05</MOL_GiantConstrictor_Forest>
+    </value>
+  </Operation>
+  <!-- ==================== ARID SHRUBLAND ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
+    <value>
+      <MOL_Hampshire>0.09</MOL_Hampshire>
+      <MOL_LargeCobra_Forest>0.07</MOL_LargeCobra_Forest>
+      <MOL_Hyena>0.08</MOL_Hyena>
+    </value>
+  </Operation>
+  <!-- ==================== DESERT ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="Desert"]/wildAnimals</xpath>
+    <value>
+      <MOL_LargeCobra_Forest>0.1</MOL_LargeCobra_Forest>
+      <MOL_Hyena>0.04</MOL_Hyena>
+    </value>
+  </Operation>
+  <!-- ==================== TUNDRA ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="Tundra"]/wildAnimals</xpath>
+    <value>
+      <MOL_NorthernBoar>0.5</MOL_NorthernBoar>
+      <MOL_Direwolf>0.07</MOL_Direwolf>
+      <MOL_Direwolf_White>0.06</MOL_Direwolf_White>
+    </value>
+  </Operation>
+  <!-- ==================== COLD BOG ==================== -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="ColdBog"]/wildAnimals</xpath>
+    <value>
+      <MOL_NorthernBoar>0.4</MOL_NorthernBoar>
+      <MOL_Direwolf>0.06</MOL_Direwolf>
+      <MOL_Direwolf_White>0.04</MOL_Direwolf_White>
+    </value>
+  </Operation>
+  <!-- ==================== GRASSLANDS (Odyssey) ==================== -->
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="Grasslands"]/wildAnimals</xpath>
+    <value>
+      <MOL_Angus>0.1</MOL_Angus>
+      <MOL_Gloucestershire>0.09</MOL_Gloucestershire>
+      <MOL_Hampshire>0.1</MOL_Hampshire>
+      <MOL_Rox>0.04</MOL_Rox>
+      <MOL_Hyena>0.06</MOL_Hyena>
+    </value>
+  </Operation>
+  <!-- ==================== GLACIAL PLAIN (Odyssey) ==================== -->
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="GlacialPlain"]/wildAnimals</xpath>
+    <value>
+      <MOL_NorthernBoar>0.3</MOL_NorthernBoar>
+      <MOL_Direwolf_White>0.05</MOL_Direwolf_White>
+    </value>
+  </Operation>
+</Patch>

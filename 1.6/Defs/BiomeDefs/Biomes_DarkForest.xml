@@ -180,12 +180,15 @@
       <Swan MayRequire="Ludeon.RimWorld.Odyssey">0.1</Swan>
       <Sparrow MayRequire="Ludeon.RimWorld.Odyssey">0.5</Sparrow>
       <Crow MayRequire="Ludeon.RimWorld.Odyssey">0.5</Crow>
-      <MOL_Direwolf>0.04</MOL_Direwolf>
+      <MOL_Rox>0.02</MOL_Rox>
+      <MOL_LargeCobra_Cave>0.07</MOL_LargeCobra_Cave>
+      <MOL_LargeCobra_Forest>0.05</MOL_LargeCobra_Forest>
+      <MOL_GiantConstrictor_Cave>0.06</MOL_GiantConstrictor_Cave>
+      <MOL_GiantConstrictor_Forest>0.07</MOL_GiantConstrictor_Forest>
+      <MOL_DireBoar>0.5</MOL_DireBoar>
       <MOL_NorthernBoar>0.3</MOL_NorthernBoar>
-      <MOL_DireBoar>0.3</MOL_DireBoar>
-      <MOL_Rox>0.4</MOL_Rox>
-      <MOL_LargeCobra_Forest>0.04</MOL_LargeCobra_Forest>
-      <MOL_GiantConstrictor_Forest>0.01</MOL_GiantConstrictor_Forest>
+      <MOL_Direwolf>0.08</MOL_Direwolf>
+      <MOL_Sapling_Dark>0.02</MOL_Sapling_Dark>
     </wildAnimals>
     <pollutionWildAnimals MayRequire="Ludeon.RimWorld.Biotech">
       <WasteRat MayRequire="Ludeon.RimWorld.Biotech">1</WasteRat>
