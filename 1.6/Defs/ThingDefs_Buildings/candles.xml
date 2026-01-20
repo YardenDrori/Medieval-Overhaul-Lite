@@ -5,8 +5,7 @@
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <pathCost>8</pathCost>
-    <constructEffect>ConstructWood</constructEffect>
-    <tickerType>Rare</tickerType>
+    <tickerType>Normal</tickerType>
     <drawerType>RealtimeOnly</drawerType>
     <fillPercent>0.15</fillPercent>
     <rotatable>true</rotatable>
@@ -29,7 +28,7 @@
     <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
     <designationCategory>Furniture</designationCategory>
     <researchPrerequisites>
-      <li>Furniture</li>
+      <li>ComplexFurniture</li>
     </researchPrerequisites>
   </ThingDef>
   <!-- Single Candle - cheapest, dimmest -->
@@ -79,6 +78,7 @@
       </li>
     </comps>
     <minifiedDef/>
+    <thingCategories Inherit="False"/>
     <clearBuildingArea>true</clearBuildingArea>
   </ThingDef>
   <!-- Multiple Candles - brighter -->
@@ -128,6 +128,7 @@
       </li>
     </comps>
     <minifiedDef/>
+    <thingCategories Inherit="False"/>
     <clearBuildingArea>true</clearBuildingArea>
   </ThingDef>
   <!-- Candle Stand - tall, uses stuff material -->

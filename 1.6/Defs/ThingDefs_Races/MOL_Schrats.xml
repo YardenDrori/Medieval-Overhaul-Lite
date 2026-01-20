@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Base Schrat -->
+  <ThingDef ParentName="BasePawn" Name="MOL_SchratBase" Abstract="True">
+    <statBases>
+      <MoveSpeed>4.4</MoveSpeed>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.22</ArmorRating_Sharp>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <Flammability>1</Flammability>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <tools>
+      <li>
+        <label>left fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>21</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>right fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>21</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+    </tools>
+    <race>
+      <body>MOL_SchratBody</body>
+      <fleshType>Mechanoid</fleshType>
+      <deathAction>
+        <workerClass>MOExpandedLite.DeathActionWorker_MonsterSplit</workerClass>
+      </deathAction>
+      <baseBodySize>4</baseBodySize>
+      <baseHealthScale>8.32</baseHealthScale>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <foodType>None</foodType>
+      <lifeExpectancy>2500</lifeExpectancy>
+      <hediffGiverSets Inherit="False">
+        <li>MOL_SchratHediffGiver</li>
+      </hediffGiverSets>
+      <bloodDef>Filth_RubbleBuilding</bloodDef>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Animal</thinkTreeMain>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+          <soundCall>Pawn_Mech_Centipede_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+    </race>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+    <butcherProducts>
+      <WoodLog>110</WoodLog>
+    </butcherProducts>
+  </ThingDef>
+  <!-- Dark Schrat -->
+  <ThingDef ParentName="MOL_SchratBase">
+    <defName>MOL_Schrat_Dark</defName>
+    <label>dark schrat</label>
+    <description>A massive amalgamation of dark bark, twisted roots, and forest detritus roughly shaped into a towering humanoid form. Rarely when a tree is threatened, psychoreactive alterations from archotech contamination allow these entities to move with disturbing deliberation through ancient forests. Their original purpose - if any - is unknown. When destroyed during an active episode, the mass violently splits into two smaller animated forms, a preservation mechanism that suggests some form of encoded survival instinct. Why archotechs would create such entities remains one of the many enduring mysteries left by the archotechs.</description>
+    <modExtensions>
+      <li Class="MOExpandedLite.DeathSplitExtension">
+        <pawnKindDef>MOL_SchratDark_Sapling</pawnKindDef>
+        <createAmount>2</createAmount>
+        <explosion>true</explosion>
+        <damageDef>MOL_SchratCollapse</damageDef>
+        <explosionRadius>3</explosionRadius>
+        <explosionDamage>10</explosionDamage>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_Schrat_Dark</defName>
+    <label>dark schrat</label>
+    <race>MOL_Schrat_Dark</race>
+    <combatPower>400</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_SchratDark/MOL_SchratDark</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>4.8</drawSize>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <aiAvoidCover>true</aiAvoidCover>
+    <destroyGearOnDrop>true</destroyGearOnDrop>
+  </PawnKindDef>
+  <!-- Plains Schrat -->
+  <ThingDef ParentName="MOL_SchratBase">
+    <defName>MOL_Schrat_Plains</defName>
+    <label>plains schrat</label>
+    <description>A hulking tangle of pale wood, exposed roots, and packed earth assembled into a crude humanoid shape. These entities achieve animation when disturbed by logging or fire, moving through grasslands with unnatural purpose. The violent splitting behavior upon destruction is particularly puzzling - is it self-preservation, reproductive strategy, or simply how the psychoreactive alterations malfunction when the organism dies? The mechanism works regardless of how long the animation has lasted. All animation eventually fades, but the underlying cause remains frustratingly unclear.</description>
+    <modExtensions>
+      <li Class="MOExpandedLite.DeathSplitExtension">
+        <pawnKindDef>MOL_SchratPlains_Sapling</pawnKindDef>
+        <createAmount>2</createAmount>
+        <explosion>true</explosion>
+        <damageDef>MOL_SchratCollapse</damageDef>
+        <explosionRadius>3</explosionRadius>
+        <explosionDamage>10</explosionDamage>
+      </li>
+    </modExtensions>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_Schrat_Plains</defName>
+    <label>plains schrat</label>
+    <race>MOL_Schrat_Plains</race>
+    <combatPower>400</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_SchratPlains/MOL_SchratPlains</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>4.8</drawSize>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <aiAvoidCover>true</aiAvoidCover>
+    <destroyGearOnDrop>true</destroyGearOnDrop>
+  </PawnKindDef>
+  <!-- Base Sapling -->
+  <ThingDef ParentName="BasePawn" Name="MOL_SaplingBase" Abstract="True">
+    <statBases>
+      <MoveSpeed>4.4</MoveSpeed>
+      <ArmorRating_Blunt>0.24</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.11</ArmorRating_Sharp>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <Flammability>1</Flammability>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <tools>
+      <li>
+        <label>left fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>right fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+    <race>
+      <body>MOL_SchratBody</body>
+      <fleshType>Mechanoid</fleshType>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <foodType>None</foodType>
+      <lifeExpectancy>1</lifeExpectancy>
+      <hediffGiverSets Inherit="False">
+        <li>MOL_SchratHediffGiver</li>
+      </hediffGiverSets>
+      <bloodDef>Filth_RubbleBuilding</bloodDef>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Animal</thinkTreeMain>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+          <soundCall>Pawn_Mech_Centipede_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+    </race>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+    <butcherProducts>
+      <WoodLog>20</WoodLog>
+    </butcherProducts>
+  </ThingDef>
+  <!-- Dark Sapling -->
+  <ThingDef ParentName="MOL_SaplingBase">
+    <defName>MOL_Sapling_Dark</defName>
+    <label>dark schrat sapling</label>
+    <description>A small, twisted mass of dark branches and roots crudely shaped into a vaguely humanoid form. These entities can temporarily animate when disturbed by logging or fire, moving through shadowed undergrowth with jerky, unsettling movements. Psychoreactive alterations from ancient archotech presence enable the defensive behavior, though whether this was deliberate or accidental remains unknown. The animation eventually fades, leaving behind what appears to be ordinary dead wood. The mechanism and purpose are poorly understood.</description>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_SchratDark_Sapling</defName>
+    <label>dark schrat sapling</label>
+    <race>MOL_Sapling_Dark</race>
+    <combatPower>30</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_SaplingDark/MOL_SaplingDark</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3</drawSize>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <aiAvoidCover>true</aiAvoidCover>
+    <destroyGearOnDrop>true</destroyGearOnDrop>
+  </PawnKindDef>
+  <!-- Plains Sapling -->
+  <ThingDef ParentName="MOL_SaplingBase">
+    <defName>MOL_Sapling_Plains</defName>
+    <label>plains schrat sapling</label>
+    <description>A compact assemblage of pale wood and tangled roots roughly organized into a small humanoid shape. When threatened, psychoreactive alterations allow these formations to achieve mobility across open terrain. How such alterations spread to grassland flora across multiple worlds suggests global archotech activity, though the reason for animating simple vegetation is baffling. The entity returns to dormancy once the disturbance ceases, indistinguishable from dead brush. No satisfactory explanation exists for this phenomenon.</description>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_SchratPlains_Sapling</defName>
+    <label>plains schrat sapling</label>
+    <race>MOL_Sapling_Plains</race>
+    <combatPower>30</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_SaplingPlains/MOL_SaplingPlains</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3</drawSize>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <aiAvoidCover>true</aiAvoidCover>
+    <destroyGearOnDrop>true</destroyGearOnDrop>
+  </PawnKindDef>
+</Defs>

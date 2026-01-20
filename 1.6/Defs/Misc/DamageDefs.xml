@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Schrat Collapse Damage - used when schrat dies and explodes -->
+  <DamageDef>
+    <defName>MOL_SchratCollapse</defName>
+    <label>schrat collapse</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been squashed to death by a schrat's trunk.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Bruise</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <overkillPctToDestroyPart>0~0.67</overkillPctToDestroyPart>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+    <defaultDamage>10</defaultDamage>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>BuildingDestroyed_Wood_Big</soundExplosion>
+  </DamageDef>
+
+</Defs>

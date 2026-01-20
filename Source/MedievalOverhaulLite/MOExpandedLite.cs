@@ -1,7 +1,7 @@
 using HarmonyLib;
 using Verse;
 
-namespace MOExpandedLit
+namespace MOExpandedLite
 {
   [StaticConstructorOnStartup]
   public static class MOExpandedLite

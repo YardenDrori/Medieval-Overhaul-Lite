@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <HediffGiverSetDef>
+    <defName>MOL_GolemHediffGiver</defName>
+    <hediffGivers>
+      <!-- Golems don't bleed or get sick, only environmental -->
+      <li Class="HediffGiver_Hypothermia">
+        <hediff>Hypothermia</hediff>
+        <hediffInsectoid>HypothermicSlowdown</hediffInsectoid>
+      </li>
+      <li Class="HediffGiver_Heat">
+        <hediff>Heatstroke</hediff>
+      </li>
+    </hediffGivers>
+  </HediffGiverSetDef>
+
+  <HediffGiverSetDef>
+    <defName>MOL_SchratHediffGiver</defName>
+    <hediffGivers>
+      <!-- Schrats don't bleed but can get environmental effects -->
+      <li Class="HediffGiver_Hypothermia">
+        <hediff>Hypothermia</hediff>
+        <hediffInsectoid>HypothermicSlowdown</hediffInsectoid>
+      </li>
+      <li Class="HediffGiver_Heat">
+        <hediff>Heatstroke</hediff>
+      </li>
+    </hediffGivers>
+  </HediffGiverSetDef>
+
+</Defs>
