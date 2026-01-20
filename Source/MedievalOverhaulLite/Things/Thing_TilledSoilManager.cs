@@ -6,210 +6,305 @@ using Verse;
 
 namespace MOExpandedLite;
 
+public enum SoilState
+{
+  Rich,
+  Weathered,
+  Depleted,
+}
+
 public class Thing_TilledSoilManager : Thing
 {
-  // Parallel lists for serialization (RimWorld can't serialize Dictionary<int, List<IntVec3>>)
-  private List<int> expirationTicks = new();
-  private List<IntVec3> expirationCells = new();
+  private const int TicksPerHour = 2500;
+  private const int DepletedCheckIntervalTicks = 30000; // Check depleted soil every half day
 
-  // Pending terrain swaps (processed on next TickLong to let VEF finish registration)
-  private List<IntVec3> pendingSwapCells = new();
-  private List<int> pendingSwapHours = new();
+  // Tracked soil awaiting state transition
+  private List<IntVec3> trackedCells = new();
+  private List<int> trackedExpirationTicks = new();
 
-  private int nextCheckTick = int.MaxValue;
+  // Depleted soil cells (checked periodically for bonemeal renewal)
+  private List<IntVec3> depletedCells = new();
 
-  public void RegisterSoil(IntVec3 cell, int hoursUntilExpire)
+  // Pending terrain swaps (processed next TickLong to let VEF finish registration)
+  private List<IntVec3> pendingCells = new();
+  private List<SoilState> pendingStates = new();
+
+  private int nextExpirationTick = int.MaxValue;
+  private int nextDepletedCheckTick;
+
+  // ============ Public API ============
+
+  /// <summary>
+  /// Called when new enriched soil is placed. Queues swap to correct Rich variant.
+  /// </summary>
+  public void OnSoilPlaced(IntVec3 cell)
   {
-    // 2500 ticks per hour (60000 ticks per day / 24 hours)
-    int expirationTick = Find.TickManager.TicksGame + (hoursUntilExpire * 2500);
-
-    expirationTicks.Add(expirationTick);
-    expirationCells.Add(cell);
-
-    if (expirationTick < nextCheckTick)
-      nextCheckTick = expirationTick;
+    pendingCells.Add(cell);
+    pendingStates.Add(SoilState.Rich);
   }
 
-  public void UnregisterSoil(IntVec3 cell)
+  /// <summary>
+  /// Called when soil terrain is removed (by player or other means).
+  /// </summary>
+  public void OnSoilRemoved(IntVec3 cell)
   {
-    int index = expirationCells.IndexOf(cell);
-    if (index >= 0)
+    RemoveFromTracking(cell);
+    depletedCells.Remove(cell);
+
+    int pendingIdx = pendingCells.IndexOf(cell);
+    if (pendingIdx >= 0)
     {
-      expirationTicks.RemoveAt(index);
-      expirationCells.RemoveAt(index);
+      pendingCells.RemoveAt(pendingIdx);
+      pendingStates.RemoveAt(pendingIdx);
     }
   }
 
-  public void QueueFertilitySwap(IntVec3 cell, int hoursToExpire)
+  // ============ Core Logic ============
+
+  public override void TickLong()
   {
-    pendingSwapCells.Add(cell);
-    pendingSwapHours.Add(hoursToExpire);
+    ProcessPendingSwaps();
+    ProcessExpirations();
+    ProcessDepletedSoilRenewal();
   }
 
   private void ProcessPendingSwaps()
   {
-    if (pendingSwapCells.Count == 0)
-      return;
-
-    for (int i = 0; i < pendingSwapCells.Count; i++)
+    for (int i = pendingCells.Count - 1; i >= 0; i--)
     {
-      IntVec3 pos = pendingSwapCells[i];
-      int hours = pendingSwapHours[i];
+      IntVec3 cell = pendingCells[i];
+      SoilState targetState = pendingStates[i];
 
-      if (!pos.InBounds(Map))
+      if (!cell.InBounds(Map))
         continue;
 
-      // Check if the base variant is still there
-      TerrainDef currentTerrain = Map.terrainGrid.TerrainAt(pos);
-      if (currentTerrain?.defName != "MOL_SoilTilled")
-        continue;
+      // Get the fertility we need to match
+      int fertilityPercent = GetTargetFertilityPercent(cell, targetState);
+      TerrainDef variantDef = GetVariantDef(targetState, fertilityPercent);
 
-      TerrainDef underTerrain = Map.terrainGrid.UnderTerrainAt(pos);
-      float baseFertility = underTerrain?.fertility ?? 1f;
-
-      // Calculate target fertility: 120% of base, rounded down to 10%, clamped to +20% to +30%
-      float raw = baseFertility * 1.2f;
-      float rounded = Mathf.Floor(raw * 10f) / 10f;
-      float min = baseFertility + 0.2f;
-      float max = baseFertility + 0.3f;
-      float targetFertility = Mathf.Clamp(rounded, min, max);
-
-      // Convert to percentage for def name (e.g., 1.2 -> 120)
-      int fertilityPercent = Mathf.RoundToInt(targetFertility * 100f);
-      fertilityPercent = Mathf.Clamp(fertilityPercent, 90, 170);
-      fertilityPercent = (fertilityPercent / 10) * 10;
-
-      string variantDefName = $"MOL_SoilTilled_{fertilityPercent}";
-      TerrainDef variantDef = DefDatabase<TerrainDef>.GetNamed(variantDefName, errorOnFail: false);
-
-      if (variantDef != null)
+      if (variantDef == null)
       {
-        Map.terrainGrid.SetTerrain(pos, variantDef);
+        Log.Warning($"[MOL] Could not find terrain variant for {targetState} at {fertilityPercent}%");
+        continue;
+      }
+
+      // Swap to the correct variant
+      Map.terrainGrid.SetTerrain(cell, variantDef);
+
+      // Track based on new state
+      if (targetState == SoilState.Depleted)
+      {
+        depletedCells.Add(cell);
       }
       else
       {
-        // Fallback: register this terrain for expiration as-is
-        Log.Warning($"[MOL] Could not find terrain variant {variantDefName}, using base terrain");
-        RegisterSoil(pos, hours);
+        int hoursToExpire = targetState == SoilState.Rich ? 480 : 240; // 20 days / 10 days
+        TrackForExpiration(cell, hoursToExpire);
       }
     }
 
-    pendingSwapCells.Clear();
-    pendingSwapHours.Clear();
+    pendingCells.Clear();
+    pendingStates.Clear();
   }
 
-  public override void TickLong()
+  private void ProcessExpirations()
   {
-    // Process pending fertility swaps first (delayed to let VEF finish registration)
-    ProcessPendingSwaps();
-
-    if (Find.TickManager.TicksGame < nextCheckTick)
+    int currentTick = Find.TickManager.TicksGame;
+    if (currentTick < nextExpirationTick)
       return;
 
-    int currentTick = Find.TickManager.TicksGame;
-
-    // Count available bone meal ONCE to prevent race condition
-    int availableBoneMeal = CountBoneMealInStorage();
-
-    // Collect cells to expire (don't modify list while iterating)
-    List<IntVec3> cellsToExpire = new();
-    for (int i = 0; i < expirationTicks.Count; i++)
+    // Find all expired cells
+    List<IntVec3> expiredCells = new();
+    for (int i = 0; i < trackedCells.Count; i++)
     {
-      if (expirationTicks[i] <= currentTick)
-        cellsToExpire.Add(expirationCells[i]);
+      if (trackedExpirationTicks[i] <= currentTick)
+        expiredCells.Add(trackedCells[i]);
     }
 
-    // Process expirations
-    foreach (IntVec3 cell in cellsToExpire)
+    // Process each expiration
+    foreach (IntVec3 cell in expiredCells)
     {
-      TerrainDef currentTerrain = Map.terrainGrid.TerrainAt(cell);
-      if (IsTilledSoil(currentTerrain))
-      {
-        // Get underlying terrain before removing
-        TerrainDef underTerrain = Map.terrainGrid.UnderTerrainAt(cell);
-
-        // Directly set to underlying terrain (no resource refund)
-        // This avoids RemoveTopLayer which refunds materials
-        if (underTerrain != null)
-          Map.terrainGrid.SetTerrain(cell, underTerrain);
-        else
-          Map.terrainGrid.SetTerrain(cell, TerrainDefOf.Soil);
-
-        // Manually unregister since SetTerrain might not trigger VEF's PostRemove
-        UnregisterSoil(cell);
-
-        // Auto-renew if bone meal available
-        if (availableBoneMeal > 0)
-        {
-          PlaceRebuildBlueprint(cell);
-          availableBoneMeal--;
-        }
-      }
+      RemoveFromTracking(cell);
+      TransitionToNextState(cell);
     }
 
-    nextCheckTick = expirationTicks.Count > 0 ? expirationTicks.Min() : int.MaxValue;
+    // Update next check time
+    nextExpirationTick = trackedExpirationTicks.Count > 0
+      ? trackedExpirationTicks.Min()
+      : int.MaxValue;
   }
 
-  private static bool IsTilledSoil(TerrainDef terrain)
+  private void TransitionToNextState(IntVec3 cell)
   {
-    return terrain != null && terrain.defName.StartsWith("MOL_SoilTilled");
+    if (!cell.InBounds(Map))
+      return;
+
+    TerrainDef currentTerrain = Map.terrainGrid.TerrainAt(cell);
+    SoilState? currentState = GetSoilStateFromDef(currentTerrain);
+
+    if (currentState == null)
+      return;
+
+    SoilState nextState = currentState.Value switch
+    {
+      SoilState.Rich => SoilState.Weathered,
+      SoilState.Weathered => SoilState.Depleted,
+      _ => SoilState.Depleted
+    };
+
+    // Queue the swap for next tick (consistent with initial placement)
+    pendingCells.Add(cell);
+    pendingStates.Add(nextState);
   }
 
-  private int CountBoneMealInStorage()
+  private void ProcessDepletedSoilRenewal()
+  {
+    int currentTick = Find.TickManager.TicksGame;
+    if (currentTick < nextDepletedCheckTick || depletedCells.Count == 0)
+      return;
+
+    nextDepletedCheckTick = currentTick + DepletedCheckIntervalTicks;
+
+    int availableBoneMeal = CountAvailableBoneMeal();
+    if (availableBoneMeal <= 0)
+      return;
+
+    // Renew depleted cells (oldest first, up to available bonemeal)
+    int toRenew = Mathf.Min(availableBoneMeal, depletedCells.Count);
+    for (int i = 0; i < toRenew; i++)
+    {
+      IntVec3 cell = depletedCells[0];
+      depletedCells.RemoveAt(0);
+
+      if (!cell.InBounds(Map))
+        continue;
+
+      // Remove the depleted terrain
+      TerrainDef underTerrain = Map.terrainGrid.UnderTerrainAt(cell);
+      Map.terrainGrid.SetTerrain(cell, underTerrain ?? TerrainDefOf.Soil);
+
+      // Place blueprint for renewal
+      GenConstruct.PlaceBlueprintForBuild(
+        MOL_DefOf.MOL_SoilTilled,
+        cell,
+        Map,
+        Rot4.North,
+        Faction.OfPlayer,
+        null
+      );
+    }
+  }
+
+  // ============ Helper Methods ============
+
+  private void TrackForExpiration(IntVec3 cell, int hours)
+  {
+    int expirationTick = Find.TickManager.TicksGame + (hours * TicksPerHour);
+
+    trackedCells.Add(cell);
+    trackedExpirationTicks.Add(expirationTick);
+
+    if (expirationTick < nextExpirationTick)
+      nextExpirationTick = expirationTick;
+  }
+
+  private void RemoveFromTracking(IntVec3 cell)
+  {
+    int idx = trackedCells.IndexOf(cell);
+    if (idx >= 0)
+    {
+      trackedCells.RemoveAt(idx);
+      trackedExpirationTicks.RemoveAt(idx);
+    }
+  }
+
+  private int GetTargetFertilityPercent(IntVec3 cell, SoilState state)
+  {
+    TerrainDef underTerrain = Map.terrainGrid.UnderTerrainAt(cell);
+    float baseFertility = underTerrain?.fertility ?? 1f;
+
+    float bonus = state switch
+    {
+      SoilState.Rich => 0.2f,
+      SoilState.Weathered => 0.1f,
+      SoilState.Depleted => 0f,
+      _ => 0f
+    };
+
+    float targetFertility = baseFertility + bonus;
+    // Round to nearest 10%
+    return Mathf.RoundToInt(targetFertility * 10f) * 10;
+  }
+
+  private static TerrainDef GetVariantDef(SoilState state, int fertilityPercent)
+  {
+    string prefix = state switch
+    {
+      SoilState.Rich => "R",
+      SoilState.Weathered => "W",
+      SoilState.Depleted => "D",
+      _ => "R"
+    };
+
+    string defName = $"MOL_SoilTilled{prefix}_{fertilityPercent}";
+    return DefDatabase<TerrainDef>.GetNamed(defName, errorOnFail: false);
+  }
+
+  private static SoilState? GetSoilStateFromDef(TerrainDef terrain)
+  {
+    if (terrain?.defName == null)
+      return null;
+
+    if (terrain.defName.Contains("TilledR_"))
+      return SoilState.Rich;
+    if (terrain.defName.Contains("TilledW_"))
+      return SoilState.Weathered;
+    if (terrain.defName.Contains("TilledD_"))
+      return SoilState.Depleted;
+
+    return null;
+  }
+
+  private int CountAvailableBoneMeal()
   {
     int count = 0;
     foreach (Thing thing in Map.listerThings.ThingsOfDef(MOL_DefOf.MOL_BoneMeal))
     {
-      // Only count items not forbidden
       if (!thing.IsForbidden(Faction.OfPlayer))
         count += thing.stackCount;
     }
 
-    // Subtract bone meal reserved by pending blueprints for our soil
-    int pendingBlueprints = CountPendingSoilBlueprints();
-    count -= pendingBlueprints;
-
-    return System.Math.Max(0, count);
-  }
-
-  private int CountPendingSoilBlueprints()
-  {
-    int count = 0;
+    // Subtract bonemeal reserved by pending blueprints (2 per blueprint)
     foreach (Thing thing in Map.listerThings.ThingsInGroup(ThingRequestGroup.Blueprint))
     {
       if (thing.def.entityDefToBuild == MOL_DefOf.MOL_SoilTilled)
-        count++;
+        count -= 2;
     }
-    return count;
+
+    return Mathf.Max(0, count);
   }
 
-  private void PlaceRebuildBlueprint(IntVec3 cell)
-  {
-    GenConstruct.PlaceBlueprintForBuild(
-      MOL_DefOf.MOL_SoilTilled,
-      cell,
-      Map,
-      Rot4.North,
-      Faction.OfPlayer,
-      null
-    );
-  }
+  // ============ Serialization ============
 
   public override void ExposeData()
   {
     base.ExposeData();
-    Scribe_Collections.Look(ref expirationTicks, "expirationTicks", LookMode.Value);
-    Scribe_Collections.Look(ref expirationCells, "expirationCells", LookMode.Value);
-    Scribe_Collections.Look(ref pendingSwapCells, "pendingSwapCells", LookMode.Value);
-    Scribe_Collections.Look(ref pendingSwapHours, "pendingSwapHours", LookMode.Value);
-    Scribe_Values.Look(ref nextCheckTick, "nextCheckTick", int.MaxValue);
+
+    Scribe_Collections.Look(ref trackedCells, "trackedCells", LookMode.Value);
+    Scribe_Collections.Look(ref trackedExpirationTicks, "trackedExpirationTicks", LookMode.Value);
+    Scribe_Collections.Look(ref depletedCells, "depletedCells", LookMode.Value);
+    Scribe_Collections.Look(ref pendingCells, "pendingCells", LookMode.Value);
+    Scribe_Collections.Look(ref pendingStates, "pendingStates", LookMode.Value);
+    Scribe_Values.Look(ref nextExpirationTick, "nextExpirationTick", int.MaxValue);
+    Scribe_Values.Look(ref nextDepletedCheckTick, "nextDepletedCheckTick");
 
     if (Scribe.mode == LoadSaveMode.PostLoadInit)
     {
-      expirationTicks ??= new();
-      expirationCells ??= new();
-      pendingSwapCells ??= new();
-      pendingSwapHours ??= new();
+      trackedCells ??= new();
+      trackedExpirationTicks ??= new();
+      depletedCells ??= new();
+      pendingCells ??= new();
+      pendingStates ??= new();
     }
   }
 }

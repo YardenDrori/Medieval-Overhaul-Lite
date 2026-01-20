@@ -5,7 +5,7 @@ namespace MOExpandedLite;
 
 public class TerrainCompProperties_Expiring : TerrainCompProperties
 {
-  public int hoursToExpire = 24;
+  // If true, this is the player-buildable base variant that gets swapped to a Rich variant
   public bool isBaseVariant = false;
 
   public TerrainCompProperties_Expiring()
@@ -16,31 +16,30 @@ public class TerrainCompProperties_Expiring : TerrainCompProperties
 
 public class TerrainComp_Expiring : TerrainComp
 {
-  public TerrainCompProperties_Expiring Props => (TerrainCompProperties_Expiring)props;
+  private TerrainCompProperties_Expiring Props => (TerrainCompProperties_Expiring)props;
 
   public override void Initialize(TerrainCompProperties props)
   {
     base.Initialize(props);
 
-    var manager = parent.Map.GetComponent<MapComponent_TilledSoilLifetimeCache>()?.Manager;
-    if (manager == null)
+    // Only the base buildable variant triggers registration
+    // The actual R/W/D variants are managed entirely by the manager
+    if (!Props.isBaseVariant)
       return;
 
-    // If this is the base buildable variant, queue swap to correct fertility variant
-    // We delay to next TickLong because VEF hasn't finished registering this terrain yet
-    if (Props.isBaseVariant)
-    {
-      manager.QueueFertilitySwap(parent.Position, Props.hoursToExpire);
-      return;
-    }
-
-    // Register for expiration tracking
-    manager.RegisterSoil(parent.Position, Props.hoursToExpire);
+    var manager = GetManager();
+    manager?.OnSoilPlaced(parent.Position);
   }
 
   public override void PostRemove()
   {
-    var manager = parent.Map.GetComponent<MapComponent_TilledSoilLifetimeCache>()?.Manager;
-    manager?.UnregisterSoil(parent.Position);
+    // Notify manager that this soil was removed (by player, construction, etc.)
+    var manager = GetManager();
+    manager?.OnSoilRemoved(parent.Position);
+  }
+
+  private Thing_TilledSoilManager GetManager()
+  {
+    return parent.Map?.GetComponent<MapComponent_TilledSoilLifetimeCache>()?.Manager;
   }
 }

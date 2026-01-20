@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ========================================== -->
+  <!-- Abstract base for all tilled soil variants -->
+  <!-- ========================================== -->
+  <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainBase" Abstract="True">
+    <edgeType>FadeRough</edgeType>
+    <renderPrecedence>335</renderPrecedence>
+    <constructEffect>ConstructDirt</constructEffect>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>GrowSoil</li>
+      <li>Diggable</li>
+      <li>Walkable</li>
+    </affordances>
+    <generatedFilth>Filth_Dirt</generatedFilth>
+    <filthAcceptanceMask>
+      <li>Unnatural</li>
+    </filthAcceptanceMask>
+    <tags>
+      <li>GT_TS</li>
+    </tags>
+    <takeFootprints>True</takeFootprints>
+    <texturePath>Terrain/MOL_SoilTilled</texturePath>
+    <pathCost>12</pathCost>
+    <layerable>true</layerable>
+    <statBases>
+      <Beauty>1</Beauty>
+    </statBases>
+    <terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
+    <tickerType>Never</tickerType>
+    <tools>
+      <li>
+        <label>dirt</label>
+        <capacities>
+          <li>KickMaterialInEyes</li>
+        </capacities>
+        <hediff>DirtInEyes</hediff>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+    </tools>
+    <terrainComps>
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring" />
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <!-- ========================================== -->
+  <!-- Player-buildable version                   -->
+  <!-- Gets swapped to correct Rich variant       -->
+  <!-- ========================================== -->
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilled</defName>
+    <label>enriched soil</label>
+    <description>Enriched soil. Allows crops to grow faster. Fertility depends on the underlying soil quality. Degrades over time but can be renewed with bone meal.</description>
+    <designationCategory>Floors</designationCategory>
+    <fertility>1.2</fertility>
+    <costList>
+      <MOL_BoneMeal>2</MOL_BoneMeal>
+    </costList>
+    <statBases>
+      <Beauty>1</Beauty>
+      <WorkToBuild>85</WorkToBuild>
+    </statBases>
+    <researchPrerequisites>
+      <li>MOL_TilledSoil</li>
+    </researchPrerequisites>
+    <terrainComps Inherit="False">
+      <li Class="MOExpandedLite.TerrainCompProperties_Expiring">
+        <isBaseVariant>true</isBaseVariant>
+      </li>
+    </terrainComps>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <!-- ========================================== -->
+  <!--              RICH VARIANTS                 -->
+  <!--    Base fertility + 20% bonus              -->
+  <!--    Lasts 20 days before becoming Weathered -->
+  <!-- ========================================== -->
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_20</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 20% total fertility. Will become weathered over time.</description>
+    <fertility>0.2</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_30</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 30% total fertility. Will become weathered over time.</description>
+    <fertility>0.3</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_40</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 40% total fertility. Will become weathered over time.</description>
+    <fertility>0.4</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_50</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 50% total fertility. Will become weathered over time.</description>
+    <fertility>0.5</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_60</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 60% total fertility. Will become weathered over time.</description>
+    <fertility>0.6</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_70</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 70% total fertility. Will become weathered over time.</description>
+    <fertility>0.7</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_80</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 80% total fertility. Will become weathered over time.</description>
+    <fertility>0.8</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_90</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 90% total fertility. Will become weathered over time.</description>
+    <fertility>0.9</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_100</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 100% total fertility. Will become weathered over time.</description>
+    <fertility>1.0</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_110</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 110% total fertility. Will become weathered over time.</description>
+    <fertility>1.1</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_120</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 120% total fertility. Will become weathered over time.</description>
+    <fertility>1.2</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_130</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 130% total fertility. Will become weathered over time.</description>
+    <fertility>1.3</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_140</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 140% total fertility. Will become weathered over time.</description>
+    <fertility>1.4</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_150</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 150% total fertility. Will become weathered over time.</description>
+    <fertility>1.5</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_160</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 160% total fertility. Will become weathered over time.</description>
+    <fertility>1.6</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_170</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 170% total fertility. Will become weathered over time.</description>
+    <fertility>1.7</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_180</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 180% total fertility. Will become weathered over time.</description>
+    <fertility>1.8</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_190</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 190% total fertility. Will become weathered over time.</description>
+    <fertility>1.9</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_200</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 200% total fertility. Will become weathered over time.</description>
+    <fertility>2.0</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_210</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 210% total fertility. Will become weathered over time.</description>
+    <fertility>2.1</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledR_220</defName>
+    <label>enriched soil (Rich)</label>
+    <description>Rich enriched soil with 220% total fertility. Will become weathered over time.</description>
+    <fertility>2.2</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <!-- ========================================== -->
+  <!--           WEATHERED VARIANTS               -->
+  <!--    Base fertility + 10% bonus              -->
+  <!--    Lasts 10 days before becoming Depleted  -->
+  <!-- ========================================== -->
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_10</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 10% total fertility. Will become depleted over time.</description>
+    <fertility>0.1</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_20</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 20% total fertility. Will become depleted over time.</description>
+    <fertility>0.2</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_30</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 30% total fertility. Will become depleted over time.</description>
+    <fertility>0.3</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_40</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 40% total fertility. Will become depleted over time.</description>
+    <fertility>0.4</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_50</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 50% total fertility. Will become depleted over time.</description>
+    <fertility>0.5</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_60</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 60% total fertility. Will become depleted over time.</description>
+    <fertility>0.6</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_70</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 70% total fertility. Will become depleted over time.</description>
+    <fertility>0.7</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_80</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 80% total fertility. Will become depleted over time.</description>
+    <fertility>0.8</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_90</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 90% total fertility. Will become depleted over time.</description>
+    <fertility>0.9</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_100</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 100% total fertility. Will become depleted over time.</description>
+    <fertility>1.0</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_110</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 110% total fertility. Will become depleted over time.</description>
+    <fertility>1.1</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_120</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 120% total fertility. Will become depleted over time.</description>
+    <fertility>1.2</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_130</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 130% total fertility. Will become depleted over time.</description>
+    <fertility>1.3</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_140</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 140% total fertility. Will become depleted over time.</description>
+    <fertility>1.4</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_150</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 150% total fertility. Will become depleted over time.</description>
+    <fertility>1.5</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_160</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 160% total fertility. Will become depleted over time.</description>
+    <fertility>1.6</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_170</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 170% total fertility. Will become depleted over time.</description>
+    <fertility>1.7</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_180</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 180% total fertility. Will become depleted over time.</description>
+    <fertility>1.8</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_190</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 190% total fertility. Will become depleted over time.</description>
+    <fertility>1.9</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_200</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 200% total fertility. Will become depleted over time.</description>
+    <fertility>2.0</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledW_210</defName>
+    <label>enriched soil (Weathered)</label>
+    <description>Weathered enriched soil with 210% total fertility. Will become depleted over time.</description>
+    <fertility>2.1</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <!-- ========================================== -->
+  <!--           DEPLETED VARIANTS                -->
+  <!--    Base fertility + 0% bonus               -->
+  <!--    Will auto-renew when bone meal available-->
+  <!-- ========================================== -->
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_0</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 0% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.0</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_10</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 10% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.1</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_20</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 20% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.2</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_30</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 30% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.3</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_40</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 40% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.4</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_50</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 50% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.5</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_60</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 60% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.6</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_70</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 70% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.7</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_80</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 80% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.8</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_90</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 90% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>0.9</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_100</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 100% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.0</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_110</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 110% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.1</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_120</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 120% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.2</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_130</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 130% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.3</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_140</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 140% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.4</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_150</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 150% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.5</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_160</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 160% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.6</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_170</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 170% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.7</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_180</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 180% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.8</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_190</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 190% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>1.9</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+
+  <VEF.Maps.ActiveTerrainDef ParentName="MOL_TerrainBase">
+    <defName>MOL_SoilTilledD_200</defName>
+    <label>enriched soil (Depleted)</label>
+    <description>Depleted enriched soil with 200% fertility. Will be renewed when bone meal is available.</description>
+    <fertility>2.0</fertility>
+  </VEF.Maps.ActiveTerrainDef>
+</Defs>
