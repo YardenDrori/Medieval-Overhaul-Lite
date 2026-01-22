@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <!-- Base Golem -->
-  <ThingDef ParentName="BaseMechanoid" Name="MOL_BaseGolem" Abstract="True">
+  <ThingDef ParentName="BasePawn" Name="MOL_BaseGolem" Abstract="True">
     <statBases>
       <MoveSpeed>3.2</MoveSpeed>
       <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
@@ -78,11 +78,11 @@
       <bloodDef>Filth_RubbleBuilding</bloodDef>
       <lifeStageAges>
         <li>
-          <def>MechanoidFullyFormed</def>
+          <def>AnimalAdult</def>
           <minAge>0</minAge>
-          <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
-          <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
-          <soundCall>Pawn_Mech_Centipede_Call</soundCall>
+          <soundWounded>PickHit</soundWounded>
+          <soundDeath>Roof_Collapse</soundDeath>
+          <soundCall>Roof_Collapse</soundCall>
         </li>
       </lifeStageAges>
       <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
