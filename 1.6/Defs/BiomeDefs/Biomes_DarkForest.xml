@@ -188,7 +188,7 @@
       <MOL_DireBoar>0.5</MOL_DireBoar>
       <MOL_NorthernBoar>0.3</MOL_NorthernBoar>
       <MOL_Direwolf>0.08</MOL_Direwolf>
-      <MOL_Sapling_Dark>0.02</MOL_Sapling_Dark>
+      <MOL_SchratDark_Sapling>0.02</MOL_SchratDark_Sapling>
     </wildAnimals>
     <pollutionWildAnimals MayRequire="Ludeon.RimWorld.Biotech">
       <WasteRat MayRequire="Ludeon.RimWorld.Biotech">1</WasteRat>

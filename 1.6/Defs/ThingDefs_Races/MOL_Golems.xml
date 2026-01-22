@@ -1,330 +1,476 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-	<ThingDef ParentName="BasePawn" Name="MOL_BaseGolem">
-		<defName>MOL_Golem_Iron</defName>
-		<label>iron golem</label>
-		<description>Iron ore deposits can temporarily achieve animation when disturbed by drilling or mining. Psychoreactive alterations from ancient archotech presence allow mineral formations to respond defensively to vibration or proximity, though the original purpose of this phenomenon remains unknown. The animation is temporary and non-sentient - simply reactive behavior that ceases once the disturbance ends, returning the iron to ordinary stone.</description>
-		<statBases>
-			<MoveSpeed>3.2</MoveSpeed>
-			<ArmorRating_Blunt>0.38</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.85</ArmorRating_Sharp>
-			<PsychicSensitivity>0.5</PsychicSensitivity>
-			<ToxicResistance>1</ToxicResistance>
-			<Flammability>0</Flammability>
-			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
-			<ComfyTemperatureMax>250</ComfyTemperatureMax>
-			<MeatAmount>0</MeatAmount>
-		</statBases>
-		<tools>
-			<li>
-				<label>left hand</label>
-				<capacities>
-					<li>Demolish</li>
-				</capacities>
-				<power>21</power>
-				<surpriseAttack>
-					<extraMeleeDamages>
-						<li>
-							<def>Stun</def>
-							<amount>14</amount>
-						</li>
-					</extraMeleeDamages>
-				</surpriseAttack>
-				<cooldownTime>2</cooldownTime>
-				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-			<li>
-				<label>right hand</label>
-				<capacities>
-					<li>Demolish</li>
-				</capacities>
-				<power>21</power>
-				<surpriseAttack>
-					<extraMeleeDamages>
-						<li>
-							<def>Stun</def>
-							<amount>14</amount>
-						</li>
-					</extraMeleeDamages>
-				</surpriseAttack>
-				<cooldownTime>2</cooldownTime>
-				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-			<li>
-				<label>head</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>21</power>
-				<cooldownTime>2.6</cooldownTime>
-				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-		</tools>
-		<race>
-			<body>MOL_Golem</body>
-			<fleshType>Mechanoid</fleshType>
-			<intelligence>ToolUser</intelligence>
-			<thinkTreeMain>Mechanoid</thinkTreeMain>
-			<baseBodySize>4</baseBodySize>
-			<baseHealthScale>6</baseHealthScale>
-			<needsRest>false</needsRest>
-			<hasGenders>false</hasGenders>
-			<foodType>None</foodType>
-			<lifeExpectancy>2500</lifeExpectancy>
-			<hediffGiverSets Inherit="False">
-				<li>MOL_GolemHediffGiver</li>
-			</hediffGiverSets>
-			<bloodDef>Filth_RubbleBuilding</bloodDef>
-			<lifeStageAges>
-				<li>
-					<def>AnimalAdult</def>
-					<minAge>0</minAge>
-					<soundWounded>PickHit</soundWounded>
-					<soundDeath>Roof_Collapse</soundDeath>
-					<soundCall>Roof_Collapse</soundCall>
-				</li>
-			</lifeStageAges>
-			<soundCallIntervalRange>1000~2000</soundCallIntervalRange>
-			<soundMeleeHitPawn>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitPawn>
-			<soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitBuilding>
-			<soundMeleeMiss>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeMiss>
-		</race>
-		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
-		<butcherProducts>
-			<MOL_Iron>110</MOL_Iron>
-		</butcherProducts>
-		<comps>
-			<li Class="CompProperties_CanBeDormant" />
-			<li Class="CompProperties_WakeUpDormant">
-				<wakeUpOnDamage>true</wakeUpOnDamage>
-				<wakeUpCheckRadius>30</wakeUpCheckRadius>
-				<wakeUpSound>MechanoidsWakeUp</wakeUpSound>
-			</li>
-		</comps>
-	</ThingDef>
-
-	<PawnKindDef>
-		<defName>MOL_Golem_Iron</defName>
-		<label>iron golem</label>
-		<race>MOL_Golem_Iron</race>
-		<combatPower>500</combatPower>
-		<lifeStages>
-			<li>
-				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/MOL_GolemIron/MOL_GolemIron</texPath>
-					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>3.8</drawSize>
-					<shadowData>
-						<volume>(0.6, 0.8, 0.6)</volume>
-					</shadowData>
-				</bodyGraphicData>
-			</li>
-		</lifeStages>
-		<aiAvoidCover>true</aiAvoidCover>
-		<destroyGearOnDrop>true</destroyGearOnDrop>
-	</PawnKindDef>
-
-	<!-- Gold Golem -->
-	<ThingDef ParentName="MOL_BaseGolem">
-		<defName>MOL_Golem_Gold</defName>
-		<label>golden golem</label>
-		<description>Rare gold deposits capable of violent animation when approached. The extreme aggression displayed by animated gold formations puzzles xenobiologists - is it protective behavior programmed by archotechs, or simply how gold's natural properties interact with psychoreactive alterations? The animation eventually fades, leaving behind ordinary gold ore.</description>
-		<statBases>
-			<MoveSpeed>3.9</MoveSpeed>
-			<ArmorRating_Blunt>0.36</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
-			<PsychicSensitivity>0.75</PsychicSensitivity>
-		</statBases>
-		<butcherProducts>
-			<Gold>50</Gold>
-		</butcherProducts>
-	</ThingDef>
-
-	<PawnKindDef>
-		<defName>MOL_Golem_Gold</defName>
-		<label>golden golem</label>
-		<race>MOL_Golem_Gold</race>
-		<combatPower>500</combatPower>
-		<lifeStages>
-			<li>
-				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/MOL_GolemGold/MOL_GolemGold</texPath>
-					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>3.8</drawSize>
-					<shadowData>
-						<volume>(0.6, 0.8, 0.6)</volume>
-					</shadowData>
-				</bodyGraphicData>
-			</li>
-		</lifeStages>
-		<aiAvoidCover>true</aiAvoidCover>
-		<destroyGearOnDrop>true</destroyGearOnDrop>
-	</PawnKindDef>
-
-	<!-- Steel Golem -->
-	<ThingDef ParentName="MOL_BaseGolem">
-		<defName>MOL_Golem_Steel</defName>
-		<label>steel golem</label>
-		<description>Steel deposits exhibiting temporary animation when approached or damaged. How refined metal retains psychoreactive properties after processing is poorly understood - it suggests the alterations run deeper than surface contamination.</description>
-		<statBases>
-			<MoveSpeed>3.9</MoveSpeed>
-			<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
-			<PsychicSensitivity>0.75</PsychicSensitivity>
-		</statBases>
-		<butcherProducts>
-			<ChunkSlagSteel>4</ChunkSlagSteel>
-		</butcherProducts>
-	</ThingDef>
-
-	<PawnKindDef>
-		<defName>MOL_Golem_Steel</defName>
-		<label>steel golem</label>
-		<race>MOL_Golem_Steel</race>
-		<combatPower>500</combatPower>
-		<lifeStages>
-			<li>
-				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/MOL_GolemSteel/MOL_GolemSteel</texPath>
-					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>3.8</drawSize>
-					<shadowData>
-						<volume>(0.6, 0.8, 0.6)</volume>
-					</shadowData>
-				</bodyGraphicData>
-			</li>
-		</lifeStages>
-		<aiAvoidCover>true</aiAvoidCover>
-		<destroyGearOnDrop>true</destroyGearOnDrop>
-	</PawnKindDef>
-
-	<!-- Silver Golem -->
-	<ThingDef ParentName="MOL_BaseGolem">
-		<defName>MOL_Golem_Silver</defName>
-		<label>silver golem</label>
-		<description>Silver formations that can spontaneously animate when disturbed. Psychoreactive alterations from ancient archotech presence allow the precious metal to move and attack threats, though no one knows why silver specifically exhibits such strong responses.</description>
-		<statBases>
-			<MoveSpeed>3.9</MoveSpeed>
-			<ArmorRating_Blunt>0.36</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.72</ArmorRating_Sharp>
-			<PsychicSensitivity>0.75</PsychicSensitivity>
-		</statBases>
-		<butcherProducts>
-			<Silver>50</Silver>
-		</butcherProducts>
-	</ThingDef>
-
-	<PawnKindDef>
-		<defName>MOL_Golem_Silver</defName>
-		<label>silver golem</label>
-		<race>MOL_Golem_Silver</race>
-		<combatPower>500</combatPower>
-		<lifeStages>
-			<li>
-				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/MOL_GolemSilver/MOL_GolemSilver</texPath>
-					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>3.8</drawSize>
-					<shadowData>
-						<volume>(0.6, 0.8, 0.6)</volume>
-					</shadowData>
-				</bodyGraphicData>
-			</li>
-		</lifeStages>
-		<aiAvoidCover>true</aiAvoidCover>
-		<destroyGearOnDrop>true</destroyGearOnDrop>
-	</PawnKindDef>
-
-	<!-- Plasteel Golem -->
-	<ThingDef ParentName="MOL_BaseGolem">
-		<defName>MOL_Golem_Plasteel</defName>
-		<label>plasteel golem</label>
-		<description>Plasteel formations exhibiting dangerous temporary animation. How such advanced composite material came to possess psychoreactive properties is hotly debated - did archotechs influence plasteel's original development, or did later contamination affect already-refined deposits?</description>
-		<statBases>
-			<MoveSpeed>4.2</MoveSpeed>
-			<ArmorRating_Blunt>0.55</ArmorRating_Blunt>
-			<ArmorRating_Sharp>1.0</ArmorRating_Sharp>
-			<PsychicSensitivity>0.25</PsychicSensitivity>
-		</statBases>
-		<tools>
-			<li>
-				<label>left hand</label>
-				<capacities>
-					<li>Demolish</li>
-				</capacities>
-				<power>28</power>
-				<surpriseAttack>
-					<extraMeleeDamages>
-						<li>
-							<def>Stun</def>
-							<amount>18</amount>
-						</li>
-					</extraMeleeDamages>
-				</surpriseAttack>
-				<cooldownTime>1.8</cooldownTime>
-				<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-			<li>
-				<label>right hand</label>
-				<capacities>
-					<li>Demolish</li>
-				</capacities>
-				<power>28</power>
-				<surpriseAttack>
-					<extraMeleeDamages>
-						<li>
-							<def>Stun</def>
-							<amount>18</amount>
-						</li>
-					</extraMeleeDamages>
-				</surpriseAttack>
-				<cooldownTime>1.8</cooldownTime>
-				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-			<li>
-				<label>head</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>28</power>
-				<cooldownTime>2.4</cooldownTime>
-				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-			</li>
-		</tools>
-		<race>
-			<baseHealthScale>8</baseHealthScale>
-		</race>
-		<butcherProducts>
-			<Plasteel>75</Plasteel>
-		</butcherProducts>
-	</ThingDef>
-
-	<PawnKindDef>
-		<defName>MOL_Golem_Plasteel</defName>
-		<label>plasteel golem</label>
-		<race>MOL_Golem_Plasteel</race>
-		<combatPower>650</combatPower>
-		<lifeStages>
-			<li>
-				<bodyGraphicData>
-					<texPath>Things/Pawn/Animal/MOL_GolemPlasteel/MOL_GolemPlasteel</texPath>
-					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>4.0</drawSize>
-					<shadowData>
-						<volume>(0.7, 0.9, 0.7)</volume>
-					</shadowData>
-				</bodyGraphicData>
-			</li>
-		</lifeStages>
-		<aiAvoidCover>true</aiAvoidCover>
-		<destroyGearOnDrop>true</destroyGearOnDrop>
-	</PawnKindDef>
-
+  <ThingDef ParentName="BasePawn" Name="MOL_BaseGolem">
+    <defName>MOL_Golem_Iron</defName>
+    <label>Iron Golem</label>
+    <description>A golem made out of iron</description>
+    <statBases>
+      <MoveSpeed>3.2</MoveSpeed>
+      <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.85</ArmorRating_Sharp>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <Flammability>0</Flammability>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <tools>
+      <li>
+        <label>left hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>right hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>21</power>
+        <cooldownTime>2.6</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <body>MOL_Golem</body>
+      <fleshType>Mechanoid</fleshType>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Mechanoid</thinkTreeMain>
+      <baseBodySize>4</baseBodySize>
+      <baseHealthScale>6</baseHealthScale>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <foodType>None</foodType>
+      <lifeExpectancy>2500</lifeExpectancy>
+      <hediffGiverSets Inherit="False">
+        <li>MOL_GolemHediffGiver</li>
+      </hediffGiverSets>
+      <bloodDef>Filth_RubbleBuilding</bloodDef>
+      <lifeStageAges>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0</minAge>
+          <soundWounded>PickHit</soundWounded>
+          <soundDeath>Roof_Collapse</soundDeath>
+          <soundCall>Roof_Collapse</soundCall>
+        </li>
+      </lifeStageAges>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeMiss>
+    </race>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+    <butcherProducts>
+      <PE_RawIron>110</PE_RawIron>
+    </butcherProducts>
+    <receivesSignals>true</receivesSignals>
+    <comps>
+      <li Class="CompProperties_CanBeDormant"/>
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
+      </li>
+    </comps>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_Golem_Iron</defName>
+    <label>Iron Golem</label>
+    <race>MOL_Golem_Iron</race>
+    <combatPower>500</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_GolemIron/MOL_GolemIron</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.8</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <aiAvoidCover>true</aiAvoidCover>
+    <destroyGearOnDrop>true</destroyGearOnDrop>
+  </PawnKindDef>
+  <!-- Gold Golem -->
+  <ThingDef ParentName="MOL_BaseGolem">
+    <defName>MOL_Golem_Gold</defName>
+    <label>Golden Golem</label>
+    <description>A golem made out of gold.</description>
+    <statBases>
+      <MoveSpeed>3.9</MoveSpeed>
+      <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+      <PsychicSensitivity>0.75</PsychicSensitivity>
+    </statBases>
+    <tools>
+      <li>
+        <label>left hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>right hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>21</power>
+        <cooldownTime>2.6</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <PE_RawGold>50</PE_RawGold>
+    </butcherProducts>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_Golem_Gold</defName>
+    <label>Golden Golem</label>
+    <race>MOL_Golem_Gold</race>
+    <combatPower>500</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_GolemGold/MOL_GolemGold</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.8</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  <!-- Steel Golem -->
+  <ThingDef ParentName="MOL_BaseGolem">
+    <defName>MOL_Golem_Steel</defName>
+    <label>Steel Golem</label>
+    <description>A golem made out of steel.</description>
+    <statBases>
+      <MoveSpeed>3.9</MoveSpeed>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+      <PsychicSensitivity>0.75</PsychicSensitivity>
+    </statBases>
+    <tools>
+      <li>
+        <label>left hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>right hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>21</power>
+        <cooldownTime>2.6</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <ChunkSlagSteel>8</ChunkSlagSteel>
+    </butcherProducts>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_Golem_Steel</defName>
+    <label>Steel Golem</label>
+    <race>MOL_Golem_Steel</race>
+    <combatPower>500</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_GolemSteel/MOL_GolemSteel</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.8</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  <ThingDef ParentName="MOL_BaseGolem">
+    <defName>MOL_Golem_Silver</defName>
+    <label>Silver Golem</label>
+    <description>A golem made out of silver</description>
+    <statBases>
+      <MoveSpeed>3.9</MoveSpeed>
+      <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+      <PsychicSensitivity>0.75</PsychicSensitivity>
+    </statBases>
+    <tools>
+      <li>
+        <label>left hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>right hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>21</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>21</power>
+        <cooldownTime>2.6</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <PE_RawSilver>50</PE_RawSilver>
+    </butcherProducts>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_Golem_Silver</defName>
+    <label>Silver Golem</label>
+    <race>MOL_Golem_Silver</race>
+    <combatPower>500</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_GolemSilver/MOL_GolemSilver</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.8</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  <!-- Plasteel Golem -->
+  <ThingDef ParentName="MOL_BaseGolem">
+    <defName>MOL_Golem_Plasteel</defName>
+    <label>Plasteel Golem</label>
+    <description>A golem made out of plasteel. The pinnacle of golem construction, combining incredible durability with surprising agility.</description>
+    <statBases>
+      <MoveSpeed>4.2</MoveSpeed>
+      <ArmorRating_Blunt>0.55</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+      <PsychicSensitivity>0.25</PsychicSensitivity>
+    </statBases>
+    <tools>
+      <li>
+        <label>left hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>25</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>18</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>1.8</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>right hand</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>25</power>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>18</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+        <cooldownTime>1.8</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>25</power>
+        <cooldownTime>2.4</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+      </li>
+    </tools>
+    <race>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_HitBuilding_Stone</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <PE_RawPlasteel>50</PE_RawPlasteel>
+    </butcherProducts>
+  </ThingDef>
+  <PawnKindDef>
+    <defName>MOL_Golem_Plasteel</defName>
+    <label>Plasteel Golem</label>
+    <race>MOL_Golem_Plasteel</race>
+    <combatPower>650</combatPower>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/MOL_GolemPlasteel/MOL_GolemPlasteel</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.8</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
 </Defs>
