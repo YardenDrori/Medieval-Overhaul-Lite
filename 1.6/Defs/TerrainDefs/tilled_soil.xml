@@ -48,12 +48,15 @@
   <!-- Abstract parents for each soil state (different textures) -->
   <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainRich" ParentName="MOL_TerrainBase" Abstract="True">
     <texturePath>Terrain/MOL_SoilTilledRich</texturePath>
+    <terrainComps Inherit="False"/>
   </VEF.Maps.ActiveTerrainDef>
   <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainWeathered" ParentName="MOL_TerrainBase" Abstract="True">
     <texturePath>Terrain/MOL_SoilTilled</texturePath>
+    <terrainComps Inherit="False"/>
   </VEF.Maps.ActiveTerrainDef>
   <VEF.Maps.ActiveTerrainDef Name="MOL_TerrainDepleted" ParentName="MOL_TerrainBase" Abstract="True">
     <texturePath>Terrain/MOL_SoilTilledDepleted</texturePath>
+    <terrainComps Inherit="False"/>
   </VEF.Maps.ActiveTerrainDef>
   <!-- ========================================== -->
   <!-- Player-buildable version                   -->

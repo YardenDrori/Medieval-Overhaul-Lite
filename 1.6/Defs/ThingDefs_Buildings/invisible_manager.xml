@@ -9,7 +9,7 @@
     <drawerType>None</drawerType>
     <useHitPoints>false</useHitPoints>
     <selectable>false</selectable>
-    <category>Mote</category>
+    <category>Building</category>
     <seeThroughFog>true</seeThroughFog>
   </ThingDef>
 </Defs>

@@ -1,5 +1,4 @@
 add plants
-add biome
 
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
