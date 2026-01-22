@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IncidentDef>
+    <defName>MOL_DeepDrillGolemAttack</defName>
+    <label>deep drill golem attack</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+      <li>Map_TempIncident</li>
+      <li>Map_Misc</li>
+      <li>Map_RaidBeacon</li>
+    </targetTags>
+    <workerClass>MOExpandedLite.IncidentWorker_DeepDrillGolemAttack</workerClass>
+    <letterLabel>Too Deep: Animated Stone</letterLabel>
+    <letterText>Your drilling operations have triggered a psychoreactive response in nearby mineral deposits. The rock is moving.\nThe formation will attack anything nearby until the animation fades or it's destroyed.</letterText>
+    <baseChance>0.3</baseChance>
+    <category>DeepDrillInfestation</category>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+</Defs>

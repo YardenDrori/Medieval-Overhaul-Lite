@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Add golem attack comp to deep drills -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="DeepDrill"]/comps</xpath>
+    <value>
+      <li Class="MOExpandedLite.CompProperties_CreatesGolemAttacks" />
+    </value>
+  </Operation>
+
+</Patch>

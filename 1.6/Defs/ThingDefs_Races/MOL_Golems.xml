@@ -110,7 +110,7 @@
     <defName>MOL_Golem_Iron</defName>
     <label>Iron Golem</label>
     <race>MOL_Golem_Iron</race>
-    <combatPower>500</combatPower>
+    <combatPower>350</combatPower>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -199,7 +199,7 @@
     <defName>MOL_Golem_Gold</defName>
     <label>Golden Golem</label>
     <race>MOL_Golem_Gold</race>
-    <combatPower>500</combatPower>
+    <combatPower>350</combatPower>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -286,7 +286,7 @@
     <defName>MOL_Golem_Steel</defName>
     <label>Steel Golem</label>
     <race>MOL_Golem_Steel</race>
-    <combatPower>500</combatPower>
+    <combatPower>400</combatPower>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -372,7 +372,7 @@
     <defName>MOL_Golem_Silver</defName>
     <label>Silver Golem</label>
     <race>MOL_Golem_Silver</race>
-    <combatPower>500</combatPower>
+    <combatPower>350</combatPower>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -459,7 +459,7 @@
     <defName>MOL_Golem_Plasteel</defName>
     <label>Plasteel Golem</label>
     <race>MOL_Golem_Plasteel</race>
-    <combatPower>650</combatPower>
+    <combatPower>600</combatPower>
     <lifeStages>
       <li>
         <bodyGraphicData>
