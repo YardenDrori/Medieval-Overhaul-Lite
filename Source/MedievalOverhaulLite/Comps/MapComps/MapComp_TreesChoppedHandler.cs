@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -7,7 +6,7 @@ namespace MOExpandedLite;
 
 public class MapComponent_TreesChoppedHandler : MapComponent
 {
-  public float treePointsChopped = 0;
+  private float treePointsChopped = 0;
   private Dictionary<int, float> plantExpirationDict = new();
 
   public void NotifyTreeChopped(float points, Pawn worker)
@@ -51,11 +50,35 @@ public class MapComponent_TreesChoppedHandler : MapComponent
     {
       return;
     }
+    SpawnEnts(worker);
+  }
+
+  private void SpawnEnts(Pawn worker)
+  {
+    // Fire the ent attack incident
+    IncidentParms parms = StorytellerUtility.DefaultParmsNow(
+      IncidentCategoryDefOf.ThreatBig,
+      this.map
+    );
+    parms.forced = true;
+    parms.target = this.map;
+    parms.spawnCenter = worker.Position; // Pass the worker's position to the incident
+
+    IncidentDef entAttack = IncidentDef.Named("MOL_EntAttack");
+    if (entAttack != null)
+    {
+      entAttack.Worker.TryExecute(parms);
+    }
+    else
+    {
+      Log.Error("MOL_EntAttack IncidentDef not found!");
+    }
   }
 
   private bool ShouldSpawnEnts()
   {
-    if (Rand.Value > 0.01f + treePointsChopped)
+    // if (Rand.Value > 0.01f + treePointsChopped)
+    if (Rand.Value > 0.5f)
     {
       return false;
     }

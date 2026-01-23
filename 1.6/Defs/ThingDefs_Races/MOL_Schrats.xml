@@ -13,6 +13,11 @@
       <ComfyTemperatureMax>250</ComfyTemperatureMax>
       <MeatAmount>0</MeatAmount>
     </statBases>
+    <comps>
+      <li Class="MOExpandedLite.CompProperties_PlantEnergy">
+        <totalPowerTicks>20000</totalPowerTicks>
+      </li>
+    </comps>
     <tools>
       <li>
         <label>left fist</label>
@@ -151,6 +156,11 @@
       <ComfyTemperatureMax>250</ComfyTemperatureMax>
       <MeatAmount>0</MeatAmount>
     </statBases>
+    <comps>
+      <li Class="MOExpandedLite.CompProperties_PlantEnergy">
+        <totalPowerTicks>20000</totalPowerTicks>
+      </li>
+    </comps>
     <tools>
       <li>
         <label>left fist</label>

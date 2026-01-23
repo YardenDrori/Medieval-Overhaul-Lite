@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <IncidentDef>
+    <defName>MOL_EntAttack</defName>
+    <label>ent attack</label>
+    <category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>MOExpandedLite.IncidentWorker_EntAttack</workerClass>
+    <baseChance>0</baseChance>
+    <letterLabel>Psychoreactive Animation</letterLabel>
+    <letterText>Your logging operations have reached a critical threshold. Psychoreactive alterations in nearby trees - likely dormant archotech contamination - have triggered a violent defensive response.\n\nThe wood is moving. These animated masses will attack anything nearby until the psychoreactive episode fades or they're destroyed.</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <pointsScaleable>true</pointsScaleable>
+  </IncidentDef>
+</Defs>
