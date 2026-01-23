@@ -1,4 +1,6 @@
 add plants
 
+add more ways to spawn/find golems
+
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
