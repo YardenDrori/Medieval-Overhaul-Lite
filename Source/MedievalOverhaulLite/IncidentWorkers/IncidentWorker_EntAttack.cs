@@ -56,8 +56,8 @@ public class IncidentWorker_EntAttack : IncidentWorker
     // Get available ent types
     PawnKindDef majorEntDark = PawnKindDef.Named("MOL_Schrat_Dark");
     PawnKindDef majorEntPlains = PawnKindDef.Named("MOL_Schrat_Plains");
-    PawnKindDef minorEntDark = PawnKindDef.Named("MOL_Sapling_Dark");
-    PawnKindDef minorEntPlains = PawnKindDef.Named("MOL_Sapling_Plains");
+    PawnKindDef minorEntDark = PawnKindDef.Named("MOL_SchratDark_Sapling");
+    PawnKindDef minorEntPlains = PawnKindDef.Named("MOL_SchratPlains_Sapling");
 
     List<PawnKindDef> entKindsPlains = new List<PawnKindDef> { majorEntPlains, minorEntPlains };
     List<PawnKindDef> entKindsDark = new List<PawnKindDef> { majorEntDark, minorEntDark };
