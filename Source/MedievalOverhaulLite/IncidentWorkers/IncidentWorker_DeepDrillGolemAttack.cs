@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace MOExpandedLite;
@@ -8,9 +9,6 @@ namespace MOExpandedLite;
 public class IncidentWorker_DeepDrillGolemAttack : IncidentWorker
 {
   private static List<Thing> tmpDrills = new List<Thing>();
-
-  // Each subsequent golem costs 20% more
-  private const float CostScalingPerGolem = 1.2f;
 
   protected override bool CanFireNowSub(IncidentParms parms)
   {
@@ -34,101 +32,38 @@ public class IncidentWorker_DeepDrillGolemAttack : IncidentWorker
       return false;
     }
 
-    // Spawn golems near the drill using storyteller's points directly
-    int golemsSpawned = SpawnGolemsNear(deepDrill.Position, map, parms.points);
+    // Find spawn location near drill
+    ThingDef spawnerDef = DefDatabase<ThingDef>.GetNamedSilentFail("MOL_GolemSpawner");
+    if (spawnerDef == null)
+    {
+      Log.Error("[Medieval Overhaul Lite] Could not find MOL_GolemSpawner ThingDef");
+      return false;
+    }
 
-    if (golemsSpawned == 0)
+    IntVec3 spawnLoc = CellFinder.FindNoWipeSpawnLocNear(
+      deepDrill.Position,
+      map,
+      spawnerDef,
+      Rot4.North,
+      10,
+      (IntVec3 x) => x.Walkable(map) && x.GetFirstThing(map, deepDrill.def) == null
+    );
+
+    if (spawnLoc == deepDrill.Position)
     {
       return false;
     }
+
+    // Create and spawn the golem spawner with all points
+    GolemSpawner golemSpawner = (GolemSpawner)ThingMaker.MakeThing(spawnerDef);
+    golemSpawner.golemPoints = parms.points;
+    GenSpawn.Spawn(golemSpawner, spawnLoc, map, WipeMode.FullRefund);
 
     // Notify the comp that we spawned an attack
     deepDrill.TryGetComp<CompCreatesGolemAttacks>()?.Notify_CreatedGolemAttack();
 
     SendStandardLetter(parms, new TargetInfo(deepDrill.Position, map));
     return true;
-  }
-
-  private int SpawnGolemsNear(IntVec3 position, Map map, float points)
-  {
-    List<PawnKindDef> golemKinds = new List<PawnKindDef>
-    {
-      PawnKindDef.Named("MOL_Golem_Iron"),
-      PawnKindDef.Named("MOL_Golem_Steel"),
-      PawnKindDef.Named("MOL_Golem_Gold"),
-      PawnKindDef.Named("MOL_Golem_Silver"),
-      PawnKindDef.Named("MOL_Golem_Plasteel"),
-    };
-
-    // Filter to only valid defs (in case some aren't loaded)
-    golemKinds = golemKinds.Where(k => k != null).ToList();
-
-    if (!golemKinds.Any())
-    {
-      Log.Warning("IncidentWorker_DeepDrillGolemAttack: No golem PawnKindDefs found!");
-      return 0;
-    }
-
-    int spawned = 0;
-    float pointsRemaining = points;
-    float costMultiplier = 1f;
-
-    while (pointsRemaining > 0)
-    {
-      // Pick a random golem type we can afford (accounting for cost scaling)
-      List<PawnKindDef> affordable = golemKinds
-        .Where(k => k.combatPower * costMultiplier <= pointsRemaining)
-        .ToList();
-
-      if (!affordable.Any())
-      {
-        break;
-      }
-
-      PawnKindDef golemKind = affordable.RandomElement();
-
-      // Find a spawn location
-      if (
-        !CellFinder.TryFindRandomCellNear(
-          position,
-          map,
-          10,
-          (IntVec3 c) => c.Standable(map) && !c.Fogged(map),
-          out IntVec3 spawnCell
-        )
-      )
-      {
-        break;
-      }
-
-      // Spawn the golem
-      Pawn golem = PawnGenerator.GeneratePawn(
-        new PawnGenerationRequest(
-          golemKind,
-          faction: null,
-          context: PawnGenerationContext.NonPlayer,
-          tile: map.Tile,
-          forceGenerateNewPawn: true,
-          allowDead: false,
-          allowDowned: false
-        )
-      );
-
-      GenSpawn.Spawn(golem, spawnCell, map, Rot4.Random);
-
-      // Make golem aggressive
-      golem.mindState.mentalStateHandler.TryStartMentalState(
-        MentalStateDefOf.Manhunter,
-        forceWake: true
-      );
-
-      // Deduct points with current multiplier, then increase cost for next golem
-      pointsRemaining -= golemKind.combatPower * costMultiplier;
-      costMultiplier *= CostScalingPerGolem;
-      spawned++;
-    }
-
-    return spawned;
   }
 
   public static void GetUsableDeepDrills(Map map, List<Thing> outDrills)

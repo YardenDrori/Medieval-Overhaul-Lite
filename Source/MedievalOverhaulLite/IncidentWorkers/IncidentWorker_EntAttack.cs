@@ -1,178 +1,143 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace MOExpandedLite;
 
 public class IncidentWorker_EntAttack : IncidentWorker
 {
-  private const float CostScalingPerEnt = 1.2f;
-
   protected override bool TryExecuteWorker(IncidentParms parms)
   {
     Map map = (Map)parms.target;
 
-    // Find trees near the spawn center (worker's position)
-    const int radius = 25;
+    // Find trees near the spawn center
+    const int radius = 45;
     List<Thing> treesNearPawn = new List<Thing>();
     foreach (
       Thing thing in GenRadial.RadialDistinctThingsAround(parms.spawnCenter, map, radius, true)
     )
     {
-      if (thing is Plant plant && plant.def.plant.IsTree)
+      if (thing is Plant plant && plant.def.plant.IsTree && !plant.Destroyed)
       {
-        treesNearPawn.Add(plant);
+        treesNearPawn.Add(thing);
       }
     }
 
     if (treesNearPawn.Count == 0)
     {
-      // Fallback in case there weren't any trees near the worker
-      treesNearPawn = map.listerThings.ThingsInGroup(ThingRequestGroup.Plant);
+      // Fallback - find any tree on the map
+      foreach (Thing thing in map.listerThings.ThingsInGroup(ThingRequestGroup.Plant))
+      {
+        if (thing is Plant plant && plant.def.plant.IsTree && !plant.Destroyed)
+        {
+          treesNearPawn.Add(thing);
+        }
+      }
     }
 
     if (treesNearPawn.Count == 0)
     {
-      // No trees on the map at all
       return false;
     }
 
-    // Spawn ents near the trees using storyteller's points
-    int entsSpawned = SpawnEntsNear(treesNearPawn, map, parms.points);
-
-    if (entsSpawned == 0)
+    // Get the spawner def
+    ThingDef spawnerDef = DefDatabase<ThingDef>.GetNamedSilentFail("MOL_EntSpawner");
+    if (spawnerDef == null)
     {
+      Log.Error("[Medieval Overhaul Lite] Could not find MOL_EntSpawner ThingDef");
       return false;
     }
 
-    // Send letter to player
-    SendStandardLetter(parms, new TargetInfo(parms.spawnCenter, map));
-    return true;
-  }
+    bool spawnDark = map.Biome?.defName == "MOL_DarkForest";
 
-  private int SpawnEntsNear(List<Thing> trees, Map map, float points)
-  {
-    // Get available ent types
-    PawnKindDef majorEntDark = PawnKindDef.Named("MOL_Schrat_Dark");
-    PawnKindDef majorEntPlains = PawnKindDef.Named("MOL_Schrat_Plains");
-    PawnKindDef minorEntDark = PawnKindDef.Named("MOL_SchratDark_Sapling");
-    PawnKindDef minorEntPlains = PawnKindDef.Named("MOL_SchratPlains_Sapling");
+    // Get available ent kinds
+    PawnKindDef majorEnt = spawnDark
+      ? PawnKindDef.Named("MOL_Schrat_Dark")
+      : PawnKindDef.Named("MOL_Schrat_Plains");
+    PawnKindDef minorEnt = spawnDark
+      ? PawnKindDef.Named("MOL_SchratDark_Sapling")
+      : PawnKindDef.Named("MOL_SchratPlains_Sapling");
 
-    List<PawnKindDef> entKindsPlains = new List<PawnKindDef> { majorEntPlains, minorEntPlains };
-    List<PawnKindDef> entKindsDark = new List<PawnKindDef> { majorEntDark, minorEntDark };
+    List<PawnKindDef> availableEnts = new List<PawnKindDef>();
+    if (majorEnt != null)
+      availableEnts.Add(majorEnt);
+    if (minorEnt != null)
+      availableEnts.Add(minorEnt);
 
-    // Filter to only valid defs
-    entKindsDark = entKindsDark.Where(k => k != null).ToList();
-    entKindsPlains = entKindsPlains.Where(k => k != null).ToList();
-
-    if (!entKindsDark.Any() || !entKindsPlains.Any())
+    if (availableEnts.Count == 0)
     {
-      Log.Warning("IncidentWorker_EntAttack: No ent PawnKindDefs found!");
-      return 0;
+      Log.Warning("[Medieval Overhaul Lite] No ent PawnKindDefs found!");
+      return false;
     }
 
+    // Get minimum cost
+    float minCost = availableEnts.Min(e => e.combatPower);
+
+    float pointsRemaining = parms.points;
     int spawned = 0;
-    float pointsRemaining = points;
-    float costMultiplier = 1f;
+    List<Thing> spawnedSpawners = new List<Thing>();
 
-    bool spawnDark = map.Biome == BiomeDef.Named("MOL_DarkForest");
-
-    while (pointsRemaining > 0)
+    // Create spawners until we run out of points/trees
+    while (pointsRemaining >= minCost && treesNearPawn.Count > 0)
     {
-      // Pick a random ent type we can afford (accounting for cost scaling)
-      List<PawnKindDef> affordable;
-      if (spawnDark)
+      // Pick ent type - prefer major ents 70% of the time
+      PawnKindDef selectedEnt = null;
+
+      // Check which ents we can afford
+      bool canAffordMajor = majorEnt != null && majorEnt.combatPower <= pointsRemaining;
+      bool canAffordMinor = minorEnt != null && minorEnt.combatPower <= pointsRemaining;
+
+      if (canAffordMajor && Rand.Chance(0.95f))
       {
-        affordable = entKindsDark
-          .Where(k => k.combatPower * costMultiplier <= pointsRemaining)
-          .ToList();
+        selectedEnt = majorEnt;
       }
-      else
+      else if (canAffordMinor)
       {
-        affordable = entKindsPlains
-          .Where(k => k.combatPower * costMultiplier <= pointsRemaining)
-          .ToList();
+        selectedEnt = minorEnt;
+      }
+      else if (canAffordMajor)
+      {
+        selectedEnt = majorEnt;
       }
 
-      if (!affordable.Any())
+      // Can't afford any ent
+      if (selectedEnt == null)
       {
         break;
       }
 
-      PawnKindDef entKind = affordable.RandomElement();
+      // Pick a random tree
+      Thing targetTree = treesNearPawn.RandomElement();
+      treesNearPawn.Remove(targetTree); // Don't use same tree twice
+      Plant plant2 = targetTree as Plant;
 
-      // Pick a random tree to spawn near
-      Thing targetTree = trees.RandomElement();
-      Plant plant = targetTree as Plant;
-
-      // Find a spawn location near the tree
-      if (
-        !CellFinder.TryFindRandomCellNear(
-          targetTree.Position,
-          map,
-          1,
-          (IntVec3 c) => c.Standable(map) && !c.Fogged(map),
-          out IntVec3 spawnCell
-        )
-      )
-      {
-        // Try next tree
-        continue;
-      }
-
-      // Spawn the ent
-      Pawn ent = PawnGenerator.GeneratePawn(
-        new PawnGenerationRequest(
-          entKind,
-          faction: null,
-          context: PawnGenerationContext.NonPlayer,
-          tile: map.Tile,
-          forceGenerateNewPawn: true,
-          allowDead: false,
-          allowDowned: false
-        )
-      );
-
-      GenSpawn.Spawn(ent, spawnCell, map, Rot4.Random);
-
-      // Set energy comp to spawn back into this tree when depleted
-      if (plant != null)
-      {
-        CompPlantEnergy energyComp = ent.TryGetComp<CompPlantEnergy>();
-        if (energyComp != null)
-        {
-          energyComp.SetTreeData(plant.def, plant.Growth);
-        }
-      }
-
-      // Destroy the tree and spawn effects
+      // Store tree data (don't destroy yet - keep visible during animation)
       IntVec3 treePosition = targetTree.Position;
-      targetTree.Destroy(DestroyMode.Vanish);
+      ThingDef treeDef = targetTree.def;
+      float treeGrowth = plant2?.Growth ?? 0.5f;
 
-      //TODO: Add sound effects
+      // Create and spawn the ent spawner at tree position
+      EntSpawner entSpawner = (EntSpawner)ThingMaker.MakeThing(spawnerDef);
+      entSpawner.spawnDarkVariant = spawnDark;
+      entSpawner.treeDefToRestore = treeDef;
+      entSpawner.treeGrowth = treeGrowth;
+      entSpawner.treeToDestroy = targetTree; // Keep the tree alive during animation
+      entSpawner.entKindToSpawn = selectedEnt; // Set which ent this spawner will spawn
+      GenSpawn.Spawn(entSpawner, treePosition, map);
+      spawnedSpawners.Add(entSpawner);
 
-      // Spawn particle effects
-      FleckMaker.ThrowDustPuffThick(
-        treePosition.ToVector3Shifted(),
-        map,
-        2f,
-        UnityEngine.Color.green
-      );
-      FleckMaker.ThrowSmoke(treePosition.ToVector3Shifted(), map, 1.5f);
-
-      // Make ent aggressive
-      ent.mindState.mentalStateHandler.TryStartMentalState(
-        MentalStateDefOf.Manhunter,
-        forceWake: true
-      );
-
-      // Deduct points with current multiplier, then increase cost for next ent
-      pointsRemaining -= entKind.combatPower * costMultiplier;
-      costMultiplier *= CostScalingPerEnt;
+      pointsRemaining -= selectedEnt.combatPower;
       spawned++;
     }
 
-    return spawned;
+    if (spawned == 0)
+    {
+      return false;
+    }
+
+    SendStandardLetter(parms, new LookTargets(spawnedSpawners));
+    return true;
   }
 }

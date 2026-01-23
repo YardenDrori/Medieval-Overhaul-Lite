@@ -17,8 +17,8 @@ public class MapComponent_BurnedTreesHandler : MapComponent
   private const int CacheValidityTicks = 250; // ~4 seconds
 
   private const int TreeRecordExpirationTicks = 720000; // 12 in-game hours
-  private const int MinimumBurnedTreesThreshold = 20;
-  private const float BaseSpawnChance = 0.05f; // 5%
+  private const int MinimumBurnedTreesThreshold = 10;
+  private const float BaseSpawnChance = 0.2f; // 5%
   private const float ChanceDecayMultiplier = 1.25f;
 
   public MapComponent_BurnedTreesHandler(Map map)
@@ -99,19 +99,20 @@ public class MapComponent_BurnedTreesHandler : MapComponent
 
   private bool IsRaining()
   {
-    if (map.weatherManager == null)
-    {
-      return false;
-    }
-
-    WeatherDef currentWeather = map.weatherManager.curWeather;
-    if (currentWeather == null)
-    {
-      return false;
-    }
-
-    // Check if weather has actual rain
-    return currentWeather.rainRate > 0f;
+    return true;
+    // if (map.weatherManager == null)
+    // {
+    //   return false;
+    // }
+    //
+    // WeatherDef currentWeather = map.weatherManager.curWeather;
+    // if (currentWeather == null)
+    // {
+    //   return false;
+    // }
+    //
+    // // Check if weather has actual rain
+    // return currentWeather.rainRate > 0f;
   }
 
   private Thing FindRandomLivingTree()

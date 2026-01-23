@@ -10,10 +10,12 @@
       <li>Map_RaidBeacon</li>
     </targetTags>
     <workerClass>MOExpandedLite.IncidentWorker_DeepDrillGolemAttack</workerClass>
-    <letterLabel>Too Deep: Animated Stone</letterLabel>
-    <letterText>Your drilling operations have triggered a psychoreactive response in nearby mineral deposits. The rock is moving.\nThe formation will attack anything nearby until the animation fades or it's destroyed.</letterText>
+    <letterLabel>Too Deep: Golem Emergence</letterLabel>
+    <letterText>Mining operations have triggered animation in the ore deposit.\n\nMultiple rocky formations are moving toward the surface with hostile intent.\nthe animation will only last a few hours.</letterText>
+    <letterDef>ThreatBig</letterDef>
     <baseChance>0.3</baseChance>
     <category>DeepDrillInfestation</category>
     <pointsScaleable>true</pointsScaleable>
+    <minPoints>350</minPoints>
   </IncidentDef>
 </Defs>

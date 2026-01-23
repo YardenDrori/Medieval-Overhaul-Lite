@@ -21,10 +21,10 @@
     </li>
   </modDependencies>
   <loadAfter>
+    <li>ludeon.rimworld</li>
     <li>blacksparrow.productionexpanded</li>
     <li>dubwise.dubsbadhygiene</li>
     <li>vanillaexpanded.vtexe</li>
-    <li>blacksparrow.productionexpanded</li>
   </loadAfter>
   <description>Medieval overhaul but better imo tho i love the original</description>
 </ModMetaData>

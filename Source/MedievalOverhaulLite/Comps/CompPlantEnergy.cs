@@ -5,13 +5,28 @@ namespace MOExpandedLite;
 
 public class CompProperties_PlantEnergy : CompProperties_MechPowerCell
 {
-  public ThingDef thingToSpawnOnEmpty = null;
+  private ThingDef cachedThingToSpawnOnEmpty;
+  public ThingDef thingToSpawnOnEmpty
+  {
+    get
+    {
+      if (cachedThingToSpawnOnEmpty == null)
+      {
+        cachedThingToSpawnOnEmpty = DefDatabase<ThingDef>.GetNamedSilentFail("Plant_TreeOak");
+      }
+      return cachedThingToSpawnOnEmpty;
+    }
+  }
   public float growthPercentage = 0.15f;
 
   public CompProperties_PlantEnergy()
   {
     compClass = typeof(CompPlantEnergy);
     totalPowerTicks = 20000;
+    tooltipOverride =
+      "Temporary animation triggered by disturbance and psychic phenomena granting limited autonamy. The animation will become ordinary matter once this energy dissipates.";
+    showGizmoOnNonPlayerControlled = true;
+    killWhenDepleted = false;
   }
 }
 

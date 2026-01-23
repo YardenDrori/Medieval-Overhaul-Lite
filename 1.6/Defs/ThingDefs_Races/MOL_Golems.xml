@@ -3,7 +3,7 @@
   <ThingDef ParentName="BasePawn" Name="MOL_BaseGolem">
     <defName>MOL_Golem_Iron</defName>
     <label>Iron Golem</label>
-    <description>A golem made out of iron</description>
+    <description>Raw iron ore achieving temporary autonomy through violent disturbance. Drilling, explosions, or seismic activity combined with ambient psychic phenomena can grant crude mobility and aggression to natural ore deposits.\n\nThe formation perceives threats and attacks with grinding, uncoordinated strikes until the animation exhausts itself. Iron animates readily but clumsily compared to other metals.\n\nMost attribute the underlying phenomena to archotech activity from ancient conflicts, though whether this was intentional design, collateral damage, or unintended consequence remains unknown.</description>
     <statBases>
       <MoveSpeed>3.2</MoveSpeed>
       <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
@@ -130,11 +130,11 @@
   <ThingDef ParentName="MOL_BaseGolem">
     <defName>MOL_Golem_Gold</defName>
     <label>Golden Golem</label>
-    <description>A golem made out of gold.</description>
+    <description>Rare gold deposits achieving powerful animation through psychic resonance. Violent disturbance combined with ambient psychic phenomena can grant temporary autonomy, with gold's atomic structure naturally amplifying whatever allows animation.\nThis resonance explains both the ore's aggressive behavior and its unexpected durability - animated gold combines speed, resilience, and brutal striking force that makes it extraordinarily deadly.\n\nEarly prospectors were delighted to discover gold that came to them voluntarily. That delight ended when the first animated deposit crushed a mining crew.</description>
     <statBases>
-      <MoveSpeed>3.9</MoveSpeed>
-      <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.72</ArmorRating_Sharp>
+      <MoveSpeed>4.3</MoveSpeed>
+      <ArmorRating_Blunt>0.44</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.88</ArmorRating_Sharp>
       <PsychicSensitivity>0.75</PsychicSensitivity>
     </statBases>
     <tools>
@@ -143,12 +143,12 @@
         <capacities>
           <li>Demolish</li>
         </capacities>
-        <power>21</power>
+        <power>26</power>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
               <def>Stun</def>
-              <amount>14</amount>
+              <amount>16</amount>
             </li>
           </extraMeleeDamages>
         </surpriseAttack>
@@ -161,12 +161,12 @@
         <capacities>
           <li>Demolish</li>
         </capacities>
-        <power>21</power>
+        <power>26</power>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
               <def>Stun</def>
-              <amount>14</amount>
+              <amount>16</amount>
             </li>
           </extraMeleeDamages>
         </surpriseAttack>
@@ -179,7 +179,7 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>21</power>
+        <power>26</power>
         <cooldownTime>2.6</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -199,7 +199,7 @@
     <defName>MOL_Golem_Gold</defName>
     <label>Golden Golem</label>
     <race>MOL_Golem_Gold</race>
-    <combatPower>350</combatPower>
+    <combatPower>500</combatPower>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -217,7 +217,7 @@
   <ThingDef ParentName="MOL_BaseGolem">
     <defName>MOL_Golem_Steel</defName>
     <label>Steel Golem</label>
-    <description>A golem made out of steel.</description>
+    <description>Steel rubble achieving animation. Violent disturbance combined with ambient psychic phenomena can grant temporary autonomy even to smelted metal - an unusual property, as most refined materials lose this capacity.\n\nSteel formations move with mechanical precision and enhanced durability compared to raw iron ore, suggesting the refining process concentrates rather than removes whatever allows animation.\n\nThe phenomenon's origin traces to archotech activity, though the specifics remain unclear. Animation eventually exhausts itself.</description>
     <statBases>
       <MoveSpeed>3.9</MoveSpeed>
       <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
@@ -303,9 +303,9 @@
   <ThingDef ParentName="MOL_BaseGolem">
     <defName>MOL_Golem_Silver</defName>
     <label>Silver Golem</label>
-    <description>A golem made out of silver</description>
+    <description>Silver ore achieving dangerous animation. Violent disturbance combined with ambient psychic phenomena can grant temporary autonomy to natural deposits, with silver's exceptional conductivity - both electrical and psychic - amplifying the effect dramatically.\n\nAnimated silver moves with unnatural speed, fast enough to overtake fleeing targets. The metal strikes significantly harder than iron despite similar density. Why silver's properties create such aggressive responses puzzles researchers.\n\nMost point to archotech influences as the root cause of the animation.</description>
     <statBases>
-      <MoveSpeed>3.9</MoveSpeed>
+      <MoveSpeed>4.8</MoveSpeed>
       <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.72</ArmorRating_Sharp>
       <PsychicSensitivity>0.75</PsychicSensitivity>
@@ -316,7 +316,7 @@
         <capacities>
           <li>Demolish</li>
         </capacities>
-        <power>21</power>
+        <power>23</power>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
@@ -334,7 +334,7 @@
         <capacities>
           <li>Demolish</li>
         </capacities>
-        <power>21</power>
+        <power>23</power>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
@@ -352,7 +352,7 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>21</power>
+        <power>23</power>
         <cooldownTime>2.6</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -372,7 +372,7 @@
     <defName>MOL_Golem_Silver</defName>
     <label>Silver Golem</label>
     <race>MOL_Golem_Silver</race>
-    <combatPower>350</combatPower>
+    <combatPower>400</combatPower>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -390,7 +390,7 @@
   <ThingDef ParentName="MOL_BaseGolem">
     <defName>MOL_Golem_Plasteel</defName>
     <label>Plasteel Golem</label>
-    <description>A golem made out of plasteel. The pinnacle of golem construction, combining incredible durability with surprising agility.</description>
+    <description>Advanced composite material achieving catastrophic animation. Violent disturbance combined with ambient psychic phenomena can grant temporary autonomy even to this sophisticated alloy.\n\nPlasteel formations move with near-indestructible durability and devastating force - advanced materials designed to resist damage, now mobile and hostile. Whether archotechs influenced plasteel's original development or the material was contaminated afterward is hotly debated.\n\nLike sanguophages and psylink neuroformers, plasteel golems represent archotech mysteries that defy complete understanding. The animation eventually fades.</description>
     <statBases>
       <MoveSpeed>4.2</MoveSpeed>
       <ArmorRating_Blunt>0.55</ArmorRating_Blunt>

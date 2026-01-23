@@ -42,7 +42,7 @@
 		<hitPoints>20</hitPoints>
 		<frostbiteVulnerability>5</frostbiteVulnerability>
 		<permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
-		<skinCovered>false</skinCovered>
+		<skinCovered>true</skinCovered>
 		<solid>true</solid>
 		<alive>false</alive>
 		<bleedRate>0</bleedRate>
