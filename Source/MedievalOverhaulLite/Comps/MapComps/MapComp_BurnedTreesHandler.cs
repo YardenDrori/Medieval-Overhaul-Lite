@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace MOExpandedLite;
@@ -132,13 +133,12 @@ public class MapComponent_BurnedTreesHandler : MapComponent
     List<Thing> allPlants = map.listerThings.ThingsInGroup(ThingRequestGroup.Plant);
 
     cachedLivingTrees = allPlants
-      .Where(
-        thing =>
-          thing is Plant plant
-          && plant.def.plant != null
-          && plant.def.plant.IsTree
-          && !plant.Destroyed
-          && plant.Growth >= 0.5f
+      .Where(thing =>
+        thing is Plant plant
+        && plant.def.plant != null
+        && plant.def.plant.IsTree
+        && !plant.Destroyed
+        && plant.Growth >= 0.5f
       ) // At least 50% grown
       .ToList();
 

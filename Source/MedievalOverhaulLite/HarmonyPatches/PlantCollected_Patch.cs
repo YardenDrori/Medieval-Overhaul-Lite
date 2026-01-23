@@ -9,10 +9,16 @@ namespace MOExpandedLite.HarmonyPatches;
 [HarmonyPatch(typeof(Plant), nameof(Plant.PlantCollected))]
 public static class PlantCollected_Patch
 {
-  [HarmonyPostfix]
-  public static void Postfix(Plant __instance, Pawn by, PlantDestructionMode plantDestructionMode)
+  [HarmonyPrefix]
+  public static void Prefix(Plant __instance, out Map __state)
   {
-    if (!__instance.def.plant.IsTree)
+    __state = __instance.Map;
+  }
+
+  [HarmonyPostfix]
+  public static void Postfix(Plant __instance, Pawn by, PlantDestructionMode plantDestructionMode, Map __state)
+  {
+    if (__state == null || !__instance.def.plant.IsTree)
     {
       return;
     }
@@ -20,13 +26,12 @@ public static class PlantCollected_Patch
     points += __instance.def.plant.harvestYield;
     points += __instance.Growth * __instance.def.plant.growDays;
     MapComponent_TreesChoppedHandler treesChoppedHandler =
-      __instance.Map.GetComponent<MapComponent_TreesChoppedHandler>();
+      __state.GetComponent<MapComponent_TreesChoppedHandler>();
     if (treesChoppedHandler == null)
     {
       Log.Error("[Medieval Overhaul Lite] Failed to find MapComponent_TreesChoppedHandler");
       return;
     }
     treesChoppedHandler.NotifyTreeChopped(points, by);
-    return;
   }
 }
