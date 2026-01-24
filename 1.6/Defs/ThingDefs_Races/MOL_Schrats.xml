@@ -14,7 +14,7 @@
       <MeatAmount>0</MeatAmount>
     </statBases>
     <comps>
-      <li Class="MOExpandedLite.CompProperties_PlantEnergy">
+      <li Class="MOExpandedLite.CompProperties_AnimationEnergy">
         <totalPowerTicks>20000</totalPowerTicks>
       </li>
     </comps>
@@ -157,7 +157,7 @@
       <MeatAmount>0</MeatAmount>
     </statBases>
     <comps>
-      <li Class="MOExpandedLite.CompProperties_PlantEnergy">
+      <li Class="MOExpandedLite.CompProperties_AnimationEnergy">
         <totalPowerTicks>20000</totalPowerTicks>
       </li>
     </comps>

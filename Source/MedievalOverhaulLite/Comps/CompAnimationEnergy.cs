@@ -3,7 +3,7 @@ using Verse;
 
 namespace MOExpandedLite;
 
-public class CompProperties_PlantEnergy : CompProperties_MechPowerCell
+public class CompProperties_AnimationEnergy : CompProperties_MechPowerCell
 {
   private ThingDef cachedThingToSpawnOnEmpty;
   public ThingDef thingToSpawnOnEmpty
@@ -19,9 +19,9 @@ public class CompProperties_PlantEnergy : CompProperties_MechPowerCell
   }
   public float growthPercentage = 0.15f;
 
-  public CompProperties_PlantEnergy()
+  public CompProperties_AnimationEnergy()
   {
-    compClass = typeof(CompPlantEnergy);
+    compClass = typeof(CompAnimationEnergy);
     totalPowerTicks = 20000;
     tooltipOverride =
       "Temporary animation triggered by disturbance and psychic phenomena granting limited autonamy. The animation will become ordinary matter once this energy dissipates.";
@@ -30,9 +30,9 @@ public class CompProperties_PlantEnergy : CompProperties_MechPowerCell
   }
 }
 
-public class CompPlantEnergy : CompMechPowerCell
+public class CompAnimationEnergy : CompMechPowerCell
 {
-  public new CompProperties_PlantEnergy Props => (CompProperties_PlantEnergy)props;
+  public new CompProperties_AnimationEnergy Props => (CompProperties_AnimationEnergy)props;
 
   // Runtime-set values (override Props defaults)
   private ThingDef treeTypeToSpawn;

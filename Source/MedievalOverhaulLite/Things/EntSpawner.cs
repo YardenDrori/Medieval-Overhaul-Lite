@@ -43,10 +43,14 @@ public class EntSpawner : ThingWithComps
     {
       spawnTick = Find.TickManager.TicksGame + SpawnDelay.RandomInRange;
     }
-    LongEventHandler.ExecuteWhenFinished(delegate
-    {
-      sustainer = SoundDefOf.Tunnel?.TrySpawnSustainer(SoundInfo.InMap(this, MaintenanceType.PerTick));
-    });
+    LongEventHandler.ExecuteWhenFinished(
+      delegate
+      {
+        sustainer = SoundDefOf.Tunnel?.TrySpawnSustainer(
+          SoundInfo.InMap(this, MaintenanceType.PerTick)
+        );
+      }
+    );
   }
 
   protected override void Tick()
@@ -63,13 +67,16 @@ public class EntSpawner : ThingWithComps
     // Throw leaf/dust particles periodically to simulate tree shaking
     if (Find.TickManager.TicksGame % 15 == 0)
     {
-      Vector3 loc = Position.ToVector3Shifted() + new Vector3(Rand.Range(-0.5f, 0.5f), 0, Rand.Range(-0.5f, 0.5f));
+      Vector3 loc =
+        Position.ToVector3Shifted()
+        + new Vector3(Rand.Range(-0.5f, 0.5f), 0, Rand.Range(-0.5f, 0.5f));
       FleckMaker.ThrowDustPuff(loc, Map, 0.5f);
     }
     if (Find.TickManager.TicksGame % 30 == 0)
     {
       // Simulate leaves/debris falling
-      Vector3 loc = Position.ToVector3Shifted() + new Vector3(Rand.Range(-1f, 1f), 0, Rand.Range(-1f, 1f));
+      Vector3 loc =
+        Position.ToVector3Shifted() + new Vector3(Rand.Range(-1f, 1f), 0, Rand.Range(-1f, 1f));
       FleckMaker.ThrowMicroSparks(loc, Map);
     }
 
@@ -110,7 +117,7 @@ public class EntSpawner : ThingWithComps
     // Set energy comp to restore tree when depleted
     if (treeDefToRestore != null)
     {
-      CompPlantEnergy energyComp = ent.TryGetComp<CompPlantEnergy>();
+      CompAnimationEnergy energyComp = ent.TryGetComp<CompAnimationEnergy>();
       if (energyComp != null)
       {
         energyComp.SetTreeData(treeDefToRestore, treeGrowth);

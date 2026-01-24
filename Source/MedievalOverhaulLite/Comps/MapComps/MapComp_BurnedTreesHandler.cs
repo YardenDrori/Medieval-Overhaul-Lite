@@ -196,7 +196,7 @@ public class MapComponent_BurnedTreesHandler : MapComponent
     GenSpawn.Spawn(sapling, treePosition, map, Rot4.Random);
 
     // Set energy comp to spawn tree back when depleted (same as Ent behavior)
-    CompPlantEnergy energyComp = sapling.TryGetComp<CompPlantEnergy>();
+    CompAnimationEnergy energyComp = sapling.TryGetComp<CompAnimationEnergy>();
     if (energyComp != null)
     {
       energyComp.SetTreeData(treeDef, treeGrowth);
