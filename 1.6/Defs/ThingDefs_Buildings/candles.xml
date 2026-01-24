@@ -56,7 +56,7 @@
     </costList>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>0.5</fuelConsumptionRate>
+        <fuelConsumptionRate>0.25</fuelConsumptionRate>
         <fuelCapacity>10</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <fuelConsumptionPerTickInRain>0.002</fuelConsumptionPerTickInRain>
@@ -106,7 +106,7 @@
     </costList>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>0.5</fuelConsumptionRate>
+        <fuelConsumptionRate>0.25</fuelConsumptionRate>
         <fuelCapacity>15</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <fuelConsumptionPerTickInRain>0.003</fuelConsumptionPerTickInRain>
@@ -162,7 +162,7 @@
     </costList>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>0.5</fuelConsumptionRate>
+        <fuelConsumptionRate>0.25</fuelConsumptionRate>
         <fuelCapacity>20</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <fuelConsumptionPerTickInRain>0.004</fuelConsumptionPerTickInRain>
@@ -211,7 +211,7 @@
     </costList>
     <comps>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>0.5</fuelConsumptionRate>
+        <fuelConsumptionRate>0.25</fuelConsumptionRate>
         <fuelCapacity>20</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
         <fuelConsumptionPerTickInRain>0.005</fuelConsumptionPerTickInRain>
