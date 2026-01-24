@@ -314,7 +314,7 @@
   <!-- NOTE: Original requires DankPyon_Silk and DankPyon_Linen - replaced with Cloth -->
   <!-- NOTE: Original has MedievalOverhaul.CompProperties_BedCureHediff comp - kept for these higher-tier beds -->
   <ThingDef ParentName="MOL_BasicBedBase" Name="MOL_RusticBedBase" Abstract="True">
-    <label>rustic bed (red)</label>
+    <label>fine bed (red)</label>
     <description>A rustic comfy bed made up of embroidered covers and soft pillows.</description>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed1x2_Red</texPath>
@@ -359,7 +359,7 @@
   <!-- Rustic Bed (Red) -->
   <ThingDef ParentName="MOL_RusticBedBase">
     <defName>MOL_Bed_Rustic_Red</defName>
-    <label>rustic bed (red)</label>
+    <label>fine bed (red)</label>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed1x2_Red</texPath>
     </graphicData>
@@ -367,7 +367,7 @@
   <!-- Rustic Bed (Green) -->
   <ThingDef ParentName="MOL_RusticBedBase">
     <defName>MOL_Bed_Rustic_Green</defName>
-    <label>rustic bed (green)</label>
+    <label>fine bed (green)</label>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed1x2_Green</texPath>
     </graphicData>
@@ -375,7 +375,7 @@
   <!-- Rustic Bed (Blue) -->
   <ThingDef ParentName="MOL_RusticBedBase">
     <defName>MOL_Bed_Rustic_Blue</defName>
-    <label>rustic bed (blue)</label>
+    <label>fine bed (blue)</label>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed1x2_Blue</texPath>
     </graphicData>
@@ -383,7 +383,7 @@
   <!-- Rustic Double Bed Base -->
   <!-- NOTE: Original requires DankPyon_Silk and DankPyon_Linen - replaced with Cloth -->
   <ThingDef ParentName="MOL_BasicBedBase" Name="MOL_RusticDoubleBedBase" Abstract="True">
-    <label>rustic double bed (red)</label>
+    <label>fine double bed (red)</label>
     <description>A rustic comfy bed made up of embroidered covers and soft pillows. Double-wide bed that fits two people.</description>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed2x2_Red</texPath>
@@ -426,7 +426,7 @@
   <!-- Rustic Double Bed (Red) -->
   <ThingDef ParentName="MOL_RusticDoubleBedBase">
     <defName>MOL_Bed_RusticDouble_Red</defName>
-    <label>rustic double bed (red)</label>
+    <label>fine double bed (red)</label>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed2x2_Red</texPath>
     </graphicData>
@@ -434,7 +434,7 @@
   <!-- Rustic Double Bed (Green) -->
   <ThingDef ParentName="MOL_RusticDoubleBedBase">
     <defName>MOL_Bed_RusticDouble_Green</defName>
-    <label>rustic double bed (green)</label>
+    <label>fine double bed (green)</label>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed2x2_Green</texPath>
     </graphicData>
@@ -442,7 +442,7 @@
   <!-- Rustic Double Bed (Blue) -->
   <ThingDef ParentName="MOL_RusticDoubleBedBase">
     <defName>MOL_Bed_RusticDouble_Blue</defName>
-    <label>rustic double bed (blue)</label>
+    <label>fine double bed (blue)</label>
     <graphicData>
       <texPath>Things/Building/Furniture/RusticBed2x2_Blue</texPath>
     </graphicData>
