@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Add Cloth cost to vanilla Bed -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Bed"]</xpath>
+    <value>
+      <costList>
+        <Cloth>45</Cloth>
+      </costList>
+    </value>
+  </Operation>
+  <!-- Add Cloth cost to vanilla DoubleBed -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="DoubleBed"]</xpath>
+    <value>
+      <costList>
+        <Cloth>90</Cloth>
+      </costList>
+    </value>
+  </Operation>
+  <!-- Add Cloth cost to vanilla RoyalBed (already has Gold in costList) -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="RoyalBed"]/costList</xpath>
+    <value>
+      <Cloth>90</Cloth>
+    </value>
+  </Operation>
+</Patch>

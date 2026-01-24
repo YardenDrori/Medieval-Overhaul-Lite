@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Add rustic beds to royal title bedroom requirements -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Royalty</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <!-- Add double rustic beds after RoyalBed in bedroom requirements -->
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_ThingAnyOf"]/things[li="RoyalBed"]</xpath>
+          <value>
+            <li>MOL_Bed_RusticDouble_Red</li>
+            <li>MOL_Bed_RusticDouble_Green</li>
+            <li>MOL_Bed_RusticDouble_Blue</li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

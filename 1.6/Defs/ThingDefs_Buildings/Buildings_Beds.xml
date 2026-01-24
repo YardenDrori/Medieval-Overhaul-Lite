@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Base class for MOL beds -->
+  <ThingDef Abstract="True" ParentName="BedWithQualityBase" Name="MOL_BasicBedBase">
+    <designationCategory>Furniture</designationCategory>
+    <statBases>
+      <Comfort>0.75</Comfort>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">5</StyleDominance>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>EndTable</li>
+          <li>Dresser</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+  </ThingDef>
+  <!-- Log Bed (Single) -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_BedLog</defName>
+    <label>log bed</label>
+    <description>A simple and quick to make log bed. Better than sleeping on bare ground.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/LogSlabBed</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0,0.05,1,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(1,2)</size>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <Beauty>1</Beauty>
+      <WorkToBuild>500</WorkToBuild>
+      <Mass>30</Mass>
+      <BedRestEffectiveness>0.80</BedRestEffectiveness>
+      <Comfort>0.45</Comfort>
+    </statBases>
+    <costList>
+      <WoodRaw>45</WoodRaw>
+    </costList>
+    <uiOrder>2010</uiOrder>
+    <building>
+      <paintable>true</paintable>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+    </building>
+    <researchPrerequisites/>
+  </ThingDef>
+  <!-- Log Bed (Double) -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_BedLogDouble</defName>
+    <label>double log bed</label>
+    <description>A simple and quick to make log bed that fits two people. Better than sleeping on bare ground.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/DoubleLogSlabBed</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.05,2.05)</drawSize>
+      <damageData>
+        <rect>(0,0.05,2,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>1350</WorkToBuild>
+      <Mass>50</Mass>
+      <Beauty>1</Beauty>
+      <BedRestEffectiveness>0.80</BedRestEffectiveness>
+      <Comfort>0.45</Comfort>
+    </statBases>
+    <costList>
+      <WoodRaw>85</WoodRaw>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
+    <building>
+      <paintable>true</paintable>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+    </building>
+    <researchPrerequisites/>
+  </ThingDef>
+  <!-- Wicker Bed (Single) -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_BedWicker</defName>
+    <label>wicker bed</label>
+    <description>A simple and quick to make wicker bed.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/BedWicker</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0,0.05,1,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(1,2)</size>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <Beauty>1</Beauty>
+      <WorkToBuild>650</WorkToBuild>
+      <Mass>30</Mass>
+      <BedRestEffectiveness>0.85</BedRestEffectiveness>
+      <Comfort>0.55</Comfort>
+    </statBases>
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>45</costStuffCount>
+    <uiOrder>2010</uiOrder>
+    <building>
+      <paintable>true</paintable>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+    </building>
+    <researchPrerequisites/>
+  </ThingDef>
+  <!-- Wicker Bed (Double) -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_BedWickerDouble</defName>
+    <label>double wicker bed</label>
+    <description>A simple and quick to make wicker bed that fits two people.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/BedWickerDouble</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.05,2.05)</drawSize>
+      <damageData>
+        <rect>(0,0.05,2,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>1350</WorkToBuild>
+      <Mass>50</Mass>
+      <Beauty>1</Beauty>
+      <BedRestEffectiveness>0.85</BedRestEffectiveness>
+      <Comfort>0.55</Comfort>
+    </statBases>
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>85</costStuffCount>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
+    <building>
+      <paintable>true</paintable>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+    </building>
+    <researchPrerequisites/>
+  </ThingDef>
+  <!-- Straw Bed (Single) -->
+  <!-- NOTE: Original requires DankPyon_Straw resource - replaced with Hay -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_StrawBed</defName>
+    <label>straw bed</label>
+    <description>A simple and quick to make wicker bed, padded with straw for added comfort.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/BedStraw</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0,0.05,1,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(1,2)</size>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <Beauty>1</Beauty>
+      <WorkToBuild>650</WorkToBuild>
+      <Mass>30</Mass>
+      <BedRestEffectiveness>0.90</BedRestEffectiveness>
+      <Comfort>0.7</Comfort>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>45</costStuffCount>
+    <costList>
+      <Hay>15</Hay>
+    </costList>
+    <uiOrder>2010</uiOrder>
+    <building>
+      <paintable>true</paintable>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+    </building>
+    <researchPrerequisites/>
+  </ThingDef>
+  <!-- Straw Bed (Double) -->
+  <!-- NOTE: Original requires DankPyon_Straw resource - replaced with Hay -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_StrawBedDouble</defName>
+    <label>double straw bed</label>
+    <description>A simple and quick to make wicker bed, padded with straw for added comfort that fits two people.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/BedStrawDouble</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.05,2.05)</drawSize>
+      <damageData>
+        <rect>(0,0.05,2,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>1350</WorkToBuild>
+      <Mass>50</Mass>
+      <Beauty>1</Beauty>
+      <BedRestEffectiveness>0.90</BedRestEffectiveness>
+      <Comfort>0.7</Comfort>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>85</costStuffCount>
+    <costList>
+      <Hay>30</Hay>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
+    <building>
+      <paintable>true</paintable>
+      <bed_showSleeperBody>true</bed_showSleeperBody>
+    </building>
+    <researchPrerequisites/>
+  </ThingDef>
+  <!-- Fur Bed (Single) -->
+  <!-- NOTE: Original has MedievalOverhaul.CompProperties_BedCureHediff comp - REMOVED per user request -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_BedFur</defName>
+    <label>fur bed</label>
+    <description>A cozy bed made from pieces of soft and comfy fur.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/BedFur</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0,0.05,1,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(1,2)</size>
+    <statBases>
+      <MaxHitPoints>140</MaxHitPoints>
+      <Beauty>1</Beauty>
+      <WorkToBuild>800</WorkToBuild>
+      <Mass>30</Mass>
+      <BedRestEffectiveness>0.98</BedRestEffectiveness>
+    </statBases>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costStuffCount>15</costStuffCount>
+    <costList>
+      <WoodLog>45</WoodLog>
+    </costList>
+    <uiOrder>2010</uiOrder>
+    <building>
+      <paintable>true</paintable>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <!-- Fur Bed (Double) -->
+  <!-- NOTE: Original has MedievalOverhaul.CompProperties_BedCureHediff comp - REMOVED per user request -->
+  <ThingDef ParentName="MOL_BasicBedBase">
+    <defName>MOL_BedFurDouble</defName>
+    <label>double fur bed</label>
+    <description>A cozy double-wide bed made from pieces of soft and comfy fur that fits two people.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/BedFurDouble</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.05,2.05)</drawSize>
+      <damageData>
+        <rect>(0,0.05,2,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costStuffCount>30</costStuffCount>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
+      <Mass>50</Mass>
+      <Beauty>2</Beauty>
+      <BedRestEffectiveness>1</BedRestEffectiveness>
+    </statBases>
+    <costList>
+      <WoodLog>85</WoodLog>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
+    <building>
+      <paintable>true</paintable>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <!-- Rustic Bed Base -->
+  <!-- NOTE: Original requires DankPyon_Silk and DankPyon_Linen - replaced with Cloth -->
+  <!-- NOTE: Original has MedievalOverhaul.CompProperties_BedCureHediff comp - kept for these higher-tier beds -->
+  <ThingDef ParentName="MOL_BasicBedBase" Name="MOL_RusticBedBase" Abstract="True">
+    <label>rustic bed (red)</label>
+    <description>A rustic comfy bed made up of embroidered covers and soft pillows.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed1x2_Red</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0,0.05,1,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <size>(1,2)</size>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Beauty>75</Beauty>
+      <WorkToBuild>50000</WorkToBuild>
+      <Mass>60</Mass>
+      <BedRestEffectiveness>1.05</BedRestEffectiveness>
+      <Comfort>0.90</Comfort>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <costList>
+      <Gold>50</Gold>
+      <Cloth>55</Cloth>
+    </costList>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <uiOrder>2010</uiOrder>
+    <building>
+      <paintable>true</paintable>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <!-- Rustic Bed (Red) -->
+  <ThingDef ParentName="MOL_RusticBedBase">
+    <defName>MOL_Bed_Rustic_Red</defName>
+    <label>rustic bed (red)</label>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed1x2_Red</texPath>
+    </graphicData>
+  </ThingDef>
+  <!-- Rustic Bed (Green) -->
+  <ThingDef ParentName="MOL_RusticBedBase">
+    <defName>MOL_Bed_Rustic_Green</defName>
+    <label>rustic bed (green)</label>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed1x2_Green</texPath>
+    </graphicData>
+  </ThingDef>
+  <!-- Rustic Bed (Blue) -->
+  <ThingDef ParentName="MOL_RusticBedBase">
+    <defName>MOL_Bed_Rustic_Blue</defName>
+    <label>rustic bed (blue)</label>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed1x2_Blue</texPath>
+    </graphicData>
+  </ThingDef>
+  <!-- Rustic Double Bed Base -->
+  <!-- NOTE: Original requires DankPyon_Silk and DankPyon_Linen - replaced with Cloth -->
+  <ThingDef ParentName="MOL_BasicBedBase" Name="MOL_RusticDoubleBedBase" Abstract="True">
+    <label>rustic double bed (red)</label>
+    <description>A rustic comfy bed made up of embroidered covers and soft pillows. Double-wide bed that fits two people.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed2x2_Red</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(4.1,4.1)</drawSize>
+      <damageData>
+        <rect>(0,0.05,2,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>50000</WorkToBuild>
+      <Mass>60</Mass>
+      <Beauty>75</Beauty>
+      <BedRestEffectiveness>1.05</BedRestEffectiveness>
+      <Comfort>0.90</Comfort>
+    </statBases>
+    <size>(2,2)</size>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <costList>
+      <Gold>50</Gold>
+      <Cloth>110</Cloth>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <building>
+      <paintable>true</paintable>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <!-- Rustic Double Bed (Red) -->
+  <ThingDef ParentName="MOL_RusticDoubleBedBase">
+    <defName>MOL_Bed_RusticDouble_Red</defName>
+    <label>rustic double bed (red)</label>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed2x2_Red</texPath>
+    </graphicData>
+  </ThingDef>
+  <!-- Rustic Double Bed (Green) -->
+  <ThingDef ParentName="MOL_RusticDoubleBedBase">
+    <defName>MOL_Bed_RusticDouble_Green</defName>
+    <label>rustic double bed (green)</label>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed2x2_Green</texPath>
+    </graphicData>
+  </ThingDef>
+  <!-- Rustic Double Bed (Blue) -->
+  <ThingDef ParentName="MOL_RusticDoubleBedBase">
+    <defName>MOL_Bed_RusticDouble_Blue</defName>
+    <label>rustic double bed (blue)</label>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RusticBed2x2_Blue</texPath>
+    </graphicData>
+  </ThingDef>
+  <!-- Royal Tudor Bed -->
+  <!-- NOTE: Original requires DankPyon_Silk (200) and Gold (70) - replaced with Cloth and Gold -->
+  <!-- NOTE: Original has MedievalOverhaul.CompProperties_BedCureHediff comp - REMOVED -->
+  <!-- NOTE: Original links to DankPyon_RoyalEndTable, DankPyon_RoyalDresser, etc - using vanilla facilities -->
+  <ThingDef ParentName="ArtableBedBase">
+    <defName>MOL_RoyalTudorBed</defName>
+    <label>royal tudor bed</label>
+    <description>A luxurious gold-inlaid bed fit for the highborn. Very comfy and beautiful, it is a work of art in itself. Fits two.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/RoyalTudorBed</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(4.05,4.05)</drawSize>
+      <damageData>
+        <rect>(0,0.05,2,1.95)</rect>
+      </damageData>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>EndTable</li>
+          <li>Dresser</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <WorkToBuild>60000</WorkToBuild>
+      <Mass>85</Mass>
+      <Beauty>100</Beauty>
+      <BedRestEffectiveness>1.15</BedRestEffectiveness>
+      <Comfort>0.95</Comfort>
+      <ImmunityGainSpeedFactor>1.07</ImmunityGainSpeedFactor>
+      <SurgerySuccessChanceFactor>1</SurgerySuccessChanceFactor>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">30</StyleDominance>
+    </statBases>
+    <size>(2,2)</size>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>125</costStuffCount>
+    <costList>
+      <Gold>70</Gold>
+      <Cloth>240</Cloth>
+    </costList>
+    <building>
+      <bed_showSleeperBody>False</bed_showSleeperBody>
+      <bed_healPerDay/>
+    </building>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <fillPercent>0.5</fillPercent>
+    <pathCost>42</pathCost>
+    <leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
+    <staticSunShadowHeight>0.17</staticSunShadowHeight>
+    <castEdgeShadows>True</castEdgeShadows>
+    <designationHotKey>Misc4</designationHotKey>
+    <designationCategory>Furniture</designationCategory>
+    <techLevel>Medieval</techLevel>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <uiIconScale>0.75</uiIconScale>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+  </ThingDef>
+</Defs>
