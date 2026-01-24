@@ -16,6 +16,5 @@
     <baseChance>0.3</baseChance>
     <category>DeepDrillInfestation</category>
     <pointsScaleable>true</pointsScaleable>
-    <minPoints>350</minPoints>
   </IncidentDef>
 </Defs>
