@@ -141,10 +141,16 @@
       <ArmorRating_Sharp>0.88</ArmorRating_Sharp>
       <PsychicSensitivity>0.75</PsychicSensitivity>
     </statBases>
-    <comps>
+    <comps Inherit="False">
       <li Class="MOExpandedLite.CompProperties_AnimationEnergy">
         <totalPowerTicks>20000</totalPowerTicks>
         <cachedThingToSpawnOnEmpty>MineableGold</cachedThingToSpawnOnEmpty>
+      </li>
+      <li Class="CompProperties_CanBeDormant"/>
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
     </comps>
     <tools>
@@ -234,10 +240,16 @@
       <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
       <PsychicSensitivity>0.75</PsychicSensitivity>
     </statBases>
-    <comps>
+    <comps Inherit="False">
       <li Class="MOExpandedLite.CompProperties_AnimationEnergy">
         <totalPowerTicks>20000</totalPowerTicks>
         <cachedThingToSpawnOnEmpty>ChunkSlagSteel</cachedThingToSpawnOnEmpty>
+      </li>
+      <li Class="CompProperties_CanBeDormant"/>
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
     </comps>
     <tools>
@@ -326,10 +338,16 @@
       <ArmorRating_Sharp>0.72</ArmorRating_Sharp>
       <PsychicSensitivity>0.75</PsychicSensitivity>
     </statBases>
-    <comps>
+    <comps Inherit="False">
       <li Class="MOExpandedLite.CompProperties_AnimationEnergy">
         <totalPowerTicks>20000</totalPowerTicks>
         <cachedThingToSpawnOnEmpty>MineableSilver</cachedThingToSpawnOnEmpty>
+      </li>
+      <li Class="CompProperties_CanBeDormant"/>
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
     </comps>
     <tools>
@@ -419,10 +437,16 @@
       <ArmorRating_Sharp>1.0</ArmorRating_Sharp>
       <PsychicSensitivity>0.25</PsychicSensitivity>
     </statBases>
-    <comps>
+    <comps Inherit="False">
       <li Class="MOExpandedLite.CompProperties_AnimationEnergy">
         <totalPowerTicks>20000</totalPowerTicks>
         <cachedThingToSpawnOnEmpty>MineablePlasteel</cachedThingToSpawnOnEmpty>
+      </li>
+      <li Class="CompProperties_CanBeDormant"/>
+      <li Class="CompProperties_WakeUpDormant">
+        <wakeUpOnDamage>true</wakeUpOnDamage>
+        <wakeUpCheckRadius>30</wakeUpCheckRadius>
+        <wakeUpSound>MechanoidsWakeUp</wakeUpSound>
       </li>
     </comps>
     <tools>

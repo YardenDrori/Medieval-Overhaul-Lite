@@ -5,7 +5,7 @@ namespace MOExpandedLite;
 
 public class CompProperties_AnimationEnergy : CompProperties_MechPowerCell
 {
-  private ThingDef cachedThingToSpawnOnEmpty;
+  public ThingDef cachedThingToSpawnOnEmpty;
   public ThingDef thingToSpawnOnEmpty
   {
     get
