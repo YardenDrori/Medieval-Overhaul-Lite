@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThingDef ParentName="ResourceVerbBase">
+  <ThingDef ParentName="ResourceBase">
     <defName>DankPyon_DaerAntler</defName>
     <label>daer antler</label>
     <description>A daers's antler. It's heavy, rock-hard, and priceless in most markets. This is a true trophy that brings awe to whoever beholds upon it.</description>
