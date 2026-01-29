@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- Wheat -->
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant</xpath>
+    <value>
+      <immatureGraphicPath>Things/Plants/Crops/WheatPlant_Immature</immatureGraphicPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant</xpath>
+    <value>
+      <harvestedThingDef>MOL_Wheat</harvestedThingDef>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Plant/Crops/WheatPlant</texPath>
+    </value>
+  </Operation>
+  <!-- Sugarcane -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Sugarcan"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Plant/Crops/SugarCanePlant</texPath>
+    </value>
+  </Operation>
+</Patch>

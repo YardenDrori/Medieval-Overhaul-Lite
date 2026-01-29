@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<Defs>
+  <!-- Lentils -->
+  <ThingDef ParentName="PlantBase">
+    <defName>MOL_Plant_Lentils</defName>
+    <label>lentils plant</label>
+    <description>A petite, leafy legume which gives way to numerous little sprouts. Lentils are surprisingly nourishing, and are shelf stable for a longer time.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MOL_RawLentils</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MaxHitPoints>65</MaxHitPoints>
+      <Nutrition>0.2</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/FullGrown/LentilPlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>10</pathCost>
+    <ingestible/>
+    <plant>
+      <!--fertilityMin></fertilityMin-->
+      <dieIfLeafless>true</dieIfLeafless>
+      <harvestTag>Standard</harvestTag>
+      <maxMeshCount>9</maxMeshCount>
+      <harvestedThingDef>DankPyon_RawLentils</harvestedThingDef>
+      <harvestYield>10</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponics</li>
+      </sowTags>
+      <topWindExposure>0.20</topWindExposure>
+      <growDays>3</growDays>
+      <fertilitySensitivity>0.7</fertilitySensitivity>
+      <visualSizeRange>0.3~0.5</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Food</purpose>
+      <sowMinSkill>8</sowMinSkill>
+    </plant>
+  </ThingDef>
+  <!-- Garlic -->
+  <ThingDef ParentName="PlantBase">
+    <defName>MOL_Plant_Garlic</defName>
+    <label>garlic plant</label>
+    <description>Leafy green stalks, who's base consists of a segmented off-white bulb. Garlic makes for a good seasoning and ingredient for many meals, either minced and sauteed for use as an ingredient, or pulverized and used as a seasoning.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MOL_RawGarlic</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Nutrition>0.15</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/FullGrown/GarlicPlant_Mature</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>10</pathCost>
+    <ingestible/>
+    <plant>
+      <fertilityMin>0.1</fertilityMin>
+      <fertilitySensitivity>0.5</fertilitySensitivity>
+      <dieIfLeafless>true</dieIfLeafless>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>MOL_RawGarlic</harvestedThingDef>
+      <harvestYield>9</harvestYield>
+      <maxMeshCount>4</maxMeshCount>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponic</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>6</growDays>
+      <visualSizeRange>0.3~1.4</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Food</purpose>
+      <humanFoodPlant>true</humanFoodPlant>
+      <immatureGraphicPath>Things/Plants/Immature/GarlicPlant_Immature</immatureGraphicPath>
+    </plant>
+  </ThingDef>
+  <ThingDef ParentName="PlantBase">
+    <defName>MOL_Plant_Carrots</defName>
+    <label>carrot plant</label>
+    <description>Bushy, short stalks whos value is in the sugary taproot. They make for a healthy, if not tasty snacks on their own, or a good addition to any meal when boiled, stewed or sauteed.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MOL_RawCarrots</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Nutrition>0.2</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/FullGrown/CarrotPlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>10</pathCost>
+    <ingestible/>
+    <plant>
+      <!--fertilityMin>0.6</fertilityMin-->
+      <dieIfLeafless>true</dieIfLeafless>
+      <harvestTag>Standard</harvestTag>
+      <maxMeshCount>4</maxMeshCount>
+      <harvestedThingDef>MOL_RawCarrots</harvestedThingDef>
+      <harvestYield>6</harvestYield>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponics</li>
+      </sowTags>
+      <topWindExposure>0.20</topWindExposure>
+      <growDays>3.25</growDays>
+      <fertilitySensitivity>0.6</fertilitySensitivity>
+      <visualSizeRange>0.2~0.4</visualSizeRange>
+      <immatureGraphicPath>Things/Plants/Immature/CarrotPlant</immatureGraphicPath>
+      <wildOrder>2</wildOrder>
+      <purpose>Food</purpose>
+      <sowMinSkill>4</sowMinSkill>
+    </plant>
+  </ThingDef>
+</Defs>
