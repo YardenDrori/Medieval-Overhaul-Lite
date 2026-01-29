@@ -4,6 +4,7 @@ add more ways to spawn/find golems
 
 decide on tool system
 add lemon trees and lemon defs and biome spawms
+add random spawns of new plants across planet for nice effect with Seed mods
 
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
