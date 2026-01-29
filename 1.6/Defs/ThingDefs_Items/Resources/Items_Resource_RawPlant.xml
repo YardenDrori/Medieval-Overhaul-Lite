@@ -2,7 +2,117 @@
 <Defs>
   <!-- ==================== Raw Plants Resource ======================= -->
   <!-- Lentils -->
+  <ThingDef ParentName="PlantFoodRawBase">
+    <defName>MOL_RawLentils</defName>
+    <label>lentils</label>
+    <description>Raw lentils.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawLentils</texPath>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.44</MarketValue>
+      <Nutrition>0.02</Nutrition>
+    </statBases>
+    <ingestible>
+      <tasteThought>AteRawFood</tasteThought>
+      <foodType>VegetableOrFruit</foodType>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>40</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+  </ThingDef>
   <!-- Garlic -->
+  <ThingDef ParentName="PlantFoodRawBase">
+    <defName>MOL_RawGarlic</defName>
+    <label>garlic cloves</label>
+    <description>A very old crop which is cultivated for its bulb, formed in the base of the leaves. It is highly appreciated in cooking for its pungent and characteristic taste.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawGarlic</texPath>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.1</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>140</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <foodType>VegetableOrFruit</foodType>
+    </ingestible>
+  </ThingDef>
   <!-- Wheat -->
+  <ThingDef ParentName="PlantFoodRawBase">
+    <defName>MOL_RawWheat</defName>
+    <label>wheat</label>
+    <description>Wheat has been vital crop for the rise of civilization, its golden stalks ripening under the sun, ready to be harvested for sustenance and trade. Despite this wheat needs further processing into flour to be a usable food ingredient.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/MOL_RawWheat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.1</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Seed</foodType>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>120</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+  </ThingDef>
   <!-- Carrot -->
+  <ThingDef ParentName="PlantFoodRawBase">
+    <defName>MOL_RawCarrots</defName>
+    <label>carrots</label>
+    <description>A root vegetable, typically orange in color, though purple, black, red, white, and yellow cultivars exist. A versatile food that can be chopped and boiled, fried or steamed, cooked in soups and stews, as well as used for baby and pet foods.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/MOL_RawCarrots</texPath>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.1</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>10</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <foodType>VegetableOrFruit</foodType>
+    </ingestible>
+  </ThingDef>
+  <!-- Sugarcane -->
+  <ThingDef ParentName="RoughPlantBase">
+    <defName>MOL_RawSugarcane</defName>
+    <label>sugarcane</label>
+    <description>Raw sugarcane. Needs to be grineded into sugar to be usuable.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawSugarcane</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.2</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Seed</foodType>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>20</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>Foods</li>
+    </thingCategories>
+  </ThingDef>
 </Defs>

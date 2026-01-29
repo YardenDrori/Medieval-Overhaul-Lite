@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- grapes -->
+  <Operation Class="PatchOperationReplace" MayRequire="oskarpotocki.vfe.medieval2">
+    <xpath>Defs/ThingDef[defName="VFEM2_RawGrapes"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawGrapes</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="oskarpotocki.vfe.medieval2">
+    <xpath>Defs/ThingDef[defName="VFEM2_Plant_Grape"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Plants/Crops/GrapePlant</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="oskarpotocki.vfe.medieval2">
+    <xpath>Defs/ThingDef[defName="VFEM2_Plant_Grape"]/plant/immatureGraphicPath</xpath>
+    <value>
+      <immatureGraphicPath>Things/Plants/Crops/GrapePlant_Immature</immatureGraphicPath>
+    </value>
+  </Operation>
+</Patch>

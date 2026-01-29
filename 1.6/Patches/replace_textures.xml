@@ -74,14 +74,14 @@
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="RawPotatoes"]/graphicData/texPath</xpath>
     <value>
-      <texPath>Things/Item/Resource/PlantFoodRaw/MOL_Potatoes</texPath>
+      <texPath>Things/Item/Resource/PlantFoodRaw/MOL_RawPotatoes</texPath>
     </value>
   </Operation>
   <!-- Psychoid Leaves -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="PsychoidLeaves"]/graphicData/texPath</xpath>
     <value>
-      <texPath>Things/Item/Resource/PlantFoodRaw/MOL_PsychoidLeaves</texPath>
+      <texPath>Things/Item/Resource/PlantFoodRaw/MOL_RawPsychoidLeaves</texPath>
     </value>
   </Operation>
   <!-- Raw Fungus -->

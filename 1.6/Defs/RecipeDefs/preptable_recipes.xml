@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<Defs>
+  <RecipeDef>
+    <defName>MOL_process_wheat_to_flour_x4</defName>
+    <label>grind wheat x4</label>
+    <description>Make a fine powder of flour from unrefined wheat.</description>
+    <jobString>Grinding flour from wheat</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>2000</workAmount>
+    <targetCountAdjustment>5</targetCountAdjustment>
+    <workSkill>Cooking</workSkill>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_RawWheat</li>
+          </thingDefs>
+        </filter>
+        <count>16</count>
+      </li>
+    </ingredients>
+    <products>
+      <VCE_Flour>16</VCE_Flour>
+    </products>
+    <recipeUsers>
+      <li>VCE_CondimentPrepTable</li>
+    </recipeUsers>
+    <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
+    <displayPriority>2</displayPriority>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_process_wheat_to_flour</defName>
+    <label>grind wheat</label>
+    <description>Make a fine powder of flour from unrefined wheat.</description>
+    <jobString>Grinding flour from wheat</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>500</workAmount>
+    <targetCountAdjustment>5</targetCountAdjustment>
+    <workSkill>Cooking</workSkill>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_RawWheat</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <products>
+      <VCE_Flour>4</VCE_Flour>
+    </products>
+    <recipeUsers>
+      <li>VCE_CondimentPrepTable</li>
+    </recipeUsers>
+    <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
+    <displayPriority>1</displayPriority>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_process_cane_to_sugar</defName>
+    <label>grind sugarcane</label>
+    <description>Make a mass of powdery sugar from canes.</description>
+    <jobString>Grinding sugar from canes</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>1500</workAmount>
+    <targetCountAdjustment>5</targetCountAdjustment>
+    <workSkill>Cooking</workSkill>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_RawSugarcane</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <products>
+      <VCE_RawSugar>1</VCE_RawSugar>
+    </products>
+    <recipeUsers>
+      <li>VCE_CondimentPrepTable</li>
+    </recipeUsers>
+    <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
+  </RecipeDef>
+</Defs>

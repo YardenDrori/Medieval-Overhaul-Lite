@@ -3,6 +3,7 @@ add plants
 add more ways to spawn/find golems
 
 decide on tool system
+add lemon trees and lemon defs and biome spawms
 
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches

@@ -132,7 +132,7 @@ Its carcass yields prized antlers and exceptionally flavorful meat, a rare succe
       <li>AnimalExotic</li>
     </tradeTags>
     <butcherProducts>
-      <DankPyon_DaerAntler>2</DankPyon_DaerAntler>
+      <MOL_DaerAntler>2</MOL_DaerAntler>
     </butcherProducts>
   </ThingDef>
   <PawnKindDef ParentName="AnimalKindBase">

@@ -1,29 +1,103 @@
 <?xml version="1.0"?>
 <Patch>
-  <!-- Wheat -->
-  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant</xpath>
+  <!-- ===============================FRUIT TREE PATCHES=============================== -->
+  <!-- Apples -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_RawApple"]/graphicData/texPath</xpath>
     <value>
-      <immatureGraphicPath>Things/Plants/Crops/WheatPlant_Immature</immatureGraphicPath>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawApples</texPath>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant</xpath>
+  <!-- Apple trees -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_AppleTree"]/graphicData/texPath</xpath>
     <value>
-      <harvestedThingDef>MOL_Wheat</harvestedThingDef>
+      <texPath>Things/Plants/Trees/AppleTree</texPath>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/graphicData/texPath</xpath>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_AppleTree"]/plant/immatureGraphicPath</xpath>
     <value>
-      <texPath>Things/Plant/Crops/WheatPlant</texPath>
+      <immatureGraphicPath>Things/Plants/Trees/AppleTree_Immature</immatureGraphicPath>
     </value>
   </Operation>
-  <!-- Sugarcane -->
-  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Sugarcan"]/graphicData/texPath</xpath>
+  <!-- Bananas -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_RawBanana"]/graphicData/texPath</xpath>
     <value>
-      <texPath>Things/Plant/Crops/SugarCanePlant</texPath>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawBanana</texPath>
+    </value>
+  </Operation>
+  <!-- Banana Trees -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_BananaTree"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Plants/Trees/BananaTree</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_BananaTree"]/plant/immatureGraphicPath</xpath>
+    <value>
+      <immatureGraphicPath>Things/Plants/Trees/BananaTree_Immature</immatureGraphicPath>
+    </value>
+  </Operation>
+  <!-- ===============================CROPS PATCHES=============================== -->
+  <!-- Bear Berries -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_Bearberry"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/PlantFoodRaw/BearBerries</texPath>
+    </value>
+  </Operation>
+  <!-- cabbage -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_RawCabbage"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawCabbage</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_Cabbage"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Plants/Crops/CabbagePlant</texPath>
+    </value>
+  </Operation>
+  <!-- tomato -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_RawTomatoes"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawTomatoes</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_Tomato"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Plants/Crops/TomatoPlant</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_Tomato"]/plant/immatureGraphicPath</xpath>
+    <value>
+      <immatureGraphicPath>Things/Plants/Crops/TomatoPlant_Immature</immatureGraphicPath>
+    </value>
+  </Operation>
+  <!-- pumpkin -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_RawPumpkin"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/PlantFoodRaw/RawPumpkins</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_Pumpkin"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Plants/Crops/PumpkinPlant</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
+    <xpath>Defs/ThingDef[defName="VCE_Pumpkin"]/plant/immatureGraphicPath</xpath>
+    <value>
+      <immatureGraphicPath>Things/Plants/Crops/PumpkinPlant_Immature</immatureGraphicPath>
     </value>
   </Operation>
 </Patch>

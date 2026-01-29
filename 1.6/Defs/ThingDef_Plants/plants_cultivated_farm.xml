@@ -13,7 +13,7 @@
       <Nutrition>0.2</Nutrition>
     </statBases>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/LentilPlant</texPath>
+      <texPath>Things/Plants/Crops/LentilPlant</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <selectable>true</selectable>
@@ -24,7 +24,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <harvestTag>Standard</harvestTag>
       <maxMeshCount>9</maxMeshCount>
-      <harvestedThingDef>DankPyon_RawLentils</harvestedThingDef>
+      <harvestedThingDef>MOL_RawLentils</harvestedThingDef>
       <harvestYield>10</harvestYield>
       <sowTags>
         <li>Ground</li>
@@ -52,7 +52,7 @@
       <Nutrition>0.15</Nutrition>
     </statBases>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/GarlicPlant_Mature</texPath>
+      <texPath>Things/Plants/Crops/GarlicPlant</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <selectable>true</selectable>
@@ -76,7 +76,7 @@
       <wildOrder>2</wildOrder>
       <purpose>Food</purpose>
       <humanFoodPlant>true</humanFoodPlant>
-      <immatureGraphicPath>Things/Plants/Immature/GarlicPlant_Immature</immatureGraphicPath>
+      <immatureGraphicPath>Things/Plants/Crops/GarlicPlant_Immature</immatureGraphicPath>
     </plant>
   </ThingDef>
   <ThingDef ParentName="PlantBase">
@@ -91,7 +91,7 @@
       <Nutrition>0.2</Nutrition>
     </statBases>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/CarrotPlant</texPath>
+      <texPath>Things/Plants/Crops/CarrotPlant</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <selectable>true</selectable>
@@ -112,7 +112,7 @@
       <growDays>3.25</growDays>
       <fertilitySensitivity>0.6</fertilitySensitivity>
       <visualSizeRange>0.2~0.4</visualSizeRange>
-      <immatureGraphicPath>Things/Plants/Immature/CarrotPlant</immatureGraphicPath>
+      <immatureGraphicPath>Things/Plants/Crops/CarrotPlant_Immature</immatureGraphicPath>
       <wildOrder>2</wildOrder>
       <purpose>Food</purpose>
       <sowMinSkill>4</sowMinSkill>

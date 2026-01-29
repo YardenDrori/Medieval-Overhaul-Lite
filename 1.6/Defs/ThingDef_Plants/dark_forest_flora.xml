@@ -5,7 +5,7 @@
     <label>great oak</label>
     <description>The tallest variety of hardwood engineered during early terraforming efforts. While common enough to locals, offworlders are often shocked by its imposing scale - canopies easily spanning three to four hundred feet in diameter. Grows on nutrient-rich soil with root systems reaching deep underground.</description>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/GreatOak</texPath>
+      <texPath>Things/Plants/Trees/GreatOak</texPath>
       <graphicClass>Graphic_Random</graphicClass>
       <shadowData>
         <volume>(0.55, 0.2, 0.2)</volume>
@@ -24,7 +24,7 @@
       <fertilityMin>0.8</fertilityMin>
       <harvestedThingDef>WoodLog</harvestedThingDef>
       <fertilitySensitivity>0.8</fertilitySensitivity>
-      <leaflessGraphicPath>Things/Plants/FullGrown/GreatOak_Leafless</leaflessGraphicPath>
+      <leaflessGraphicPath>Things/Plants/Trees/GreatOak_Leafless</leaflessGraphicPath>
       <growDays>300</growDays>
       <harvestWork>2000</harvestWork>
       <harvestYield>150</harvestYield>
@@ -39,7 +39,7 @@
     <label>great iter</label>
     <description>The smallest of the genetically-modified giant trees, distinguished by thick foliage and viscous, sour fruits. During extreme heat, the trees activate dormant genes to produce additional leaf layers - an engineered response to protect against temperature stress.</description>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/GreatIter</texPath>
+      <texPath>Things/Plants/Trees/GreatIter</texPath>
       <graphicClass>Graphic_Random</graphicClass>
       <shadowData>
         <volume>(0.55, 0.2, 0.2)</volume>
@@ -58,7 +58,7 @@
       <fertilityMin>0.8</fertilityMin>
       <harvestedThingDef>WoodLog</harvestedThingDef>
       <fertilitySensitivity>0.8</fertilitySensitivity>
-      <leaflessGraphicPath>Things/Plants/FullGrown/GreatIter_Leafless</leaflessGraphicPath>
+      <leaflessGraphicPath>Things/Plants/Trees/GreatIter_Leafless</leaflessGraphicPath>
       <growDays>300</growDays>
       <harvestWork>2000</harvestWork>
       <harvestYield>150</harvestYield>
@@ -73,7 +73,7 @@
     <label>great fir</label>
     <description>Three hundred foot evergreen giants with enhanced growth genetics. Their year-round foliage provides welcome color against winter snow, but the trees are notorious for dropping massive ten-inch cones with lethal force.</description>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/GreatFir</texPath>
+      <texPath>Things/Plants/Trees/GreatFir</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <altitudeLayer>Pawn</altitudeLayer>
@@ -100,7 +100,7 @@
     <label>great willow</label>
     <description>Ancient willows exhibiting extreme longevity, some specimens estimated at over a thousand years old. Whether through deliberate engineering or random mutation, these trees show no signs of aging or decay.</description>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/GreatWillow</texPath>
+      <texPath>Things/Plants/Trees/GreatWillow</texPath>
       <graphicClass>Graphic_Random</graphicClass>
       <shadowData>
         <volume>(0.2, 0.3, 0.13)</volume>
@@ -118,7 +118,7 @@
       <dieIfLeafless>False</dieIfLeafless>
       <harvestedThingDef>WoodLog</harvestedThingDef>
       <growDays>200</growDays>
-      <leaflessGraphicPath>Things/Plants/FullGrown/GreatWillow_Leafless</leaflessGraphicPath>
+      <leaflessGraphicPath>Things/Plants/Trees/GreatWillow_Leafless</leaflessGraphicPath>
       <harvestWork>2000</harvestWork>
       <harvestYield>100</harvestYield>
       <wildClusterWeight>32</wildClusterWeight>

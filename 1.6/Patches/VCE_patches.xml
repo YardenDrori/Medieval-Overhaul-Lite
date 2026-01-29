@@ -8,22 +8,28 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant</xpath>
+    <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant/harvestedThingDef</xpath>
     <value>
-      <harvestedThingDef>MOL_Wheat</harvestedThingDef>
+      <harvestedThingDef>MOL_RawWheat</harvestedThingDef>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_Wheat"]/graphicData/texPath</xpath>
     <value>
-      <texPath>Things/Plant/Crops/WheatPlant</texPath>
+      <texPath>Things/Plants/Crops/WheatPlant</texPath>
     </value>
   </Operation>
   <!-- Sugarcane -->
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Sugarcan"]/graphicData/texPath</xpath>
+    <xpath>Defs/ThingDef[defName="VCE_Sugarcane"]/graphicData/texPath</xpath>
     <value>
-      <texPath>Things/Plant/Crops/SugarCanePlant</texPath>
+      <texPath>Things/Plants/Crops/SugarCanePlant</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Sugarcane"]/plant/harvestedThingDef</xpath>
+    <value>
+      <harvestedThingDef>MOL_RawSugarcane</harvestedThingDef>
     </value>
   </Operation>
 </Patch>
