@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Defs>
   <!-- Lentils -->
-  <ThingDef ParentName="PlantBase">
+  <ThingDef ParentName="PlantBase" Name="MOL_LentilsBase">
     <defName>MOL_Plant_Lentils</defName>
     <label>lentils plant</label>
     <description>A petite, leafy legume which gives way to numerous little sprouts. Lentils are surprisingly nourishing, and are shelf stable for a longer time.</description>
@@ -34,13 +34,13 @@
       <growDays>3</growDays>
       <fertilitySensitivity>0.7</fertilitySensitivity>
       <visualSizeRange>0.3~0.5</visualSizeRange>
-      <wildOrder>2</wildOrder>
       <purpose>Food</purpose>
       <sowMinSkill>8</sowMinSkill>
+      <humanFoodPlant>true</humanFoodPlant>
     </plant>
   </ThingDef>
   <!-- Garlic -->
-  <ThingDef ParentName="PlantBase">
+  <ThingDef ParentName="PlantBase" Name="MOL_GarlicBase">
     <defName>MOL_Plant_Garlic</defName>
     <label>garlic plant</label>
     <description>Leafy green stalks, who's base consists of a segmented off-white bulb. Garlic makes for a good seasoning and ingredient for many meals, either minced and sauteed for use as an ingredient, or pulverized and used as a seasoning.</description>
@@ -73,14 +73,13 @@
       <topWindExposure>0.1</topWindExposure>
       <growDays>6</growDays>
       <visualSizeRange>0.3~1.4</visualSizeRange>
-      <wildOrder>2</wildOrder>
       <purpose>Food</purpose>
       <humanFoodPlant>true</humanFoodPlant>
       <immatureGraphicPath>Things/Plants/Crops/GarlicPlant_Immature</immatureGraphicPath>
     </plant>
   </ThingDef>
   <!-- Carrots -->
-  <ThingDef ParentName="PlantBase">
+  <ThingDef ParentName="PlantBase" Name="MOL_CarrotsBase">
     <defName>MOL_Plant_Carrots</defName>
     <label>carrot plant</label>
     <description>Bushy, short stalks whos value is in the sugary taproot. They make for a healthy, if not tasty snacks on their own, or a good addition to any meal when boiled, stewed or sauteed.</description>
@@ -114,8 +113,8 @@
       <fertilitySensitivity>0.6</fertilitySensitivity>
       <visualSizeRange>0.2~0.4</visualSizeRange>
       <immatureGraphicPath>Things/Plants/Crops/CarrotPlant_Immature</immatureGraphicPath>
-      <wildOrder>2</wildOrder>
       <purpose>Food</purpose>
+      <humanFoodPlant>true</humanFoodPlant>
       <sowMinSkill>4</sowMinSkill>
     </plant>
   </ThingDef>

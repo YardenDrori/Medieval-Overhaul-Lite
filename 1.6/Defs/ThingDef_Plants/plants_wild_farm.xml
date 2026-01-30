@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<Defs>
+  <!-- Wild Lentils -->
+  <ThingDef ParentName="MOL_LentilsBase">
+    <defName>MOL_Plant_Lentils_Wild</defName>
+    <label>wild lentils</label>
+    <description>A wild variety of the petite, leafy legume. These lentils grow naturally but produce smaller yields than their cultivated cousins.</description>
+    <statBases>
+      <MaxHitPoints>55</MaxHitPoints>
+      <Nutrition>0.18</Nutrition>
+    </statBases>
+    <plant>
+      <fertilityMin>0.3</fertilityMin>
+      <harvestYield>7</harvestYield>
+      <growDays>5</growDays>
+      <wildOrder>2</wildOrder>
+      <wildClusterWeight>15</wildClusterWeight>
+      <wildClusterRadius>4</wildClusterRadius>
+      <sowTags Inherit="False" />
+      <sowMinSkill Inherit="False" />
+    </plant>
+  </ThingDef>
+
+  <!-- Wild Garlic -->
+  <ThingDef ParentName="MOL_GarlicBase">
+    <defName>MOL_Plant_Garlic_Wild</defName>
+    <label>wild garlic</label>
+    <description>Wild garlic with leafy green stalks and segmented bulbs. Found growing naturally in temperate regions, though it produces less than cultivated varieties.</description>
+    <statBases>
+      <MaxHitPoints>85</MaxHitPoints>
+      <Nutrition>0.13</Nutrition>
+    </statBases>
+    <plant>
+      <harvestYield>6</harvestYield>
+      <growDays>9</growDays>
+      <visualSizeRange>0.3~1.2</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <wildClusterWeight>12</wildClusterWeight>
+      <wildClusterRadius>3</wildClusterRadius>
+      <sowTags Inherit="False" />
+    </plant>
+  </ThingDef>
+
+  <!-- Wild Carrots -->
+  <ThingDef ParentName="MOL_CarrotsBase">
+    <defName>MOL_Plant_Carrots_Wild</defName>
+    <label>wild carrot</label>
+    <description>Wild carrots with bushy, short stalks and thin taproots. These wild specimens are smaller and less sweet than farmed carrots, but still edible.</description>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <Nutrition>0.17</Nutrition>
+    </statBases>
+    <plant>
+      <fertilityMin>0.2</fertilityMin>
+      <harvestYield>4</harvestYield>
+      <growDays>5</growDays>
+      <visualSizeRange>0.2~0.35</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <wildClusterWeight>18</wildClusterWeight>
+      <wildClusterRadius>5</wildClusterRadius>
+      <sowTags Inherit="False" />
+      <sowMinSkill Inherit="False" />
+    </plant>
+  </ThingDef>
+
+  <!-- Wild Poppy -->
+  <ThingDef ParentName="MOL_PoppyBase">
+    <defName>MOL_Plant_Poppy_Wild</defName>
+    <label>wild poppy</label>
+    <description>A wild poppy with vibrant red flowers, found growing naturally in certain regions. Known for its medicinal properties, though wild specimens produce less than cultivated varieties.</description>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+    </statBases>
+    <plant>
+      <fertilityMin>0.2</fertilityMin>
+      <growDays>10</growDays>
+      <harvestYield>15</harvestYield>
+      <wildOrder>1</wildOrder>
+      <wildClusterWeight>8</wildClusterWeight>
+      <wildClusterRadius>4</wildClusterRadius>
+      <visualSizeRange>0.4~0.8</visualSizeRange>
+      <sowTags Inherit="False" />
+      <sowMinSkill Inherit="False" />
+      <sowWork Inherit="False" />
+    </plant>
+  </ThingDef>
+</Defs>
