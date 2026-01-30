@@ -79,6 +79,7 @@
       <immatureGraphicPath>Things/Plants/Crops/GarlicPlant_Immature</immatureGraphicPath>
     </plant>
   </ThingDef>
+  <!-- Carrots -->
   <ThingDef ParentName="PlantBase">
     <defName>MOL_Plant_Carrots</defName>
     <label>carrot plant</label>

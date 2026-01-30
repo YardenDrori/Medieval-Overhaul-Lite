@@ -42,13 +42,6 @@
     </value>
   </Operation>
   <!-- ===============================CROPS PATCHES=============================== -->
-  <!-- Bear Berries -->
-  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
-    <xpath>Defs/ThingDef[defName="VCE_Bearberry"]/graphicData/texPath</xpath>
-    <value>
-      <texPath>Things/Item/Resource/PlantFoodRaw/BearBerries</texPath>
-    </value>
-  </Operation>
   <!-- cabbage -->
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vplantse">
     <xpath>Defs/ThingDef[defName="VCE_RawCabbage"]/graphicData/texPath</xpath>
