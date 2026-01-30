@@ -115,4 +115,24 @@
       <li>Foods</li>
     </thingCategories>
   </ThingDef>
+  <!-- Poppies -->
+  <ThingDef ParentName="RoughPlantBase">
+    <defName>MOL_Poppy</defName>
+    <label>poppy</label>
+    <description>Seed pods harvested from poppy plants. The dried pods contain latex rich in alkaloids that can be processed into morphine at a drug lab. Poppies have been cultivated for their medicinal and recreational properties since ancient times.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/MOL_RawPoppy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>60</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <allowedArchonexusCount>20</allowedArchonexusCount>
+  </ThingDef>
 </Defs>

@@ -119,4 +119,33 @@
       <sowMinSkill>4</sowMinSkill>
     </plant>
   </ThingDef>
+  <ThingDef ParentName="PlantBase" Name="MOL_PoppyBase">
+    <defName>MOL_Plant_Poppy</defName>
+    <label>poppy</label>
+    <selectable>true</selectable>
+    <statBases>
+      <MaxHitPoints>85</MaxHitPoints>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Crops/PoppyPlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <description>A vibrant plant with striking red flowers, known for its use in various medicinal and alchemical preparations, often valued for its potent effects.</description>
+    <ingestible>
+      <foodType>Plant</foodType>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
+    <plant>
+      <growDays>7</growDays>
+      <sowWork>800</sowWork>
+      <sowMinSkill>8</sowMinSkill>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponic</li>
+      </sowTags>
+      <harvestedThingDef>MOL_Poppy</harvestedThingDef>
+      <purpose>Health</purpose>
+    </plant>
+  </ThingDef>
 </Defs>

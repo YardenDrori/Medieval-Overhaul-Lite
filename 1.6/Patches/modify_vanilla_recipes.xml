@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="GoJuice"]/costList</xpath>
+    <value>
+      <costList>
+        <Neutroamine>2</Neutroamine>
+        <MOL_Morphine>1</MOL_Morphine>
+      </costList>
+    </value>
+  </Operation>
+</Patch>

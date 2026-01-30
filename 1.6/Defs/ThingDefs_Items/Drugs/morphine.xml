@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>MOL_Morphine</defName>
+    <label>morphine</label>
+    <description>A potent painkiller derived from poppy plants. Morphine provides significant pain relief and a mild euphoric high, but causes drowsiness and slowed reactions. While effective for managing severe injuries, it carries a serious risk of addiction. Prolonged use leads to physical dependence and brutal withdrawal symptoms.\n\nMorphine can be further refined with neutroamine to produce go-juice, a military-grade combat stimulant.</description>
+    <descriptionHyperlinks>
+      <HediffDef>MOL_MorphineHigh</HediffDef>
+      <HediffDef>GoJuiceAddiction</HediffDef>
+      <ThingDef>GoJuice</ThingDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Drug/MOL_Morphine</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>600</WorkToMake>
+      <MarketValue>36</MarketValue>
+      <Mass>0.1</Mass>
+    </statBases>
+    <techLevel>Medieval</techLevel>
+    <ingestible>
+      <joyKind>Chemical</joyKind>
+      <joy>0.30</joy>
+      <drugCategory>Hard</drugCategory>
+      <foodType>Processed, Fluid</foodType>
+      <baseIngestTicks>80</baseIngestTicks>
+      <ingestSound>Ingest_Inject</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.18,0,0)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <chairSearchRadius>0</chairSearchRadius>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>MOL_MorphineHigh</hediffDef>
+          <severity>0.5</severity>
+          <toleranceChemical>GoJuice</toleranceChemical>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>DrugProduction</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1490</displayPriority>
+    </recipeMaker>
+    <costList>
+      <MOL_Poppy>10</MOL_Poppy>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>GoJuice</chemical>
+        <addictiveness>0.015</addictiveness>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+        <listOrder>190</listOrder>
+        <overdoseSeverityOffset>0.11~0.25</overdoseSeverityOffset>
+        <largeOverdoseChance>0.001</largeOverdoseChance>
+      </li>
+    </comps>
+  </ThingDef>
+  <HediffDef>
+    <defName>MOL_MorphineHigh</defName>
+    <hediffClass>Hediff_High</hediffClass>
+    <label>high on morphine</label>
+    <labelNoun>a morphine high</labelNoun>
+    <description>Warm numbness spreads through the body, dulling pain and worries alike. Everything feels distant and slow, wrapped in comfortable fog. The world's edges soften.</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.38</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painFactor>0.3</painFactor>
+        <painOffset>-0.50</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.90</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.95</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  <ThoughtDef>
+    <defName>MOL_MorphineHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>MOL_MorphineHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>high on morphine</label>
+        <description>Everything feels distant and soft. The pain is gone, wrapped in warm nothing. I could sleep for days.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>
