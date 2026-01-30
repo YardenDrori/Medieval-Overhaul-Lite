@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--========== Wild Medicinal Herbs ==========-->
+
+  <!-- Wild Winterbalm -->
+  <ThingDef ParentName="MOL_WinterBalmBase">
+    <defName>MOL_Plant_WinterBalm_Wild</defName>
+    <label>wild winterbalm</label>
+    <description>A wild hardy perennial that yields herbal medicine when harvested. This wild winterbalm thrives naturally in cold climates, though it produces less than cultivated varieties. Boreal settlers originally harvested these wild specimens before developing cultivated strains.</description>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+    </statBases>
+    <plant>
+      <harvestYield>10</harvestYield>
+      <growDays>12</growDays>
+      <wildOrder>1</wildOrder>
+      <wildClusterWeight>10</wildClusterWeight>
+      <wildClusterRadius>3</wildClusterRadius>
+      <sowTags Inherit="False" />
+      <sowMinSkill Inherit="False" />
+    </plant>
+  </ThingDef>
+
+  <!-- Wild Fevervine -->
+  <ThingDef ParentName="MOL_FeverVineBase">
+    <defName>MOL_Plant_Fevervine_Wild</defName>
+    <label>wild fevervine</label>
+    <description>A wild fast-growing tropical vine which yields herbal medicine when harvested. This untamed fevervine spreads aggressively in humid conditions, growing in tangled masses throughout rainforests. Indigenous peoples have harvested it for millennia before cultivation began.</description>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+    </statBases>
+    <plant>
+      <harvestYield>12</harvestYield>
+      <growDays>10</growDays>
+      <wildOrder>1</wildOrder>
+      <wildClusterWeight>15</wildClusterWeight>
+      <wildClusterRadius>5</wildClusterRadius>
+      <sowTags Inherit="False" />
+      <sowMinSkill Inherit="False" />
+    </plant>
+  </ThingDef>
+
+  <!-- Wild Marshvine -->
+  <ThingDef ParentName="MOL_MarshVineBase">
+    <defName>MOL_Plant_MarshVine_Wild</defName>
+    <label>wild marshvine</label>
+    <description>A wild wetland vine which yields herbal medicine when harvested. This wild marshvine grows abundantly in bogs and swamps, its roots filtering nutrients from murky water. Swamp dwellers have foraged these wild vines since ancient times before selective breeding produced hardier cultivated strains.</description>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+    </statBases>
+    <plant>
+      <harvestYield>11</harvestYield>
+      <growDays>11</growDays>
+      <wildOrder>1</wildOrder>
+      <wildClusterWeight>12</wildClusterWeight>
+      <wildClusterRadius>4</wildClusterRadius>
+      <sowTags Inherit="False" />
+      <sowMinSkill Inherit="False" />
+    </plant>
+  </ThingDef>
+</Defs>
