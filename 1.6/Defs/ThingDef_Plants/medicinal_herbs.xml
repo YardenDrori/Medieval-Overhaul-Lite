@@ -5,7 +5,7 @@
     <defName>MOL_Plant_WinterBalm</defName>
     <label>winterbalm</label>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/WinterBalmPlant</texPath>
+      <texPath>Things/Plants/Crops/WinterBalmPlant</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <description>A hardy perennial that yields herbal medicine when harvested. Winterbalm thrives in cold climates where other medicinal plants struggle, though its growing season remains frustratingly short.\n\nBoreal settlers bred this plant over generations to survive harsh winters. Its nickname "frostleaf" comes from its ability to survive early frosts that would kill healroot - and from the cooling sensation its extracts produce when applied to wounds.</description>
@@ -17,7 +17,7 @@
     <defName>MOL_Plant_Fevervine</defName>
     <label>fevervine</label>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/FeverVinePlant</texPath>
+      <texPath>Things/Plants/Crops/FeverVinePlant</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <description>A fast-growing tropical vine which yields herbal medicine when harvested. Unlike healroot, fevervine spreads aggressively in humid conditions and requires regular pruning to prevent it from overtaking other crops.\n\nIndigenous to rainforests, fevervine has been used by tropical cultures for millennia. Its common name references both the fever-reducing properties of its sap and the feverish speed at which it grows.</description>
@@ -29,7 +29,7 @@
     <defName>MOL_Plant_MarshVine</defName>
     <label>marshvine</label>
     <graphicData>
-      <texPath>Things/Plants/FullGrown/MarshVinePlant</texPath>
+      <texPath>Things/Plants/Crops/MarshVinePlant</texPath>
       <graphicClass>Graphic_Random</graphicClass>
     </graphicData>
     <description>A wetland vine which yields herbal medicine when harvested. Marshvine grows abundantly in bogs and swamps, where its roots filter nutrients from murky water. Harvesting is easier than healroot, though workers often return covered in mud.\n\nSwamp dwellers have cultivated marshvine since ancient times. Its thick, ropey stalks give the plant its name, though healers value it for the antiseptic compounds concentrated in its leaves.</description>
