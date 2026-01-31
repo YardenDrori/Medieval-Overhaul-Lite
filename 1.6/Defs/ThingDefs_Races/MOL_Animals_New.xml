@@ -1021,20 +1021,6 @@
       <lifeExpectancy>12</lifeExpectancy>
       <trainability>Advanced</trainability>
       <useMeatFrom>Wolf_Timber</useMeatFrom>
-      <wildBiomes>
-        <TropicalRainforest>0.15</TropicalRainforest>
-        <TropicalSwamp>0</TropicalSwamp>
-        <AridShrubland>0.15</AridShrubland>
-        <Desert>0.1</Desert>
-        <ExtremeDesert>0</ExtremeDesert>
-        <TemperateForest>0.1</TemperateForest>
-        <TemperateSwamp>0</TemperateSwamp>
-        <BorealForest>0</BorealForest>
-        <Tundra>0</Tundra>
-        <ColdBog>0</ColdBog>
-        <IceSheet>0</IceSheet>
-        <SeaIce>0</SeaIce>
-      </wildBiomes>
       <lifeStageAges>
         <li>
           <def>AnimalBaby</def>
