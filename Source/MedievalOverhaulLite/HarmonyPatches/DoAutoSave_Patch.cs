@@ -9,21 +9,35 @@ namespace MOExpandedLite;
 [HarmonyPatch(typeof(Autosaver), "DoAutosave")]
 public static class Autosaver_Patch
 {
+  public static int everyXAutosaves = 3;
+  public static int autosaveNum = everyXAutosaves;
+
   [HarmonyPostfix]
   public static void TriggerPlantBatch()
   {
-    // Run plant spawning right after autosave
-    foreach (Map map in Find.Maps)
+    if (autosaveNum == 0)
     {
-      if (map == null)
+      // Run plant spawning right after autosave
+      foreach (Map map in Find.Maps)
       {
-        continue;
+        if (map == null)
+        {
+          continue;
+        }
+        var spawner = map.wildPlantSpawner;
+        if (spawner != null)
+        {
+          for (int i = 0; i < everyXAutosaves; i++)
+          {
+            DoBatchSpawn(spawner);
+          }
+        }
       }
-      var spawner = map.wildPlantSpawner;
-      if (spawner != null)
-      {
-        DoBatchSpawn(spawner);
-      }
+      autosaveNum = everyXAutosaves;
+    }
+    else
+    {
+      autosaveNum--;
     }
   }
 
