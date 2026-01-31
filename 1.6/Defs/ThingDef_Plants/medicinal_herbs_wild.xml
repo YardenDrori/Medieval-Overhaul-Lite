@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <!--========== Wild Medicinal Herbs ==========-->
-
   <!-- Wild Winterbalm -->
   <ThingDef ParentName="MOL_WinterBalmBase">
     <defName>MOL_Plant_WinterBalm_Wild</defName>
@@ -16,14 +15,13 @@
       <wildOrder>1</wildOrder>
       <wildClusterWeight>10</wildClusterWeight>
       <wildClusterRadius>3</wildClusterRadius>
-      <sowTags Inherit="False" />
-      <sowMinSkill Inherit="False" />
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
     </plant>
   </ThingDef>
-
   <!-- Wild Fevervine -->
   <ThingDef ParentName="MOL_FeverVineBase">
-    <defName>MOL_Plant_Fevervine_Wild</defName>
+    <defName>MOL_Plant_FeverVine_Wild</defName>
     <label>wild fevervine</label>
     <description>A wild fast-growing tropical vine which yields herbal medicine when harvested. This untamed fevervine spreads aggressively in humid conditions, growing in tangled masses throughout rainforests. Indigenous peoples have harvested it for millennia before cultivation began.</description>
     <statBases>
@@ -35,11 +33,10 @@
       <wildOrder>1</wildOrder>
       <wildClusterWeight>15</wildClusterWeight>
       <wildClusterRadius>5</wildClusterRadius>
-      <sowTags Inherit="False" />
-      <sowMinSkill Inherit="False" />
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
     </plant>
   </ThingDef>
-
   <!-- Wild Marshvine -->
   <ThingDef ParentName="MOL_MarshVineBase">
     <defName>MOL_Plant_MarshVine_Wild</defName>
@@ -54,8 +51,8 @@
       <wildOrder>1</wildOrder>
       <wildClusterWeight>12</wildClusterWeight>
       <wildClusterRadius>4</wildClusterRadius>
-      <sowTags Inherit="False" />
-      <sowMinSkill Inherit="False" />
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
     </plant>
   </ThingDef>
 </Defs>

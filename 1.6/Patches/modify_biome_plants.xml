@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- Temperate forest -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TemperateForest"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <VCE_Wheat>0.002</VCE_Wheat>
+      <!-- fabrics -->
+      <Plant_Cotton_Wild>0.001</Plant_Cotton_Wild>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+    </value>
+  </Operation>
+  <!-- Temperate Swamp -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TemperateSwamp"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <Plant_Rice>0.002</Plant_Rice>
+      <!-- fabrics -->
+      <PE_Tree_Mulberry>0.02</PE_Tree_Mulberry>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_MarshVine_Wild>0.05</MOL_Plant_MarshVine_Wild>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/BiomeDef[defName="TemperateSwamp"]/wildPlants/Plant_HealrootWild</xpath>
+  </Operation>
+  <!-- Tropical Rainforest -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TropicalRainforest"]/wildPlants</xpath>
+    <value>
+      <!-- fabrics -->
+      <PE_Tree_Mulberry>0.02</PE_Tree_Mulberry>
+      <!-- drugs -->
+      <VBE_Plant_Coffee>0.001</VBE_Plant_Coffee>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_FeverVine_Wild>0.001</MOL_Plant_FeverVine_Wild>
+    </value>
+  </Operation>
+  <!-- Tropical Swamp -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="TropicalSwamp"]/wildPlants</xpath>
+    <value>
+      <!-- fabrics -->
+      <PE_Tree_Mulberry>0.02</PE_Tree_Mulberry>
+      <!-- drugs -->
+      <Plant_Psychoid_Wild>0.001</Plant_Psychoid_Wild>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_MarshVine_Wild>0.001</MOL_Plant_MarshVine_Wild>
+    </value>
+  </Operation>
+  <!-- Arid Shrubland -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildPlants</xpath>
+    <value>
+      <!-- fabrics -->
+      <Plant_Cotton_Wild>0.001</Plant_Cotton_Wild>
+      <!-- drugs -->
+      <VFEM2_Plant_Grape>0.001</VFEM2_Plant_Grape>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+    </value>
+  </Operation>
+  <!-- desert -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="Desert"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <MOL_Plant_Lentils_Wild>0.002</MOL_Plant_Lentils_Wild>
+      <!-- fabrics -->
+      <PE_Tree_Mulberry>0.02</PE_Tree_Mulberry>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+    </value>
+  </Operation>
+  <!-- extreme desert -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="ExtremeDesert"]/wildPlants</xpath>
+    <value>
+      <MOL_Plant_Poppy_Wild>0.05</MOL_Plant_Poppy_Wild>
+    </value>
+  </Operation>
+  <!-- Boreal Forest -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="BorealForest"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <Plant_Potato>0.002</Plant_Potato>
+      <!-- fabrics -->
+      <PE_Tree_Mulberry>0.02</PE_Tree_Mulberry>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_WinterBalm_Wild>0.05</MOL_Plant_WinterBalm_Wild>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/BiomeDef[defName="BorealForest"]/wildPlants/Plant_HealrootWild</xpath>
+  </Operation>
+  <!-- Cold Bog -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="ColdBog"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <VCE_Cabbage>0.002</VCE_Cabbage>
+      <!-- fabrics -->
+      <PE_Plant_Flax>0.001</PE_Plant_Flax>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_MarshVine_Wild>0.05</MOL_Plant_MarshVine_Wild>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/BiomeDef[defName="ColdBog"]/wildPlants/Plant_HealrootWild</xpath>
+  </Operation>
+  <!-- Tundra -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="Tundra"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <MOL_Plant_Carrots_Wild>0.002</MOL_Plant_Carrots_Wild>
+      <!-- fabrics -->
+      <PE_Plant_Flax>0.001</PE_Plant_Flax>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_WinterBalm_Wild>0.05</MOL_Plant_WinterBalm_Wild>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/BiomeDef[defName="Tundra"]/wildPlants/Plant_HealrootWild</xpath>
+  </Operation>
+  <!-- GlowForest -->
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="GlowForest"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <Plant_Nutrifungus>0.001</Plant_Nutrifungus>
+    </value>
+  </Operation>
+  <!-- Scarlands -->
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="ScarLands"]/wildPlants</xpath>
+    <value>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+    </value>
+  </Operation>
+  <!-- Grasslands -->
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="Grasslands"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <Plant_Corn>0.002</Plant_Corn>
+      <!-- fabrics -->
+      <Plant_Cotton_Wild>0.001</Plant_Cotton_Wild>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+    </value>
+  </Operation>
+  <!-- Glacial Plains -->
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="GlacialPlains"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <VCE_Peas>0.002</VCE_Peas>
+      <!-- fabrics -->
+      <PE_Plant_Flax>0.001</PE_Plant_Flax>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_WinterBalm_Wild>0.05</MOL_Plant_WinterBalm_Wild>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="GlacialPlains"]/wildPlants/Plant_HealrootWild</xpath>
+  </Operation>
+  <!-- Lava Fields -->
+  <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/BiomeDef[defName="LavaFields"]/wildPlants</xpath>
+    <value>
+      <!-- food -->
+      <VCE_Tomato>0.002</VCE_Tomato>
+      <!-- fabrics -->
+      <PE_Tree_Mulberry>0.02</PE_Tree_Mulberry>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_FeverVine_Wild>0.001</MOL_Plant_FeverVine_Wild>
+    </value>
+  </Operation>
+  <!-- Aspen Forest -->
+  <Operation Class="PatchOperationAdd" MayRequire="regrowth.botr.aspenforest">
+    <xpath>Defs/BiomeDef[defName="RG_AspenForest"]/wildPlants</xpath>
+    <value>
+      <!-- drug -->
+      <Plant_Hops>0.001</Plant_Hops>
+      <!-- fabrics -->
+      <PE_Plant_Flax>0.001</PE_Plant_Flax>
+      <!-- utility -->
+      <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
+      <MOL_Plant_WinterBalm_Wild>0.05</MOL_Plant_WinterBalm_Wild>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="regrowth.botr.aspenforest">
+    <xpath>Defs/BiomeDef[defName="RG_AspenForest"]/wildPlants/Plant_HealrootWild</xpath>
+  </Operation>
+</Patch>

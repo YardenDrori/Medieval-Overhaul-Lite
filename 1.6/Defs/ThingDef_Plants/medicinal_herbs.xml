@@ -14,7 +14,7 @@
     </plant>
   </ThingDef>
   <ThingDef ParentName="HealrootBase" Name="MOL_FeverVineBase">
-    <defName>MOL_Plant_Fevervine</defName>
+    <defName>MOL_Plant_FeverVine</defName>
     <label>fevervine</label>
     <graphicData>
       <texPath>Things/Plants/Crops/FeverVinePlant</texPath>
