@@ -16,11 +16,10 @@
       <wildOrder>2</wildOrder>
       <wildClusterWeight>15</wildClusterWeight>
       <wildClusterRadius>4</wildClusterRadius>
-      <sowTags Inherit="False" />
-      <sowMinSkill Inherit="False" />
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
     </plant>
   </ThingDef>
-
   <!-- Wild Garlic -->
   <ThingDef ParentName="MOL_GarlicBase">
     <defName>MOL_Plant_Garlic_Wild</defName>
@@ -37,13 +36,12 @@
       <wildOrder>2</wildOrder>
       <wildClusterWeight>12</wildClusterWeight>
       <wildClusterRadius>3</wildClusterRadius>
-      <sowTags Inherit="False" />
+      <sowTags Inherit="False"/>
     </plant>
   </ThingDef>
-
-  <!-- Wild Carrots -->
-  <ThingDef ParentName="MOL_CarrotsBase">
-    <defName>MOL_Plant_Carrots_Wild</defName>
+  <!-- Wild Carrot -->
+  <ThingDef ParentName="MOL_CarrotBase">
+    <defName>MOL_Plant_Carrot_Wild</defName>
     <label>wild carrot</label>
     <description>Wild carrots with bushy, short stalks and thin taproots. These wild specimens are smaller and less sweet than farmed carrots, but still edible.</description>
     <statBases>
@@ -58,11 +56,10 @@
       <wildOrder>2</wildOrder>
       <wildClusterWeight>18</wildClusterWeight>
       <wildClusterRadius>5</wildClusterRadius>
-      <sowTags Inherit="False" />
-      <sowMinSkill Inherit="False" />
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
     </plant>
   </ThingDef>
-
   <!-- Wild Poppy -->
   <ThingDef ParentName="MOL_PoppyBase">
     <defName>MOL_Plant_Poppy_Wild</defName>
@@ -79,9 +76,9 @@
       <wildClusterWeight>8</wildClusterWeight>
       <wildClusterRadius>4</wildClusterRadius>
       <visualSizeRange>0.4~0.8</visualSizeRange>
-      <sowTags Inherit="False" />
-      <sowMinSkill Inherit="False" />
-      <sowWork Inherit="False" />
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
+      <sowWork Inherit="False"/>
     </plant>
   </ThingDef>
 </Defs>

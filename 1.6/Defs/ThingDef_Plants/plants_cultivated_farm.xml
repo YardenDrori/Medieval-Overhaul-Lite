@@ -79,12 +79,12 @@
     </plant>
   </ThingDef>
   <!-- Carrots -->
-  <ThingDef ParentName="PlantBase" Name="MOL_CarrotsBase">
-    <defName>MOL_Plant_Carrots</defName>
+  <ThingDef ParentName="PlantBase" Name="MOL_CarrotBase">
+    <defName>MOL_Plant_Carrot</defName>
     <label>carrot plant</label>
     <description>Bushy, short stalks whos value is in the sugary taproot. They make for a healthy, if not tasty snacks on their own, or a good addition to any meal when boiled, stewed or sauteed.</description>
     <descriptionHyperlinks>
-      <ThingDef>MOL_RawCarrots</ThingDef>
+      <ThingDef>MOL_RawCarrot</ThingDef>
     </descriptionHyperlinks>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
@@ -102,7 +102,7 @@
       <dieIfLeafless>true</dieIfLeafless>
       <harvestTag>Standard</harvestTag>
       <maxMeshCount>4</maxMeshCount>
-      <harvestedThingDef>MOL_RawCarrots</harvestedThingDef>
+      <harvestedThingDef>MOL_RawCarrot</harvestedThingDef>
       <harvestYield>6</harvestYield>
       <sowTags>
         <li>Ground</li>

@@ -70,8 +70,8 @@
   </ThingDef>
   <!-- Carrot -->
   <ThingDef ParentName="PlantFoodRawBase">
-    <defName>MOL_RawCarrots</defName>
-    <label>carrots</label>
+    <defName>MOL_RawCarrot</defName>
+    <label>carrot</label>
     <description>A root vegetable, typically orange in color, though purple, black, red, white, and yellow cultivars exist. A versatile food that can be chopped and boiled, fried or steamed, cooked in soups and stews, as well as used for baby and pet foods.</description>
     <graphicData>
       <texPath>Things/Item/Resource/PlantFoodRaw/MOL_RawCarrots</texPath>

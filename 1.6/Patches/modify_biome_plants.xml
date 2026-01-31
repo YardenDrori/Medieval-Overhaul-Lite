@@ -122,7 +122,7 @@
     <xpath>Defs/BiomeDef[defName="Tundra"]/wildPlants</xpath>
     <value>
       <!-- food -->
-      <MOL_Plant_Carrots_Wild>0.002</MOL_Plant_Carrots_Wild>
+      <MOL_Plant_Carrot_Wild>0.002</MOL_Plant_Carrot_Wild>
       <!-- fabrics -->
       <PE_Plant_Flax>0.001</PE_Plant_Flax>
       <!-- utility -->
