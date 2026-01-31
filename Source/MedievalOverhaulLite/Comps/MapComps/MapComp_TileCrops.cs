@@ -15,10 +15,40 @@ public class MapComponent_TileCrops : MapComponent
     {
       biomeDef = this.map.Biome;
     }
-    if (plantToRegister.IsPlant)
+
+    if (plantToRegister == null)
+    {
+      Log.Error("[MOL] Tried to register null plant!");
+      return;
+    }
+
+    if (!plantToRegister.IsPlant)
+    {
+      Log.Error(
+        $"[MOL] {plantToRegister.defName} is not a plant! Category: {plantToRegister.category}"
+      );
+      return;
+    }
+
+    if (!tilePlants.ContainsKey(plantToRegister))
     {
       tilePlants.Add(plantToRegister, weight);
+      Log.Message($"[MOL] Successfully registered {plantToRegister.defName} with weight {weight}");
     }
+    else
+    {
+      Log.Warning($"[MOL] {plantToRegister.defName} already registered, skipping");
+    }
+  }
+
+  public Dictionary<ThingDef, float> GetAllTilePlants()
+  {
+    return tilePlants;
+  }
+
+  public float GetWeightForPlant(ThingDef plant)
+  {
+    return tilePlants[plant];
   }
 
   public ThingDef GetRandomPlant()
