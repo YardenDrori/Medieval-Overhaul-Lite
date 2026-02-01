@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Patch>
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/HediffDef[defName="AC_PerfumeHediff"]/stages/li</xpath>
+    <value>
+      <statOffsets>
+        <PawnBeauty>1</PawnBeauty>
+      </statOffsets>
+    </value>
+  </Operation>
+</Patch>
