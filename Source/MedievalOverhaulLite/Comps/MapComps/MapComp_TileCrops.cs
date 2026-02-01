@@ -48,6 +48,13 @@ public class MapComponent_TileCrops : MapComponent
 
   public float GetWeightForPlant(ThingDef plant)
   {
+    if (!tilePlants.ContainsKey(plant))
+    {
+      Log.Warning(
+        $"[Medieval Overhaul Lite] Attempted to replace weight of {plant.defName} which is not in the tilePlants Dictionary. This likely due to a configuration error with a biome setting a plant as a wildplant but with weight value of '0'"
+      );
+      return 0;
+    }
     return tilePlants[plant];
   }
 

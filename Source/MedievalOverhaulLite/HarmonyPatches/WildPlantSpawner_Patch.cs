@@ -54,13 +54,11 @@ public static class PlantChoiceWeight_Patch
 
     if (mapComp != null && __result == 0)
     {
-      // if (!idk.Contains(plantDef))
-      // {
-      //   Log.Message($"{plantDef.defName}: {__result}");
-      //   idk.Add(plantDef);
-      // }
-      float weight = mapComp.GetWeightForPlant(plantDef);
-      __result = weight; // Override with our pool weight
+      if (__result == 0)
+      {
+        float weight = mapComp.GetWeightForPlant(plantDef);
+        __result = weight; // Override with our pool weight
+      }
     }
   }
 }
@@ -68,9 +66,16 @@ public static class PlantChoiceWeight_Patch
 [HarmonyPatch(typeof(WildPlantSpawner), "WildPlantSpawnerTickInternal")]
 public class WildPlantSpawnerTickInternal_Patch
 {
+  public static int allowedCalls = 0;
+
   [HarmonyPrefix]
   public static bool DisableVanillaSpawning()
   {
-    return false; // Always skip vanilla spawning
+    if (allowedCalls > 0)
+    {
+      allowedCalls--;
+      return true;
+    }
+    return false;
   }
 }

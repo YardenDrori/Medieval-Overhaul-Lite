@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef>
+    <defName>MOL_PlantSpawner</defName>
+    <label>plant spawner</label>
+    <thingClass>MOExpandedLite.Thing_PlantSpawnerTicker</thingClass>
+    <tickerType>Normal</tickerType>
+    <isSaveable>false</isSaveable>
+    <drawerType>None</drawerType>
+    <useHitPoints>false</useHitPoints>
+    <selectable>false</selectable>
+    <category>Building</category>
+    <seeThroughFog>true</seeThroughFog>
+  </ThingDef>
+</Defs>
