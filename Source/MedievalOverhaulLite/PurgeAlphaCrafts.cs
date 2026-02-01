@@ -23,6 +23,7 @@ public static class PurgeAlphaCrafts
     HashSet<String> thingsToKeep =
     [
       "AC_ButterOffsets",
+      "AC_JamOffsets",
       "AC_EssenceOffsets",
       "AC_OilOffsets",
       "AC_PerfumeOffsets",
@@ -43,6 +44,7 @@ public static class PurgeAlphaCrafts
       "AC_Oil",
       "AC_Perfume",
       "AC_Pickles",
+      "AC_Jam",
       "AC_Lavender",
       "AC_FragrantbloomRose",
       "AC_Hyacinth",
