@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <Patch>
+  <!-- Perfume -->
   <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
     <xpath>Defs/HediffDef[defName="AC_PerfumeHediff"]/stages/li</xpath>
     <value>

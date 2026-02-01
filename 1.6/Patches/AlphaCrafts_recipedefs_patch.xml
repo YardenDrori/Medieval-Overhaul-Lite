@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- Pickles -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>
+    Defs/RecipeDef[defName="AC_PickleVegetables"]/ingredients/li[1]/filter/thingDefs |
+    Defs/RecipeDef[defName="AC_PickleVegetables"]/fixedIngredientFilter/thingDefs |
+    Defs/RecipeDef[defName="AC_PickleVegetables"]/defaultIngredientFilter/thingDefs
+  </xpath>
+    <value>
+      <li>VCE_RawCabbage</li>
+      <li>VCE_RawBeet</li>
+      <li>MOL_RawCarrot</li>
+      <li>VCE_RawOnion</li>
+      <li>MOL_RawGarlic</li>
+      <li>VCE_RawPepper</li>
+      <li>VCE_RawEggplant</li>
+      <li>VCE_RawTomato</li>
+      <li>VCE_RawPumpkin</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_PickleVegetables"]/workAmount</xpath>
+    <value>
+      <!-- base value is 1000 -->
+      <workAmount>1000</workAmount>
+    </value>
+  </Operation>
+  <!-- Butter -->
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>
+    Defs/RecipeDef[defName="AC_ChurnButter"]/ingredients/li[1]/filter/thingDefs |
+    Defs/RecipeDef[defName="AC_ChurnButter"]/fixedIngredientFilter/thingDefs |
+    Defs/RecipeDef[defName="AC_ChurnButter"]/defaultIngredientFilter/thingDefs
+  </xpath>
+    <value>
+      <li>SmokeleafLeaves</li>
+      <li>RawCorn</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/workAmount</xpath>
+    <value>
+      <!-- base value is 5000 -->
+      <workAmount>5000</workAmount>
+    </value>
+  </Operation>
+  <!-- essense -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>
+    Defs/RecipeDef[defName="AC_ExtractEssence"]/ingredients/li[1]/filter/thingDefs |
+    Defs/RecipeDef[defName="AC_ExtractEssence"]/fixedIngredientFilter/thingDefs |
+    Defs/RecipeDef[defName="AC_ExtractEssence"]/defaultIngredientFilter/thingDefs
+  </xpath>
+    <value>
+      <li>VBE_RawCoffee</li>
+      <li>FEM2_RawGrapes</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ExtractEssence"]/workAmount</xpath>
+    <value>
+      <!-- base value is 625 -->
+      <workAmount>625</workAmount>
+    </value>
+  </Operation>
+  <!-- oil -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>
+    Defs/RecipeDef[defName="AC_PressOil"]/ingredients/li[1]/filter/thingDefs |
+    Defs/RecipeDef[defName="AC_PressOil"]/fixedIngredientFilter/thingDefs |
+    Defs/RecipeDef[defName="AC_PressOil"]/defaultIngredientFilter/thingDefs
+  </xpath>
+    <value>
+      <li>VCE_RawPumpkin</li>
+      <li>VEM2_RawGrapes</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_PressOil"]/workAmount</xpath>
+    <value>
+      <!-- base value is 1000 -->
+      <workAmount>1000</workAmount>
+    </value>
+  </Operation>
+  <!-- perfume -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>
+    Defs/RecipeDef[defName="AC_ExtractPerfume"]/ingredients/li[1]/filter/thingDefs |
+    Defs/RecipeDef[defName="AC_ExtractPerfume"]/fixedIngredientFilter/thingDefs |
+    Defs/RecipeDef[defName="AC_ExtractPerfume"]/defaultIngredientFilter/thingDefs
+  </xpath>
+    <value>
+      <li>VBE_RawCoffee</li>
+      <li>FEM2_RawGrapes</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ExtractPerfume"]/workAmount</xpath>
+    <value>
+      <!-- base value is 2500 -->
+      <workAmount>2500</workAmount>
+    </value>
+  </Operation>
+  <!-- soap -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_MakeSoap"]/workAmount</xpath>
+    <value>
+      <!-- base value is 5000 -->
+      <workAmount>5000</workAmount>
+    </value>
+  </Operation>
+</Patch>
