@@ -61,14 +61,18 @@
       </statBases>
     </value>
   </Operation>
-  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/ingestible</xpath>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/comps/li[1]/daysToRotStart</xpath>
+    <value>
+      <!-- base value is 120 -->
+      <daysToRotStart>120</daysToRotStart>
+    </value>
   </Operation>
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/comps/li[1]</xpath>
+    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/ingredient</xpath>
   </Operation>
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/modExtensions/li[1]</xpath>
+    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/modExtensions/li[1]</xpath>
   </Operation>
   <!-- Perfume -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
@@ -81,5 +85,152 @@
         <Mass>0.05</Mass>
       </statBases>
     </value>
+  </Operation>
+  <!-- Oil -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Oil"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 10 0.01 2 0.3 -->
+        <MarketValue>10</MarketValue>
+        <Nutrition>0.01</Nutrition>
+        <Flammability>2</Flammability>
+        <Mass>0.3</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Oil"]/comps/li[1]/daysToRotStart</xpath>
+    <value>
+      <!-- base value is 120 -->
+      <daysToRotStart>120</daysToRotStart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Oil"]/ingredient</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Oil"]/modExtensions/li[1]</xpath>
+  </Operation>
+  <!-- Vinegar -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Vinegar"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 6 0.01 0.5 0.3 -->
+        <MarketValue>6</MarketValue>
+        <Nutrition>0.01</Nutrition>
+        <Flammability>0.5</Flammability>
+        <Mass>0.3</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Vinegar"]/comps/li[1]/daysToRotStart</xpath>
+    <value>
+      <!-- base value is 120 -->
+      <daysToRotStart>120</daysToRotStart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Vinegar"]/ingredient</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Vinegar"]/modExtensions/li[1]</xpath>
+  </Operation>
+  <!-- Pickles -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Pickles"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 15 0.01 0.1 0.2 -->
+        <MarketValue>15</MarketValue>
+        <Nutrition>0.01</Nutrition>
+        <Flammability>0.1</Flammability>
+        <Mass>0.2</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Pickles"]/comps/li[1]/daysToRotStart</xpath>
+    <value>
+      <!-- base value is 120 -->
+      <daysToRotStart>120</daysToRotStart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Pickles"]/ingredient</xpath>
+  </Operation>
+  <!-- Perfume (AC_Perfume) -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Perfume"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 6 1 0.05 -->
+        <MarketValue>6</MarketValue>
+        <Flammability>1</Flammability>
+        <Mass>0.05</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Perfume"]/ingredient</xpath>
+  </Operation>
+  <!-- Soap -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Soap"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 45 0.5 0.05 -->
+        <MarketValue>45</MarketValue>
+        <Flammability>0.5</Flammability>
+        <Mass>0.05</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <!-- Jam -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Jam"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 15 0.01 0.5 0.1 -->
+        <MarketValue>15</MarketValue>
+        <Nutrition>0.01</Nutrition>
+        <Flammability>0.5</Flammability>
+        <Mass>0.1</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Jam"]/comps/li[1]/daysToRotStart</xpath>
+    <value>
+      <!-- base value is 60 -->
+      <daysToRotStart>60</daysToRotStart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Jam"]/ingredient</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Jam"]/modExtensions/li[1]</xpath>
+  </Operation>
+  <!-- Balsamic Vinegar -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_BalsamicVinegar"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 33 0.01 0.5 0.3 -->
+        <MarketValue>33</MarketValue>
+        <Nutrition>0.01</Nutrition>
+        <Flammability>0.5</Flammability>
+        <Mass>0.3</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_BalsamicVinegar"]/ingredient</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_BalsamicVinegar"]/modExtensions/li[1]</xpath>
   </Operation>
 </Patch>
