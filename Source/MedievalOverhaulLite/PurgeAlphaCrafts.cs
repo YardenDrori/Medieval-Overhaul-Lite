@@ -75,9 +75,7 @@ public static class PurgeAlphaCrafts
     // Clean up orphaned graphics for removed items
     CleanupOrphanedGraphics(thingsRemoved);
 
-    Log.Message(
-      $"Purged {thingsRemoved.Count} items from Alpha crafts {thingsRemoved.GetEnumerator()}"
-    );
+    Log.Message($"Purged {thingsRemoved.Count} items from Alpha crafts");
 
     Resources.UnloadUnusedAssets(); // Unity's texture GC
     System.GC.Collect(); // C# GC for good measure
