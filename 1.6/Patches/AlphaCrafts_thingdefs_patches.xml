@@ -14,6 +14,12 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Butter"]/description</xpath>
+    <value>
+      <description>A rich dairy product churned from milk. Essential for baking and a staple in colonial kitchens across the rim. Its creamy texture and flavor make it irreplaceable in countless recipes.</description>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Butter"]/comps/li[1]/daysToRotStart</xpath>
     <value>
       <!-- base value is 120 -->
@@ -39,6 +45,12 @@
       </statBases>
     </value>
   </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Essense"]/description</xpath>
+    <value>
+      <description>A concentrated aromatic extract distilled from flowers and herbs. Used as a base ingredient in perfumes and luxury soaps.</description>
+    </value>
+  </Operation>
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Essence"]/ingestible</xpath>
   </Operation>
@@ -62,6 +74,12 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/description</xpath>
+    <value>
+      <description>An exceptionally rare and luxurious oil infused with the earthy essence of truffles. Only the most skilled chefs use this precious ingredient, reserving it exclusively for gourmet meals that demand the finest components.</description>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/comps/li[1]/daysToRotStart</xpath>
     <value>
       <!-- base value is 120 -->
@@ -74,18 +92,6 @@
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/modExtensions/li[1]</xpath>
   </Operation>
-  <!-- Perfume -->
-  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_PerfumeHediff"]/statBases</xpath>
-    <value>
-      <statBases>
-        <!-- 4.6 1.2 0.05 -->
-        <MarketValue>4.6</MarketValue>
-        <Flammability>1.2</Flammability>
-        <Mass>0.05</Mass>
-      </statBases>
-    </value>
-  </Operation>
   <!-- Oil -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Oil"]/statBases</xpath>
@@ -97,6 +103,12 @@
         <Flammability>2</Flammability>
         <Mass>0.3</Mass>
       </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Oil"]/description</xpath>
+    <value>
+      <description>Oil Pressed from various crops, this versatile cooking fat is essential for preparing a variety of delicious soups and stews.</description>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
@@ -126,6 +138,12 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Vinegar"]/description</xpath>
+    <value>
+      <description>A sharp, acidic liquid produced through fermentation. Indispensable for preserving vegetables and meats, used by mankind for generations to make food last through the harshest of winters.</description>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Vinegar"]/comps/li[1]/daysToRotStart</xpath>
     <value>
       <!-- base value is 120 -->
@@ -152,6 +170,12 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Pickles"]/description</xpath>
+    <value>
+      <description>Vegetables preserved in vinegar brine, offering long shelf life and a tangy flavor that enhances any meal. Compact and durable, they're perfect for storage and improving morale.</description>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Pickles"]/comps/li[1]/daysToRotStart</xpath>
     <value>
       <!-- base value is 120 -->
@@ -173,6 +197,12 @@
       </statBases>
     </value>
   </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Perfume"]/description</xpath>
+    <value>
+      <description>A fragrant liquid crafted from essence and alcohol. When worn, it makes a person more pleasent to be around, and more likeable.</description>
+    </value>
+  </Operation>
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Perfume"]/ingredient</xpath>
   </Operation>
@@ -188,6 +218,12 @@
       </statBases>
     </value>
   </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Soap"]/description</xpath>
+    <value>
+      <description>A cleansing bar made from rendered fats and alkali. Essential for maintaining hygiene in any civilized settlement, preventing disease and offering a chance to relax.</description>
+    </value>
+  </Operation>
   <!-- Jam -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Jam"]/statBases</xpath>
@@ -199,6 +235,12 @@
         <Flammability>0.5</Flammability>
         <Mass>0.1</Mass>
       </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Jam"]/description</xpath>
+    <value>
+      <description>Fruit preserved with sugar, concentrated into a sweet spread. The preservation process intensifies the natural flavors while extending shelf life dramatically. Adds a touch of sweetness to any meal.</description>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
@@ -225,6 +267,12 @@
         <Flammability>0.5</Flammability>
         <Mass>0.3</Mass>
       </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_BalsamicVinegar"]/description</xpath>
+    <value>
+      <description>A refined vinegar aged from grape must, possessing a complex sweet-tart flavor. Its superior quality makes preserved foods noticeably more palatable.</description>
     </value>
   </Operation>
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
