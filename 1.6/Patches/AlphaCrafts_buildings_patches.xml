@@ -76,19 +76,32 @@
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]</xpath>
   </Operation>
+  <!-- Add idle power cost -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps/li[1]</xpath>
+    <value>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>false</shortCircuitInRain>
+        <basePowerConsumption>50</basePowerConsumption>
+        <idlePowerDraw>10</idlePowerDraw>
+      </li>
+    </value>
+  </Operation>
   <!-- Add ProductionExpanded ResourceProcessor comp -->
   <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps</xpath>
     <value>
       <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
-        <maxCapacity>25</maxCapacity>
+        <maxCapacity>1</maxCapacity>
         <hasIdlePowerCost>true</hasIdlePowerCost>
-        <usesOnTexture>true</usesOnTexture>
+        <usesOnTexture>false</usesOnTexture>
         <hasTempRequirements>true</hasTempRequirements>
-        <maxTempC>28</maxTempC>
-        <minTempC>10</minTempC>
+        <maxTempC>30</maxTempC>
+        <minTempC>8</minTempC>
         <soundInput>Corpse_Drop</soundInput>
         <soundStartCycle>FlickSwitch</soundStartCycle>
+        <showGizmo>false</showGizmo>
         <soundExtract>Standard_Drop</soundExtract>
       </li>
     </value>

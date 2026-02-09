@@ -75,4 +75,81 @@
     </modExtensions>
     <displayPriority>100</displayPriority>
   </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_ProcessBalsamic</defName>
+    <label>Infuse vinegar and fruit into balsamic vinegar</label>
+    <description>Turns 15 vinegar and 50 fruit into 12 high quality balsamic vinegar</description>
+    <jobString>infusing vinegar</jobString>
+    <workAmount>500</workAmount>
+    <recipeUsers>
+      <li>AC_Infuser</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+            <li>VFEM2_RawGrapes</li>
+          </thingDefs>
+          <categories>
+            <li>VCE_Fruit</li>
+          </categories>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AC_Vinegar</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>RawBerries</li>
+        <li>VFEM2_RawGrapes</li>
+        <li>AC_Vinegar</li>
+      </thingDefs>
+      <categories>
+        <li>VCE_Fruit</li>
+      </categories>
+    </fixedIngredientFilter>
+    <products>
+      <AC_BalsamicVinegar>12</AC_BalsamicVinegar>
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>true</isStaticRecipe>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>RawBerries</li>
+              <li>VFEM2_RawGrapes</li>
+            </thingDefs>
+            <categoryDefs>
+              <li>VCE_Fruit</li>
+            </categoryDefs>
+            <count>50</count>
+          </li>
+          <li>
+            <thingDefs>
+              <li>AC_Vinegar</li>
+            </thingDefs>
+            <count>15</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>AC_BalsamicVinegar</output>
+            <count>12</count>
+          </li>
+        </products>
+        <ticksPerItemOut>300000</ticksPerItemOut>
+        <cycles>5</cycles>
+      </li>
+    </modExtensions>
+    <displayPriority>110</displayPriority>
+  </RecipeDef>
 </Defs>
