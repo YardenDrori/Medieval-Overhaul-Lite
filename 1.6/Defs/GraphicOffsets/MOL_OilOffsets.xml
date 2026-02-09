@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Defs>
+  <VEF.Graphics.GraphicOffsets>
+    <defName>AC_OilOffsets</defName>
+    <thingDef>AC_Oil</thingDef>
+    <ingredientsAndOffsetList>
+      <li>
+        <key>RawCorn</key>
+        <value>3</value>
+      </li>
+      <li>
+        <key>SmokeleafLeaves</key>
+        <value>5</value>
+      </li>
+    </ingredientsAndOffsetList>
+  </VEF.Graphics.GraphicOffsets>
+</Defs>

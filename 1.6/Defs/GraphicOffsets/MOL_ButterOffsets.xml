@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Defs>
+  <VEF.Graphics.GraphicOffsets>
+    <defName>MOL_ButterOffsets</defName>
+    <thingDef>AC_Butter</thingDef>
+    <ingredientsAndOffsetList>
+      <li>
+        <key>Milk</key>
+        <value>5</value>
+      </li>
+      <li>
+        <key>RawCorn</key>
+        <value>1</value>
+      </li>
+      <li>
+        <key>Chocolate</key>
+        <value>2</value>
+      </li>
+      <li>
+        <key>SmokeleafLeaves</key>
+        <value>0</value>
+      </li>
+    </ingredientsAndOffsetList>
+  </VEF.Graphics.GraphicOffsets>
+</Defs>

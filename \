@@ -150,7 +150,7 @@
         <cycles>5</cycles>
       </li>
     </modExtensions>
-    <displayPriority>120</displayPriority>
+    <displayPriority>110</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_ProcessTruffleOil</defName>
@@ -165,28 +165,36 @@
       <li>
         <filter>
           <thingDefs>
-            <li>AC_Oil</li>
+            <li>RawBerries</li>
+            <li>VFEM2_RawGrapes</li>
           </thingDefs>
+          <categories>
+            <li>VCE_Fruit</li>
+          </categories>
         </filter>
-        <count>15</count>
+        <count>50</count>
       </li>
       <li>
         <filter>
           <thingDefs>
-            <li>RawFungus</li>
+            <li>AC_Vinegar</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>15</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
-        <li>RawFungus</li>
-        <li>AC_Oil</li>
+        <li>RawBerries</li>
+        <li>VFEM2_RawGrapes</li>
+        <li>AC_Vinegar</li>
       </thingDefs>
+      <categories>
+        <li>VCE_Fruit</li>
+      </categories>
     </fixedIngredientFilter>
     <products>
-      <AC_TruffleOil>6</AC_TruffleOil>
+      <AC_BalsamicVinegar>12</AC_BalsamicVinegar>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.RecipeExtension_Processor">
@@ -194,21 +202,25 @@
         <ingredients>
           <li>
             <thingDefs>
-              <li>RawFungus</li>
+              <li>RawBerries</li>
+              <li>VFEM2_RawGrapes</li>
             </thingDefs>
+            <categoryDefs>
+              <li>VCE_Fruit</li>
+            </categoryDefs>
             <count>50</count>
           </li>
           <li>
             <thingDefs>
-              <li>AC_Oil</li>
+              <li>AC_Vinegar</li>
             </thingDefs>
             <count>15</count>
           </li>
         </ingredients>
         <products>
           <li>
-            <output>AC_TruffleOil</output>
-            <count>6</count>
+            <output>AC_BalsamicVinegar</output>
+            <count>12</count>
           </li>
         </products>
         <ticksPerItemOut>300000</ticksPerItemOut>
