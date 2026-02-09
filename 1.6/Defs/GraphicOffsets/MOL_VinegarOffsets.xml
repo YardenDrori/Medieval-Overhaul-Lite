@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
-  <!-- Vinegar texture variants based on ingredients -->
   <!-- Available texture variants: A(0), B(1), C(2), D(3), E(4) -->
-  <!-- Note: RawRice and VCE_RawApple kept at original Alpha Crafts offsets -->
-  <!-- Other ingredients assigned arbitrarily - adjust after testing in-game -->
   <VEF.Graphics.GraphicOffsets>
     <defName>MOL_VinegarOffsets</defName>
     <thingDef>AC_Vinegar</thingDef>
@@ -17,11 +14,10 @@
         <key>VCE_RawApple</key>
         <value>0</value>
       </li>
-
       <!-- NEW INGREDIENTS (arbitrary assignments) -->
       <li>
         <key>RawCorn</key>
-        <value>1</value>
+        <value>4</value>
       </li>
       <li>
         <key>RawBerries</key>
@@ -29,11 +25,11 @@
       </li>
       <li>
         <key>MOL_RawWheat</key>
-        <value>3</value>
+        <value>4</value>
       </li>
       <li>
         <key>MOL_RawSugarcane</key>
-        <value>0</value>
+        <value>3</value>
       </li>
       <li>
         <key>VFEM2_RawGrapes</key>
