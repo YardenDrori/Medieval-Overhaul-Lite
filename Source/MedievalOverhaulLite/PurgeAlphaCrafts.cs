@@ -55,6 +55,9 @@ public static class PurgeAlphaCrafts
     thingsRemoved.UnionWith(RemoveThoughtDefs(thingsToKeep));
     thingsRemoved.UnionWith(RemoveVEFGraphicOffsets(thingsToKeep));
 
+    // Remove VCE_Condiments category from all Alpha Crafts items
+    RemoveCondimentsCategory();
+
     // Clean up orphaned graphics for removed items
     CleanupOrphanedGraphics(thingsRemoved);
 
@@ -350,6 +353,49 @@ public static class PurgeAlphaCrafts
       }
     }
     return thingsRemoved;
+  }
+
+  private static void RemoveCondimentsCategory()
+  {
+    try
+    {
+      // Find the VCE_Condiments category def
+      var condimentsCategory = DefDatabase<ThingCategoryDef>.GetNamedSilentFail("VCE_Condiments");
+      if (condimentsCategory == null)
+      {
+        return;
+      }
+
+      int itemsModified = 0;
+      foreach (ThingDef thing in DefDatabase<ThingDef>.AllDefs)
+      {
+        // Only process Alpha Crafts items that still exist (not purged)
+        if (!thing.defName.StartsWith("AC_"))
+        {
+          continue;
+        }
+
+        // Check if this item has thingCategories and VCE_Condiments is in it
+        if (thing.thingCategories != null && thing.thingCategories.Contains(condimentsCategory))
+        {
+          thing.thingCategories.Remove(condimentsCategory);
+          itemsModified++;
+        }
+      }
+
+      if (itemsModified > 0)
+      {
+        Log.Message(
+          $"[Medieval Overhaul Lite] Removed VCE_Condiments category from {itemsModified} Alpha Crafts items"
+        );
+      }
+    }
+    catch (Exception ex)
+    {
+      Log.Error(
+        $"[Medieval Overhaul Lite] Exception during condiments category removal: {ex.Message}\n{ex.StackTrace}"
+      );
+    }
   }
 
   private static void CleanupOrphanedGraphics(HashSet<String> removedDefNames)
