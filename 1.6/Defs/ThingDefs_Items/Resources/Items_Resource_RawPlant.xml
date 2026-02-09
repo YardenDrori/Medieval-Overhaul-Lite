@@ -46,7 +46,7 @@
     </ingestible>
   </ThingDef>
   <!-- Wheat -->
-  <ThingDef ParentName="PlantFoodRawBase">
+  <ThingDef ParentName="RoughPlantBase">
     <defName>MOL_RawWheat</defName>
     <label>wheat</label>
     <description>Wheat has been vital crop for the rise of civilization, its golden stalks ripening under the sun, ready to be harvested for sustenance and trade. Despite this wheat needs further processing into flour to be a usable food ingredient.</description>

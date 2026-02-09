@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<Defs>
+  <!-- Vinegar -->
+  <RecipeDef>
+    <defName>MOL_ProcessVinegar</defName>
+    <label>ferment vinegar</label>
+    <description>ferment vinegar from raw ingredients</description>
+    <jobString>fermenting vinegar</jobString>
+    <workAmount>500</workAmount>
+    <recipeUsers>
+      <li>AC_VinegarCask</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawRice</li>
+            <li>RawCorn</li>
+            <li>RawBerries</li>
+            <li>MOL_RawWheat</li>
+            <li>MOL_RawSugarcane</li>
+            <li>VCE_RawApple</li>
+            <li>VFEM2_RawGrapes</li>
+            <!-- <li>VCE_RawBeets</li> -->
+            <!-- <li>VCE_RawTomatoes</li> -->
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>RawRice</li>
+        <li>RawCorn</li>
+        <li>RawBerries</li>
+        <li>MOL_RawWheat</li>
+        <li>MOL_RawSugarcane</li>
+        <li>VCE_RawApple</li>
+        <li>VFEM2_RawGrapes</li>
+        <!-- <li>VCE_RawBeets</li> -->
+        <!-- <li>VCE_RawTomatoes</li> -->
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <AC_Vinegar>25</AC_Vinegar>
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>true</isStaticRecipe>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>RawRice</li>
+              <li>RawCorn</li>
+              <li>RawBerries</li>
+              <li>MOL_RawWheat</li>
+              <li>MOL_RawSugarcane</li>
+              <li>VCE_RawApple</li>
+              <li>VFEM2_RawGrapes</li>
+              <!-- <li>VCE_RawBeets</li> -->
+              <!-- <li>VCE_RawTomatoes</li> -->
+            </thingDefs>
+            <count>50</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>AC_Vinegar</output>
+            <count>25</count>
+          </li>
+        </products>
+        <ticksPerItemOut>120000</ticksPerItemOut>
+        <cycles>5</cycles>
+      </li>
+    </modExtensions>
+    <displayPriority>100</displayPriority>
+  </RecipeDef>
+</Defs>

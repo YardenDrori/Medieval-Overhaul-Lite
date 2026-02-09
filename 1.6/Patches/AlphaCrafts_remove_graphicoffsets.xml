@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- Remove ALL Alpha Crafts GraphicOffsets - we're replacing them with MOL versions -->
+  <!-- This prevents duplicate key errors when VEF loads the offsets -->
+
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/VEF.Graphics.GraphicOffsets[starts-with(defName, "AC_")]</xpath>
+  </Operation>
+</Patch>

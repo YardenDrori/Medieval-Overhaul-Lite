@@ -9,13 +9,13 @@
   </xpath>
     <value>
       <li>VCE_RawCabbage</li>
-      <li>VCE_RawBeet</li>
+      <li>VCE_RawBeets</li>
       <li>MOL_RawCarrot</li>
       <li>VCE_RawOnion</li>
       <li>MOL_RawGarlic</li>
       <li>VCE_RawPepper</li>
       <li>VCE_RawEggplant</li>
-      <li>VCE_RawTomato</li>
+      <li>VCE_RawTomatoes</li>
       <li>VCE_RawPumpkin</li>
     </value>
   </Operation>
@@ -28,15 +28,22 @@
   </Operation>
   <!-- Butter -->
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>
-    Defs/RecipeDef[defName="AC_ChurnButter"]/ingredients/li[1]/filter/thingDefs |
-    Defs/RecipeDef[defName="AC_ChurnButter"]/fixedIngredientFilter/thingDefs |
-    Defs/RecipeDef[defName="AC_ChurnButter"]/defaultIngredientFilter/thingDefs
-  </xpath>
-    <value>
-      <li>SmokeleafLeaves</li>
-      <li>RawCorn</li>
-    </value>
+    <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/ingredients/li[1]/filter/thingDefs/li[.="SmokeleafLeaves"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/fixedIngredientFilter/thingDefs/li[.="SmokeleafLeaves"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/defaultIngredientFilter/thingDefs/li[.="SmokeleafLeaves"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/ingredients/li[1]/filter/thingDefs/li[.="RawCorn"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/fixedIngredientFilter/thingDefs/li[.="RawCorn"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/defaultIngredientFilter/thingDefs/li[.="RawCorn"]</xpath>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/RecipeDef[defName="AC_ChurnButter"]/workAmount</xpath>
@@ -54,7 +61,7 @@
   </xpath>
     <value>
       <li>VBE_RawCoffee</li>
-      <li>FEM2_RawGrapes</li>
+      <li>VFEM2_RawGrapes</li>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
@@ -73,7 +80,7 @@
   </xpath>
     <value>
       <li>VCE_RawPumpkin</li>
-      <li>VEM2_RawGrapes</li>
+      <li>VFEM2_RawGrapes</li>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
@@ -92,7 +99,7 @@
   </xpath>
     <value>
       <li>VBE_RawCoffee</li>
-      <li>FEM2_RawGrapes</li>
+      <li>VFEM2_RawGrapes</li>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">

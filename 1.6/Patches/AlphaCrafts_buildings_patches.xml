@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- ========================================== -->
+  <!-- AC_VinegarCask - Convert to PE Processor  -->
+  <!-- ========================================== -->
+  <!-- Add thingClass -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_VinegarCask"][not(thingClass)]</xpath>
+    <value>
+      <thingClass>ProductionExpanded.Building_Processor</thingClass>
+    </value>
+  </Operation>
+  <!-- Replace inspectorTabs -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/inspectorTabs</xpath>
+    <value>
+      <inspectorTabs>
+        <li>ITab_Bills</li>
+      </inspectorTabs>
+    </value>
+  </Operation>
+  <!-- Remove PipeSystem comp -->
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]</xpath>
+  </Operation>
+  <!-- Add idle power cost -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/comps/li[1]</xpath>
+    <value>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>false</shortCircuitInRain>
+        <basePowerConsumption>50</basePowerConsumption>
+        <idlePowerDraw>10</idlePowerDraw>
+      </li>
+    </value>
+  </Operation>
+  <!-- Add ProductionExpanded ResourceProcessor comp -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/comps</xpath>
+    <value>
+      <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
+        <maxCapacity>30</maxCapacity>
+        <hasIdlePowerCost>true</hasIdlePowerCost>
+        <usesOnTexture>false</usesOnTexture>
+        <hasTempRequirements>true</hasTempRequirements>
+        <maxTempC>30</maxTempC>
+        <minTempC>8</minTempC>
+        <soundInput>Corpse_Drop</soundInput>
+        <soundStartCycle>FlickSwitch</soundStartCycle>
+        <showGizmo>false</showGizmo>
+        <soundExtract>Standard_Drop</soundExtract>
+      </li>
+    </value>
+  </Operation>
+  <!-- ========================================== -->
+  <!-- AC_Infuser - Convert to PE Processor      -->
+  <!-- ========================================== -->
+  <!-- Add thingClass -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"][not(thingClass)]</xpath>
+    <value>
+      <thingClass>ProductionExpanded.Building_Processor</thingClass>
+    </value>
+  </Operation>
+  <!-- Replace inspectorTabs -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/inspectorTabs</xpath>
+    <value>
+      <inspectorTabs>
+        <li>ITab_Bills</li>
+      </inspectorTabs>
+    </value>
+  </Operation>
+  <!-- Remove PipeSystem comp -->
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]</xpath>
+  </Operation>
+  <!-- Add ProductionExpanded ResourceProcessor comp -->
+  <Operation Class="PatchOperationAdd" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps</xpath>
+    <value>
+      <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
+        <maxCapacity>25</maxCapacity>
+        <hasIdlePowerCost>true</hasIdlePowerCost>
+        <usesOnTexture>true</usesOnTexture>
+        <hasTempRequirements>true</hasTempRequirements>
+        <maxTempC>28</maxTempC>
+        <minTempC>10</minTempC>
+        <soundInput>Corpse_Drop</soundInput>
+        <soundStartCycle>FlickSwitch</soundStartCycle>
+        <soundExtract>Standard_Drop</soundExtract>
+      </li>
+    </value>
+  </Operation>
+</Patch>

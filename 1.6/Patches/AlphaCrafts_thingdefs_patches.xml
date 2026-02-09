@@ -37,16 +37,15 @@
     <xpath>Defs/ThingDef[defName="AC_Essence"]/statBases</xpath>
     <value>
       <statBases>
-        <!-- 4 0.5 0.01 0.01 -->
+        <!-- 4 0.5 0.01 -->
         <MarketValue>4</MarketValue>
         <Flammability>0.5</Flammability>
-        <Nutrition>0.01</Nutrition>
         <Mass>0.01</Mass>
       </statBases>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essense"]/description</xpath>
+    <xpath>Defs/ThingDef[defName="AC_Essence"]/description</xpath>
     <value>
       <description>A concentrated aromatic extract distilled from flowers and herbs. Used as a base ingredient in perfumes and luxury soaps.</description>
     </value>
