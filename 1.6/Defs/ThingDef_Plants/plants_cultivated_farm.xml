@@ -147,10 +147,10 @@
       <purpose>Health</purpose>
     </plant>
   </ThingDef>
-  <ThingDef ParentName="TreeBase">
+  <ThingDef ParentName="TreeBase" Name="MOL_LemonTreeBase">
     <defName>MOL_LemonTree</defName>
     <label>lemon tree</label>
-    <description>A tall tree native to both deserts and tropics alike. Bright, sour lemons grow profusely on this tree, some lemons may even mature early and fall to the ground before the primary harvest is ready.</description>
+    <description>A tall tree native to both deserts and tropics alike. Bright, sour lemons grow profusely on this tree.</description>
     <graphicData>
       <texPath>Things/Plants/Trees/LemonTree</texPath>
       <graphicClass>Graphic_Random</graphicClass>
@@ -186,7 +186,7 @@
       <harvestAfterGrowth>0.20</harvestAfterGrowth>
     </plant>
   </ThingDef>
-  <ThingDef ParentName="TreeBase">
+  <ThingDef ParentName="TreeBase" Name="MOL_OliveTreeBase">
     <defName>VCE_TreeOlive</defName>
     <label>olive tree</label>
     <description>A subtropical broad-leaved evergreen tree. Its leaves, leathery and lance-shaped, are dark green above and silvery on the underside and are paired opposite each other on the twig. The wood is resistant to decay. If the top dies back, a new trunk will often arise from the roots. Interestingly, olive trees show a marked preference for rocky soils, flourishing on them. Rich soils are actually detrimental to them. They will also live for a very, very long time, far longer than other produce trees. Contrary to other tree produce, olives can't be eaten raw.</description>
@@ -227,7 +227,7 @@
       <harvestAfterGrowth>0.20</harvestAfterGrowth>
     </plant>
   </ThingDef>
-  <ThingDef ParentName="PlantBase">
+  <ThingDef ParentName="PlantBase" Name="MOL_SunflowerBase">
     <defName>VCE_Sunflower</defName>
     <label>sunflower plant</label>
     <thingClass>VEF.Plants.Plant_FasterInTropics</thingClass>

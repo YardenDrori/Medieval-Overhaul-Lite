@@ -81,4 +81,69 @@
       <sowWork Inherit="False"/>
     </plant>
   </ThingDef>
+  <!-- Wild Lemon Tree -->
+  <ThingDef ParentName="MOL_LemonTreeBase">
+    <defName>MOL_LemonTree_Wild</defName>
+    <label>wild lemon tree</label>
+    <description>A wild lemon tree found growing naturally in deserts and tropical regions. These untamed trees produce smaller, more sour lemons than their cultivated cousins, but are hardier and require less fertile soil.</description>
+    <statBases>
+      <Beauty>1</Beauty>
+      <BeautyOutdoors>1</BeautyOutdoors>
+      <Nutrition>1.1</Nutrition>
+    </statBases>
+    <plant>
+      <fertilityMin>0.4</fertilityMin>
+      <growDays>40</growDays>
+      <harvestYield>35</harvestYield>
+      <visualSizeRange>0.7~1.8</visualSizeRange>
+      <wildOrder>1</wildOrder>
+      <wildClusterWeight>5</wildClusterWeight>
+      <wildClusterRadius>3</wildClusterRadius>
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
+    </plant>
+  </ThingDef>
+  <!-- Wild Olive Tree -->
+  <ThingDef ParentName="MOL_OliveTreeBase">
+    <defName>VCE_TreeOlive_Wild</defName>
+    <label>wild olive tree</label>
+    <description>A wild olive tree with silvery-green leaves found growing naturally on rocky hillsides and Mediterranean-like regions. These ancient trees are gnarled and twisted, producing smaller olives than cultivated varieties, but are extremely hardy and long-lived.</description>
+    <statBases>
+      <Beauty>1</Beauty>
+      <BeautyOutdoors>2</BeautyOutdoors>
+      <Nutrition>1.0</Nutrition>
+    </statBases>
+    <plant>
+      <fertilityMin>0.3</fertilityMin>
+      <growDays>35</growDays>
+      <harvestYield>30</harvestYield>
+      <visualSizeRange>0.7~1.9</visualSizeRange>
+      <wildOrder>1</wildOrder>
+      <wildClusterWeight>6</wildClusterWeight>
+      <wildClusterRadius>4</wildClusterRadius>
+      <sowTags Inherit="False"/>
+      <sowMinSkill Inherit="False"/>
+    </plant>
+  </ThingDef>
+  <!-- Wild Sunflower -->
+  <ThingDef ParentName="MOL_SunflowerBase">
+    <defName>VCE_Sunflower_Wild</defName>
+    <label>wild sunflower</label>
+    <description>A wild sunflower growing naturally in open plains and grasslands. While smaller and producing fewer seeds than cultivated varieties, these hardy plants can thrive in less fertile soil and are a common sight in temperate and tropical regions.</description>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>
+      <Nutrition>0.08</Nutrition>
+    </statBases>
+    <plant>
+      <fertilityMin>0.3</fertilityMin>
+      <fertilitySensitivity>0.9</fertilitySensitivity>
+      <harvestYield>10</harvestYield>
+      <growDays>14</growDays>
+      <visualSizeRange>0.4~1.2</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <wildClusterWeight>20</wildClusterWeight>
+      <wildClusterRadius>6</wildClusterRadius>
+      <sowTags Inherit="False"/>
+    </plant>
+  </ThingDef>
 </Defs>
