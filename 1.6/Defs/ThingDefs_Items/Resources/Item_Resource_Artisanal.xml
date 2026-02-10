@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Defs>
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>MOL_OliveOil</defName>
+    <label>Olive Oil</label>
+    <description>A bottle of extra-virgin olive oil, cold-pressed from the fruit of the olive tree. While it is technically edible on its own, its true value lies in the kitchen.\nHigh-quality fats are the cornerstone of hearty cooking; having a stock of this liquid gold allows your chefs to transform dry ingredients into rich, nourishing soups and stews. The golden hue and peppery finish provide a luxurious mouthfeel that reminds even the lowliest hauler of a life far away from the Rim.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/OliveOil</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>25</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>2</Flammability>
+      <Mass>0.3</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>120</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Ingredients">
+			
+			</li>
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+      <specialThoughtAsIngredient>AC_ConsumedInfusedOil</specialThoughtAsIngredient>
+    </ingestible>
+    <ingredient>
+      <mergeCompatibilityTags>
+        <li>Condiments</li>
+      </mergeCompatibilityTags>
+    </ingredient>
+    <modExtensions>
+    </modExtensions>
+  </ThingDef>
+</Defs>

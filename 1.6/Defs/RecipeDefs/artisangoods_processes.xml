@@ -622,4 +622,69 @@
       </li>
     </modExtensions>
   </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_ProcessEVOO</defName>
+    <label>Infuse olives into olive oil</label>
+    <description>Turns 15 oil and 50 olives into 12 high quality extra virgin olive oil</description>
+    <jobString>infusing vinegar</jobString>
+    <workAmount>500</workAmount>
+    <recipeUsers>
+      <li>AC_Infuser</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VCE_RawOlives</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AC_Oil</li>
+          </thingDefs>
+        </filter>
+        <count>15</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VCE_RawOlives</li>
+        <li>AC_Oil</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <MOL_OliveOil>12</MOL_OliveOil>
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>true</isStaticRecipe>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>VCE_RawOlives</li>
+            </thingDefs>
+            <count>50</count>
+          </li>
+          <li>
+            <thingDefs>
+              <li>AC_Oil</li>
+            </thingDefs>
+            <count>15</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>MOL_OliveOil</output>
+            <count>12</count>
+          </li>
+        </products>
+        <ticksPerItemOut>300000</ticksPerItemOut>
+        <cycles>5</cycles>
+      </li>
+    </modExtensions>
+    <displayPriority>110</displayPriority>
+  </RecipeDef>
 </Defs>
