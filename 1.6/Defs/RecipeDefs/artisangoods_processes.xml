@@ -153,7 +153,7 @@
     <displayPriority>120</displayPriority>
   </RecipeDef>
   <RecipeDef>
-    <defName>AC_PressOil</defName>
+    <defName>MOL_PressOil</defName>
     <label>press oil</label>
     <description>Process fruits, nuts, or seeds into high-quality oils. Yield of the recipe will depend on the produce being used to get the oil, with 50 smokeleaf leaves producing 10 oil.</description>
     <jobString>Pressing oil.</jobString>
@@ -334,6 +334,102 @@
     <modExtensions>
       <li Class="AlphaCrafts.VariableOutputByIngredient">
         <baseline>RawBerries</baseline>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_PickleVegetables</defName>
+    <label>pickle vegetables</label>
+    <description>This recipe preserves fresh vegetables by soaking them in a vinegary brine, allowing them to absorb tangy flavors and develop a crunchy texture. Yield of the recipe will depend on the produce being used to get the pickles, with 50 corn producing 25 pickle jars.</description>
+    <jobString>pickling vegetables.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <workAmount>1000</workAmount>
+    <recipeUsers>
+      <li>AC_BottlingStation</li>
+    </recipeUsers>
+    <researchPrerequisite>AC_ComplexArtisanalCrafting</researchPrerequisite>
+    <ingredients>
+      <li Name="VegIngredient">
+        <filter>
+          <customSummary>vegetables</customSummary>
+          <thingDefs>
+            <li>RawCorn</li>
+            <li>RawFungus</li>
+            <li>RawPotatoes</li>
+            <li>VCE_RawSoybean</li>
+            <li>VCE_RawGarlic</li>
+            <li>MOL_RawCarrot</li>
+            <li>VCE_RawOnion</li>
+            <li>VCE_RawPumpkin</li>
+            <li>VCE_RawPepper</li>
+            <li>VCE_RawPeas</li>
+            <li>VCE_RawEggplant</li>
+            <li>VCE_RawBeets</li>
+            <li>VCE_RawTomatoes</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <customSummary>vinegars</customSummary>
+          <thingDefs>
+            <li>AC_Vinegar</li>
+            <li>AC_BalsamicVinegar</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>RawCorn</li>
+        <li>RawFungus</li>
+        <li>RawPotatoes</li>
+        <li>VCE_RawSoybean</li>
+        <li>VCE_RawGarlic</li>
+        <li>MOL_RawCarrot</li>
+        <li>VCE_RawOnion</li>
+        <li>VCE_RawPumpkin</li>
+        <li>VCE_RawPepper</li>
+        <li>VCE_RawPeas</li>
+        <li>VCE_RawEggplant</li>
+        <li>VCE_RawBeets</li>
+        <li>VCE_RawTomatoes</li>
+        <li>AC_Vinegar</li>
+        <li>AC_BalsamicVinegar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>RawCorn</li>
+        <li>RawFungus</li>
+        <li>RawPotatoes</li>
+        <li>VCE_RawSoybean</li>
+        <li>VCE_RawGarlic</li>
+        <li>MOL_RawCarrot</li>
+        <li>VCE_RawOnion</li>
+        <li>VCE_RawPumpkin</li>
+        <li>VCE_RawPepper</li>
+        <li>VCE_RawPeas</li>
+        <li>VCE_RawEggplant</li>
+        <li>VCE_RawBeets</li>
+        <li>VCE_RawTomatoes</li>
+        <li>AC_Vinegar</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <products>
+      <AC_Pickles>25</AC_Pickles>
+    </products>
+    <modExtensions>
+      <li Class="AlphaCrafts.VariableOutputByIngredient">
+        <baseline>RawCorn</baseline>
+        <exclusions>
+          <li>AC_Vinegar</li>
+        </exclusions>
       </li>
     </modExtensions>
   </RecipeDef>

@@ -205,6 +205,43 @@
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Perfume"]/ingredient</xpath>
   </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Perfume"]/comps/li[2]</xpath>
+    <value>
+      <li Class="AlphaCrafts.CompProperties_LabelByIngredients">
+        <overrides>
+          <li>
+            <key>RawBerries</key>
+            <value>Strawberry</value>
+          </li>
+          <li>
+            <key>Ambrosia</key>
+            <value>Eau d'ambroisie</value>
+          </li>
+          <li>
+            <key>MOL_RawCarrot</key>
+            <value>Daucus Carota</value>
+          </li>
+          <li>
+            <key>Dye</key>
+            <value>Rainbow</value>
+          </li>
+          <li>
+            <key>VBE_RawCoffee</key>
+            <value>Midnight Absolute</value>
+          </li>
+          <li>
+            <key>MOL_RawPoppy</key>
+            <value>Red Opulence</value>
+          </li>
+          <li>
+            <key>VBE_RawTobacco</key>
+            <value>Tabac Absolu</value>
+          </li>
+        </overrides>
+      </li>
+    </value>
+  </Operation>
   <!-- Soap -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Soap"]/statBases</xpath>
