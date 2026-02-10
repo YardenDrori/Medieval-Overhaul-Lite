@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<VEF.Graphics.GraphicOffsets>
+  <defName>MOL_PerfumeOffsets</defName>
+  <thingDef>AC_Perfume</thingDef>
+  <ingredientsAndOffsetList>
+    <li>
+      <key>RawBerries</key>
+      <value>1</value>
+    </li>
+    <li>
+      <key>Ambrosia</key>
+      <value>7</value>
+    </li>
+    <li>
+      <key>MOL_RawCarrot</key>
+      <value>3</value>
+    </li>
+    <li>
+      <key>VBE_RawCoffee</key>
+      <value>2</value>
+    </li>
+    <li>
+      <key>Dye</key>
+      <value>8</value>
+    </li>
+    <li>
+      <key>MOL_RawPoppy</key>
+      <value>6</value>
+    </li>
+    <li>
+      <key>VBE_RawTobacco</key>
+      <value>4</value>
+    </li>
+  </ingredientsAndOffsetList>
+</VEF.Graphics.GraphicOffsets>

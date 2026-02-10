@@ -153,27 +153,29 @@
     <displayPriority>120</displayPriority>
   </RecipeDef>
   <RecipeDef>
-    <defName>MOL_ProcessTruffleOil</defName>
-    <label>Infuse oil and fungus into truffle oil</label>
-    <description>Turns 15 oil and 50 raw fungus into 6 truffle oil.</description>
-    <jobString>infusing vinegar</jobString>
-    <workAmount>500</workAmount>
+    <defName>AC_PressOil</defName>
+    <label>press oil</label>
+    <description>Process fruits, nuts, or seeds into high-quality oils. Yield of the recipe will depend on the produce being used to get the oil, with 50 smokeleaf leaves producing 10 oil.</description>
+    <jobString>Pressing oil.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>false</allowMixingIngredients>
+    <workAmount>1000</workAmount>
     <recipeUsers>
-      <li>AC_Infuser</li>
+      <li>AC_OilPressWorkshop</li>
+      <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
     <ingredients>
       <li>
         <filter>
           <thingDefs>
-            <li>AC_Oil</li>
-          </thingDefs>
-        </filter>
-        <count>15</count>
-      </li>
-      <li>
-        <filter>
-          <thingDefs>
+            <li>RawCorn</li>
+            <li>SmokeleafLeaves</li>
             <li>RawFungus</li>
+            <li>VCE_RawSunflower</li>
+            <li>VCE_RawOlives</li>
+            <li>VCE_RawSoybean</li>
           </thingDefs>
         </filter>
         <count>50</count>
@@ -181,40 +183,97 @@
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
+        <li>RawCorn</li>
+        <li>SmokeleafLeaves</li>
         <li>RawFungus</li>
-        <li>AC_Oil</li>
+        <li>VCE_RawSunflower</li>
+        <li>VCE_RawOlives</li>
+        <li>VCE_RawSoybean</li>
       </thingDefs>
     </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>RawCorn</li>
+        <li>SmokeleafLeaves</li>
+        <li>RawFungus</li>
+        <li>VCE_RawSunflower</li>
+        <li>VCE_RawOlives</li>
+        <li>VCE_RawSoybean</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
     <products>
-      <AC_TruffleOil>6</AC_TruffleOil>
+      <AC_Oil>10</AC_Oil>
     </products>
     <modExtensions>
-      <li Class="ProductionExpanded.RecipeExtension_Processor">
-        <isStaticRecipe>true</isStaticRecipe>
-        <ingredients>
-          <li>
-            <thingDefs>
-              <li>RawFungus</li>
-            </thingDefs>
-            <count>50</count>
-          </li>
-          <li>
-            <thingDefs>
-              <li>AC_Oil</li>
-            </thingDefs>
-            <count>15</count>
-          </li>
-        </ingredients>
-        <products>
-          <li>
-            <output>AC_TruffleOil</output>
-            <count>6</count>
-          </li>
-        </products>
-        <ticksPerItemOut>300000</ticksPerItemOut>
-        <cycles>5</cycles>
+      <li Class="AlphaCrafts.VariableOutputByIngredient">
+        <baseline>SmokeleafLeaves</baseline>
       </li>
     </modExtensions>
-    <displayPriority>110</displayPriority>
   </RecipeDef>
+  <!-- <RecipeDef> -->
+  <!--   <defName>MOL_ProcessTruffleOil</defName> -->
+  <!--   <label>Infuse oil and fungus into truffle oil</label> -->
+  <!--   <description>Turns 15 oil and 50 raw fungus into 6 truffle oil.</description> -->
+  <!--   <jobString>infusing vinegar</jobString> -->
+  <!--   <workAmount>500</workAmount> -->
+  <!--   <recipeUsers> -->
+  <!--     <li>AC_Infuser</li> -->
+  <!--   </recipeUsers> -->
+  <!--   <ingredients> -->
+  <!--     <li> -->
+  <!--       <filter> -->
+  <!--         <thingDefs> -->
+  <!--           <li>AC_Oil</li> -->
+  <!--         </thingDefs> -->
+  <!--       </filter> -->
+  <!--       <count>15</count> -->
+  <!--     </li> -->
+  <!--     <li> -->
+  <!--       <filter> -->
+  <!--         <thingDefs> -->
+  <!--           <li>RawFungus</li> -->
+  <!--         </thingDefs> -->
+  <!--       </filter> -->
+  <!--       <count>50</count> -->
+  <!--     </li> -->
+  <!--   </ingredients> -->
+  <!--   <fixedIngredientFilter> -->
+  <!--     <thingDefs> -->
+  <!--       <li>RawFungus</li> -->
+  <!--       <li>AC_Oil</li> -->
+  <!--     </thingDefs> -->
+  <!--   </fixedIngredientFilter> -->
+  <!--   <products> -->
+  <!--     <AC_TruffleOil>6</AC_TruffleOil> -->
+  <!--   </products> -->
+  <!--   <modExtensions> -->
+  <!--     <li Class="ProductionExpanded.RecipeExtension_Processor"> -->
+  <!--       <isStaticRecipe>true</isStaticRecipe> -->
+  <!--       <ingredients> -->
+  <!--         <li> -->
+  <!--           <thingDefs> -->
+  <!--             <li>RawFungus</li> -->
+  <!--           </thingDefs> -->
+  <!--           <count>50</count> -->
+  <!--         </li> -->
+  <!--         <li> -->
+  <!--           <thingDefs> -->
+  <!--             <li>AC_Oil</li> -->
+  <!--           </thingDefs> -->
+  <!--           <count>15</count> -->
+  <!--         </li> -->
+  <!--       </ingredients> -->
+  <!--       <products> -->
+  <!--         <li> -->
+  <!--           <output>AC_TruffleOil</output> -->
+  <!--           <count>6</count> -->
+  <!--         </li> -->
+  <!--       </products> -->
+  <!--       <ticksPerItemOut>300000</ticksPerItemOut> -->
+  <!--       <cycles>5</cycles> -->
+  <!--     </li> -->
+  <!--   </modExtensions> -->
+  <!--   <displayPriority>110</displayPriority> -->
+  <!-- </RecipeDef> -->
 </Defs>
