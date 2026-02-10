@@ -168,4 +168,46 @@
       <ingestSound>RawVegetable_Eat</ingestSound>
     </ingestible>
   </ThingDef>
+  <ThingDef ParentName="PlantFoodRawBase">
+    <defName>VCE_RawOlives</defName>
+    <label>olives</label>
+    <description>A small, egg-shaped black or green fruit that is used as food or for making oil. Olives freshly picked from the tree contain oleuropein, which makes the fruit unpalatable for immediate consumption. They must be brined or fermented to be used.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/VCE_Olives</texPath>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.1</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>40</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <foodType>VegetableOrFruit</foodType>
+    </ingestible>
+  </ThingDef>
+  <ThingDef ParentName="PlantFoodRawBase">
+    <defName>VCE_RawSunflower</defName>
+    <label>sunflower seeds</label>
+    <description>The seeds of the sunflower plant are more commonly eaten as a snack than as part of a meal. They can also be used as garnishes or ingredients in various recipes.</description>
+    <soundInteract>Grain_Drop</soundInteract>
+    <soundDrop>Grain_Drop</soundDrop>
+    <graphicData>
+      <texPath>Things/Item/Resource/PlantFoodRaw/VCE_SunflowerSeeds</texPath>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.1</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>30</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <foodType>VegetableOrFruit</foodType>
+    </ingestible>
+  </ThingDef>
 </Defs>

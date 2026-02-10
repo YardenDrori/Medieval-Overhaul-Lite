@@ -186,4 +186,82 @@
       <harvestAfterGrowth>0.20</harvestAfterGrowth>
     </plant>
   </ThingDef>
+  <ThingDef ParentName="TreeBase">
+    <defName>VCE_TreeOlive</defName>
+    <label>olive tree</label>
+    <description>A subtropical broad-leaved evergreen tree. Its leaves, leathery and lance-shaped, are dark green above and silvery on the underside and are paired opposite each other on the twig. The wood is resistant to decay. If the top dies back, a new trunk will often arise from the roots. Interestingly, olive trees show a marked preference for rocky soils, flourishing on them. Rich soils are actually detrimental to them. They will also live for a very, very long time, far longer than other produce trees. Contrary to other tree produce, olives can't be eaten raw.</description>
+    <thingClass>VEF.Plants.Plant_PrefersRocky</thingClass>
+    <graphicData>
+      <texPath>Things/Plants/Trees/VCE_TreeOlive</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <shadowData>
+        <volume>(0.15, 0.3, 0.15)</volume>
+        <offset>(0,0,-0.38)</offset>
+      </shadowData>
+    </graphicData>
+    <selectable>true</selectable>
+    <statBases>
+      <Beauty>1</Beauty>
+      <BeautyOutdoors>1</BeautyOutdoors>
+      <Nutrition>1.25</Nutrition>
+    </statBases>
+    <ingestible/>
+    <plant>
+      <lifespanDaysPerGrowDays>36</lifespanDaysPerGrowDays>
+      <dieIfLeafless>false</dieIfLeafless>
+      <growDays>28</growDays>
+      <visualSizeRange>0.8~2.0</visualSizeRange>
+      <sowMinSkill>6</sowMinSkill>
+      <mustBeWildToSow>false</mustBeWildToSow>
+      <sowTags>
+        <li>Ground</li>
+      </sowTags>
+      <fertilityMin>0.7</fertilityMin>
+      <topWindExposure>0.15</topWindExposure>
+      <immatureGraphicPath>Things/Plants/Trees/VCE_TreeOliveImmature</immatureGraphicPath>
+      <harvestWork>800</harvestWork>
+      <harvestTag>Standard</harvestTag>
+      <harvestYield>42</harvestYield>
+      <harvestedThingDef>VCE_RawOlives</harvestedThingDef>
+      <harvestFailable>true</harvestFailable>
+      <harvestAfterGrowth>0.20</harvestAfterGrowth>
+    </plant>
+  </ThingDef>
+  <ThingDef ParentName="PlantBase">
+    <defName>VCE_Sunflower</defName>
+    <label>sunflower plant</label>
+    <thingClass>VEF.Plants.Plant_FasterInTropics</thingClass>
+    <description>A large crop used for its edible oil and edible fruits. The name sunflower may derive from the flower's head's shape, which resembles the sun. Sunflowers grow faster in equatorial regions.</description>
+    <statBases>
+      <MaxHitPoints>35</MaxHitPoints>
+      <Nutrition>0.1</Nutrition>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Plants/Crops/VCE_Sunflower</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <selectable>true</selectable>
+    <pathCost>25</pathCost>
+    <ingestible/>
+    <plant>
+      <fertilityMin>0.70</fertilityMin>
+      <fertilitySensitivity>1.3</fertilitySensitivity>
+      <dieIfLeafless>true</dieIfLeafless>
+      <harvestTag>Standard</harvestTag>
+      <maxMeshCount>1</maxMeshCount>
+      <harvestedThingDef>VCE_RawSunflower</harvestedThingDef>
+      <harvestYield>16</harvestYield>
+      <harvestWork>200</harvestWork>
+      <sowTags>
+        <li>Ground</li>
+        <li>Hydroponic</li>
+      </sowTags>
+      <topWindExposure>0.1</topWindExposure>
+      <growDays>10.5</growDays>
+      <visualSizeRange>0.5~1.5</visualSizeRange>
+      <wildOrder>2</wildOrder>
+      <purpose>Food</purpose>
+      <humanFoodPlant>true</humanFoodPlant>
+    </plant>
+  </ThingDef>
 </Defs>
