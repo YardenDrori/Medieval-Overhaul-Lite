@@ -60,37 +60,37 @@
     <xpath>Defs/ThingDef[defName="AC_Essence"]/modExtensions/li[1]</xpath>
   </Operation>
   <!-- Truffle Oil -->
-  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/statBases</xpath>
-    <value>
-      <statBases>
-        <!-- 75 0.01 2 0.3 -->
-        <MarketValue>75</MarketValue>
-        <Nutrition>0.01</Nutrition>
-        <Flammability>2</Flammability>
-        <Mass>0.3</Mass>
-      </statBases>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/description</xpath>
-    <value>
-      <description>An exceptionally rare and luxurious oil infused with the earthy essence of truffles. Only the most skilled chefs use this precious ingredient, reserving it exclusively for gourmet meals that demand the finest components.</description>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/comps/li[1]/daysToRotStart</xpath>
-    <value>
-      <!-- base value is 120 -->
-      <daysToRotStart>120</daysToRotStart>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/ingredient</xpath>
-  </Operation>
-  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/modExtensions/li[1]</xpath>
-  </Operation>
+  <!-- <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts"> -->
+  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/statBases</xpath> -->
+  <!--   <value> -->
+  <!--     <statBases> -->
+  <!-- 75 0.01 2 0.3 -->
+  <!--       <MarketValue>75</MarketValue> -->
+  <!--       <Nutrition>0.01</Nutrition> -->
+  <!--       <Flammability>2</Flammability> -->
+  <!--       <Mass>0.3</Mass> -->
+  <!--     </statBases> -->
+  <!--   </value> -->
+  <!-- </Operation> -->
+  <!-- <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts"> -->
+  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/description</xpath> -->
+  <!--   <value> -->
+  <!--     <description>An exceptionally rare and luxurious oil infused with the earthy essence of truffles. Only the most skilled chefs use this precious ingredient, reserving it exclusively for gourmet meals that demand the finest components.</description> -->
+  <!--   </value> -->
+  <!-- </Operation> -->
+  <!-- <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts"> -->
+  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/comps/li[1]/daysToRotStart</xpath> -->
+  <!--   <value> -->
+  <!-- base value is 120 -->
+  <!--     <daysToRotStart>120</daysToRotStart> -->
+  <!--   </value> -->
+  <!-- </Operation> -->
+  <!-- <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts"> -->
+  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/ingredient</xpath> -->
+  <!-- </Operation> -->
+  <!-- <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts"> -->
+  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/modExtensions/li[1]</xpath> -->
+  <!-- </Operation> -->
   <!-- Oil -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Oil"]/statBases</xpath>
