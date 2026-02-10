@@ -77,8 +77,8 @@ public class MapComponent_TreesChoppedHandler : MapComponent
 
   private bool ShouldSpawnEnts()
   {
-    // if (Rand.Value > 0.01f + treePointsChopped)
-    if (Rand.Value > 0.5f)
+    if (Rand.Value > 0.01f + treePointsChopped)
+    // if (Rand.Value > 0.5f)
     {
       return false;
     }
