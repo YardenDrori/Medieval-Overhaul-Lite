@@ -690,7 +690,7 @@
   <RecipeDef>
     <defName>AC_MakeSoap</defName>
     <label>craft artisan soap</label>
-    <description>Carefully mix quality oils with selected essences to create a soothing, fragrant soap.</description>
+    <description>Carefully mix quality oils with selected herbal essences to create a soothing, fragrant soap.</description>
     <jobString>Crafting artisan soap.</jobString>
     <workSpeedStat>CookSpeed</workSpeedStat>
     <workAmount>5000</workAmount>
@@ -705,15 +705,29 @@
       <li>
         <filter>
           <thingDefs>
-            <li>AC_Essence</li>
+            <li>RawBerries</li>
+            <li>VCE_RawLemon</li>
+            <li>VFEM2_RawGrapes</li>
+            <li>Dye</li>
+            <li>VCE_RawApple</li>
+            <li>VCE_RawPeach</li>
+            <li>VCE_RawCherry</li>
+            <li>VCE_RawPlum</li>
+            <li>VCE_RawPrunes</li>
+            <li>VCE_RawPear</li>
+            <li>VCE_RawPricklyPear</li>
+            <li>VCE_Bearberry</li>
+            <li>VCE_RawBanana</li>
+            <li>VCE_RawOrange</li>
           </thingDefs>
         </filter>
-        <count>10</count>
+        <count>20</count>
       </li>
       <li>
         <filter>
           <thingDefs>
             <li>AC_Oil</li>
+            <li>MOL_OliveOil</li>
           </thingDefs>
         </filter>
         <count>10</count>
@@ -721,13 +735,40 @@
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
-        <li>AC_Essence</li>
+        <li>RawBerries</li>
+        <li>VCE_RawLemon</li>
+        <li>VFEM2_RawGrapes</li>
+        <li>Dye</li>
+        <li>VCE_RawApple</li>
+        <li>VCE_RawPeach</li>
+        <li>VCE_RawCherry</li>
+        <li>VCE_RawPlum</li>
+        <li>VCE_RawPrunes</li>
+        <li>VCE_RawPear</li>
+        <li>VCE_RawPricklyPear</li>
+        <li>VCE_Bearberry</li>
+        <li>VCE_RawBanana</li>
+        <li>VCE_RawOrange</li>
         <li>AC_Oil</li>
+        <li>MOL_OliveOil</li>
       </thingDefs>
     </fixedIngredientFilter>
     <defaultIngredientFilter>
       <thingDefs>
-        <li>AC_Essence</li>
+        <li>RawBerries</li>
+        <li>VCE_RawLemon</li>
+        <li>VFEM2_RawGrapes</li>
+        <li>Dye</li>
+        <li>VCE_RawApple</li>
+        <li>VCE_RawPeach</li>
+        <li>VCE_RawCherry</li>
+        <li>VCE_RawPlum</li>
+        <li>VCE_RawPrunes</li>
+        <li>VCE_RawPear</li>
+        <li>VCE_RawPricklyPear</li>
+        <li>VCE_Bearberry</li>
+        <li>VCE_RawBanana</li>
+        <li>VCE_RawOrange</li>
         <li>AC_Oil</li>
       </thingDefs>
     </defaultIngredientFilter>

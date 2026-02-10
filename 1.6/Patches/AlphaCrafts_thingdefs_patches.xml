@@ -32,33 +32,6 @@
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Butter"]/modExtensions/li[1]</xpath>
   </Operation>
-  <!-- Essense -->
-  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/statBases</xpath>
-    <value>
-      <statBases>
-        <!-- 4 0.5 0.01 -->
-        <MarketValue>4</MarketValue>
-        <Flammability>0.5</Flammability>
-        <Mass>0.01</Mass>
-      </statBases>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/description</xpath>
-    <value>
-      <description>A concentrated aromatic extract distilled from flowers and herbs. Used as a base ingredient in perfumes and luxury soaps.</description>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/ingestible</xpath>
-  </Operation>
-  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/comps/li[1]</xpath>
-  </Operation>
-  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Essence"]/modExtensions/li[1]</xpath>
-  </Operation>
   <!-- Truffle Oil -->
   <!-- <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts"> -->
   <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/statBases</xpath> -->

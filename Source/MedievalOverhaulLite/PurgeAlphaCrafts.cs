@@ -26,7 +26,6 @@ public static class PurgeAlphaCrafts
       // "AC_MakeSoap",
       // 6
       "AC_Butter",
-      "AC_Essence",
       "AC_BalsamicVinegar",
       "AC_Oil",
       "AC_Perfume",
