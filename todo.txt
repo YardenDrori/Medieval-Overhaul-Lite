@@ -2,6 +2,8 @@ add more ways to spawn/find golems
 
 make more of the things not depend on mods instead allow compat e.g graphic offsets currently have a hard dependency on VE mods like sushi or plants
 
+make proper pickled tomatoes texture currently using pickled cacti temporarily
+
 decide on tool system
 remove comps from alpha crafts building and add my own processor comps
 decide on ICE BLOCKS mechanic

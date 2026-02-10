@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Defs>
   <VEF.Graphics.GraphicOffsets>
-    <defName>AC_OilOffsets</defName>
+    <defName>MOL_OilOffsets</defName>
     <thingDef>AC_Oil</thingDef>
     <ingredientsAndOffsetList>
       <li>
