@@ -23,13 +23,15 @@ public static class PurgeAlphaCrafts
     HashSet<String> thingsToKeep =
     [
       "AC_PerfumeHediff",
-      "AC_Butter", //bakes fine
-      "AC_Ghee", //bakes lavish
-      "AC_Vinegar", //sushi fine
-      "AC_BalsamicVinegar", //sushi lavish
-      "AC_Oil", //vanilla fine
-      // - vanilla lavish
+      "AC_Butter", //bakes fine, soup fine
+      "AC_Ghee", //bakes lavish, soup lavish
+      "AC_Vinegar", //sushi fine, soup fine
+      "AC_BalsamicVinegar", //sushi lavish, soup lavish
+      "AC_Oil", //vanilla fine, grill lavish
+      //honey new item! grill lavish
+      //oil + vinegar - vanilla lavish
       // Olive Oil -- new item! Soup base
+      // Wine grill base
       "AC_Perfume",
       "AC_Pickles",
       "AC_Jam",
