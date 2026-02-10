@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -16,7 +14,12 @@ public static class PlantCollected_Patch
   }
 
   [HarmonyPostfix]
-  public static void Postfix(Plant __instance, Pawn by, PlantDestructionMode plantDestructionMode, Map __state)
+  public static void Postfix(
+    Plant __instance,
+    Pawn by,
+    PlantDestructionMode plantDestructionMode,
+    Map __state
+  )
   {
     if (__state == null || !__instance.def.plant.IsTree)
     {
