@@ -12,6 +12,22 @@
         <key>SmokeleafLeaves</key>
         <value>5</value>
       </li>
+      <li>
+        <key>RawFungus</key>
+        <value>8</value>
+      </li>
+      <li>
+        <key>VCE_RawSunflower</key>
+        <value>1</value>
+      </li>
+      <li>
+        <key>VCE_RawOlives</key>
+        <value>6</value>
+      </li>
+      <li>
+        <key>VCE_RawSoybean</key>
+        <value>2</value>
+      </li>
     </ingredientsAndOffsetList>
   </VEF.Graphics.GraphicOffsets>
 </Defs>
