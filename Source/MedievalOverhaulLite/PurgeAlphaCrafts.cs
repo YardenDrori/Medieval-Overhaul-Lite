@@ -28,7 +28,7 @@ public static class PurgeAlphaCrafts
       "AC_Vinegar", //sushi fine, soup fine
       "AC_BalsamicVinegar", //sushi lavish, soup lavish
       "AC_Oil", //vanilla fine, grill lavish
-      //honey new item! grill lavish
+      //honey new item! grill fine
       //oil + vinegar - vanilla lavish
       // Olive Oil -- new item! Soup base
       // Wine grill base
@@ -36,10 +36,6 @@ public static class PurgeAlphaCrafts
       "AC_Pickles",
       "AC_Jam",
       "AC_Soap",
-      "AC_ConsumedBalsamicVinegar",
-      "AC_ConsumedButter",
-      "AC_ConsumedJam",
-      "AC_ConsumedOil",
     ];
     HashSet<String> thingsRemoved = new();
     thingsRemoved.UnionWith(RemoveThingDefs(thingsToKeep));
