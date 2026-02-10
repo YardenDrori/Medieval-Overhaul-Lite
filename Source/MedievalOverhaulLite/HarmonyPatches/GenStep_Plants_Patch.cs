@@ -12,6 +12,10 @@ public static class Generate_Patch
   private static Dictionary<BiomeDef, Dictionary<ThingDef, float>> biomePlantDrugPools = new();
   private static Dictionary<BiomeDef, Dictionary<ThingDef, float>> biomePlantUtilPools = new();
 
+  private const float drugWeights = 0.002f;
+  private const float foodWeights = 0.003f;
+  private const float utilityWeights = 0.001f;
+
   [HarmonyPrefix]
   public static void Generate_Prefix(Map map, GenStepParams parms)
   {
@@ -49,7 +53,7 @@ public static class Generate_Patch
         {
           if (!chosen.Contains(crop.Key))
           {
-            mapComp.RegisterTilePlant(crop.Key, 0.005f);
+            mapComp.RegisterTilePlant(crop.Key, foodWeights);
             chosen.Add(crop.Key);
           }
         }
@@ -72,7 +76,7 @@ public static class Generate_Patch
         {
           if (!chosen.Contains(crop.Key))
           {
-            mapComp.RegisterTilePlant(crop.Key, 0.003f);
+            mapComp.RegisterTilePlant(crop.Key, drugWeights);
             chosen.Add(crop.Key);
           }
         }
@@ -88,7 +92,7 @@ public static class Generate_Patch
     {
       if (biomePlantUtilPools[biome].TryRandomElementByWeight(kvp => kvp.Value, out var crop))
       {
-        mapComp.RegisterTilePlant(crop.Key, 0.003f);
+        mapComp.RegisterTilePlant(crop.Key, utilityWeights);
       }
     }
   }
