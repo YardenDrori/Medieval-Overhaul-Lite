@@ -32,38 +32,38 @@
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Butter"]/modExtensions/li[1]</xpath>
   </Operation>
-  <!-- Truffle Oil -->
-  <!-- <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts"> -->
-  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/statBases</xpath> -->
-  <!--   <value> -->
-  <!--     <statBases> -->
-  <!-- 75 0.01 2 0.3 -->
-  <!--       <MarketValue>75</MarketValue> -->
-  <!--       <Nutrition>0.01</Nutrition> -->
-  <!--       <Flammability>2</Flammability> -->
-  <!--       <Mass>0.3</Mass> -->
-  <!--     </statBases> -->
-  <!--   </value> -->
-  <!-- </Operation> -->
-  <!-- <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts"> -->
-  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/description</xpath> -->
-  <!--   <value> -->
-  <!--     <description>An exceptionally rare and luxurious oil infused with the earthy essence of truffles. Only the most skilled chefs use this precious ingredient, reserving it exclusively for gourmet meals that demand the finest components.</description> -->
-  <!--   </value> -->
-  <!-- </Operation> -->
-  <!-- <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts"> -->
-  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/comps/li[1]/daysToRotStart</xpath> -->
-  <!--   <value> -->
-  <!-- base value is 120 -->
-  <!--     <daysToRotStart>120</daysToRotStart> -->
-  <!--   </value> -->
-  <!-- </Operation> -->
-  <!-- <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts"> -->
-  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/ingredient</xpath> -->
-  <!-- </Operation> -->
-  <!-- <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts"> -->
-  <!--   <xpath>Defs/ThingDef[defName="AC_TruffleOil"]/modExtensions/li[1]</xpath> -->
-  <!-- </Operation> -->
+  <!-- Ghee -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Ghee"]/statBases</xpath>
+    <value>
+      <statBases>
+        <!-- 40 0.01 1 0.2 -->
+        <MarketValue>40</MarketValue>
+        <Nutrition>0.01</Nutrition>
+        <Flammability>1</Flammability>
+        <Mass>0.2</Mass>
+      </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Ghee"]/description</xpath>
+    <value>
+      <description>A clarified butter with a rich, nutty flavor, prized for its high smoke point and long shelf life.</description>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Ghee"]/comps/li[1]/daysToRotStart</xpath>
+    <value>
+      <!-- base value is 2000 -->
+      <daysToRotStart>200</daysToRotStart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Ghee"]/ingredient</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Ghee"]/modExtensions/li[1]</xpath>
+  </Operation>
   <!-- Oil -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Oil"]/statBases</xpath>
