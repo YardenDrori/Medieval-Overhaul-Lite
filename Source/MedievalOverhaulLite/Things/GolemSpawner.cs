@@ -65,25 +65,25 @@ public class GolemSpawner : GroundSpawner
 
       if (affordable.Count == 0)
       {
-        Log.Message(
-          "[Medieval Overhaul Lite] GolemSpawner: No affordable golems. pointsLeft="
-            + pointsLeft
-            + ", costMultiplier="
-            + costMultiplier
-        );
+        // Log.Message(
+        //   "[Medieval Overhaul Lite] GolemSpawner: No affordable golems. pointsLeft="
+        //     + pointsLeft
+        //     + ", costMultiplier="
+        //     + costMultiplier
+        // );
         break;
       }
 
       PawnKindDef golemKind = affordable.RandomElement();
       float golemCost = golemKind.combatPower * costMultiplier;
 
-      Log.Message(
-        "[Medieval Overhaul Lite] GolemSpawner: Spawning "
-          + golemKind.label
-          + " (cost: "
-          + golemCost
-          + ")"
-      );
+      // Log.Message(
+      //   "[Medieval Overhaul Lite] GolemSpawner: Spawning "
+      //     + golemKind.label
+      //     + " (cost: "
+      //     + golemCost
+      //     + ")"
+      // );
 
       // Spawn the golem
       Pawn golem = PawnGenerator.GeneratePawn(
@@ -116,7 +116,7 @@ public class GolemSpawner : GroundSpawner
       golemCount++;
     }
 
-    Log.Message("[Medieval Overhaul Lite] GolemSpawner: Spawned " + golemCount + " golems total");
+    // Log.Message("[Medieval Overhaul Lite] GolemSpawner: Spawned " + golemCount + " golems total");
 
     // Visual effects
     FleckMaker.ThrowDustPuffThick(loc.ToVector3Shifted(), map, 2f, Color.gray);
