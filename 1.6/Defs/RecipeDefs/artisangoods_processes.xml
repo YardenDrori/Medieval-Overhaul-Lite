@@ -300,6 +300,7 @@
             <li>VCE_RawEggplant</li>
             <li>VCE_RawBeets</li>
             <li>VCE_RawTomatoes</li>
+            <li>VCE_RawCabbage</li>
           </thingDefs>
         </filter>
         <count>50</count>
@@ -330,6 +331,7 @@
         <li>VCE_RawEggplant</li>
         <li>VCE_RawBeets</li>
         <li>VCE_RawTomatoes</li>
+        <li>VCE_RawCabbage</li>
         <li>AC_Vinegar</li>
         <li>AC_BalsamicVinegar</li>
       </thingDefs>
@@ -349,6 +351,7 @@
         <li>VCE_RawEggplant</li>
         <li>VCE_RawBeets</li>
         <li>VCE_RawTomatoes</li>
+        <li>VCE_RawCabbage</li>
         <li>AC_Vinegar</li>
       </thingDefs>
     </defaultIngredientFilter>

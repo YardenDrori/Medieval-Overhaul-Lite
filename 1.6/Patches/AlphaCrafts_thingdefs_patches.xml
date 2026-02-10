@@ -84,6 +84,12 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Oil"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Oil</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Oil"]/comps/li[1]/daysToRotStart</xpath>
     <value>
       <!-- base value is 120 -->
@@ -156,6 +162,12 @@
         <Flammability>0.1</Flammability>
         <Mass>0.2</Mass>
       </statBases>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Pickles"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Pickles</texPath>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">

@@ -56,6 +56,10 @@
         <key>VCE_RawTomatoes</key>
         <value>13</value>
       </li>
+      <li>
+        <key>VCE_RawCabbage</key>
+        <value>14</value>
+      </li>
     </ingredientsAndOffsetList>
   </VEF.Graphics.GraphicOffsets>
 </Defs>
