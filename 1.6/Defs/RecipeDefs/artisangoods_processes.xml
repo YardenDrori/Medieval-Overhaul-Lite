@@ -174,7 +174,6 @@
             <li>SmokeleafLeaves</li>
             <li>RawFungus</li>
             <li>VCE_RawSunflower</li>
-            <li>VCE_RawOlives</li>
             <li>VCE_RawSoybean</li>
           </thingDefs>
         </filter>
@@ -187,7 +186,6 @@
         <li>SmokeleafLeaves</li>
         <li>RawFungus</li>
         <li>VCE_RawSunflower</li>
-        <li>VCE_RawOlives</li>
         <li>VCE_RawSoybean</li>
       </thingDefs>
     </fixedIngredientFilter>
@@ -197,7 +195,6 @@
         <li>SmokeleafLeaves</li>
         <li>RawFungus</li>
         <li>VCE_RawSunflower</li>
-        <li>VCE_RawOlives</li>
         <li>VCE_RawSoybean</li>
       </thingDefs>
     </defaultIngredientFilter>

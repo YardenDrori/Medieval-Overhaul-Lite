@@ -123,6 +123,23 @@
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Oil"]/modExtensions/li[1]</xpath>
   </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Oil"]/comps/li[3]</xpath>
+    <value>
+      <li Class="AlphaCrafts.CompProperties_LabelByIngredients">
+        <overrides>
+          <li>
+            <key>SmokeleafLeaves</key>
+            <value>Hemp</value>
+          </li>
+          <li>
+            <key>RawFungus</key>
+            <value>Truffle</value>
+          </li>
+        </overrides>
+      </li>
+    </value>
+  </Operation>
   <!-- Vinegar -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Vinegar"]/statBases</xpath>
