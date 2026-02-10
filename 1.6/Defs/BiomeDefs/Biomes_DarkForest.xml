@@ -156,6 +156,7 @@
       <Plant_TreeOak>0.25</Plant_TreeOak>
       <Plant_TreeMaple>0.25</Plant_TreeMaple>
       <Plant_TreePoplar>0.35</Plant_TreePoplar>
+      <VFEM2_Plant_Grape>0.002</VFEM2_Plant_Grape>
     </wildPlants>
     <wildAnimals>
       <Hare>1.00</Hare>

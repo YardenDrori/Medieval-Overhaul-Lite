@@ -45,10 +45,12 @@
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/BiomeDef[defName="TropicalSwamp"]/wildPlants</xpath>
     <value>
+      <!-- food -->
+      <VCE_Pepper>0.003</VCE_Pepper>
       <!-- fabrics -->
       <PE_Tree_Mulberry>0.02</PE_Tree_Mulberry>
       <!-- drugs -->
-      <Plant_Psychoid_Wild>0.002</Plant_Psychoid_Wild>
+      <!-- <Plant_Psychoid_Wild>0.002</Plant_Psychoid_Wild> -->
       <!-- utility -->
       <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
       <MOL_Plant_MarshVine_Wild>0.003</MOL_Plant_MarshVine_Wild>
@@ -58,10 +60,10 @@
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildPlants</xpath>
     <value>
+      <!-- food -->
+      <VCE_TreeOlive_Wild>0.003</VCE_TreeOlive_Wild>
       <!-- fabrics -->
       <Plant_Cotton_Wild>0.002</Plant_Cotton_Wild>
-      <!-- drugs -->
-      <VFEM2_Plant_Grape>0.002</VFEM2_Plant_Grape>
       <!-- utility -->
       <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
     </value>
@@ -145,6 +147,8 @@
   <Operation Class="PatchOperationAdd" MayRequire="Ludeon.RimWorld.Odyssey">
     <xpath>Defs/BiomeDef[defName="Scarlands"]/wildPlants</xpath>
     <value>
+      <!-- drugs -->
+      <Plant_Smokeleaf_Wild>0.002</Plant_Smokeleaf_Wild>
       <!-- utility -->
       <Plant_Tinctoria_Wild>0.001</Plant_Tinctoria_Wild>
     </value>
