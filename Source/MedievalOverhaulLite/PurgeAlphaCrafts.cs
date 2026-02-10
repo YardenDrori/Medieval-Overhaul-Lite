@@ -33,7 +33,7 @@ public static class PurgeAlphaCrafts
       "AC_Essence",
       "AC_BalsamicVinegar",
       "AC_Oil",
-      // "AC_Perfume",
+      "AC_Perfume",
       // "AC_Pickles",
       // "AC_Jam",
       // "AC_Soap",

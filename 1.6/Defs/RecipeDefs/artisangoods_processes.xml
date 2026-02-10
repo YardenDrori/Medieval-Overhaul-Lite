@@ -276,4 +276,65 @@
   <!--   </modExtensions> -->
   <!--   <displayPriority>110</displayPriority> -->
   <!-- </RecipeDef> -->
+  <RecipeDef>
+    <defName>MOL_ExtractPerfume</defName>
+    <label>extract perfume</label>
+    <description>Transform fragrant flowers into concentrated perfumes, extracting essential oils to create high-quality scents for crafting and trade. Yield of the recipe will depend on the produce being used to get the perfume, with 25 berries producing 10 perfume.</description>
+    <jobString>Extracting perfume.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>false</allowMixingIngredients>
+    <workAmount>2500</workAmount>
+    <recipeUsers>
+      <li>AC_OilPressWorkshop</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawBerries</li>
+            <li>Ambrosia</li>
+            <li>MOL_RawCarrot</li>
+            <li>VBE_RawCoffee</li>
+            <li>Dye</li>
+            <li>MOL_RawPoppy</li>
+            <li>VBE_RawTobacco</li>
+          </thingDefs>
+        </filter>
+        <count>25</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>RawBerries</li>
+        <li>Ambrosia</li>
+        <li>MOL_RawCarrot</li>
+        <li>VBE_RawCoffee</li>
+        <li>Dye</li>
+        <li>MOL_RawPoppy</li>
+        <li>VBE_RawTobacco</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>RawBerries</li>
+        <li>Ambrosia</li>
+        <li>MOL_RawCarrot</li>
+        <li>VBE_RawCoffee</li>
+        <li>Dye</li>
+        <li>MOL_RawPoppy</li>
+        <li>VBE_RawTobacco</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <products>
+      <AC_Perfume>10</AC_Perfume>
+    </products>
+    <modExtensions>
+      <li Class="AlphaCrafts.VariableOutputByIngredient">
+        <baseline>RawBerries</baseline>
+      </li>
+    </modExtensions>
+  </RecipeDef>
 </Defs>
