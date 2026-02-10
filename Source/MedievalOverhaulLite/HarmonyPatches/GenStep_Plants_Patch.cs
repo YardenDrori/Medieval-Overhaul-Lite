@@ -207,8 +207,8 @@ public static class Generate_Patch
         ["Plant_Corn"] = 2.5f,
         ["VCE_Pumpkin"] = 2f,
         ["VCE_Tomato"] = 2f,
-        ["VCE_Sunflower"] = 2f,
-        ["VCE_Olive"] = 1.8f,
+        ["VCE_Sunflower_Wild"] = 2f,
+        ["VCE_TreeOlive_Wild"] = 1.8f,
         ["VCE_Cabbage"] = 1.5f,
         ["MOL_Plant_Lentils_Wild"] = 1.5f,
         ["MOL_Plant_Garlic_Wild"] = 1.5f,
@@ -297,7 +297,7 @@ public static class Generate_Patch
       foodPools: new()
       {
         ["Plant_Corn"] = 2f,
-        ["VCE_Sunflower"] = 2f,
+        ["VCE_Sunflower_Wild"] = 2f,
         ["VCE_Onion"] = 2f,
         ["MOL_Plant_Garlic_Wild"] = 2f,
         ["MOL_Plant_Lentils_Wild"] = 2f,
@@ -388,7 +388,7 @@ public static class Generate_Patch
       {
         ["VCE_Cabbage"] = 3f,
         ["Plant_Potato"] = 2.5f,
-        ["VCE_Sunflower"] = 2f,
+        ["VCE_Sunflower_Wild"] = 2f,
         ["MOL_Plant_Garlic_Wild"] = 2f,
         ["VCE_Peas"] = 2f,
         ["VCE_Tomato"] = 1.5f,
@@ -406,7 +406,7 @@ public static class Generate_Patch
         ["VCE_Tomato"] = 2f,
         ["VCE_Pumpkin"] = 1.8f,
         ["MOL_Plant_Lentils_Wild"] = 1.5f,
-        ["VCE_Olive"] = 1.5f,
+        ["VCE_TreeOlive_Wild"] = 1.5f,
         ["VCE_Cabbage"] = 1.5f,
         ["VCE_Onion"] = 1.2f,
         ["MOL_Plant_Carrot_Wild"] = 0.7f,
@@ -442,9 +442,9 @@ public static class Generate_Patch
       {
         ["VCE_Pepper"] = 3.5f,
         ["Plant_Corn"] = 3f,
-        ["VCE_Sunflower"] = 2.5f,
+        ["VCE_Sunflower_Wild"] = 2.5f,
         ["VCE_Eggplant"] = 2.5f,
-        ["VCE_Olive"] = 2f,
+        ["VCE_TreeOlive_Wild"] = 2f,
       },
       drugPools: new() { ["VBE_Plant_Coffee"] = 3f, ["Plant_Psychoid_Wild"] = 2f },
       utilPools: new() { ["VCE_Allspice"] = 1f }
@@ -474,7 +474,7 @@ public static class Generate_Patch
         ["Plant_Potato"] = 3f,
         ["VCE_Cabbage"] = 2.5f,
         ["VCE_Beet"] = 2.5f,
-        ["VCE_Sunflower"] = 2f,
+        ["VCE_Sunflower_Wild"] = 2f,
         ["VCE_Onion"] = 2f,
         ["MOL_Plant_Carrot_Wild"] = 2f,
         ["Plant_Rice"] = 1f,
