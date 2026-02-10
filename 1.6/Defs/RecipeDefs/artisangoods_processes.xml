@@ -768,4 +768,42 @@
       </li>
     </modExtensions>
   </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_ClarifyButterIntoGhee</defName>
+    <label>clarify butter into ghee</label>
+    <description>Heat butter to remove water and milk solids, yielding pure golden fat with a rich, nutty flavor.</description>
+    <jobString>Clarifying butter.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>false</allowMixingIngredients>
+    <workAmount>10000</workAmount>
+    <recipeUsers>
+      <li>AC_OilPressWorkshop</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AC_Butter</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>AC_Butter</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>AC_Butter</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <products>
+      <AC_Ghee>20</AC_Ghee>
+    </products>
+  </RecipeDef>
 </Defs>
