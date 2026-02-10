@@ -158,7 +158,7 @@
     <xpath>Defs/BiomeDef[defName="Grasslands"]/wildPlants</xpath>
     <value>
       <!-- food -->
-      <Plant_Corn>0.003</Plant_Corn>
+      <VCE_Sunflower_Wild>0.003</VCE_Sunflower_Wild>
       <!-- fabrics -->
       <Plant_Cotton_Wild>0.002</Plant_Cotton_Wild>
       <!-- utility -->
