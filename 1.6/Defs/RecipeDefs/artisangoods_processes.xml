@@ -687,4 +687,109 @@
     </modExtensions>
     <displayPriority>110</displayPriority>
   </RecipeDef>
+  <RecipeDef>
+    <defName>AC_MakeSoap</defName>
+    <label>craft artisan soap</label>
+    <description>Carefully mix quality oils with selected essences to create a soothing, fragrant soap.</description>
+    <jobString>Crafting artisan soap.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <workAmount>5000</workAmount>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <researchPrerequisite>AC_ComplexArtisanalCrafting</researchPrerequisite>
+    <recipeUsers>
+      <li>AC_ArtisanWorkshop</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AC_Essence</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AC_Oil</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>AC_Essence</li>
+        <li>AC_Oil</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>AC_Essence</li>
+        <li>AC_Oil</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <products>
+      <AC_Soap>10</AC_Soap>
+    </products>
+    <skillRequirements>
+      <Cooking>6</Cooking>
+    </skillRequirements>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_ChurnButter</defName>
+    <label>churn butter</label>
+    <description>A recipe for transforming cream or other produce into rich, flavorful butter. Yield of the recipe will depend on the produce being used to get the butter, with 50 corn producing 20 "butter".</description>
+    <jobString>Churning butter.</jobString>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>false</allowMixingIngredients>
+    <workAmount>5000</workAmount>
+    <recipeUsers>
+      <li>AC_DairyProcessingStation</li>
+      <li>AC_ArtisanWorkshop</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawCorn</li>
+            <li>SmokeleafLeaves</li>
+            <li>Chocolate</li>
+            <li>Milk</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>RawCorn</li>
+        <li>SmokeleafLeaves</li>
+        <li>Chocolate</li>
+        <li>Milk</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>RawCorn</li>
+        <li>SmokeleafLeaves</li>
+        <li>Chocolate</li>
+        <li>Milk</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    <workSkill>Cooking</workSkill>
+    <products>
+      <AC_Butter>20</AC_Butter>
+    </products>
+    <modExtensions>
+      <li Class="AlphaCrafts.VariableOutputByIngredient">
+        <baseline>RawCorn</baseline>
+      </li>
+    </modExtensions>
+  </RecipeDef>
 </Defs>

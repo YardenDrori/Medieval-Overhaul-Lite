@@ -23,8 +23,6 @@ public static class PurgeAlphaCrafts
     HashSet<String> thingsToKeep =
     [
       "AC_PerfumeHediff",
-      "AC_ChurnButter",
-      "AC_ExtractEssence",
       // "AC_MakeSoap",
       // 6
       "AC_Butter",
