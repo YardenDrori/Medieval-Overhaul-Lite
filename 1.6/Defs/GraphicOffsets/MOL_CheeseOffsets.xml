@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Defs>
+  <VEF.Graphics.GraphicOffsets>
+    <defName>MOL_CheeseGraphicOffsets</defName>
+    <thingDef>VCE_Cheese</thingDef>
+    <ingredientsAndOffsetList>
+      <li>
+        <key>Milk</key>
+        <value>0</value>
+      </li>
+      <li>
+        <key>InsectJelly</key>
+        <value>3</value>
+      </li>
+    </ingredientsAndOffsetList>
+  </VEF.Graphics.GraphicOffsets>
+</Defs>

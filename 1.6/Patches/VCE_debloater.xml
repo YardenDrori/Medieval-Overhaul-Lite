@@ -81,4 +81,7 @@
   <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThoughtDef[defName="VCE_AteCheese"]</xpath>
   </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/VEF.Graphics.GraphicOffsets[defName="VCE_CheeseGraphicOffsets"]</xpath>
+  </Operation>
 </Patch>

@@ -34,13 +34,19 @@
   </Operation>
   <!-- Cheese -->
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Sugarcane"]/description</xpath>
+    <xpath>Defs/ThingDef[defName="VCE_Cheese"]/description</xpath>
     <value>
       <description>Cheese is a dairy product, derived from milk and produced in a wide range of flavors, textures and forms by coagulation of the milk protein casein. Cheese is valued for its portability, long life, and high content of fat, protein, calcium, and phosphorus. It is more compact and has a longer shelf life than milk.</description>
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Sugarcane"]/statBases</xpath>
+    <xpath>Defs/ThingDef[defName="VCE_Cheese"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Cheese</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Cheese"]/statBases</xpath>
     <value>
       <statBases>
         <MarketValue>7</MarketValue>
@@ -49,7 +55,7 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Sugarcane"]/comps</xpath>
+    <xpath>Defs/ThingDef[defName="VCE_Cheese"]/comps</xpath>
     <value>
       <comps>
         <li Class="CompProperties_Rottable">
