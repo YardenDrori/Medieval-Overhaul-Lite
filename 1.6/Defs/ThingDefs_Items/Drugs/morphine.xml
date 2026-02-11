@@ -53,7 +53,7 @@
       <displayPriority>1490</displayPriority>
     </recipeMaker>
     <costList>
-      <MOL_Poppy>10</MOL_Poppy>
+      <MOL_RawPoppy>10</MOL_RawPoppy>
     </costList>
     <comps>
       <li Class="CompProperties_Drug">
