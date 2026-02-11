@@ -86,4 +86,37 @@
       <texPath>Things/Item/AC_Mayonnaise</texPath>
     </value>
   </Operation>
+  <!-- Soup pot -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Item/AC_Mayonnaise</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/comps</xpath>
+    <value>
+      <comps>
+        <li Class="CompProperties_Power">
+          <compClass>CompPowerTrader</compClass>
+          <shortCircuitInRain>false</shortCircuitInRain>
+          <basePowerConsumption>100</basePowerConsumption>
+        </li>
+        <li Class="CompProperties_Flickable"/>
+        <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
+          <maxCapacity>1</maxCapacity>
+          <hasIdlePowerCost>false</hasIdlePowerCost>
+          <usesOnTexture>true</usesOnTexture>
+          <keepOnTextureOnFinish>true</keepOnTextureOnFinish>
+          <showOnTextureWhenPaused>true</showOnTextureWhenPaused>
+          <hasTempRequirements>false</hasTempRequirements>
+          <soundInput>Corpse_Drop</soundInput>
+          <soundStartCycle>FlickSwitch</soundStartCycle>
+          <showGizmo>false</showGizmo>
+          <soundExtract>Standard_Drop</soundExtract>
+          <onTextureKeyWord>Full</onTextureKeyWord>
+        </li>
+      </comps>
+    </value>
+  </Operation>
 </Patch>
