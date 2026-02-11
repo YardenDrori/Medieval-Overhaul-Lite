@@ -117,7 +117,7 @@
   </ThingDef>
   <!-- Poppies -->
   <ThingDef ParentName="RoughPlantBase">
-    <defName>MOL_Poppy</defName>
+    <defName>MOL_RawPoppy</defName>
     <label>poppy</label>
     <description>Seed pods harvested from poppy plants. The dried pods contain latex rich in alkaloids that can be processed into morphine at a drug lab. Poppies have been cultivated for their medicinal and recreational properties since ancient times.</description>
     <graphicData>

@@ -291,7 +291,7 @@
             <li>RawFungus</li>
             <li>RawPotatoes</li>
             <li>VCE_RawSoybean</li>
-            <li>VCE_RawGarlic</li>
+            <li>MOL_RawGarlic</li>
             <li>MOL_RawCarrot</li>
             <li>VCE_RawOnion</li>
             <li>VCE_RawPumpkin</li>
@@ -322,7 +322,7 @@
         <li>RawFungus</li>
         <li>RawPotatoes</li>
         <li>VCE_RawSoybean</li>
-        <li>VCE_RawGarlic</li>
+        <li>MOL_RawGarlic</li>
         <li>MOL_RawCarrot</li>
         <li>VCE_RawOnion</li>
         <li>VCE_RawPumpkin</li>
@@ -342,7 +342,7 @@
         <li>RawFungus</li>
         <li>RawPotatoes</li>
         <li>VCE_RawSoybean</li>
-        <li>VCE_RawGarlic</li>
+        <li>MOL_RawGarlic</li>
         <li>MOL_RawCarrot</li>
         <li>VCE_RawOnion</li>
         <li>VCE_RawPumpkin</li>
