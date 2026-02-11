@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- =================================================== -->
+  <!-- Building section - Buildings we remove from the mod -->
+  <!-- =================================================== -->
+  <!-- TODO: Patch soup to use our processor -->
+  <!-- TODO: Add our own cheese press thingy with its own mood thought -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CanningMachine"]</xpath>
+  </Operation>
+  <!-- Research: VCE_CheeseMaking -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CheesePress"]</xpath>
+  </Operation>
+  <!-- =========================================================== -->
+  <!-- Research section - Research Projects we remove from the mod -->
+  <!-- =========================================================== -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ResearchProjectDef[defName="VCE_DeepFrying"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ResearchProjectDef[defName="VCE_Canning"]</xpath>
+  </Operation>
+  <!-- =========================================== -->
+  <!-- Item section - Items we remove from the mod -->
+  <!-- =========================================== -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CannedMeat"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CannedProduce"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CannedFruit"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CannedAP"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CannedFish"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CannedFish"]</xpath>
+  </Operation>
+  <!-- Remove all deep fried food items -->
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName[starts-with(., 'VCE_DeepFried')]]</xpath>
+  </Operation>
+  <!-- ========================================================== -->
+  <!-- Recipe section - Recopis/preocesses we remove from the mod -->
+  <!-- ========================================================== -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/RecipeDef[defName="VCE_CanMeats"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/RecipeDef[defName="VCE_CanProduce"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/RecipeDef[defName="VCE_CanFruit"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/RecipeDef[defName="VCE_CanEggs"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/RecipeDef[defName="VCE_CanFish"]</xpath>
+  </Operation>
+  <!-- Remove all cheese recipes -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/PipeSystem.ProcessDef[defName[ends-with(., 'IntoCheese')]]</xpath>
+  </Operation>
+  <!-- Remove all deep frying recipes -->
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/RecipeDef[defName[starts-with(., 'VCE_DeepFry')]]</xpath>
+  </Operation>
+  <!-- ================================================================== -->
+  <!-- Misc section - random assortment of garbage we remove from the mod -->
+  <!-- ================================================================== -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteCheese"]</xpath>
+  </Operation>
+</Patch>

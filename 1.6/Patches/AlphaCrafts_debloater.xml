@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Patch>
+  <!-- =================================================== -->
+  <!-- Building section - Buildings we remove from the mod -->
+  <!-- =================================================== -->
+  <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]</xpath>
+  </Operation>
+  <!-- =========================================================== -->
+  <!-- Research section - Research Projects we remove from the mod -->
+  <!-- =========================================================== -->
+</Patch>
