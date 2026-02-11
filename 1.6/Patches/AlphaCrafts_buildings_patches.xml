@@ -21,7 +21,7 @@
   </Operation>
   <!-- Remove PipeSystem comp -->
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]</xpath>
+    <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/comps/li[@Class='PipeSystem.CompProperties_AdvancedResourceProcessor']</xpath>
   </Operation>
   <!-- Add idle power cost -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
@@ -74,7 +74,7 @@
   </Operation>
   <!-- Remove PipeSystem comp -->
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
-    <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps/li[@Class="PipeSystem.CompProperties_AdvancedResourceProcessor"]</xpath>
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps/li[@Class='PipeSystem.CompProperties_AdvancedResourceProcessor']</xpath>
   </Operation>
   <!-- Add idle power cost -->
   <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">

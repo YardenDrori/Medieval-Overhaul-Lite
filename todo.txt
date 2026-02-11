@@ -1,7 +1,7 @@
 add more ways to spawn/find golems
 
 make more of the things not depend on mods instead allow compat e.g graphic offsets currently have a hard dependency on VE mods like sushi or plants
-
+6 -  <!-- TODO: Add our own cheese press thingy with its own mood thought -->
 make proper pickled tomatoes texture currently using pickled cacti temporarily
 
 finalize alpha crafts recipe in terms of balance

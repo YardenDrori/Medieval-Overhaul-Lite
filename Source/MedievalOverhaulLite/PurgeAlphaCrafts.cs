@@ -57,6 +57,9 @@ public static class PurgeAlphaCrafts
     Resources.UnloadUnusedAssets(); // Unity's texture GC
     System.GC.Collect(); // C# GC for good measure
     Log.Message("========== FINISHED ALPHA CRAFTS PURGE ==========");
+
+    // Now purge VCE items
+    PurgeVCE();
   }
 
   private static HashSet<String> RemoveThingDefs(HashSet<String> thingsToKeep)
@@ -467,5 +470,237 @@ public static class PurgeAlphaCrafts
         $"[Medieval Overhaul Lite] Exception during graphics cleanup: {ex.Message}\n{ex.StackTrace}"
       );
     }
+  }
+
+  // ==================== VCE PURGE METHODS ====================
+
+  private static void PurgeVCE()
+  {
+    Log.Message("========== STARTING VCE PURGE ==========");
+    int totalRemoved = 0;
+
+    // Items to remove
+    HashSet<string> itemsToRemove = new()
+    {
+      // Deep fried items
+      "VCE_DeepFriedBigMeat",
+      "VCE_DeepFriedVegetables",
+      "VCE_DeepFriedFish",
+      "VCE_DeepFriedSushi",
+      // Canned items
+      "VCE_CannedMeat",
+      "VCE_CannedProduce",
+      "VCE_CannedFruit",
+      "VCE_CannedAP",
+      "VCE_CannedFish",
+      // Buildings
+      "VCE_DeepFrier",
+      "VCE_CanningMachine",
+      "VCE_CheesePress",
+    };
+
+    // Recipes to remove
+    HashSet<string> recipesToRemove = new()
+    {
+      "VCE_DeepFryMeats",
+      "VCE_DeepFryVegetables",
+      "VCE_DeepFryFish",
+      "VCE_DeepFryAlienFish",
+      "VCE_DeepFrySushi",
+      "VCE_CanMeats",
+      "VCE_CanProduce",
+      "VCE_CanFruit",
+      "VCE_CanEggs",
+      "VCE_CanFish",
+      "VCE_CanAlienFish",
+    };
+
+    // Research to remove
+    HashSet<string> researchToRemove = new() { "VCE_DeepFrying", "VCE_Canning" };
+
+    // Work givers to remove
+    HashSet<string> workGiversToRemove = new() { "VCE_DoBillsFryer", "VCE_DoBillsCanning" };
+
+    // Remove items
+    totalRemoved += RemoveVCEThingDefs(itemsToRemove);
+
+    // Remove recipes
+    totalRemoved += RemoveVCERecipes(recipesToRemove);
+
+    // Remove research
+    totalRemoved += RemoveVCEResearch(researchToRemove);
+
+    // Remove work givers
+    totalRemoved += RemoveVCEWorkGivers(workGiversToRemove);
+
+    // Note: VCE_CheeseGraphicOffsets is removed via XML patch to avoid static constructor timing issues
+
+    Log.Message($"Purged {totalRemoved} items from VCE");
+    Log.Message("========== FINISHED VCE PURGE ==========");
+  }
+
+  private static int RemoveVCEThingDefs(HashSet<string> itemsToRemove)
+  {
+    var removeMethod = typeof(DefDatabase<ThingDef>).GetMethod(
+      "Remove",
+      BindingFlags.Static | BindingFlags.NonPublic
+    );
+    if (removeMethod == null)
+    {
+      Log.Error("[Medieval Overhaul Lite] Could not find Remove method for ThingDef!");
+      return 0;
+    }
+
+    int removed = 0;
+    foreach (ThingDef thing in DefDatabase<ThingDef>.AllDefs.ToList())
+    {
+      if (!itemsToRemove.Contains(thing.defName))
+      {
+        continue;
+      }
+
+      try
+      {
+        removeMethod.Invoke(null, new object[] { thing });
+        removed++;
+      }
+      catch (Exception ex)
+      {
+        Log.Error($"[Medieval Overhaul Lite] Failed to remove {thing.defName}: {ex.Message}");
+      }
+    }
+    return removed;
+  }
+
+  private static int RemoveVCERecipes(HashSet<string> recipesToRemove)
+  {
+    var removeMethod = typeof(DefDatabase<RecipeDef>).GetMethod(
+      "Remove",
+      BindingFlags.Static | BindingFlags.NonPublic
+    );
+    if (removeMethod == null)
+    {
+      Log.Error("[Medieval Overhaul Lite] Could not find Remove method for RecipeDef!");
+      return 0;
+    }
+
+    int removed = 0;
+    foreach (RecipeDef recipe in DefDatabase<RecipeDef>.AllDefs.ToList())
+    {
+      if (!recipesToRemove.Contains(recipe.defName))
+      {
+        continue;
+      }
+
+      try
+      {
+        removeMethod.Invoke(null, new object[] { recipe });
+        removed++;
+      }
+      catch (Exception ex)
+      {
+        Log.Error($"[Medieval Overhaul Lite] Failed to remove {recipe.defName}: {ex.Message}");
+      }
+    }
+    return removed;
+  }
+
+  private static int RemoveVCEResearch(HashSet<string> researchToRemove)
+  {
+    var removeMethod = typeof(DefDatabase<ResearchProjectDef>).GetMethod(
+      "Remove",
+      BindingFlags.Static | BindingFlags.NonPublic
+    );
+    if (removeMethod == null)
+    {
+      Log.Error("[Medieval Overhaul Lite] Could not find Remove method for ResearchProjectDef!");
+      return 0;
+    }
+
+    int removed = 0;
+    foreach (ResearchProjectDef research in DefDatabase<ResearchProjectDef>.AllDefs.ToList())
+    {
+      if (!researchToRemove.Contains(research.defName))
+      {
+        continue;
+      }
+
+      try
+      {
+        removeMethod.Invoke(null, new object[] { research });
+        removed++;
+      }
+      catch (Exception ex)
+      {
+        Log.Error($"[Medieval Overhaul Lite] Failed to remove {research.defName}: {ex.Message}");
+      }
+    }
+    return removed;
+  }
+
+  private static int RemoveVCEWorkGivers(HashSet<string> workGiversToRemove)
+  {
+    var removeMethod = typeof(DefDatabase<WorkGiverDef>).GetMethod(
+      "Remove",
+      BindingFlags.Static | BindingFlags.NonPublic
+    );
+    if (removeMethod == null)
+    {
+      Log.Error("[Medieval Overhaul Lite] Could not find Remove method for WorkGiverDef!");
+      return 0;
+    }
+
+    int removed = 0;
+    foreach (WorkGiverDef workGiver in DefDatabase<WorkGiverDef>.AllDefs.ToList())
+    {
+      if (!workGiversToRemove.Contains(workGiver.defName))
+      {
+        continue;
+      }
+
+      try
+      {
+        removeMethod.Invoke(null, new object[] { workGiver });
+        removed++;
+      }
+      catch (Exception ex)
+      {
+        Log.Error($"[Medieval Overhaul Lite] Failed to remove {workGiver.defName}: {ex.Message}");
+      }
+    }
+    return removed;
+  }
+
+  private static int RemoveVCEGraphicOffsets(HashSet<string> graphicOffsetsToRemove)
+  {
+    var removeMethod = typeof(DefDatabase<VEF.Graphics.GraphicOffsets>).GetMethod(
+      "Remove",
+      BindingFlags.Static | BindingFlags.NonPublic
+    );
+    if (removeMethod == null)
+    {
+      Log.Error("[Medieval Overhaul Lite] Could not find Remove method for GraphicOffsets!");
+      return 0;
+    }
+
+    int removed = 0;
+    foreach (var offset in DefDatabase<VEF.Graphics.GraphicOffsets>.AllDefs.ToList())
+    {
+      if (!graphicOffsetsToRemove.Contains(offset.defName))
+      {
+        continue;
+      }
+
+      try
+      {
+        removeMethod.Invoke(null, new object[] { offset });
+        removed++;
+      }
+      catch (Exception ex)
+      {
+        Log.Error($"[Medieval Overhaul Lite] Failed to remove {offset.defName}: {ex.Message}");
+      }
+    }
+    return removed;
   }
 }

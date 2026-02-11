@@ -83,16 +83,10 @@
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_Mayo"]/graphicData/texPath</xpath>
     <value>
-      <texPath>Things/Item/AC_Mayonnaise</texPath>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Mayonnaise</texPath>
     </value>
   </Operation>
   <!-- Soup pot -->
-  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/graphicData/texPath</xpath>
-    <value>
-      <texPath>Things/Item/AC_Mayonnaise</texPath>
-    </value>
-  </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]/comps</xpath>
     <value>
