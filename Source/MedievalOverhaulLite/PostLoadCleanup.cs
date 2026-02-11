@@ -75,6 +75,7 @@ public static class PostLoadCleanup
             if (defsList[i] is Def def && DefBlacklist.ShouldBlockDef(def.defName))
             {
               removeMethod.Invoke(null, new object[] { def });
+              HarmonyPatches.DefRemovalPatch.RemovedDefNames.Add(def.defName);
               removed++;
             }
           }
@@ -122,6 +123,41 @@ public static class PostLoadCleanup
     }
   }
 
+  /// <summary>
+  /// Checks if a path (graphic path or texture content key) belongs to a removed def.
+  /// Uses the actual set of removed defNames instead of blacklist rules — avoids
+  /// accidentally nuking textures for whitelisted defs.
+  /// </summary>
+  private static bool PathBelongsToRemovedDef(string path)
+  {
+    if (string.IsNullOrEmpty(path))
+      return false;
+
+    var removed = HarmonyPatches.DefRemovalPatch.RemovedDefNames;
+
+    // Check each path segment against actual removed defNames
+    int start = 0;
+    while (start < path.Length)
+    {
+      int slash = path.IndexOf('/', start);
+      string segment = slash >= 0 ? path.Substring(start, slash - start) : path.Substring(start);
+      if (segment.Length > 0)
+      {
+        // Check if segment starts with any removed defName
+        foreach (string defName in removed)
+        {
+          if (segment.StartsWith(defName))
+            return true;
+        }
+      }
+      if (slash < 0)
+        break;
+      start = slash + 1;
+    }
+
+    return false;
+  }
+
   private static void CleanupOrphanedGraphics()
   {
     try
@@ -141,7 +177,7 @@ public static class PostLoadCleanup
       foreach (DictionaryEntry entry in allGraphics)
       {
         if (entry.Value is Graphic graphic && graphic.path != null &&
-            DefBlacklist.ShouldBlockGraphicPath(graphic.path))
+            PathBelongsToRemovedDef(graphic.path))
         {
           keysToRemove.Add(entry.Key);
         }
@@ -167,6 +203,7 @@ public static class PostLoadCleanup
   /// Removes loaded textures from mod content holders.
   /// RimWorld loads ALL textures from each mod's Textures/ folder during LoadAllActiveMods,
   /// regardless of whether the corresponding defs exist. This purges those orphaned assets.
+  /// Only removes textures whose paths match actually-removed defNames.
   /// </summary>
   private static void CleanupModContentAssets()
   {
@@ -180,9 +217,8 @@ public static class PostLoadCleanup
         if (holder == null)
           continue;
 
-        // contentList is public: Dictionary<string, Texture2D>
         var keysToRemove = holder.contentList.Keys
-          .Where(k => DefBlacklist.ShouldBlockGraphicPath(k))
+          .Where(PathBelongsToRemovedDef)
           .ToList();
 
         foreach (string key in keysToRemove)

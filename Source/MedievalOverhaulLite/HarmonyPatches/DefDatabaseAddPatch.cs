@@ -22,6 +22,12 @@ public static class DefRemovalPatch
 {
   private static int removedCount;
 
+  /// <summary>
+  /// DefNames that were actually removed. Used by texture cleanup to know
+  /// exactly which assets to purge — avoids whitelist/blacklist rule complexity.
+  /// </summary>
+  public static readonly HashSet<string> RemovedDefNames = new();
+
   [HarmonyPrefix]
   static void Prefix()
   {
@@ -81,6 +87,7 @@ public static class DefRemovalPatch
         try
         {
           removeMethod.Invoke(null, new object[] { def });
+          RemovedDefNames.Add(def.defName);
           removedCount++;
         }
         catch (Exception ex)

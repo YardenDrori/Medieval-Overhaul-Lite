@@ -12,7 +12,21 @@ public static class DefBlacklist
 
   private static readonly HashSet<string> Whitelisted = new()
   {
+    //buildings
+    "AC_Infuser",
+    "AC_VinegarCask",
+    "AC_OilPressWorkshop",
+    "AC_ArtisanWorkshop",
+    "AC_BottlingStation",
+    "AC_DairyProcessingStation",
+    //WorkGiverDefs
+    "AC_DoBillsOilPressWorkshop",
+    "AC_DoBillsDairyProcessingStation",
+    "AC_DoBillsArtisanTable",
+    "AC_DoBillsBottlingPlant",
+    //hediffs
     "AC_PerfumeHediff",
+    //items
     "AC_Butter", // bakes fine, soup fine
     "AC_Ghee", // bakes lavish, soup lavish
     "AC_Vinegar", // sushi fine, soup fine
@@ -26,6 +40,23 @@ public static class DefBlacklist
 
   private static readonly HashSet<string> Blacklisted = new()
   {
+    //misc stuff with similar names making them viable for the whitelist
+    "AC_ButteredPopcorn",
+    "AC_TeaSachets",
+    "AC_SkySyrup",
+    "AC_RoyalSalve",
+    "AC_PipeTobacco",
+    "AC_JamonSerrano",
+    "AC_IcedElixir",
+    "AC_FlavouredKombucha",
+    "AC_EggPickles",
+    "AC_DesertSalve",
+    "AC_CoffeeLiquor",
+    "AC_ChichaMorada",
+    "AC_Buttermilk",
+    "AC_BlackMayonnaise",
+    "AC_BlackGarlic",
+    "AC_ArtisanalKombucha",
     // VCE ThingDefs - deep fried
     "VCE_DeepFriedBigMeat",
     "VCE_DeepFriedVegetables",
@@ -70,15 +101,17 @@ public static class DefBlacklist
     if (Whitelisted.Contains(defName))
       return false;
 
-    // Also catch RimWorld's duplicate-rename pattern: AC_Butter48347 is still AC_Butter
+    // Explicit blacklist takes priority over fuzzy whitelist matching
+    // (e.g. AC_ButteredPopcorn is blacklisted even though it starts with whitelisted AC_Butter)
+    if (Blacklisted.Contains(defName))
+      return true;
+
+    // Catch RimWorld's duplicate-rename pattern: AC_Butter48347 is still AC_Butter
     foreach (var name in Whitelisted)
     {
       if (defName.StartsWith(name))
         return false;
     }
-
-    if (Blacklisted.Contains(defName))
-      return true;
 
     for (int i = 0; i < BlockedPrefixes.Length; i++)
     {
@@ -123,19 +156,19 @@ public static class DefBlacklist
   /// </summary>
   private static bool IsGraphicSegmentBlocked(string segment)
   {
-    // Check whitelist first — if segment belongs to a whitelisted def, allow it.
-    // Uses StartsWith so texture suffixes (A, B, _north, _south) don't break it.
-    foreach (var name in Whitelisted)
-    {
-      if (segment.StartsWith(name))
-        return false;
-    }
-
     // Check explicit blacklist (also with StartsWith for texture variants)
     foreach (var name in Blacklisted)
     {
       if (segment.StartsWith(name))
         return true;
+    }
+
+    // Check whitelist, if segment belongs to a whitelisted def, allow it.
+    // Uses StartsWith so texture suffixes (A, B, _north, _south) don't break it.
+    foreach (var name in Whitelisted)
+    {
+      if (segment.StartsWith(name))
+        return false;
     }
 
     // Check blocked prefixes
