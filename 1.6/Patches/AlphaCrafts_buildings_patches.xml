@@ -19,6 +19,15 @@
       </inspectorTabs>
     </value>
   </Operation>
+  <!-- Replace research prerequisites -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_ArtisanAdvanced</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
   <!-- Remove PipeSystem comp -->
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_VinegarCask"]/comps/li[@Class='PipeSystem.CompProperties_AdvancedResourceProcessor']</xpath>
@@ -72,6 +81,15 @@
       </inspectorTabs>
     </value>
   </Operation>
+  <!-- Replace research prerequisites -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_ArtisanAdvanced</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
   <!-- Remove PipeSystem comp -->
   <Operation Class="PatchOperationRemove" MayRequire="sarg.alphacrafts">
     <xpath>Defs/ThingDef[defName="AC_Infuser"]/comps/li[@Class='PipeSystem.CompProperties_AdvancedResourceProcessor']</xpath>
@@ -104,6 +122,46 @@
         <showGizmo>false</showGizmo>
         <soundExtract>Standard_Drop</soundExtract>
       </li>
+    </value>
+  </Operation>
+  <!-- Oil Press -->
+  <!-- Replace research prerequisites -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_OilPressWorkshop"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_ArtisanAdvanced</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  <!-- Dairy processing station -->
+  <!-- Replace research prerequisites -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_DairyProcessingStation"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_ArtisanAdvanced</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  <!-- Bottling station -->
+  <!-- Replace research prerequisites -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_BottlingStation"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_ArtisanAdvanced</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  <!-- Artisan Workshop -->
+  <!-- Replace research prerequisites -->
+  <Operation Class="PatchOperationReplace" MayRequire="sarg.alphacrafts">
+    <xpath>Defs/ThingDef[defName="AC_ArtisanWorkshop"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_ArtisanBasic</li>
+      </researchPrerequisites>
     </value>
   </Operation>
 </Patch>

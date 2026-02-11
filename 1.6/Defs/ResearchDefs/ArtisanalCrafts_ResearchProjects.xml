@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ResearchProjectDef>
+    <defName>MOL_ArtisanBasic</defName>
+    <label>basic artisanal goods</label>
+    <description>Unlocks a range of specialized artisanal processes, enabling colonists to craft unique products using traditional methods and tools.</description>
+    <baseCost>600</baseCost>
+    <techLevel>Medieval</techLevel>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>MOL_ArtisanAdvanced</defName>
+    <label>complex artisanal goods</label>
+    <description>Unlocks a range of more complex artisanal processes. Enabling the creation of more complex and unique products.</description>
+    <baseCost>800</baseCost>
+    <techLevel>Medieval</techLevel>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+</Defs>

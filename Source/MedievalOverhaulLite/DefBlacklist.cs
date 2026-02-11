@@ -36,6 +36,7 @@ public static class DefBlacklist
     "AC_Pickles",
     "AC_Jam",
     "AC_Soap",
+    //ResearchProjectDefs
   };
 
   private static readonly HashSet<string> Blacklisted = new()
