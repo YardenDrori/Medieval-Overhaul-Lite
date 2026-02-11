@@ -88,6 +88,10 @@ public static class DefBlacklist
     // VCE ResearchProjectDefs
     "VCE_DeepFrying",
     "VCE_Canning",
+    "VCE_CondimentsResearch",
+    "VCE_SoupCooking",
+    "VCE_Grilling",
+    "VCE_CheeseMaking",
     // VCE WorkGiverDefs
     "VCE_DoBillsFryer",
     "VCE_DoBillsCanning",

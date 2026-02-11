@@ -4,7 +4,7 @@
     <defName>MOL_ArtisanBasic</defName>
     <label>basic artisanal goods</label>
     <description>Unlocks a range of specialized artisanal processes, enabling colonists to craft unique products using traditional methods and tools.</description>
-    <baseCost>600</baseCost>
+    <baseCost>200</baseCost>
     <techLevel>Medieval</techLevel>
     <researchViewX>2.00</researchViewX>
     <researchViewY>0.00</researchViewY>
@@ -13,7 +13,25 @@
     <defName>MOL_ArtisanAdvanced</defName>
     <label>complex artisanal goods</label>
     <description>Unlocks a range of more complex artisanal processes. Enabling the creation of more complex and unique products.</description>
-    <baseCost>800</baseCost>
+    <baseCost>600</baseCost>
+    <techLevel>Medieval</techLevel>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>MOL_Preserves</defName>
+    <label>food preservation techniques</label>
+    <description>Unlocks a range of methods to preserve food such as pickling, aging, fermenting and various other methods, making food last longer unrefridgerated, more calorie dense, and tastier to boot!</description>
+    <baseCost>200</baseCost>
+    <techLevel>Medieval</techLevel>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>MOL_SpecialtyFood</defName>
+    <label>specialty dishes</label>
+    <description>Unlock a range of new food categories: Grills, Soups, Sushi, and Bakes along with their respective cooking stations. Specialty meals have a far better ratio of raw ingredients but need specific ingredients such as flour or olive oil to make. Additionally a variety of condiments can now be made and applied to gourmet meals applying a wide range of positive effects.</description>
+    <baseCost>600</baseCost>
     <techLevel>Medieval</techLevel>
     <researchViewX>2.00</researchViewX>
     <researchViewY>0.00</researchViewY>
