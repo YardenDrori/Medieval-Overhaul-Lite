@@ -85,6 +85,7 @@ public static class DefBlacklist
     "VCE_CanEggs",
     "VCE_CanFish",
     "VCE_CanAlienFish",
+    "VCE_MilkIntoCheese",
     // VCE ResearchProjectDefs
     "VCE_DeepFrying",
     "VCE_Canning",

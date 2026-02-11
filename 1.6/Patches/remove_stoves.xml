@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Stoves themselves -->
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="ElectricStove"]/designationCategory</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="FueledStove"]/designationCategory</xpath>
+  </Operation>
+</Patch>
