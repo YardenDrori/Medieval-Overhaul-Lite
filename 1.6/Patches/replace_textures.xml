@@ -7,6 +7,16 @@
       <texPath>Things/Item/Drug/MOL_Beer</texPath>
     </value>
   </Operation>
+  <!-- Wort -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Wort"]/graphicData</xpath>
+    <value>
+      <graphicData>
+        <texPath>Things/Item/Resource/WortAle</texPath>
+        <graphicClass>Graphic_Random</graphicClass>
+      </graphicData>
+    </value>
+  </Operation>
   <!-- Yayo -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="Yayo"]/graphicData/texPath</xpath>
