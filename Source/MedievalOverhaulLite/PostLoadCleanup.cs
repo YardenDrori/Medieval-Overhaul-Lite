@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -61,10 +60,7 @@ public static class PostLoadCleanup
         if (defsList == null || defsList.Count == 0)
           continue;
 
-        var removeMethod = dbType.GetMethod(
-          "Remove",
-          BindingFlags.Static | BindingFlags.NonPublic
-        );
+        var removeMethod = dbType.GetMethod("Remove", BindingFlags.Static | BindingFlags.NonPublic);
         if (removeMethod == null)
           continue;
 
@@ -91,9 +87,7 @@ public static class PostLoadCleanup
   {
     try
     {
-      var condimentsCategory = DefDatabase<ThingCategoryDef>.GetNamedSilentFail(
-        "VCE_Condiments"
-      );
+      var condimentsCategory = DefDatabase<ThingCategoryDef>.GetNamedSilentFail("VCE_Condiments");
       if (condimentsCategory == null)
         return;
 
@@ -112,9 +106,7 @@ public static class PostLoadCleanup
 
       if (itemsModified > 0)
       {
-        Log.Message(
-          $"[MO Expanded Lite] Removed VCE_Condiments from {itemsModified} AC_ items"
-        );
+        Log.Message($"[MO Expanded Lite] Removed VCE_Condiments from {itemsModified} AC_ items");
       }
     }
     catch (Exception ex)
@@ -176,8 +168,11 @@ public static class PostLoadCleanup
       var keysToRemove = new List<object>();
       foreach (DictionaryEntry entry in allGraphics)
       {
-        if (entry.Value is Graphic graphic && graphic.path != null &&
-            PathBelongsToRemovedDef(graphic.path))
+        if (
+          entry.Value is Graphic graphic
+          && graphic.path != null
+          && PathBelongsToRemovedDef(graphic.path)
+        )
         {
           keysToRemove.Add(entry.Key);
         }
@@ -188,9 +183,7 @@ public static class PostLoadCleanup
 
       if (keysToRemove.Count > 0)
       {
-        Log.Message(
-          $"[MO Expanded Lite] Cleaned up {keysToRemove.Count} orphaned graphics"
-        );
+        Log.Message($"[MO Expanded Lite] Cleaned up {keysToRemove.Count} orphaned graphics");
       }
     }
     catch (Exception ex)
@@ -217,9 +210,7 @@ public static class PostLoadCleanup
         if (holder == null)
           continue;
 
-        var keysToRemove = holder.contentList.Keys
-          .Where(PathBelongsToRemovedDef)
-          .ToList();
+        var keysToRemove = holder.contentList.Keys.Where(PathBelongsToRemovedDef).ToList();
 
         foreach (string key in keysToRemove)
         {
