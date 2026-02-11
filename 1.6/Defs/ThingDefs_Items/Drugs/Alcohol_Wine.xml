@@ -37,12 +37,12 @@
       <outcomeDoers>
         <li Class="IngestionOutcomeDoer_GiveHediff">
           <hediffDef>VFEM2_WineAlcoholHigh</hediffDef>
-          <severity>0.25</severity>
+          <severity>0.11</severity>
           <toleranceChemical>Alcohol</toleranceChemical>
         </li>
         <li Class="IngestionOutcomeDoer_GiveHediff">
           <hediffDef>AlcoholTolerance</hediffDef>
-          <severity>0.021</severity>
+          <severity>0.014</severity>
           <divideByBodySize>true</divideByBodySize>
         </li>
       </outcomeDoers>
@@ -55,20 +55,6 @@
         <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
         <needLevelOffset>1</needLevelOffset>
         <listOrder>10</listOrder>
-      </li>
-      <li Class="VFEMedieval.CompProperties_IngestedThoughtFromQuality">
-        <ingestedThoughts>
-          <li>VFEM2_DrankWine_Awful</li>
-          <li>VFEM2_DrankWine_Poor</li>
-          <li>VFEM2_DrankWine_Normal</li>
-          <li>VFEM2_DrankWine_Good</li>
-          <li>VFEM2_DrankWine_Excellent</li>
-          <li>VFEM2_DrankWine_Masterwork</li>
-          <li>VFEM2_DrankWine_Legendary</li>
-        </ingestedThoughts>
-      </li>
-      <li>
-        <compClass>CompQuality</compClass>
       </li>
     </comps>
   </ThingDef>
@@ -189,5 +175,32 @@
       </li>
     </stages>
   </HediffDef>
+  <ThoughtDef>
+    <defName>VFEM2_InebriatedWine</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>VFEM2_WineAlcoholHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>alcohol warmth</label>
+        <description>I just feel a bit more relaxed after that drink. That's good.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+      <li>
+        <label>quite inebriated</label>
+        <description>I'm a bit wobbly! And this is quite enjoyable.</description>
+        <baseMoodEffect>14</baseMoodEffect>
+      </li>
+      <li>
+        <label>drunk</label>
+        <description>I feel so uninhibited and unafraid! This is a great time!</description>
+        <baseMoodEffect>20</baseMoodEffect>
+      </li>
+      <li>
+        <label>hammered</label>
+        <description>Wooo! What's going on?</description>
+        <baseMoodEffect>26</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>
-
