@@ -496,7 +496,7 @@ public static class PurgeAlphaCrafts
       // Buildings
       "VCE_DeepFrier",
       "VCE_CanningMachine",
-      "VCE_CheesePress"
+      "VCE_CheesePress",
     };
 
     // Recipes to remove
@@ -526,7 +526,7 @@ public static class PurgeAlphaCrafts
     {
       "VCE_DeepFrier",
       "VCE_CanningMachine",
-      "VCE_CheesePress"
+      "VCE_CheesePress",
     };
     RemoveBuildingsFromDesignationCategories(buildingsToDisable);
 
@@ -563,9 +563,6 @@ public static class PurgeAlphaCrafts
     int removed = 0;
     int notFound = 0;
 
-    // Log what we're looking for
-    Log.Message($"[Medieval Overhaul Lite] Looking for {itemsToRemove.Count} ThingDefs to remove");
-
     foreach (var defName in itemsToRemove)
     {
       var thing = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
@@ -580,11 +577,12 @@ public static class PurgeAlphaCrafts
       {
         removeMethod.Invoke(null, new object[] { thing });
         removed++;
-        Log.Message($"[Medieval Overhaul Lite] Removed ThingDef: {thing.defName}");
       }
       catch (Exception ex)
       {
-        Log.Error($"[Medieval Overhaul Lite] Failed to remove {thing.defName}: {ex.Message}\n{ex.StackTrace}");
+        Log.Error(
+          $"[Medieval Overhaul Lite] Failed to remove {thing.defName}: {ex.Message}\n{ex.StackTrace}"
+        );
       }
     }
 
@@ -756,7 +754,9 @@ public static class PurgeAlphaCrafts
 
         // Find and remove building designators
         var toRemove = designatorsList
-          .Where(des => des is Designator_Build build && buildingDefNames.Contains(build.PlacingDef.defName))
+          .Where(des =>
+            des is Designator_Build build && buildingDefNames.Contains(build.PlacingDef.defName)
+          )
           .ToList();
 
         foreach (var designator in toRemove)
@@ -764,15 +764,18 @@ public static class PurgeAlphaCrafts
           designatorsList.Remove(designator);
           removedCount++;
           var buildDes = designator as Designator_Build;
-          Log.Message($"[Medieval Overhaul Lite] Removed {buildDes.PlacingDef.defName} from {category.defName}");
         }
       }
       catch (Exception ex)
       {
-        Log.Error($"[Medieval Overhaul Lite] Error removing buildings from {category.defName}: {ex.Message}");
+        Log.Error(
+          $"[Medieval Overhaul Lite] Error removing buildings from {category.defName}: {ex.Message}"
+        );
       }
     }
 
-    Log.Message($"[Medieval Overhaul Lite] Removed {removedCount} building designators from architect menus");
+    Log.Message(
+      $"[Medieval Overhaul Lite] Removed {removedCount} building designators from architect menus"
+    );
   }
 }
