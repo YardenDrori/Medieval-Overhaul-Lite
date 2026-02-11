@@ -479,7 +479,7 @@ public static class PurgeAlphaCrafts
     Log.Message("========== STARTING VCE PURGE ==========");
     int totalRemoved = 0;
 
-    // Items to remove
+    // Items to remove (including buildings)
     HashSet<string> itemsToRemove = new()
     {
       // Deep fried items
@@ -496,7 +496,7 @@ public static class PurgeAlphaCrafts
       // Buildings
       "VCE_DeepFrier",
       "VCE_CanningMachine",
-      "VCE_CheesePress",
+      "VCE_CheesePress"
     };
 
     // Recipes to remove
@@ -520,6 +520,15 @@ public static class PurgeAlphaCrafts
 
     // Work givers to remove
     HashSet<string> workGiversToRemove = new() { "VCE_DoBillsFryer", "VCE_DoBillsCanning" };
+
+    // Disable buildings FIRST (before removing from database)
+    HashSet<string> buildingsToDisable = new()
+    {
+      "VCE_DeepFrier",
+      "VCE_CanningMachine",
+      "VCE_CheesePress"
+    };
+    RemoveBuildingsFromDesignationCategories(buildingsToDisable);
 
     // Remove items
     totalRemoved += RemoveVCEThingDefs(itemsToRemove);
@@ -552,10 +561,18 @@ public static class PurgeAlphaCrafts
     }
 
     int removed = 0;
-    foreach (ThingDef thing in DefDatabase<ThingDef>.AllDefs.ToList())
+    int notFound = 0;
+
+    // Log what we're looking for
+    Log.Message($"[Medieval Overhaul Lite] Looking for {itemsToRemove.Count} ThingDefs to remove");
+
+    foreach (var defName in itemsToRemove)
     {
-      if (!itemsToRemove.Contains(thing.defName))
+      var thing = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
+      if (thing == null)
       {
+        notFound++;
+        Log.Warning($"[Medieval Overhaul Lite] Could not find ThingDef: {defName}");
         continue;
       }
 
@@ -563,12 +580,19 @@ public static class PurgeAlphaCrafts
       {
         removeMethod.Invoke(null, new object[] { thing });
         removed++;
+        Log.Message($"[Medieval Overhaul Lite] Removed ThingDef: {thing.defName}");
       }
       catch (Exception ex)
       {
-        Log.Error($"[Medieval Overhaul Lite] Failed to remove {thing.defName}: {ex.Message}");
+        Log.Error($"[Medieval Overhaul Lite] Failed to remove {thing.defName}: {ex.Message}\n{ex.StackTrace}");
       }
     }
+
+    if (notFound > 0)
+    {
+      Log.Warning($"[Medieval Overhaul Lite] {notFound} ThingDefs not found (might not be loaded)");
+    }
+
     return removed;
   }
 
@@ -702,5 +726,53 @@ public static class PurgeAlphaCrafts
       }
     }
     return removed;
+  }
+
+  private static void RemoveBuildingsFromDesignationCategories(HashSet<string> buildingDefNames)
+  {
+    int removedCount = 0;
+
+    foreach (DesignationCategoryDef category in DefDatabase<DesignationCategoryDef>.AllDefs)
+    {
+      try
+      {
+        // Use reflection to get the private field
+        var field = typeof(DesignationCategoryDef).GetField(
+          "resolvedDesignators",
+          BindingFlags.Instance | BindingFlags.NonPublic
+        );
+
+        if (field == null)
+        {
+          Log.Warning("[Medieval Overhaul Lite] Could not find resolvedDesignators field");
+          continue;
+        }
+
+        var designatorsList = field.GetValue(category) as List<Designator>;
+        if (designatorsList == null)
+        {
+          continue;
+        }
+
+        // Find and remove building designators
+        var toRemove = designatorsList
+          .Where(des => des is Designator_Build build && buildingDefNames.Contains(build.PlacingDef.defName))
+          .ToList();
+
+        foreach (var designator in toRemove)
+        {
+          designatorsList.Remove(designator);
+          removedCount++;
+          var buildDes = designator as Designator_Build;
+          Log.Message($"[Medieval Overhaul Lite] Removed {buildDes.PlacingDef.defName} from {category.defName}");
+        }
+      }
+      catch (Exception ex)
+      {
+        Log.Error($"[Medieval Overhaul Lite] Error removing buildings from {category.defName}: {ex.Message}");
+      }
+    }
+
+    Log.Message($"[Medieval Overhaul Lite] Removed {removedCount} building designators from architect menus");
   }
 }
