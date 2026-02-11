@@ -12,8 +12,8 @@ public class MapComponent_TreesChoppedHandler : MapComponent
   public void NotifyTreeChopped(float points, Pawn worker)
   {
     points /= 1000;
-    if (points < 0.01f)
-      points = 0.01f;
+    if (points < 0.04f)
+      points = 0.004f;
     treePointsChopped += points;
 
     int currTick = Find.TickManager.TicksGame;
@@ -77,7 +77,8 @@ public class MapComponent_TreesChoppedHandler : MapComponent
 
   private bool ShouldSpawnEnts()
   {
-    if (Rand.Value > 0.01f + treePointsChopped)
+    //0.2% base value 1 in 500 trees
+    if (Rand.Value > 0.002f + treePointsChopped)
     // if (Rand.Value > 0.5f)
     {
       return false;
