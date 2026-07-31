@@ -23,6 +23,7 @@ public class CompProperties_AnimationEnergy : CompProperties_MechPowerCell
   {
     compClass = typeof(CompAnimationEnergy);
     totalPowerTicks = 20000;
+    labelOverride = "Psychic animation";
     tooltipOverride =
       "Temporary animation triggered by disturbance and psychic phenomena granting limited autonamy. The animation will become ordinary matter once this energy dissipates.";
     showGizmoOnNonPlayerControlled = true;
@@ -57,6 +58,11 @@ public class CompAnimationEnergy : CompMechPowerCell
 
     if (depleted)
     {
+      if (!parent.Spawned)
+      {
+        return;
+      }
+
       // Use runtime values if set, otherwise fall back to Props
       ThingDef thingDef = treeTypeToSpawn ?? Props.thingToSpawnOnEmpty;
       float growth = treeTypeToSpawn != null ? treeGrowthPercentage : Props.growthPercentage;
@@ -66,6 +72,11 @@ public class CompAnimationEnergy : CompMechPowerCell
         Log.Error(
           $"[Medieval Overhaul Lite] Failed to find thingDef to spawn for {parent.def.defName}"
         );
+        return;
+      }
+      if (parent.Position.GetTerrain(parent.Map).fertility <= 0.3f)
+      {
+        parent.Destroy();
         return;
       }
       Thing thingToSpawnOnEmpty = ThingMaker.MakeThing(thingDef);
