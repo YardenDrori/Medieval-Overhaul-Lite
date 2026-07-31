@@ -26,8 +26,7 @@ public static class PlantCollected_Patch
       return;
     }
     float points = 0;
-    points += __instance.def.plant.harvestYield;
-    points += __instance.Growth * __instance.def.plant.growDays;
+    points += __instance.YieldNow();
     MapComponent_TreesChoppedHandler treesChoppedHandler =
       __state.GetComponent<MapComponent_TreesChoppedHandler>();
     if (treesChoppedHandler == null)

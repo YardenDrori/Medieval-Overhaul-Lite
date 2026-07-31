@@ -8,22 +8,23 @@ public class MapComponent_TreesChoppedHandler : MapComponent
 {
   private float treePointsChopped = 0;
   private Dictionary<int, float> plantExpirationDict = new();
+  private int lastTreeChoppedTick = -1;
 
-  public void NotifyTreeChopped(float points, Pawn worker)
+  public void NotifyTreeChopped(float woodYield, Pawn worker)
   {
-    points /= 1000;
-    if (points < 0.04f)
-      points = 0.004f;
-    treePointsChopped += points;
+    float points = woodYield * 0.0005f;
 
     int currTick = Find.TickManager.TicksGame;
-
-    if (plantExpirationDict.ContainsKey(currTick))
-      plantExpirationDict[currTick] += points;
+    if (lastTreeChoppedTick + 2500 * 12 < currTick)
+    {
+      treePointsChopped = points;
+    }
     else
-      plantExpirationDict[currTick] = points;
+    {
+      treePointsChopped += points;
+    }
+    lastTreeChoppedTick = currTick;
 
-    ExpirePlants(currTick);
     TrySpawnEnts(worker);
   }
 
@@ -77,8 +78,8 @@ public class MapComponent_TreesChoppedHandler : MapComponent
 
   private bool ShouldSpawnEnts()
   {
-    //0.2% base value 1 in 500 trees
-    if (Rand.Value > 0.002f + treePointsChopped)
+    //0.1% base value 1 in 1000 trees +
+    if (Rand.Value > 0.001f + treePointsChopped)
     // if (Rand.Value > 0.5f)
     {
       return false;

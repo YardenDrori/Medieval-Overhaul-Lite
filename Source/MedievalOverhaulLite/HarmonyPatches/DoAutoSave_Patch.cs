@@ -7,7 +7,7 @@ namespace MOExpandedLite;
 [HarmonyPatch(typeof(Autosaver), "DoAutosave")]
 public static class Autosaver_Patch
 {
-  public static int everyXAutosaves = 0;
+  public static int everyXAutosaves = 3;
   public static int autosaveNum = everyXAutosaves;
   public const int ticksToSpreadOver = 500;
 
