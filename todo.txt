@@ -14,7 +14,6 @@ remove comps from alpha crafts building and add my own processor comps
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
 
-
   imorted wine
   make dishes apply to recipe instead of per building and add support for nutrient paste
 fix furntiture (beds) to use more than just cloth eg silk
@@ -25,7 +24,5 @@ add cheese press
 update bone desc
 
 make OUR electric soup pot handle gourmet dishes
-
-fix mood merger on meals
 
 fix dishes count for soup production
