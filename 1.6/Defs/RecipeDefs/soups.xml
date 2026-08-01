@@ -1,0 +1,84 @@
+<Defs>
+  <!--
+    One dynamic recipe replaces the old per-quality MOL_CookSoup* recipes. The cooked
+    output is resolved per-ingredient through Production Expanded's RawToFinishedRegistry,
+    which is populated by Defs/Misc/SoupMappings.xml. Restrict the bill's ingredient
+    filter to pick a specific soup quality.
+
+    Timing note: this is a ratio recipe, so a cycle costs ticksPerItemOut * outputCount.
+    6000 * (1 uncooked * ratio 10) = 60000 ticks per cycle, 2 cycles = 2 days, matching
+    the old static recipes.
+  -->
+  <RecipeDef>
+    <defName>MOL_CookSoup</defName>
+    <label>cook soup</label>
+    <description>Cook soup using a process taking days, but, with a high yield. The kind of soup produced depends on the uncooked soup used.</description>
+    <jobString>cooking soup</jobString>
+    <workAmount>100</workAmount>
+    <recipeUsers>
+      <li>MOL_ElectricPot</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VCE_UncookedSoupSimple</li>
+            <li>VCE_UncookedSoupFine</li>
+            <li>VCE_UncookedSoupLavish</li>
+            <li>VCE_UncookedSoupGourmet</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VCE_UncookedSoupSimple</li>
+        <li>VCE_UncookedSoupFine</li>
+        <li>VCE_UncookedSoupLavish</li>
+        <li>VCE_UncookedSoupGourmet</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>VCE_UncookedSoupSimple</li>
+        <li>VCE_UncookedSoupFine</li>
+        <li>VCE_UncookedSoupLavish</li>
+        <li>VCE_UncookedSoupGourmet</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    <products>
+      <VCE_CookedSoupSimple>10</VCE_CookedSoupSimple>
+      <!-- placeholder, replaced dynamically via RawToFinishedRegistry -->
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>false</isStaticRecipe>
+        <inheritIngredients>true</inheritIngredients>
+        <useDynamicOutput>true</useDynamicOutput>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>VCE_UncookedSoupSimple</li>
+              <li>VCE_UncookedSoupFine</li>
+              <li>VCE_UncookedSoupLavish</li>
+              <li>VCE_UncookedSoupGourmet</li>
+            </thingDefs>
+            <count>1</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>VCE_CookedSoupSimple</output>
+            <count>10</count>
+          </li>
+        </products>
+        <ratio>10.0</ratio>
+        <ticksPerItemOut>6000</ticksPerItemOut>
+        <cycles>2</cycles>
+        <capacityFactor>1</capacityFactor>
+      </li>
+    </modExtensions>
+    <displayPriority>100</displayPriority>
+  </RecipeDef>
+</Defs>

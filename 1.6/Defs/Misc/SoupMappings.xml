@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Feeds Production Expanded's RawToFinishedRegistry so the single dynamic soup
+  recipe (RecipeDefs/soups.xml) can look up which cooked soup an uncooked soup
+  turns into. Index-paired: raw[i] -> finished[i].
+-->
+<Defs>
+  <ProductionExpanded.RawMappingDef>
+    <defName>MOL_SoupMappings</defName>
+    <raw>
+      <li>VCE_UncookedSoupSimple</li>
+      <li>VCE_UncookedSoupFine</li>
+      <li>VCE_UncookedSoupLavish</li>
+      <li>VCE_UncookedSoupGourmet</li>
+    </raw>
+    <finished>
+      <li>VCE_CookedSoupSimple</li>
+      <li>VCE_CookedSoupFine</li>
+      <li>VCE_CookedSoupLavish</li>
+      <li>VCE_CookedSoupGourmet</li>
+    </finished>
+  </ProductionExpanded.RawMappingDef>
+</Defs>
