@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Imported verbatim from Alpha Crafts — MO Lite never patched these.
+  AC_DoBillsGrinder is deliberately not imported: its AC_ArtisanalGrinder does not exist here.
+
+  AC_VinegarCask and AC_Infuser need no WorkGiver: Production Expanded's PE_FillProcessor /
+  PE_EmptyProcessor / PE_StartNextProcessorCycle are generic and pick up any Building_Processor.
+-->
+<Defs>
+
+  <WorkGiverDef>
+    <defName>AC_DoBillsArtisanTable</defName>
+    <label>craft artisan products</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Cooking</workType>
+    <priorityInType>20</priorityInType>
+    <fixedBillGiverDefs>
+      <li>AC_ArtisanWorkshop</li>
+    </fixedBillGiverDefs>
+    <verb>crafting artisan products</verb>
+    <gerund>crafting artisan products at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <WorkGiverDef>
+    <defName>AC_DoBillsOilPressWorkshop</defName>
+    <label>press produce</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Cooking</workType>
+    <priorityInType>20</priorityInType>
+    <fixedBillGiverDefs>
+      <li>AC_OilPressWorkshop</li>
+    </fixedBillGiverDefs>
+    <verb>pressing produce</verb>
+    <gerund>pressing produce at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <WorkGiverDef>
+    <defName>AC_DoBillsDairyProcessingStation</defName>
+    <label>process dairy</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Cooking</workType>
+    <priorityInType>20</priorityInType>
+    <fixedBillGiverDefs>
+      <li>AC_DairyProcessingStation</li>
+    </fixedBillGiverDefs>
+    <verb>processing dairy</verb>
+    <gerund>processing dairy at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+  <WorkGiverDef>
+    <defName>AC_DoBillsBottlingPlant</defName>
+    <label>bottle produce</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Cooking</workType>
+    <priorityInType>20</priorityInType>
+    <fixedBillGiverDefs>
+      <li>AC_BottlingStation</li>
+    </fixedBillGiverDefs>
+    <verb>bottling produce</verb>
+    <gerund>bottling produce at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+</Defs>
