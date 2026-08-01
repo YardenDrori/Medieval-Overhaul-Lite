@@ -31,7 +31,9 @@
     </graphicData>
     <statBases>
       <MarketValue>10</MarketValue>
-      <Nutrition>0.01</Nutrition>
+      <!-- 0.05, same as milk: cooking recipes measure ingredients in nutrition, so this
+           is what makes "0.05 butter" in a bake mean one butter rather than five. -->
+      <Nutrition>0.05</Nutrition>
       <Flammability>1</Flammability>
       <Mass>0.2</Mass>
     </statBases>
@@ -84,7 +86,8 @@
     </graphicData>
     <statBases>
       <MarketValue>40</MarketValue>
-      <Nutrition>0.01</Nutrition>
+      <!-- Matches butter; see the note there. -->
+      <Nutrition>0.05</Nutrition>
       <Flammability>1</Flammability>
       <Mass>0.2</Mass>
     </statBases>
