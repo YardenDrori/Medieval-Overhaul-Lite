@@ -126,4 +126,35 @@
     <xpath>Defs/RecipeDef[defName="VCE_DeepFrySushi"]</xpath>
   </Operation>
 
+  <!-- The sushi mod ships eight rolls across four quality tiers. We keep one per tier -
+       norimaki, uramaki, futomaki, oshizushi - and drop the duplicates, so the sushi table's
+       bill list mirrors the stove's. The survivors are rebalanced in VCE_dish_recipes.xml.
+       The only other references to these four are inside VCE_DeepFrySushi, removed above. -->
+  <Operation Class="PatchOperationRemove" MayRequire="VanillaExpanded.VCookESushi">
+    <success>Always</success>
+    <xpath>Defs/ThingDef[
+      defName="VCE_Chirashizushi" or
+      defName="VCE_Nigiri" or
+      defName="VCE_Temaki" or
+      defName="VCE_Gunkanmaki"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove" MayRequire="VanillaExpanded.VCookESushi">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[
+      defName="VCE_CookChirashizushiSimple" or
+      defName="VCE_CookChirashizushiSimpleBulk" or
+      defName="VCE_CookNigiriFine" or
+      defName="VCE_CookNigiriFineBulk" or
+      defName="VCE_CookTemakiLavish" or
+      defName="VCE_CookTemakiLavishBulk" or
+      defName="VCE_CookGunkanmakiGourmet"]</xpath>
+  </Operation>
+
+
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/ThingDef[defName="VCE_ElectricPot"]</xpath>
+  </Operation>
+
 </Patch>

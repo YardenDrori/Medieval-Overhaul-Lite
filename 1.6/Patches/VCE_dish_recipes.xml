@@ -1,0 +1,1520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Rebalances every Vanilla Cooking Expanded dish (bakes, soups, grills, sushi) and VCE's
+  gourmet meal onto the same artisanal-ingredient economy as the vanilla meals in
+  Nerf_Vanilla_Meals.xml: every tier above simple costs a fat and/or an acid on top of its
+  raw food, and the gourmet tier costs one condiment per serving.
+
+  VCE's own recipes are patched in place rather than replaced with MOL_ copies. That keeps
+  the defNames, research prerequisites, recipeUsers and bulk variants VCE already wires up,
+  so nothing has to be re-added to the stoves, grill, pot and sushi table.
+
+  COUNTS ARE NUTRITION, NOT ITEMS. Every one of these recipes uses
+  IngredientValueGetter_Nutrition (or VEF's ...WithExtraIngredient, which switches to plain
+  item counts for the condiment slot). Nutrition per unit of the ingredients used here:
+
+      oil / vinegar / balsamic / olive oil / cheese   0.1
+      butter / ghee / honey / flour / rice / milk     0.05
+      wine                                            0.08
+
+  So 0.1 MOL_Oils = one oil, 0.15 VFEM2_Honey = three honey, 0.08 VFEM2_Wine = one wine.
+  Butter and ghee were bumped from 0.01 to 0.05 in Items_ArtisanalGoods.xml for exactly
+  this reason - at 0.01 a "0.2 ghee" lavish bake would have eaten twenty ghee.
+
+  PER-SERVING DESIGN, SCALED PER RECIPE. The design below is written per meal; each recipe
+  multiplies it by how many meals that recipe produces:
+
+      bakes            x1 (bulk x4) - VCE ships these as x2/x8, the product counts are
+                       halved below so a bake is crafted one at a time like every other meal
+      grills           x1 (bulk x4)
+      sushi            x2 (bulk x8) - the one exception; VCE ships these as x1/x4 and the
+                       product counts are doubled below
+      soups            x10, because one uncooked soup cooks into ten servings in the pot
+
+  Design, per serving:
+
+      gourmet meal   0.45 protein  0.45 veg    0.1 oil    0.1 vinegar   1 condiment
+
+      simple bake    0.25 egg/milk 0.2 flour
+      fine bake      0.25 egg/milk 0.2 flour   0.05 butter
+      lavish bake    0.5 egg/milk  0.2 flour   0.2 ghee
+      gourmet bake   = lavish                                          1 condiment
+
+      simple soup    0.1 olive oil 0.35 raw food
+      fine soup      0.1 olive oil 0.3 raw food   0.1 butter or vinegar
+      lavish soup    0.1 olive oil 0.7 raw food   0.1 ghee or balsamic
+      gourmet soup   = lavish                                          1 condiment
+
+      simple grill   0.55 meat
+      fine grill     0.4 meat      0.08 wine
+      lavish grill   0.65 meat     0.08 wine      0.15 honey
+      gourmet grill  = lavish                                          1 condiment
+
+      norimaki       0.25 fish     0.075 rice
+      uramaki        0.25 fish     0.075 rice     0.05 vinegar
+      futomaki       0.5 fish      0.1 rice       0.05 balsamic
+      oshizushi      = futomaki                                        1 condiment
+
+  Every <li> in <ingredients> is its own mandatory slot, so a slot listing two categories
+  (fine soup's butter-or-vinegar) is an either/or, while two separate slots (the gourmet
+  meal's oil and vinegar) are both required.
+
+  Both blocks are wrapped in PatchOperationFindMod so nothing runs when the mod is absent,
+  while a genuinely wrong xpath still logs an error when it is present.
+-->
+<Patch>
+
+  <!-- ============================================================================
+       VANILLA COOKING EXPANDED - gourmet meal, bakes, soups, grills
+       ============================================================================ -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Cooking Expanded</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- ==================== Ingredient filters ====================
+             Oils, vinegars, butter and ghee hang off AC_ArtisanProducts, whose parent is
+             Foods, not FoodRaw - so none of VCE's filters accept them until they are added
+             here. A mandatory ingredient slot that the bill filter cannot satisfy makes the
+             bill silently unfillable, so both the fixed and the default filter need them. -->
+
+        <!-- Bake bases: butter and ghee. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookBakeMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+          <value>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookBakeMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+          <value>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetBakeMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+          <value>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetBakeMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+          <value>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </value>
+        </li>
+
+        <!-- Grill bases: wine and honey. Neither has a <thingDefs> node to append to, and
+             honey is AnimalProductRaw which the grill filters do not list either. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGrillMealBase"]/fixedIngredientFilter</xpath>
+          <value>
+            <thingDefs>
+              <li>VFEM2_Wine</li>
+              <li>VFEM2_Honey</li>
+            </thingDefs>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGrillMealBase"]/defaultIngredientFilter</xpath>
+          <value>
+            <thingDefs>
+              <li>VFEM2_Wine</li>
+              <li>VFEM2_Honey</li>
+            </thingDefs>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetGrillMealBase"]/fixedIngredientFilter</xpath>
+          <value>
+            <thingDefs>
+              <li>VFEM2_Wine</li>
+              <li>VFEM2_Honey</li>
+            </thingDefs>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetGrillMealBase"]/defaultIngredientFilter</xpath>
+          <value>
+            <thingDefs>
+              <li>VFEM2_Wine</li>
+              <li>VFEM2_Honey</li>
+            </thingDefs>
+          </value>
+        </li>
+
+        <!-- VCE_CookGourmetMealBase is the parent of both the vanilla-style gourmet meal
+             and the gourmet soup, so it needs oils, vinegars and ghee. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetMealBase"]/fixedIngredientFilter/categories</xpath>
+          <value>
+            <li>MOL_Oils</li>
+            <li>MOL_Vinegars</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetMealBase"]/fixedIngredientFilter</xpath>
+          <value>
+            <thingDefs>
+              <li>AC_Butter</li>
+              <li>AC_Ghee</li>
+            </thingDefs>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetMealBase"]/defaultIngredientFilter/categories</xpath>
+          <value>
+            <li>MOL_Oils</li>
+            <li>MOL_Vinegars</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetMealBase"]/defaultIngredientFilter</xpath>
+          <value>
+            <thingDefs>
+              <li>AC_Butter</li>
+              <li>AC_Ghee</li>
+            </thingDefs>
+          </value>
+        </li>
+
+        <!-- ==================== Gourmet meal ====================
+             0.45 protein + 0.45 veg + 0.1 oil + 0.1 vinegar + 1 condiment -> 1 meal.
+             Same shape as the lavish meal in Nerf_Vanilla_Meals.xml, plus the condiment. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookMealGourmet"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                    <li>AnimalProductRaw</li>
+                  </categories>
+                </filter>
+                <count>0.45</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>PlantFoodRaw</li>
+                  </categories>
+                </filter>
+                <count>0.45</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MOL_Oils</li>
+                  </categories>
+                </filter>
+                <count>0.1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MOL_Vinegars</li>
+                  </categories>
+                </filter>
+                <count>0.1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>VCE_Condiments</li>
+                  </categories>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <!-- The gourmet meal is a fourth tier of the vanilla meal line, so it belongs beside
+             them in the stove's bill list rather than down among the VCE dishes. Vanilla
+             numbers its meals simple 100/110, fine 200/210, lavish 300/310, then the
+             vegetarian and carnivore variants from 700 up; no VCE recipe sets a priority at
+             all, which is why they all pile up at the bottom. 400 puts gourmet directly
+             after lavish and ahead of the variants. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="VCE_CookMealGourmet"]</xpath>
+          <value>
+            <displayPriority>400</displayPriority>
+          </value>
+        </li>
+
+        <!-- ==================== Bakes ====================
+             VCE crafts bakes two at a time. They are meals like any other, so every recipe
+             below is cut to one bake per craft and the bulk ones to four, matching the
+             grills; only sushi keeps a multi-item craft. Counts are therefore the
+             per-serving design as written. The dairy slot is eggs or milk, either one.
+             Bulk workAmounts are halved along with their output, so the cooking rate is
+             unchanged. -->
+
+        <!-- simple x1: 0.25 egg/milk + 0.2 flour -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimple"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>EggsUnfertilized</li>
+                  </categories>
+                  <thingDefs>
+                    <li>Milk</li>
+                  </thingDefs>
+                </filter>
+                <count>0.25</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VCE_Flour</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimple"]/products</xpath>
+          <value>
+            <products>
+              <VCE_SimpleBake>1</VCE_SimpleBake>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimple"]/label</xpath>
+          <value>
+            <label>cook simple bake</label>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimple"]/jobString</xpath>
+          <value>
+            <jobString>Cooking simple bake.</jobString>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimple"]/description</xpath>
+          <value>
+            <description>Cook a simple bake quickly cooked from flour.</description>
+          </value>
+        </li>
+
+        <!-- simple x4 -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimpleBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>EggsUnfertilized</li>
+                  </categories>
+                  <thingDefs>
+                    <li>Milk</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VCE_Flour</li>
+                  </thingDefs>
+                </filter>
+                <count>0.8</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimpleBulk"]/products</xpath>
+          <value>
+            <products>
+              <VCE_SimpleBake>4</VCE_SimpleBake>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimpleBulk"]/workAmount</xpath>
+          <value>
+            <workAmount>900</workAmount>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimpleBulk"]/label</xpath>
+          <value>
+            <label>cook simple bake x4</label>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimpleBulk"]/jobString</xpath>
+          <value>
+            <jobString>Cooking simple bake x4.</jobString>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimpleBulk"]/description</xpath>
+          <value>
+            <description>Cook 4 simple bakes quickly cooked from flour.</description>
+          </value>
+        </li>
+
+        <!-- fine x1: 0.25 egg/milk + 0.2 flour + 0.05 butter -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFine"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>EggsUnfertilized</li>
+                  </categories>
+                  <thingDefs>
+                    <li>Milk</li>
+                  </thingDefs>
+                </filter>
+                <count>0.25</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VCE_Flour</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_Butter</li>
+                  </thingDefs>
+                </filter>
+                <count>0.05</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFine"]/products</xpath>
+          <value>
+            <products>
+              <VCE_FineBake>1</VCE_FineBake>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFine"]/label</xpath>
+          <value>
+            <label>cook fine bake</label>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFine"]/jobString</xpath>
+          <value>
+            <jobString>Cooking fine bake.</jobString>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFine"]/description</xpath>
+          <value>
+            <description>Cook a complex bake assembled with care from a wide selection of ingredients and flour.</description>
+          </value>
+        </li>
+
+        <!-- fine x4 -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFineBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>EggsUnfertilized</li>
+                  </categories>
+                  <thingDefs>
+                    <li>Milk</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VCE_Flour</li>
+                  </thingDefs>
+                </filter>
+                <count>0.8</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_Butter</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFineBulk"]/products</xpath>
+          <value>
+            <products>
+              <VCE_FineBake>4</VCE_FineBake>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFineBulk"]/workAmount</xpath>
+          <value>
+            <workAmount>1350</workAmount>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFineBulk"]/label</xpath>
+          <value>
+            <label>cook fine bake x4</label>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFineBulk"]/jobString</xpath>
+          <value>
+            <jobString>Cooking fine bake x4.</jobString>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeFineBulk"]/description</xpath>
+          <value>
+            <description>Cook 4 complex bakes assembled with care from a wide selection of ingredients and flour.</description>
+          </value>
+        </li>
+
+        <!-- lavish x1: 0.5 egg/milk + 0.2 flour + 0.2 ghee -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavish"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>EggsUnfertilized</li>
+                  </categories>
+                  <thingDefs>
+                    <li>Milk</li>
+                  </thingDefs>
+                </filter>
+                <count>0.5</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VCE_Flour</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_Ghee</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavish"]/products</xpath>
+          <value>
+            <products>
+              <VCE_LavishBake>1</VCE_LavishBake>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavish"]/label</xpath>
+          <value>
+            <label>cook lavish bake</label>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavish"]/jobString</xpath>
+          <value>
+            <jobString>Cooking lavish bake.</jobString>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavish"]/description</xpath>
+          <value>
+            <description>Cook a masterpiece of the culinary arts, this bake nourishes the body, mind, and soul.</description>
+          </value>
+        </li>
+
+        <!-- lavish x4 -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavishBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>EggsUnfertilized</li>
+                  </categories>
+                  <thingDefs>
+                    <li>Milk</li>
+                  </thingDefs>
+                </filter>
+                <count>2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VCE_Flour</li>
+                  </thingDefs>
+                </filter>
+                <count>0.8</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_Ghee</li>
+                  </thingDefs>
+                </filter>
+                <count>0.8</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavishBulk"]/products</xpath>
+          <value>
+            <products>
+              <VCE_LavishBake>4</VCE_LavishBake>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavishBulk"]/workAmount</xpath>
+          <value>
+            <workAmount>2400</workAmount>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavishBulk"]/label</xpath>
+          <value>
+            <label>cook lavish bake x4</label>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavishBulk"]/jobString</xpath>
+          <value>
+            <jobString>Cooking lavish bake x4.</jobString>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavishBulk"]/description</xpath>
+          <value>
+            <description>Cook 4 masterpieces of the culinary arts, these bakes nourish the body, mind, and soul.</description>
+          </value>
+        </li>
+
+        <!-- gourmet x1: lavish + 1 condiment -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeGourmet"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>EggsUnfertilized</li>
+                  </categories>
+                  <thingDefs>
+                    <li>Milk</li>
+                  </thingDefs>
+                </filter>
+                <count>0.5</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VCE_Flour</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_Ghee</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>VCE_Condiments</li>
+                  </categories>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeGourmet"]/products</xpath>
+          <value>
+            <products>
+              <VCE_GourmetBake>1</VCE_GourmetBake>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeGourmet"]/label</xpath>
+          <value>
+            <label>cook gourmet bake</label>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeGourmet"]/jobString</xpath>
+          <value>
+            <jobString>Cooking gourmet bake.</jobString>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookBakeGourmet"]/description</xpath>
+          <value>
+            <description>Cook a culinary work of art, characterized by refined, even elaborate preparation and presentation of an aesthetically balanced, albeit low quantity bake.\n\nThis recipe does not allow mixed ingredients.</description>
+          </value>
+        </li>
+
+        <!-- ==================== Soups ====================
+             One uncooked soup becomes ten servings in the pot, so every count here is the
+             per-serving design x10. Olive oil specifically, not any oil.
+
+             The three non-gourmet soups inherit CookMealBase, whose defaultIngredientFilter
+             lists only FoodRaw - olive oil, butter and the vinegars would arrive unticked on
+             a fresh bill and the mandatory slots would be unfillable. Each gets its own
+             defaultIngredientFilter below, which overrides the inherited one. (The inherited
+             fixedIngredientFilter is already fine: Nerf_Vanilla_Meals.xml adds
+             AC_ArtisanProducts to it.) -->
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupSimple"]</xpath>
+          <value>
+            <defaultIngredientFilter>
+              <categories>
+                <li>FoodRaw</li>
+                <li>MOL_Oils</li>
+              </categories>
+              <disallowedCategories>
+                <li>EggsFertilized</li>
+              </disallowedCategories>
+              <disallowedThingDefs>
+                <li>Meat_Human</li>
+                <li>Meat_Megaspider</li>
+                <li>InsectJelly</li>
+              </disallowedThingDefs>
+            </defaultIngredientFilter>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupSimple"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>MOL_OliveOil</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>FoodRaw</li>
+                  </categories>
+                </filter>
+                <count>3.5</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupFine"]</xpath>
+          <value>
+            <defaultIngredientFilter>
+              <categories>
+                <li>FoodRaw</li>
+                <li>MOL_Oils</li>
+                <li>MOL_Vinegars</li>
+              </categories>
+              <disallowedCategories>
+                <li>EggsFertilized</li>
+              </disallowedCategories>
+              <disallowedThingDefs>
+                <li>Meat_Human</li>
+                <li>Meat_Megaspider</li>
+                <li>InsectJelly</li>
+              </disallowedThingDefs>
+              <thingDefs>
+                <li>AC_Butter</li>
+              </thingDefs>
+            </defaultIngredientFilter>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupFine"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>MOL_OliveOil</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>FoodRaw</li>
+                  </categories>
+                </filter>
+                <count>3</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MOL_Vinegars</li>
+                  </categories>
+                  <thingDefs>
+                    <li>AC_Butter</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupLavish"]</xpath>
+          <value>
+            <defaultIngredientFilter>
+              <categories>
+                <li>FoodRaw</li>
+                <li>MOL_Oils</li>
+                <li>MOL_Vinegars</li>
+              </categories>
+              <disallowedCategories>
+                <li>EggsFertilized</li>
+              </disallowedCategories>
+              <disallowedThingDefs>
+                <li>Meat_Human</li>
+                <li>Meat_Megaspider</li>
+                <li>InsectJelly</li>
+              </disallowedThingDefs>
+              <thingDefs>
+                <li>AC_Ghee</li>
+              </thingDefs>
+            </defaultIngredientFilter>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupLavish"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>MOL_OliveOil</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>FoodRaw</li>
+                  </categories>
+                </filter>
+                <count>7</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_Ghee</li>
+                    <li>AC_BalsamicVinegar</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <!-- gourmet: lavish + one condiment per serving, so ten. Its parent
+             VCE_CookGourmetMealBase got the oils, vinegars and ghee above. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupGourmet"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>MOL_OliveOil</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>FoodRaw</li>
+                  </categories>
+                </filter>
+                <count>7</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_Ghee</li>
+                    <li>AC_BalsamicVinegar</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>VCE_Condiments</li>
+                  </categories>
+                </filter>
+                <count>10</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <!-- The gourmet soup ships with allowMixingIngredients false, which would force all
+             seven nutrition of raw food to be a single thing. With four distinct slots that
+             is needlessly punishing, and none of the other gourmet dishes do it. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookSoupGourmet"]/allowMixingIngredients</xpath>
+          <value>
+            <allowMixingIngredients>true</allowMixingIngredients>
+          </value>
+        </li>
+
+        <!-- ==================== Grills ====================
+             Meat only - no vegetable slot, unlike VCE's originals. Bulk is x4. -->
+
+        <!-- simple: 0.55 meat -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookGrillSimple"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                  </categories>
+                </filter>
+                <count>0.55</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookGrillSimpleBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                  </categories>
+                </filter>
+                <count>2.2</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <!-- fine: 0.4 meat + 0.08 wine (one bottle) -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookGrillFine"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                  </categories>
+                </filter>
+                <count>0.4</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Wine</li>
+                  </thingDefs>
+                </filter>
+                <count>0.08</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookGrillFineBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                  </categories>
+                </filter>
+                <count>1.6</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Wine</li>
+                  </thingDefs>
+                </filter>
+                <count>0.32</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <!-- lavish: 0.65 meat + 0.08 wine + 0.15 honey (three honey) -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookGrillLavish"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                  </categories>
+                </filter>
+                <count>0.65</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Wine</li>
+                  </thingDefs>
+                </filter>
+                <count>0.08</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Honey</li>
+                  </thingDefs>
+                </filter>
+                <count>0.15</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <!-- VCE's own typo: LavishhBulk. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookGrillLavishhBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                  </categories>
+                </filter>
+                <count>2.6</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Wine</li>
+                  </thingDefs>
+                </filter>
+                <count>0.32</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Honey</li>
+                  </thingDefs>
+                </filter>
+                <count>0.6</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+        <!-- gourmet: lavish + one condiment -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookGrillGourmet"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MeatRaw</li>
+                  </categories>
+                </filter>
+                <count>0.65</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Wine</li>
+                  </thingDefs>
+                </filter>
+                <count>0.08</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>VFEM2_Honey</li>
+                  </thingDefs>
+                </filter>
+                <count>0.15</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>VCE_Condiments</li>
+                  </categories>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+  <!-- ============================================================================
+       VANILLA COOKING EXPANDED - SUSHI
+       One roll per tier: norimaki (simple), uramaki (fine), futomaki (lavish),
+       oshizushi (gourmet). The other four are deleted in VCE_remove_deprecated.xml.
+
+       Sushi is small: every craft now yields two rolls instead of one (bulk: eight instead
+       of four), and a norimaki drops from 0.9 nutrition to 0.7 to match. The counts below
+       are per craft, i.e. for two rolls.
+       ============================================================================ -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Cooking Expanded - Sushi</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- Vinegars for the fine and gourmet bases. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookFineSushiMealBase"]/fixedIngredientFilter/categories</xpath>
+          <value>
+            <li>MOL_Vinegars</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookFineSushiMealBase"]/defaultIngredientFilter/categories</xpath>
+          <value>
+            <li>MOL_Vinegars</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetSushiMealBase"]/fixedIngredientFilter/categories</xpath>
+          <value>
+            <li>MOL_Vinegars</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetSushiMealBase"]/defaultIngredientFilter/categories</xpath>
+          <value>
+            <li>MOL_Vinegars</li>
+          </value>
+        </li>
+
+        <!-- ==================== Roll nutrition ====================
+             Sushi is small, and two rolls now come off every craft, so the per-roll
+             nutrition is set from the payoff each tier is meant to have. Ratio below is
+             (2 rolls of nutrition) / (nutrition spent on the craft):
+
+               norimaki   0.65 in -> 2 x 0.7  = 1.4    2.15x
+               uramaki    0.75 in -> 2 x 0.75 = 1.5    2.0x
+               futomaki   1.3 in  -> 2 x 0.65 = 1.3    1.0x
+               oshizushi  1.3 in  -> 2 x 0.65 = 1.3    1.0x, same as lavish
+
+             Higher tiers pay for quality, not quantity - by lavish the fish and rice you
+             put in is all you get back out. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VCE_Norimaki"]/statBases/Nutrition</xpath>
+          <value>
+            <Nutrition>0.7</Nutrition>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VCE_Uramaki"]/statBases/Nutrition</xpath>
+          <value>
+            <Nutrition>0.75</Nutrition>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VCE_Futomaki"]/statBases/Nutrition</xpath>
+          <value>
+            <Nutrition>0.65</Nutrition>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VCE_Oshizushi"]/statBases/Nutrition</xpath>
+          <value>
+            <Nutrition>0.65</Nutrition>
+          </value>
+        </li>
+
+        <!-- ===== norimaki (simple): 0.5 fish + 0.15 rice -> 2 ===== -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookNorimakiSimple"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>Fish</li>
+                  </categories>
+                </filter>
+                <count>0.5</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RawRice</li>
+                  </thingDefs>
+                </filter>
+                <count>0.15</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookNorimakiSimple"]/products</xpath>
+          <value>
+            <products>
+              <VCE_Norimaki>2</VCE_Norimaki>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookNorimakiSimple"]/label</xpath>
+          <value>
+            <label>make norimaki (simple) x2</label>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookNorimakiSimpleBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>Fish</li>
+                  </categories>
+                </filter>
+                <count>2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RawRice</li>
+                  </thingDefs>
+                </filter>
+                <count>0.6</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookNorimakiSimpleBulk"]/products</xpath>
+          <value>
+            <products>
+              <VCE_Norimaki>8</VCE_Norimaki>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookNorimakiSimpleBulk"]/label</xpath>
+          <value>
+            <label>make norimaki (simple) x8</label>
+          </value>
+        </li>
+
+        <!-- ===== uramaki (fine): 0.5 fish + 0.15 rice + 0.1 vinegar -> 2 ===== -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookUramakiFine"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>Fish</li>
+                  </categories>
+                </filter>
+                <count>0.5</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RawRice</li>
+                  </thingDefs>
+                </filter>
+                <count>0.15</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MOL_Vinegars</li>
+                  </categories>
+                </filter>
+                <count>0.1</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookUramakiFine"]/products</xpath>
+          <value>
+            <products>
+              <VCE_Uramaki>2</VCE_Uramaki>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookUramakiFine"]/label</xpath>
+          <value>
+            <label>make uramaki (fine) x2</label>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookUramakiFineBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>Fish</li>
+                  </categories>
+                </filter>
+                <count>2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RawRice</li>
+                  </thingDefs>
+                </filter>
+                <count>0.6</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>MOL_Vinegars</li>
+                  </categories>
+                </filter>
+                <count>0.4</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookUramakiFineBulk"]/products</xpath>
+          <value>
+            <products>
+              <VCE_Uramaki>8</VCE_Uramaki>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookUramakiFineBulk"]/label</xpath>
+          <value>
+            <label>make uramaki (fine) x8</label>
+          </value>
+        </li>
+
+        <!-- ===== futomaki (lavish): 1 fish + 0.2 rice + 0.1 balsamic -> 2 ===== -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookFutomakiLavish"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>Fish</li>
+                  </categories>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RawRice</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_BalsamicVinegar</li>
+                  </thingDefs>
+                </filter>
+                <count>0.1</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookFutomakiLavish"]/products</xpath>
+          <value>
+            <products>
+              <VCE_Futomaki>2</VCE_Futomaki>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookFutomakiLavish"]/label</xpath>
+          <value>
+            <label>make futomaki (lavish) x2</label>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookFutomakiLavishBulk"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>Fish</li>
+                  </categories>
+                </filter>
+                <count>4</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RawRice</li>
+                  </thingDefs>
+                </filter>
+                <count>0.8</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_BalsamicVinegar</li>
+                  </thingDefs>
+                </filter>
+                <count>0.4</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookFutomakiLavishBulk"]/products</xpath>
+          <value>
+            <products>
+              <VCE_Futomaki>8</VCE_Futomaki>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookFutomakiLavishBulk"]/label</xpath>
+          <value>
+            <label>make futomaki (lavish) x8</label>
+          </value>
+        </li>
+
+        <!-- ===== oshizushi (gourmet): futomaki + 2 condiments -> 2 =====
+             VCE's defName has the typo (Oshizushii). -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookOshizushiiGourmet"]/ingredients</xpath>
+          <value>
+            <ingredients>
+              <li>
+                <filter>
+                  <categories>
+                    <li>Fish</li>
+                  </categories>
+                </filter>
+                <count>1</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RawRice</li>
+                  </thingDefs>
+                </filter>
+                <count>0.2</count>
+              </li>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>AC_BalsamicVinegar</li>
+                  </thingDefs>
+                </filter>
+                <count>0.1</count>
+              </li>
+              <li>
+                <filter>
+                  <categories>
+                    <li>VCE_Condiments</li>
+                  </categories>
+                </filter>
+                <count>2</count>
+              </li>
+            </ingredients>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookOshizushiiGourmet"]/products</xpath>
+          <value>
+            <products>
+              <VCE_Oshizushi>2</VCE_Oshizushi>
+            </products>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VCE_CookOshizushiiGourmet"]/label</xpath>
+          <value>
+            <label>make oshizushi (gourmet) x2</label>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>
