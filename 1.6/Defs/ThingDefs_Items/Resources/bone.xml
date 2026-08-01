@@ -19,14 +19,14 @@
       <Mass>0.25</Mass>
       <Flammability>0.02</Flammability>
       <DeteriorationRate>1</DeteriorationRate>
-      <Nutrition>0.02</Nutrition>
+      <!-- <Nutrition>0.02</Nutrition> -->
     </statBases>
-    <ingestible>
-      <preferability>NeverForNutrition</preferability>
-      <foodType>Meat</foodType>
-      <canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
-      <showIngestFloatOption>false</showIngestFloatOption>
-    </ingestible>
+    <!-- <ingestible> -->
+    <!--   <preferability>NeverForNutrition</preferability> -->
+    <!--   <foodType>Meat</foodType> -->
+    <!--   <canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan> -->
+    <!--   <showIngestFloatOption>false</showIngestFloatOption> -->
+    <!-- </ingestible> -->
     <stuffProps>
       <stuffAdjective>boney</stuffAdjective>
       <categories>
@@ -66,6 +66,43 @@
         <cooldownTime>2.2</cooldownTime>
       </li>
     </tools>
+  </ThingDef>
+  <!--=============== Bone Marrow================-->
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>MOL_BoneMarrow</defName>
+    <label>bone marrow</label>
+    <description>Soft fatty tissue inside animal bones. Rich in fat and nutrients.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/MOL_BoneMarrow</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Beauty>-1</Beauty>
+      <MarketValue>1</MarketValue>
+      <Mass>0.02</Mass>
+      <Nutrition>0.05</Nutrition>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Ingredients"/>
+      <li Class="CompProperties_FoodPoisonable"/>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>3</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <ingestible>
+      <preferability>DesperateOnlyForHumanlikes</preferability>
+      <tasteThought>AteRawFood</tasteThought>
+      <foodType>Meat</foodType>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
   </ThingDef>
   <!--=============== Bone Meal================-->
   <ThingDef ParentName="OrganicProductBase">

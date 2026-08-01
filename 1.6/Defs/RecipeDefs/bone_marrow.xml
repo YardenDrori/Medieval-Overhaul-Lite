@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Defs>
+  <RecipeDef>
+    <defName>MOL_ExtractBoneMarrow</defName>
+    <label>Extract bone marrow from bones</label>
+    <workAmount>800</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MOL_Bone</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <products>
+      <MOL_BoneMarrow>5</MOL_BoneMarrow>
+    </products>
+    <recipeUsers>
+      <li>TableButcher</li>
+    </recipeUsers>
+  </RecipeDef>
+</Defs>
