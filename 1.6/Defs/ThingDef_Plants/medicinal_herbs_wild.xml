@@ -10,7 +10,7 @@
       <MaxHitPoints>75</MaxHitPoints>
     </statBases>
     <plant>
-      <harvestYield>10</harvestYield>
+      <harvestYield>1</harvestYield>
       <growDays>12</growDays>
       <wildOrder>1</wildOrder>
       <wildClusterWeight>10</wildClusterWeight>
@@ -28,7 +28,7 @@
       <MaxHitPoints>70</MaxHitPoints>
     </statBases>
     <plant>
-      <harvestYield>12</harvestYield>
+      <harvestYield>1</harvestYield>
       <growDays>10</growDays>
       <wildOrder>1</wildOrder>
       <wildClusterWeight>15</wildClusterWeight>
@@ -46,7 +46,7 @@
       <MaxHitPoints>80</MaxHitPoints>
     </statBases>
     <plant>
-      <harvestYield>11</harvestYield>
+      <harvestYield>1</harvestYield>
       <growDays>11</growDays>
       <wildOrder>1</wildOrder>
       <wildClusterWeight>12</wildClusterWeight>
