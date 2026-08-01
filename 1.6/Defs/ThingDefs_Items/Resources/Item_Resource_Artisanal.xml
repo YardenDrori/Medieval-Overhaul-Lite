@@ -10,7 +10,7 @@
     </graphicData>
     <statBases>
       <MarketValue>25</MarketValue>
-      <Nutrition>0.01</Nutrition>
+      <Nutrition>0.1</Nutrition>
       <Flammability>2</Flammability>
       <Mass>0.3</Mass>
     </statBases>
@@ -25,10 +25,11 @@
 			</li>
     </comps>
     <thingCategories>
-      <li>AC_ArtisanProducts</li>
+      <li>MOL_Oils</li>
     </thingCategories>
     <ingestible>
       <preferability>NeverForNutrition</preferability>
+      <tasteThought>AteRawFood</tasteThought>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
       <specialThoughtAsIngredient>AC_ConsumedInfusedOil</specialThoughtAsIngredient>

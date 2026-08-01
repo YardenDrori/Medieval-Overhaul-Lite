@@ -11,4 +11,18 @@
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>Things/Item/Resource/ArtisanalGoods/Oil/AC_OilA_c</iconPath>
   </ThingCategoryDef>
+  <ThingCategoryDef>
+    <defName>MOL_Oils</defName>
+    <label>oils</label>
+    <parent>AC_ArtisanProducts</parent>
+    <resourceReadoutRoot>false</resourceReadoutRoot>
+    <iconPath>Things/Item/Resource/ArtisanalGoods/Oil/AC_OilA_c</iconPath>
+  </ThingCategoryDef>
+  <ThingCategoryDef>
+    <defName>MOL_Vinegars</defName>
+    <label>vinegars</label>
+    <parent>AC_ArtisanProducts</parent>
+    <resourceReadoutRoot>false</resourceReadoutRoot>
+    <iconPath>Things/Item/Resource/ArtisanalGoods/Vinegar/AC_VinegarA_a</iconPath>
+  </ThingCategoryDef>
 </Defs>

@@ -39,7 +39,7 @@
   <ThingDef ParentName="RoughPlantBase">
     <defName>MOL_Tallow</defName>
     <label>tallow</label>
-    <description>Rendered animal fat. Can be molded into candles for lighting or further processed into chemfuel. A versatile byproduct of livestock management.</description>
+    <description>Rendered animal fat. Can be molded into candles for lighting or further processed into chemfuel, maybe it could also be used as food! A versatile byproduct of livestock management.</description>
     <stackLimit>75</stackLimit>
     <graphicData>
       <texPath>Things/Item/Resource/MOL_Tallow</texPath>
@@ -52,9 +52,10 @@
     </statBases>
     <thingCategories>
       <li>MeatRaw</li>
+      <li>MOL_Oils</li>
     </thingCategories>
     <ingestible>
-      <preferability>DesperateOnlyForHumanlikes</preferability>
+      <preferability>NeverForNutrition</preferability>
       <tasteThought>AteRawFood</tasteThought>
       <foodType>Meat</foodType>
       <ingestEffect>EatMeat</ingestEffect>
@@ -68,7 +69,6 @@
       </li>
     </comps>
     <ingestible>
-      <preferability>NeverForNutrition</preferability>
     </ingestible>
   </ThingDef>
 </Defs>
