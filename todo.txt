@@ -21,3 +21,11 @@ fix furntiture (beds) to use more than just cloth eg silk
 
 remove tilled soil from Vanilla Plants Expanded
 fix electric pot
+add cheese press
+update bone desc
+
+make OUR electric soup pot handle gourmet dishes
+
+fix mood merger on meals
+
+fix dishes count for soup production
