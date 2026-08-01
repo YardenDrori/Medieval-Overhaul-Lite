@@ -16,3 +16,5 @@ do dubs bad hygiene water pouches
 
 
   imorted wine
+  make dishes apply to recipe instead of per building and add support for nutrient paste
+fix furntiture (beds) to use more than just cloth eg silk
