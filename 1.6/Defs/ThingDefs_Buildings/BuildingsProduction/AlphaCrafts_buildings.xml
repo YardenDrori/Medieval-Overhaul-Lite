@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Artisanal production buildings, imported from Alpha Crafts.
+
+  AlphaCrafts_buildings_patches.xml is gone; everything it did is folded in here:
+    - research gates are MOL_ArtisanBasic / MOL_ArtisanAdvanced, not the AC_ projects
+    - AC_VinegarCask and AC_Infuser run on Production Expanded's processor instead of
+      PipeSystem: thingClass Building_Processor, ITab_Bills, CompProperties_ResourceProcessor,
+      and 10W idle power draw. No PipeSystem comp and no PipeSystem.ProcessDef survives, which
+      is why PipeSystem.dll is no longer shipped.
+    - texPaths point at Textures/Things/Building/Production/
+
+  What each processor can make now comes from RecipeDefs with a
+  ProductionExpanded.RecipeExtension_Processor (see artisangoods_processes.xml), not from a
+  <processes> list on the building.
+-->
+<Defs>
+
+  <!-- ===================== Work tables ===================== -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>AC_ArtisanWorkshop</defName>
+    <label>artisan workshop</label>
+    <description>A flexible workshop dedicated to various small-scale artisanal processes that don't fit into larger categories. It provides space and tools for specialized crafting, ensuring no resource goes to waste in the colony's production line.\n\nCan also be used as a low efficiency workshop to press oils, churn butter and create jams.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/AC_ArtisanCraftsTable</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3.5,1.5)</drawSize>
+      <shaderType>CutoutComplex</shaderType>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <costList>
+      <Steel>15</Steel>
+      <WoodLog>50</WoodLog>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>true</rotatable>
+    <uiIconScale>0.8</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <Mass>10</Mass>
+      <WorkToBuild>800</WorkToBuild>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <WorkTableWorkSpeedFactor>0.5</WorkTableWorkSpeedFactor>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <size>(2,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <researchPrerequisites>
+      <li>MOL_ArtisanBasic</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_ReportWorkSpeed">
+        <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <minifiedDef>MinifiedThing</minifiedDef>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>AC_OilPressWorkshop</defName>
+    <label>oil press workshop</label>
+    <description>A specialized building where fruits, nuts, and seeds are processed into high-quality oils. Essential for crafting cooking oils, skincare products, and artisan goods. Includes a butter clarifier accesory and a small frier.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/AC_OilMachine</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <costList>
+      <Steel>50</Steel>
+      <Chemfuel>10</Chemfuel>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>true</rotatable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <uiIconScale>0.8</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <Mass>10</Mass>
+      <WorkToBuild>1000</WorkToBuild>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>1.5</Flammability>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <researchPrerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>30</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_ReportWorkSpeed">
+        <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <minifiedDef>MinifiedThing</minifiedDef>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>AC_DairyProcessingStation</defName>
+    <label>dairy processing station</label>
+    <description>A specialized workshop designed to process milk into a variety of dairy products, including yogurt, cream, condensed milk, and more. A must-have for any colony looking to produce high-quality, artisan dairy goods for consumption and trade.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/AC_MilkFermentationMachine</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>true</rotatable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <uiIconScale>0.8</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <Mass>10</Mass>
+      <WorkToBuild>1500</WorkToBuild>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <researchPrerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>25</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_ReportWorkSpeed">
+        <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <minifiedDef>MinifiedThing</minifiedDef>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>AC_BottlingStation</defName>
+    <label>bottling station</label>
+    <description>A specialized station designed for bottling liquids like jams, mayonnaise and other artisanal products. This workstation allows colonists to store and preserve liquids in sealed bottles, extending their shelf life and adding value for trade.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/AC_BottlingPlant</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3.5,1.5)</drawSize>
+      <shaderType>CutoutComplex</shaderType>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <costList>
+      <Steel>75</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>true</rotatable>
+    <uiIconScale>0.8</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <Mass>10</Mass>
+      <WorkToBuild>1500</WorkToBuild>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <size>(2,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <researchPrerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_ReportWorkSpeed">
+        <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>50</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <minifiedDef>MinifiedThing</minifiedDef>
+  </ThingDef>
+
+  <!-- ===================== Processors ===================== -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>AC_VinegarCask</defName>
+    <label>artisan fermenter</label>
+    <description>A multi-chambered, purpose-built vessel designed for fermenting a wide range of ingredients, from dairy to grains and fruits. This fermenter allows precise control over complex fermentation processes, enabling the creation of a variety of artisan products like vinegar, miso, kefir, and sake. Ideal for producing high-quality goods with distinct flavors and textures from various cultures. Includes a meat curing chamber.</description>
+    <thingClass>ProductionExpanded.Building_Processor</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Production/AC_VinegarCask</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+      <shaderType>CutoutComplex</shaderType>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>true</rotatable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <uiIconScale>0.8</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <Mass>10</Mass>
+      <WorkToBuild>800</WorkToBuild>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <tickerType>Rare</tickerType>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <researchPrerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </researchPrerequisites>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>false</shortCircuitInRain>
+        <basePowerConsumption>50</basePowerConsumption>
+        <idlePowerDraw>10</idlePowerDraw>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
+        <maxCapacity>30</maxCapacity>
+        <hasIdlePowerCost>true</hasIdlePowerCost>
+        <usesOnTexture>false</usesOnTexture>
+        <hasTempRequirements>true</hasTempRequirements>
+        <maxTempC>30</maxTempC>
+        <minTempC>8</minTempC>
+        <soundInput>Corpse_Drop</soundInput>
+        <soundStartCycle>FlickSwitch</soundStartCycle>
+        <showGizmo>false</showGizmo>
+        <soundExtract>Standard_Drop</soundExtract>
+      </li>
+    </comps>
+    <minifiedDef>MinifiedThing</minifiedDef>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>AC_Infuser</defName>
+    <label>infuser</label>
+    <description>A specialized workstation designed to steep herbs, fruits, and exotic ingredients into other artisan crafts. By carefully controlling temperature and infusion time, it creates infused oils, vinegars, and other artisanal delicacies.</description>
+    <thingClass>ProductionExpanded.Building_Processor</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Production/AC_Infuser</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+      <shaderType>CutoutComplex</shaderType>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>true</rotatable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <uiIconScale>0.8</uiIconScale>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <Mass>10</Mass>
+      <WorkToBuild>800</WorkToBuild>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <tickerType>Rare</tickerType>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <researchPrerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </researchPrerequisites>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>false</shortCircuitInRain>
+        <basePowerConsumption>50</basePowerConsumption>
+        <idlePowerDraw>10</idlePowerDraw>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <!-- usesOnTexture stays false, as the patch had it. AC_InfuserFull_*.png is shipped
+           alongside AC_Infuser if you ever want the in-progress graphic: set usesOnTexture
+           true and onTextureKeyWord to Full (see VCE_ElectricPot in VCE_patches.xml). -->
+      <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
+        <maxCapacity>1</maxCapacity>
+        <hasIdlePowerCost>true</hasIdlePowerCost>
+        <usesOnTexture>false</usesOnTexture>
+        <hasTempRequirements>true</hasTempRequirements>
+        <maxTempC>30</maxTempC>
+        <minTempC>8</minTempC>
+        <soundInput>Corpse_Drop</soundInput>
+        <soundStartCycle>FlickSwitch</soundStartCycle>
+        <showGizmo>false</showGizmo>
+        <soundExtract>Standard_Drop</soundExtract>
+      </li>
+    </comps>
+    <minifiedDef>MinifiedThing</minifiedDef>
+  </ThingDef>
+
+</Defs>
