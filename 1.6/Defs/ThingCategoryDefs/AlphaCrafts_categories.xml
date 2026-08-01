@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Imported from Alpha Crafts. Used by all nine artisanal goods and by MOL_OliveOil
+  (Items_Resource_Artisanal.xml). iconPath retargeted to our own texture folder.
+-->
+<Defs>
+  <ThingCategoryDef>
+    <defName>AC_ArtisanProducts</defName>
+    <label>artisan products</label>
+    <parent>Foods</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>Things/Item/Resource/ArtisanalGoods/Oil/AC_OilA_c</iconPath>
+  </ThingCategoryDef>
+</Defs>
