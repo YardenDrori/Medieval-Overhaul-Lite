@@ -141,11 +141,8 @@
       <count>0.9</count>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/RecipeDef[defName="CookMealFine_Meat"]/ingredients/li[filter/categories/li="MeatRaw"]/count</xpath>
-    <value>
-      <count>0.9</count>
-    </value>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/RecipeDef[defName="CookMealFine_Meat"]</xpath>
   </Operation>
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/RecipeDef[defName="CookMealFineBulk"]/ingredients/li[filter/categories/li="MeatRaw"]/count</xpath>
@@ -165,11 +162,8 @@
       <count>3.6</count>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/RecipeDef[defName="CookMealFineBulk_Meat"]/ingredients/li[filter/categories/li="MeatRaw"]/count</xpath>
-    <value>
-      <count>3.6</count>
-    </value>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/RecipeDef[defName="CookMealFineBulk_Meat"]</xpath>
   </Operation>
 
   <Operation Class="PatchOperationAdd">
@@ -206,21 +200,6 @@
   </Operation>
 
   <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealFine_Meat"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>MOL_Tallow</li>
-          </thingDefs>
-        </filter>
-        <count>0.1</count>
-      </li>
-    </value>
-  </Operation>
-
-
-  <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealFineBulk"]/ingredients</xpath>
     <value>
       <li>
@@ -253,20 +232,6 @@
     </value>
   </Operation>
 
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealFineBulk_Meat"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>MOL_Tallow</li>
-          </thingDefs>
-        </filter>
-        <count>0.4</count>
-      </li>
-    </value>
-  </Operation>
-
   <!-- LAVISH MEAL -->
   <!-- Base cost 0.5 -> 0.45 per half, plus mandatory oil AND vinegar at 0.1 each, so a
        lavish meal costs 1.1 nutrition against vanilla's 1.0.
@@ -289,11 +254,8 @@
       <count>1.125</count>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/RecipeDef[defName="CookMealLavish_Meat"]/ingredients/li[filter/categories/li="MeatRaw"]/count</xpath>
-    <value>
-      <count>1.125</count>
-    </value>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/RecipeDef[defName="CookMealLavish_Meat"]</xpath>
   </Operation>
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/RecipeDef[defName="CookMealLavishBulk"]/ingredients/li[filter/categories/li="MeatRaw"]/count</xpath>
@@ -313,15 +275,21 @@
       <count>4.5</count>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/RecipeDef[defName="CookMealLavishBulk_Meat"]/ingredients/li[filter/categories/li="MeatRaw"]/count</xpath>
-    <value>
-      <count>4.5</count>
-    </value>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/RecipeDef[defName="CookMealLavishBulk_Meat"]</xpath>
   </Operation>
 
-  <!-- Mandatory fat: any oil for the mixed recipe, tallow-free for vegetarian,
-       tallow-only for carnivore. Same rule the fine meals use. -->
+  <!-- Lavish meals require BOTH a fat and an acid. Each operation below adds two
+       separate <li> entries to one recipe, and every <li> in <ingredients> is its own
+       mandatory slot — so the cook must supply an oil AND a vinegar, not either/or.
+       (Contrast the fine meals above, which use a single <li> whose filter accepts
+       MOL_Oils or MOL_Vinegars, making them interchangeable.)
+
+       The fat slot follows the same rule the fine meals use: any oil for the mixed
+       recipe, tallow-free for vegetarian. The acid slot is plain MOL_Vinegars
+       everywhere. (The carnivore variants are deleted, see above.) -->
+
+  <!-- CookMealLavish — 0.1 any oil + 0.1 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavish"]/ingredients</xpath>
     <value>
@@ -333,8 +301,18 @@
         </filter>
         <count>0.1</count>
       </li>
+      <li>
+        <filter>
+          <categories>
+            <li>MOL_Vinegars</li>
+          </categories>
+        </filter>
+        <count>0.1</count>
+      </li>
     </value>
   </Operation>
+
+  <!-- CookMealLavish_Veg — 0.1 non-tallow oil + 0.1 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavish_Veg"]/ingredients</xpath>
     <value>
@@ -349,21 +327,18 @@
         </filter>
         <count>0.1</count>
       </li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavish_Meat"]/ingredients</xpath>
-    <value>
       <li>
         <filter>
-          <thingDefs>
-            <li>MOL_Tallow</li>
-          </thingDefs>
+          <categories>
+            <li>MOL_Vinegars</li>
+          </categories>
         </filter>
         <count>0.1</count>
       </li>
     </value>
   </Operation>
+
+  <!-- CookMealLavishBulk — 0.4 any oil + 0.4 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavishBulk"]/ingredients</xpath>
     <value>
@@ -375,8 +350,18 @@
         </filter>
         <count>0.4</count>
       </li>
+      <li>
+        <filter>
+          <categories>
+            <li>MOL_Vinegars</li>
+          </categories>
+        </filter>
+        <count>0.4</count>
+      </li>
     </value>
   </Operation>
+
+  <!-- CookMealLavishBulk_Veg — 0.4 non-tallow oil + 0.4 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavishBulk_Veg"]/ingredients</xpath>
     <value>
@@ -391,91 +376,6 @@
         </filter>
         <count>0.4</count>
       </li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavishBulk_Meat"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>MOL_Tallow</li>
-          </thingDefs>
-        </filter>
-        <count>0.4</count>
-      </li>
-    </value>
-  </Operation>
-
-  <!-- Mandatory acid: vinegar, on every lavish variant. -->
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavish"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <categories>
-            <li>MOL_Vinegars</li>
-          </categories>
-        </filter>
-        <count>0.1</count>
-      </li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavish_Veg"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <categories>
-            <li>MOL_Vinegars</li>
-          </categories>
-        </filter>
-        <count>0.1</count>
-      </li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavish_Meat"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <categories>
-            <li>MOL_Vinegars</li>
-          </categories>
-        </filter>
-        <count>0.1</count>
-      </li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavishBulk"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <categories>
-            <li>MOL_Vinegars</li>
-          </categories>
-        </filter>
-        <count>0.4</count>
-      </li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavishBulk_Veg"]/ingredients</xpath>
-    <value>
-      <li>
-        <filter>
-          <categories>
-            <li>MOL_Vinegars</li>
-          </categories>
-        </filter>
-        <count>0.4</count>
-      </li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/RecipeDef[defName="CookMealLavishBulk_Meat"]/ingredients</xpath>
-    <value>
       <li>
         <filter>
           <categories>
@@ -555,11 +455,42 @@
     </value>
   </Operation>
 
+  <!-- STOVE RECIPE LISTS
+       ElectricStove and FueledStove list the four carnivore meal recipes in their
+       <recipes> field. Deleting the RecipeDefs above leaves those entries dangling and
+       RimWorld logs "Could not resolve cross-reference ... (wanter=recipes)" on boot,
+       so strip them from both stoves. Nothing else in Core or the loaded mods
+       references these four defs. -->
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="ElectricStove" or defName="FueledStove"]/recipes/li[text()="CookMealFine_Meat"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="ElectricStove" or defName="FueledStove"]/recipes/li[text()="CookMealFineBulk_Meat"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="ElectricStove" or defName="FueledStove"]/recipes/li[text()="CookMealLavish_Meat"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="ElectricStove" or defName="FueledStove"]/recipes/li[text()="CookMealLavishBulk_Meat"]</xpath>
+  </Operation>
+
   <!-- Pemmican -->
+  <!-- 16 -> 14 per batch, x4 for bulk, keeping the bulk recipe at parity rather than
+       leaving it at vanilla's 64. -->
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/RecipeDef[defName="Make_Pemmican"]/products</xpath>
     <value>
-      <Pemmican>14</Pemmican>
+      <products>
+        <Pemmican>14</Pemmican>
+      </products>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/RecipeDef[defName="Make_PemmicanBulk"]/products</xpath>
+    <value>
+      <products>
+        <Pemmican>56</Pemmican>
+      </products>
     </value>
   </Operation>
 
