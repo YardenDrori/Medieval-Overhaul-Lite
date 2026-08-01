@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Removes the parts of Vanilla Cooking Expanded that Medieval Overhaul Lite does not use:
+  deep frying, canning, and VCE's cheese press (replaced by our own).
+
+  This replaces the old C# def-purge (DefBlacklist / DefRemovalPatch). Removal happens at
+  XML patch time, before defs are ever built, so nothing needs to suppress cross-reference
+  errors afterwards.
+
+  Kept deliberately: VCE_CondimentsResearch, VCE_SoupCooking and VCE_Grilling. Surviving
+  defs we rely on (VCE_CondimentPrepTable, VCE_ElectricPot, VCE_Grill, the soup and
+  condiment recipes) list them as research prerequisites.
+
+  Defs are grouped one Operation per def type.
+
+  Every operation carries <success>Always</success>. MayRequire is kept alongside it to
+  document which mod each block belongs to, but it does NOT suppress the error on its own:
+  verified in-game, an Operation with MayRequire still runs and logs red when the target
+  mod is absent. <success>Always</success> is the guard that actually works.
+
+  Every defName here was checked against the real VCE files, so a silent no-op means the
+  optional mod simply is not installed, not that a name is wrong.
+-->
+<Patch>
+
+  <!-- ============ VCE core ============ -->
+
+  <!-- Deep-fried and canned foods, and the three buildings. -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/ThingDef[
+      defName="VCE_DeepFriedBigMeat" or
+      defName="VCE_DeepFriedVegetables" or
+      defName="VCE_DeepFriedFish" or
+      defName="VCE_CannedMeat" or
+      defName="VCE_CannedProduce" or
+      defName="VCE_CannedFruit" or
+      defName="VCE_CannedAP" or
+      defName="VCE_CannedFish" or
+      defName="VCE_DeepFrier" or
+      defName="VCE_CanningMachine" or
+      defName="VCE_CheesePress"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[
+      defName="VCE_DeepFryMeats" or
+      defName="VCE_DeepFryVegetables" or
+      defName="VCE_CanMeats" or
+      defName="VCE_CanProduce" or
+      defName="VCE_CanFruit" or
+      defName="VCE_CanEggs"]</xpath>
+  </Operation>
+
+  <!-- Cheese processes. Note the dotted element name — these are PipeSystem.ProcessDef,
+       not RecipeDef. Both go: our own press supplies milk and insect jelly cheese. -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/PipeSystem.ProcessDef[
+      defName="VCE_MilkIntoCheese" or
+      defName="VCE_JellyIntoCheese"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/ResearchProjectDef[
+      defName="VCE_DeepFrying" or
+      defName="VCE_Canning" or
+      defName="VCE_CheeseMaking"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/WorkGiverDef[
+      defName="VCE_DoBillsFryer" or
+      defName="VCE_DoBillsCanning"]</xpath>
+  </Operation>
+
+  <!-- Its thingDefs list is exactly the three deep-fried foods and nothing else, so the
+       whole def goes rather than the individual entries. -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/JoyGiverDef[defName="VCE_EatFriedFood"]</xpath>
+  </Operation>
+
+  <!-- ============ Conditional: defs VCE only ships when another mod is active ============ -->
+
+  <!-- Vanilla Fishing Expanded. VCE ships these in both its Odyssey and NoOdyssey compat
+       folders under one packageId, so gate on the match, not on the mod. -->
+  <Operation Class="PatchOperationRemove">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[
+      defName="VCE_DeepFryFish" or
+      defName="VCE_CanFish"]</xpath>
+  </Operation>
+
+  <!-- Alpha Biomes. -->
+  <Operation Class="PatchOperationRemove">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[
+      defName="VCE_DeepFryAlienFish" or
+      defName="VCE_CanAlienFish"]</xpath>
+  </Operation>
+
+  <!-- Achievements. Each of these four is satisfied only by something we remove;
+       KitchenNightmare lists all three removed buildings and nothing else. -->
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.achievements">
+    <success>Always</success>
+    <xpath>Defs/AchievementsExpanded.AchievementDef[
+      defName="VCE_AchievementKitchenNightmare" or
+      defName="VCE_AchievementNastyAndRubbery" or
+      defName="VCE_AchievementSpam" or
+      defName="VCE_AchievementFreedomFries"]</xpath>
+  </Operation>
+
+  <!-- ============ Separate mod: VCE - Sushi ============ -->
+
+  <Operation Class="PatchOperationRemove" MayRequire="VanillaExpanded.VCookESushi">
+    <success>Always</success>
+    <xpath>Defs/ThingDef[defName="VCE_DeepFriedSushi"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove" MayRequire="VanillaExpanded.VCookESushi">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_DeepFrySushi"]</xpath>
+  </Operation>
+
+</Patch>
