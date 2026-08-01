@@ -870,7 +870,18 @@
         </li>
 
         <!-- gourmet: lavish + one condiment per serving, so ten. Its parent
-             VCE_CookGourmetMealBase got the oils, vinegars and ghee above. -->
+             VCE_CookGourmetMealBase got the oils, vinegars and ghee above.
+
+             NOTE the oil count below is 10, not 1 like the other three soups, and it means
+             ten BOTTLES rather than one nutrition. That base swaps the ingredient value
+             getter for VEF's IngredientValueGetter_NutritionWithExtraIngredient, which
+             returns 1 per item - not the def's nutrition - for anything whose <ingredient>
+             carries the Condiments merge tag. MOL_OliveOil carries that tag (it is what
+             makes its AC_ConsumedInfusedOil thought propagate), so on this recipe alone the
+             count is denominated in items. Ten keeps it level with the lavish soup's ten
+             bottles. Only olive oil is affected: no other oil, vinegar, ghee, wine or honey
+             we use has the tag, and the 0.1-scale slots on the gourmet meal, bake, grill and
+             sushi resolve to one item under either getter. -->
         <li Class="PatchOperationReplace">
           <xpath>Defs/RecipeDef[defName="VCE_CookSoupGourmet"]/ingredients</xpath>
           <value>
@@ -881,7 +892,7 @@
                     <li>MOL_OliveOil</li>
                   </thingDefs>
                 </filter>
-                <count>1</count>
+                <count>10</count>
               </li>
               <li>
                 <filter>
