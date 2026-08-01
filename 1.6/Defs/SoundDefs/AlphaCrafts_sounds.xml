@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Imported from Alpha Crafts. AC_Perfume's ingestSound; the clip lives at Sounds/AC_Spray.ogg.
+-->
+<Defs>
+  <SoundDef>
+    <defName>AC_Spray</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>AC_Spray</clipPath>
+          </li>
+        </grains>
+        <pitchRange>
+          <min>0.9770588</min>
+          <max>1.137647</max>
+        </pitchRange>
+        <distRange>
+          <min>0</min>
+          <max>50.40025</max>
+        </distRange>
+        <volumeRange>70</volumeRange>
+        <sustainLoop>False</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>
