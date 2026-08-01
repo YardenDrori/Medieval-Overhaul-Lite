@@ -203,7 +203,7 @@
       <AC_Oil>10</AC_Oil>
     </products>
     <modExtensions>
-      <li Class="AlphaCrafts.VariableOutputByIngredient">
+      <li Class="ProductionExpanded.VariableOutputByIngredient">
         <baseline>SmokeleafLeaves</baseline>
       </li>
     </modExtensions>
@@ -264,7 +264,7 @@
       <AC_Perfume>10</AC_Perfume>
     </products>
     <modExtensions>
-      <li Class="AlphaCrafts.VariableOutputByIngredient">
+      <li Class="ProductionExpanded.VariableOutputByIngredient">
         <baseline>RawBerries</baseline>
       </li>
     </modExtensions>
@@ -281,7 +281,7 @@
     <recipeUsers>
       <li>AC_BottlingStation</li>
     </recipeUsers>
-    <researchPrerequisite>AC_ComplexArtisanalCrafting</researchPrerequisite>
+    <researchPrerequisite>MOL_ArtisanAdvanced</researchPrerequisite>
     <ingredients>
       <li Name="VegIngredient">
         <filter>
@@ -360,7 +360,7 @@
       <AC_Pickles>25</AC_Pickles>
     </products>
     <modExtensions>
-      <li Class="AlphaCrafts.VariableOutputByIngredient">
+      <li Class="ProductionExpanded.VariableOutputByIngredient">
         <baseline>RawCorn</baseline>
         <exclusions>
           <li>AC_Vinegar</li>
@@ -456,7 +456,7 @@
       <AC_Jam>10</AC_Jam>
     </products>
     <modExtensions>
-      <li Class="AlphaCrafts.VariableOutputByIngredient">
+      <li Class="ProductionExpanded.VariableOutputByIngredient">
         <baseline>RawBerries</baseline>
         <exclusions>
           <li>VCE_RawSugar</li>
@@ -552,7 +552,7 @@
       <AC_Jam>10</AC_Jam>
     </products>
     <modExtensions>
-      <li Class="AlphaCrafts.VariableOutputByIngredient">
+      <li Class="ProductionExpanded.VariableOutputByIngredient">
         <baseline>RawBerries</baseline>
         <exclusions>
           <li>VFEM2_Honey</li>
@@ -635,7 +635,7 @@
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>true</allowMixingIngredients>
-    <researchPrerequisite>AC_ComplexArtisanalCrafting</researchPrerequisite>
+    <researchPrerequisite>MOL_ArtisanAdvanced</researchPrerequisite>
     <recipeUsers>
       <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
@@ -766,7 +766,7 @@
       <AC_Butter>20</AC_Butter>
     </products>
     <modExtensions>
-      <li Class="AlphaCrafts.VariableOutputByIngredient">
+      <li Class="ProductionExpanded.VariableOutputByIngredient">
         <baseline>RawCorn</baseline>
       </li>
     </modExtensions>
