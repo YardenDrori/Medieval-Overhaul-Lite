@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Imported from Alpha Crafts. Referenced by each artisanal good's
+  <specialThoughtAsIngredient>, so a meal cooked with one of them gives the matching memory.
+
+  thoughtClass VEF.Cooking.Thought_Hediff also applies the HediffDef named in <hediff>
+  (AlphaCrafts_hediffs.xml) for as long as the thought lasts — that hediff carries the
+  actual stat effect. AC_ConsumedInfusedOil is used by our own MOL_OliveOil.
+-->
+<Defs>
+
+  <ThoughtDef>
+    <defName>AC_ConsumedButter</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <hediff>AC_ConsumedButter</hediff>
+    <durationDays>0.5</durationDays>
+    <stages>
+      <li>
+        <label>consumed butter</label>
+        <description>A taste so rich and creamy.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>AC_ConsumedGhee</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <hediff>AC_ConsumedGhee</hediff>
+    <durationDays>0.5</durationDays>
+    <stages>
+      <li>
+        <label>consumed ghee</label>
+        <description>Pure fatty indulgence.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>AC_ConsumedVinegar</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <hediff>AC_ConsumedVinegar</hediff>
+    <durationDays>0.5</durationDays>
+    <stages>
+      <li>
+        <label>consumed vinegar</label>
+        <description>A sharp taste that wakes you up—but maybe a bit too much.</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Points at the plain vinegar hediff, as Alpha Crafts had it. See the note in
+       AlphaCrafts_hediffs.xml before changing this. -->
+  <ThoughtDef>
+    <defName>AC_ConsumedBalsamicVinegar</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <hediff>AC_ConsumedVinegar</hediff>
+    <durationDays>0.5</durationDays>
+    <stages>
+      <li>
+        <label>consumed balsamic vinegar</label>
+        <description>Sharp, but also deliciously sweet.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>AC_ConsumedOil</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <hediff>AC_ConsumedOil</hediff>
+    <durationDays>0.5</durationDays>
+    <stages>
+      <li>
+        <label>consumed oil</label>
+        <description>This oil gives a distinct taste to the food.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>AC_ConsumedInfusedOil</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <hediff>AC_ConsumedInfusedOil</hediff>
+    <durationDays>0.5</durationDays>
+    <stages>
+      <li>
+        <label>consumed infused oil</label>
+        <description>What a delicate and balanced taste.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>AC_ConsumedJam</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <hediff>AC_ConsumedJam</hediff>
+    <durationDays>2</durationDays>
+    <stages>
+      <li>
+        <label>consumed jam</label>
+        <description>Now this is just delicious! I love the tiny fruit chunks in it.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>
