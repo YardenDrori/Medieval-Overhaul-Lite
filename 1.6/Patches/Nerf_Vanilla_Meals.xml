@@ -555,4 +555,13 @@
     </value>
   </Operation>
 
+  <!-- Pemmican -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/RecipeDef[defName="Make_Pemmican"]/products</xpath>
+    <value>
+      <Pemmican>14</Pemmican>
+    </value>
+  </Operation>
+
+
 </Patch>
