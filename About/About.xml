@@ -19,6 +19,11 @@
       <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</steamWorkshopUrl>
       <downloadUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2023507013</downloadUrl>
     </li>
+    <li>
+      <packageId>blacksparrow.productionexpanded</packageId>
+      <displayName>Production Expanded</displayName>
+      <downloadUrl>https://example.com/</downloadUrl>
+    </li>
   </modDependencies>
   <loadBefore>
     <li>ferny.progressionagriculture</li>
@@ -26,7 +31,6 @@
   <loadAfter>
     <li>ludeon.rimworld</li>
     <li>blacksparrow.productionexpanded</li>
-    <li>sarg.alphacrafts</li>
     <li>dubwise.dubsbadhygiene</li>
     <li>vanillaexpanded.vtexe</li>
     <li>vanillaexpanded.vplantse</li>
