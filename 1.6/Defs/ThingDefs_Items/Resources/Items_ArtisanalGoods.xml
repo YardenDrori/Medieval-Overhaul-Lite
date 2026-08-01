@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Artisanal goods, imported from Alpha Crafts so that mod is no longer a dependency.
+
+  These were previously Alpha Crafts defs modified by AlphaCrafts_thingdefs_patches.xml.
+  That patch file is gone: its statBases, descriptions, rot times and comp replacements are
+  folded in here directly, which also retires its positional xpaths (comps/li[1], li[3]).
+
+  Deliberate differences from the Alpha Crafts originals:
+    - <ingredient> blocks dropped (no Condiments merge tag)
+    - <modExtensions> AnimalStatExtension dropped, which is why no Languages/ keys are needed
+    - texPaths point at Textures/Things/Item/Resource/ArtisanalGoods/
+    - AlphaCrafts.CompProperties_LabelByIngredients -> VEF.Things.CompProperties_LabelByIngredients
+      (identical fields; VEF is already a hard dependency)
+    - AC_Pickles' inverted label comp -> ProductionExpanded.CompProperties_LabelByIngredients_Inverted
+    - AC_Jam no longer carries VCE_Condiments; Alpha Crafts' own VCE compat patch used to add
+      it and PostLoadCleanup used to strip it back off. Both are gone.
+
+  CompProperties_Ingredients must stay on anything with a label comp or a GraphicOffsets def
+  — both read the ingredient list to pick the name and the texture variant.
+-->
+<Defs>
+
+  <!-- ========================= Dairy ========================= -->
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>AC_Butter</defName>
+    <label>butter</label>
+    <description>A rich dairy product churned from milk. Essential for baking and a staple in colonial kitchens across the rim. Its creamy texture and flavor make it irreplaceable in countless recipes.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Butter</texPath>
+      <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>1</Flammability>
+      <Mass>0.2</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>120</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Ingredients" />
+      <li Class="VEF.Things.CompProperties_LabelByIngredients">
+        <fullReplace>true</fullReplace>
+        <overrides>
+          <li>
+            <key>SmokeleafLeaves</key>
+            <value>Hemp butter</value>
+          </li>
+          <li>
+            <key>RawCorn</key>
+            <value>Margarine</value>
+          </li>
+          <li>
+            <key>Chocolate</key>
+            <value>Cocoa spread</value>
+          </li>
+          <li>
+            <key>Milk</key>
+            <value>Butter</value>
+          </li>
+        </overrides>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <specialThoughtAsIngredient>AC_ConsumedButter</specialThoughtAsIngredient>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+    </ingestible>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>AC_Ghee</defName>
+    <label>ghee</label>
+    <description>A clarified butter with a rich, nutty flavor, prized for its high smoke point and long shelf life.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Ghee</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>40</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>1</Flammability>
+      <Mass>0.2</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>200</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <specialThoughtAsIngredient>AC_ConsumedGhee</specialThoughtAsIngredient>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========================= Oils ========================= -->
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>AC_Oil</defName>
+    <label>oil</label>
+    <description>Oil Pressed from various crops, this versatile cooking fat is essential for preparing a variety of delicious soups and stews.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Oil</texPath>
+      <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>2</Flammability>
+      <Mass>0.3</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>120</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Ingredients" />
+      <li Class="VEF.Things.CompProperties_LabelByIngredients">
+        <overrides>
+          <li>
+            <key>SmokeleafLeaves</key>
+            <value>Hemp</value>
+          </li>
+          <li>
+            <key>RawFungus</key>
+            <value>Truffle</value>
+          </li>
+        </overrides>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+      <specialThoughtAsIngredient>AC_ConsumedOil</specialThoughtAsIngredient>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========================= Vinegars ========================= -->
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>AC_Vinegar</defName>
+    <label>vinegar</label>
+    <description>A sharp, acidic liquid produced through fermentation. Indispensable for preserving vegetables and meats, used by mankind for generations to make food last through the harshest of winters.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Vinegar</texPath>
+      <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>6</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>0.5</Flammability>
+      <Mass>0.3</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>120</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Ingredients" />
+      <!-- No overrides on purpose: with an empty list the comp still prefixes the
+           ingredient's own name, giving "apple vinegar", "grape vinegar" and so on. -->
+      <li Class="VEF.Things.CompProperties_LabelByIngredients">
+        <overrides />
+      </li>
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <specialThoughtAsIngredient>AC_ConsumedVinegar</specialThoughtAsIngredient>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Alpha Crafts gives this one no rot comp; kept that way deliberately. -->
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>AC_BalsamicVinegar</defName>
+    <label>balsamic vinegar</label>
+    <description>A refined vinegar aged from grape must, possessing a complex sweet-tart flavor. Its superior quality makes preserved foods noticeably more palatable.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/BalsamicVinegar</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>33</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>0.5</Flammability>
+      <Mass>0.3</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <specialThoughtAsIngredient>AC_ConsumedBalsamicVinegar</specialThoughtAsIngredient>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========================= Preserves ========================= -->
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>AC_Pickles</defName>
+    <label>pickles</label>
+    <description>Vegetables preserved in vinegar brine, offering long shelf life and a tangy flavor that enhances any meal. Compact and durable, they're perfect for storage and improving morale.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Pickles</texPath>
+      <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>0.1</Flammability>
+      <Mass>0.2</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>120</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Ingredients" />
+      <!-- Vinegar is in every variant, so it is skipped when naming: "pickled carrots". -->
+      <li Class="ProductionExpanded.CompProperties_LabelByIngredients_Inverted">
+        <prefix>pickled</prefix>
+        <ignoredIngredient>AC_Vinegar</ignoredIngredient>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+    </ingestible>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>AC_Jam</defName>
+    <label>jam</label>
+    <description>Fruit preserved with sugar, concentrated into a sweet spread. The preservation process intensifies the natural flavors while extending shelf life dramatically. Adds a touch of sweetness to any meal.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Jam</texPath>
+      <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>15</MarketValue>
+      <Nutrition>0.01</Nutrition>
+      <Flammability>0.5</Flammability>
+      <Mass>0.1</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>60</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Ingredients" />
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <specialThoughtAsIngredient>AC_ConsumedJam</specialThoughtAsIngredient>
+      <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
+      <foodType>Processed</foodType>
+    </ingestible>
+  </ThingDef>
+
+  <!-- ========================= Non-food ========================= -->
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>AC_Perfume</defName>
+    <label>perfume</label>
+    <description>A fragrant liquid crafted from essence and alcohol. When worn, it makes a person more pleasent to be around, and more likeable.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Perfume</texPath>
+      <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>6</MarketValue>
+      <Flammability>1</Flammability>
+      <Mass>0.05</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Ingredients" />
+      <li Class="VEF.Things.CompProperties_LabelByIngredients">
+        <overrides>
+          <li>
+            <key>RawBerries</key>
+            <value>Strawberry</value>
+          </li>
+          <li>
+            <key>Ambrosia</key>
+            <value>Eau d'ambroisie</value>
+          </li>
+          <li>
+            <key>MOL_RawCarrot</key>
+            <value>Daucus Carota</value>
+          </li>
+          <li>
+            <key>Dye</key>
+            <value>Rainbow</value>
+          </li>
+          <li>
+            <key>VBE_RawCoffee</key>
+            <value>Midnight Absolute</value>
+          </li>
+          <li>
+            <key>MOL_RawPoppy</key>
+            <value>Red Opulence</value>
+          </li>
+          <li>
+            <key>VBE_RawTobacco</key>
+            <value>Tabac Absolu</value>
+          </li>
+        </overrides>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useLabel>Use {0_label}</useLabel>
+        <useJob>Ingest</useJob>
+        <showUseGizmo>true</showUseGizmo>
+        <allowedMutants>
+          <li MayRequire="Ludeon.RimWorld.Anomaly">Ghoul</li>
+        </allowedMutants>
+      </li>
+      <li Class="CompProperties_UseEffectAddHediff">
+        <hediffDef>AC_PerfumeHediff</hediffDef>
+        <allowRepeatedUse>true</allowRepeatedUse>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <defaultNumToIngestAtOnce>1</defaultNumToIngestAtOnce>
+      <foodType>Processed</foodType>
+      <baseIngestTicks>20</baseIngestTicks>
+      <humanlikeOnly>true</humanlikeOnly>
+      <chairSearchRadius>0</chairSearchRadius>
+      <ingestSound>AC_Spray</ingestSound>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Use {0}</ingestCommandString>
+      <ingestReportString>Using {0}.</ingestReportString>
+      <showIngestFloatOption>false</showIngestFloatOption>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_UseThing" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>AC_Soap</defName>
+    <label>soap</label>
+    <description>A cleansing bar made from rendered fats and alkali. Essential for maintaining hygiene in any civilized settlement, preventing disease and offering a chance to relax.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/ArtisanalGoods/Soap</texPath>
+      <graphicClass>VEF.Cooking.Graphic_RandomStackCount</graphicClass>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+    <statBases>
+      <MarketValue>45</MarketValue>
+      <Flammability>0.5</Flammability>
+      <Mass>0.05</Mass>
+    </statBases>
+    <tradeability>Sellable</tradeability>
+    <thingCategories>
+      <li>AC_ArtisanProducts</li>
+    </thingCategories>
+  </ThingDef>
+
+</Defs>
