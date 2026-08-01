@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
   <VEF.Graphics.GraphicOffsets>
-    <defName>AC_JamOffsets</defName>
+    <defName>MOL_JamOffsets</defName>
     <thingDef>AC_Jam</thingDef>
     <ingredientsAndOffsetList>
       <li>
