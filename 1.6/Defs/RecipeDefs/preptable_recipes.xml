@@ -1,39 +1,8 @@
 <?xml version="1.0"?>
 <Defs>
   <RecipeDef>
-    <defName>MOL_process_wheat_to_flour_x4</defName>
-    <label>grind wheat x4</label>
-    <description>Make a fine powder of flour from unrefined wheat.</description>
-    <jobString>Grinding flour from wheat</jobString>
-    <workSpeedStat>CookSpeed</workSpeedStat>
-    <effectWorking>CutStone</effectWorking>
-    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
-    <allowMixingIngredients>true</allowMixingIngredients>
-    <workAmount>2000</workAmount>
-    <targetCountAdjustment>5</targetCountAdjustment>
-    <workSkill>Cooking</workSkill>
-    <ingredients>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>MOL_RawWheat</li>
-          </thingDefs>
-        </filter>
-        <count>16</count>
-      </li>
-    </ingredients>
-    <products>
-      <VCE_Flour>16</VCE_Flour>
-    </products>
-    <recipeUsers>
-      <li>VCE_CondimentPrepTable</li>
-    </recipeUsers>
-    <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
-    <displayPriority>2</displayPriority>
-  </RecipeDef>
-  <RecipeDef>
     <defName>MOL_process_wheat_to_flour</defName>
-    <label>grind wheat</label>
+    <label>make wheat</label>
     <description>Make a fine powder of flour from unrefined wheat.</description>
     <jobString>Grinding flour from wheat</jobString>
     <workSpeedStat>CookSpeed</workSpeedStat>
@@ -50,11 +19,11 @@
             <li>MOL_RawWheat</li>
           </thingDefs>
         </filter>
-        <count>4</count>
+        <count>12</count>
       </li>
     </ingredients>
     <products>
-      <VCE_Flour>4</VCE_Flour>
+      <VCE_Flour>3</VCE_Flour>
     </products>
     <recipeUsers>
       <li>VCE_CondimentPrepTable</li>
@@ -64,7 +33,7 @@
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_process_cane_to_sugar</defName>
-    <label>grind sugarcane</label>
+    <label>make sugarcane</label>
     <description>Make a mass of powdery sugar from canes.</description>
     <jobString>Grinding sugar from canes</jobString>
     <workSpeedStat>CookSpeed</workSpeedStat>
@@ -81,7 +50,7 @@
             <li>MOL_RawSugarcane</li>
           </thingDefs>
         </filter>
-        <count>4</count>
+        <count>2</count>
       </li>
     </ingredients>
     <products>
@@ -91,5 +60,6 @@
       <li>VCE_CondimentPrepTable</li>
     </recipeUsers>
     <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
+    <displayPriority>2</displayPriority>
   </RecipeDef>
 </Defs>

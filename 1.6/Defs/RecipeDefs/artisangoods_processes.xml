@@ -6,7 +6,7 @@
     <label>ferment vinegar</label>
     <description>ferment vinegar from raw ingredients</description>
     <jobString>fermenting vinegar</jobString>
-    <workAmount>500</workAmount>
+    <workAmount>1000</workAmount>
     <recipeUsers>
       <li>AC_VinegarCask</li>
     </recipeUsers>
@@ -25,7 +25,7 @@
             <!-- <li>VCE_RawTomatoes</li> -->
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>20</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -42,7 +42,7 @@
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <AC_Vinegar>25</AC_Vinegar>
+      <AC_Vinegar>10</AC_Vinegar>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.RecipeExtension_Processor">
@@ -60,13 +60,13 @@
               <!-- <li>VCE_RawBeets</li> -->
               <!-- <li>VCE_RawTomatoes</li> -->
             </thingDefs>
-            <count>50</count>
+            <count>20</count>
           </li>
         </ingredients>
         <products>
           <li>
             <output>AC_Vinegar</output>
-            <count>25</count>
+            <count>10</count>
           </li>
         </products>
         <ticksPerItemOut>120000</ticksPerItemOut>
@@ -78,9 +78,9 @@
   <RecipeDef>
     <defName>MOL_ProcessBalsamic</defName>
     <label>Infuse vinegar and fruit into balsamic vinegar</label>
-    <description>Turns 15 vinegar and 50 fruit into 12 high quality balsamic vinegar</description>
+    <description>Turns 5 vinegar and 12 fruit into 10 high quality bottles of balsamic vinegar</description>
     <jobString>infusing vinegar</jobString>
-    <workAmount>500</workAmount>
+    <workAmount>1000</workAmount>
     <recipeUsers>
       <li>AC_Infuser</li>
     </recipeUsers>
@@ -95,7 +95,7 @@
             <li>VCE_Fruit</li>
           </categories>
         </filter>
-        <count>50</count>
+        <count>12</count>
       </li>
       <li>
         <filter>
@@ -103,7 +103,7 @@
             <li>AC_Vinegar</li>
           </thingDefs>
         </filter>
-        <count>15</count>
+        <count>5</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -117,7 +117,7 @@
       </categories>
     </fixedIngredientFilter>
     <products>
-      <AC_BalsamicVinegar>12</AC_BalsamicVinegar>
+      <AC_BalsamicVinegar>10</AC_BalsamicVinegar>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.RecipeExtension_Processor">
@@ -131,19 +131,19 @@
             <categoryDefs>
               <li>VCE_Fruit</li>
             </categoryDefs>
-            <count>50</count>
+            <count>12</count>
           </li>
           <li>
             <thingDefs>
               <li>AC_Vinegar</li>
             </thingDefs>
-            <count>15</count>
+            <count>5</count>
           </li>
         </ingredients>
         <products>
           <li>
             <output>AC_BalsamicVinegar</output>
-            <count>12</count>
+            <count>10</count>
           </li>
         </products>
         <ticksPerItemOut>300000</ticksPerItemOut>
@@ -161,7 +161,7 @@
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>false</allowMixingIngredients>
-    <workAmount>1000</workAmount>
+    <workAmount>4000</workAmount>
     <recipeUsers>
       <li>AC_OilPressWorkshop</li>
       <li>AC_ArtisanWorkshop</li>
@@ -177,7 +177,7 @@
             <li>VCE_RawSoybean</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>20</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -277,7 +277,7 @@
     <workSpeedStat>CookSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_CookMeal</soundWorking>
-    <workAmount>1000</workAmount>
+    <workAmount>1500</workAmount>
     <recipeUsers>
       <li>AC_BottlingStation</li>
     </recipeUsers>
@@ -357,7 +357,7 @@
     </defaultIngredientFilter>
     <workSkill>Cooking</workSkill>
     <products>
-      <AC_Pickles>25</AC_Pickles>
+      <AC_Pickles>50</AC_Pickles>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.VariableOutputByIngredient">
@@ -411,7 +411,7 @@
             <li>VCE_RawSugar</li>
           </thingDefs>
         </filter>
-        <count>2</count>
+        <count>3</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -453,7 +453,7 @@
     </defaultIngredientFilter>
     <workSkill>Cooking</workSkill>
     <products>
-      <AC_Jam>10</AC_Jam>
+      <AC_Jam>30</AC_Jam>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.VariableOutputByIngredient">
@@ -507,7 +507,7 @@
             <li>VFEM2_Honey</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>5</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -563,7 +563,7 @@
   <RecipeDef>
     <defName>MOL_ProcessEVOO</defName>
     <label>Infuse olives into olive oil</label>
-    <description>Turns 15 oil and 50 olives into 12 high quality extra virgin olive oil</description>
+    <description>Turns 5 oil and 12 olives into 10 high quality extra virgin olive oil</description>
     <jobString>infusing vinegar</jobString>
     <workAmount>500</workAmount>
     <recipeUsers>
@@ -576,7 +576,7 @@
             <li>VCE_RawOlives</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>12</count>
       </li>
       <li>
         <filter>
@@ -584,7 +584,7 @@
             <li>AC_Oil</li>
           </thingDefs>
         </filter>
-        <count>15</count>
+        <count>5</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -594,7 +594,7 @@
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <MOL_OliveOil>12</MOL_OliveOil>
+      <MOL_OliveOil>10</MOL_OliveOil>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.RecipeExtension_Processor">
@@ -604,19 +604,19 @@
             <thingDefs>
               <li>VCE_RawOlives</li>
             </thingDefs>
-            <count>50</count>
+            <count>12</count>
           </li>
           <li>
             <thingDefs>
               <li>AC_Oil</li>
             </thingDefs>
-            <count>15</count>
+            <count>5</count>
           </li>
         </ingredients>
         <products>
           <li>
             <output>MOL_OliveOil</output>
-            <count>12</count>
+            <count>10</count>
           </li>
         </products>
         <ticksPerItemOut>300000</ticksPerItemOut>
@@ -727,7 +727,7 @@
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>false</allowMixingIngredients>
-    <workAmount>5000</workAmount>
+    <workAmount>7500</workAmount>
     <recipeUsers>
       <li>AC_DairyProcessingStation</li>
       <li>AC_ArtisanWorkshop</li>
@@ -742,7 +742,7 @@
             <li>Milk</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>22</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -791,7 +791,7 @@
             <li>AC_Butter</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>22</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
