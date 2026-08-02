@@ -1,5 +1,17 @@
 <?xml version="1.0"?>
 <Patch>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CondimentPrepTable"]/label</xpath>
+    <value>
+      <label>prep table</label>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CondimentPrepTable"]/description</xpath>
+    <value>
+      <description>A working table to cut, slice and prepare ingredients or condiments used in a variety of recipes.</description>
+    </value>
+  </Operation>
   <!-- Wheat -->
   <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant</xpath>
