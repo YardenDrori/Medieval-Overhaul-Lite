@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>MOL_ConsumedJamFromMeal</defName>
+    <durationDays>0.25</durationDays>
+    <stages>
+      <li>
+        <label>ate something jammed</label>
+        <description>That jam really made the meal.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>MOL_ConsumedPicklesFromMeal</defName>
+    <durationDays>0.25</durationDays>
+    <stages>
+      <li>
+        <label>ate something pickled</label>
+        <description>That had a kick to it! I like it.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

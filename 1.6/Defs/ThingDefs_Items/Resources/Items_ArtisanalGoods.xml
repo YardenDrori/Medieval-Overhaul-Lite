@@ -71,7 +71,6 @@
     </thingCategories>
     <ingestible>
       <preferability>NeverForNutrition</preferability>
-      <specialThoughtAsIngredient>AC_ConsumedButter</specialThoughtAsIngredient>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
     </ingestible>
@@ -103,7 +102,6 @@
     </thingCategories>
     <ingestible>
       <preferability>NeverForNutrition</preferability>
-      <specialThoughtAsIngredient>AC_ConsumedGhee</specialThoughtAsIngredient>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
     </ingestible>
@@ -151,7 +149,6 @@
       <tasteThought>AteRawFood</tasteThought>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
-      <specialThoughtAsIngredient>AC_ConsumedOil</specialThoughtAsIngredient>
     </ingestible>
   </ThingDef>
   <!-- ========================= Vinegars ========================= -->
@@ -188,7 +185,6 @@
     <ingestible>
       <preferability>NeverForNutrition</preferability>
       <tasteThought>AteRawFood</tasteThought>
-      <specialThoughtAsIngredient>AC_ConsumedVinegar</specialThoughtAsIngredient>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
     </ingestible>
@@ -215,7 +211,6 @@
     <ingestible>
       <preferability>NeverForNutrition</preferability>
       <tasteThought>AteRawFood</tasteThought>
-      <specialThoughtAsIngredient>AC_ConsumedBalsamicVinegar</specialThoughtAsIngredient>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
     </ingestible>
@@ -252,6 +247,8 @@
       <li>AC_ArtisanProducts</li>
     </thingCategories>
     <ingestible>
+      <specialThoughtAsIngredient>MOL_ConsumedPicklesFromMeal</specialThoughtAsIngredient>
+      <specialThoughtDirect>AteRawFood</specialThoughtDirect>
       <preferability>NeverForNutrition</preferability>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
@@ -284,7 +281,8 @@
     </thingCategories>
     <ingestible>
       <preferability>NeverForNutrition</preferability>
-      <specialThoughtAsIngredient>AC_ConsumedJam</specialThoughtAsIngredient>
+      <specialThoughtAsIngredient>MOL_ConsumedJamFromMeal</specialThoughtAsIngredient>
+      <specialThoughtDirect>AteRawFood</specialThoughtDirect>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
     </ingestible>

@@ -21,8 +21,8 @@
         <rotDestroys>true</rotDestroys>
       </li>
       <li Class="CompProperties_Ingredients">
-			
-			</li>
+
+      </li>
     </comps>
     <thingCategories>
       <li>MOL_Oils</li>
@@ -32,7 +32,6 @@
       <tasteThought>AteRawFood</tasteThought>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
       <foodType>Processed</foodType>
-      <specialThoughtAsIngredient>AC_ConsumedInfusedOil</specialThoughtAsIngredient>
     </ingestible>
     <ingredient>
       <mergeCompatibilityTags>
