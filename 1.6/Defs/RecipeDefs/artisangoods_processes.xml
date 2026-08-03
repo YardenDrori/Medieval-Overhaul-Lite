@@ -357,7 +357,7 @@
     </defaultIngredientFilter>
     <workSkill>Cooking</workSkill>
     <products>
-      <AC_Pickles>50</AC_Pickles>
+      <AC_Pickles>10</AC_Pickles>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.VariableOutputByIngredient">
@@ -453,7 +453,7 @@
     </defaultIngredientFilter>
     <workSkill>Cooking</workSkill>
     <products>
-      <AC_Jam>30</AC_Jam>
+      <AC_Jam>10</AC_Jam>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.VariableOutputByIngredient">

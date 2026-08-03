@@ -231,7 +231,7 @@
     </graphicData>
     <statBases>
       <MarketValue>15</MarketValue>
-      <Nutrition>0.01</Nutrition>
+      <Nutrition>0.25</Nutrition>
       <Flammability>0.1</Flammability>
       <Mass>0.2</Mass>
     </statBases>
@@ -267,7 +267,7 @@
     </graphicData>
     <statBases>
       <MarketValue>15</MarketValue>
-      <Nutrition>0.01</Nutrition>
+      <Nutrition>0.25</Nutrition>
       <Flammability>0.5</Flammability>
       <Mass>0.1</Mass>
     </statBases>
