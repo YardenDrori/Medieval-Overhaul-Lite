@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- MEAL MOOD NERF
+       Fine 5 -> 3, lavish 12 -> 10, gourmet 14 -> 12, across every ladder that uses
+       those tiers. Desserts (VCE_Ate*Dessert) are deliberately left alone, as are the
+       simple tiers, the deep-fried thoughts and VCE's quality-scaled cheese thought.
+
+       Coverage note: VCE's bakes and soups do not define thoughts of their own — their
+       fine/lavish ThingDefs point <tasteThought> at vanilla's AteFineMeal/AteLavishMeal
+       and their gourmet ThingDefs at VCE_AteGourmetMeal. So the first three operations
+       below cover vanilla meals, bakes and soups all at once. Grills and sushi each
+       carry their own thought defs and are patched separately. -->
+
+  <!-- Vanilla meals + VCE bakes + VCE soups -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThoughtDef[defName="AteFineMeal"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>3</baseMoodEffect>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThoughtDef[defName="AteLavishMeal"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>10</baseMoodEffect>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteGourmetMeal"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>12</baseMoodEffect>
+    </value>
+  </Operation>
+
+  <!-- VCE grills -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteFineGrill"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>3</baseMoodEffect>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteLavishGrill"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>10</baseMoodEffect>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteGourmetGrill"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>12</baseMoodEffect>
+    </value>
+  </Operation>
+
+  <!-- VCE sushi
+       VCE_AteFriedSushi (deep fried sushi, +5) is not part of the fine/lavish/gourmet
+       ladder and is left untouched. -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcookesushi">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteFineSushi"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>3</baseMoodEffect>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcookesushi">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteLavishSushi"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>10</baseMoodEffect>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcookesushi">
+    <xpath>Defs/ThoughtDef[defName="VCE_AteGourmetSushi"]/stages/li/baseMoodEffect</xpath>
+    <value>
+      <baseMoodEffect>12</baseMoodEffect>
+    </value>
+  </Operation>
+</Patch>
