@@ -86,7 +86,7 @@
       <Beauty>-1</Beauty>
       <MarketValue>1</MarketValue>
       <Mass>0.02</Mass>
-      <Nutrition>0.05</Nutrition>
+      <Nutrition>0.03</Nutrition>
     </statBases>
     <comps>
       <li Class="CompProperties_Ingredients"/>

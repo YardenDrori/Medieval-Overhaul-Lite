@@ -211,7 +211,7 @@
   <RecipeDef>
     <defName>MOL_PressOil</defName>
     <label>press oil</label>
-    <description>Process fruits, nuts, or seeds into high-quality oils. Yield of the recipe will depend on the produce being used to get the oil, with 50 smokeleaf leaves producing 10 oil.</description>
+    <description>Process fruits, nuts, or seeds into high-quality oils. Yield of the recipe will depend on the produce being used to get the oil, with 20 smokeleaf leaves producing 10 oil.</description>
     <jobString>Pressing oil.</jobString>
     <workSpeedStat>CookSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
@@ -328,7 +328,7 @@
   <RecipeDef>
     <defName>MOL_PickleVegetables</defName>
     <label>pickle vegetables</label>
-    <description>This recipe preserves fresh vegetables by soaking them in a vinegary brine, allowing them to absorb tangy flavors and develop a crunchy texture. Yield of the recipe will depend on the produce being used to get the pickles, with 50 corn producing 25 pickle jars.</description>
+    <description>This recipe preserves fresh vegetables by soaking them in a vinegary brine, allowing them to absorb tangy flavors and develop a crunchy texture. Yield of the recipe will depend on the produce being used to get the pickles, with 50 corn producing 10 pickle jars.</description>
     <jobString>pickling vegetables.</jobString>
     <workSpeedStat>CookSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
@@ -777,7 +777,7 @@
   <RecipeDef>
     <defName>MOL_ChurnButter</defName>
     <label>churn butter</label>
-    <description>A recipe for transforming cream or other produce into rich, flavorful butter. Yield of the recipe will depend on the produce being used to get the butter, with 50 corn producing 20 "butter".</description>
+    <description>Transform milk or other produce into rich, flavorful butter. Yield of the recipe will depend on the produce being used to get the butter, with 22 corn producing 20 "butter".</description>
     <jobString>Churning butter.</jobString>
     <workSpeedStat>CookSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
