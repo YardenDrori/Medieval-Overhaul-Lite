@@ -13,8 +13,8 @@
   IngredientValueGetter_Nutrition (or VEF's ...WithExtraIngredient, which switches to plain
   item counts for the condiment slot). Nutrition per unit of the ingredients used here:
 
-      oil / vinegar / balsamic / olive oil / cheese   0.1
-      butter / ghee / / flour / rice / milk     0.05
+      oil / vinegar / balsamic / olive oil            0.1
+      butter / ghee / flour / rice / milk / cheese    0.05
       wine                                            0.08
 
   So 0.1 MOL_Oils = one oil, 0.15 VFEM2_= three , 0.08 VFEM2_Wine = one wine.
@@ -35,9 +35,9 @@
 
       gourmet meal   0.45 protein  0.45 veg    0.1 oil    0.1 vinegar   1 condiment
 
-      simple bake    0.25 egg/milk 0.2 flour
-      fine bake      0.25 egg/milk 0.2 flour   0.05 butter
-      lavish bake    0.5 egg/milk  0.2 flour   0.2 ghee
+      simple bake    0.25 egg/milk/cheese 0.2 flour
+      fine bake      0.25 egg/milk/cheese 0.2 flour   0.05 butter
+      lavish bake    0.5 egg/milk/cheese  0.2 flour   0.2 ghee
       gourmet bake   = lavish                                          1 condiment
 
       simple soup    0.1 olive oil 0.35 raw food
@@ -247,11 +247,15 @@
              VCE crafts bakes two at a time. They are meals like any other, so every recipe
              below is cut to one bake per craft and the bulk ones to four, matching the
              grills; only sushi keeps a multi-item craft. Counts are therefore the
-             per-serving design as written. The dairy slot is eggs or milk, either one.
+             per-serving design as written. The dairy slot is eggs, milk or cheese, any one
+             of them; cheese was dropped to 0.05 nutrition in VCE_patches.xml so it
+             substitutes for milk one for one. VCE's bake bases filter on FoodRaw, and the
+             VCE_Cheese category parents to AnimalProductRaw under it, so no base-filter
+             addition is needed the way butter and ghee needed one.
              Bulk workAmounts are halved along with their output, so the cooking rate is
              unchanged. -->
 
-        <!-- simple x1: 0.25 egg/milk + 0.2 flour -->
+        <!-- simple x1: 0.25 egg/milk/cheese + 0.2 flour -->
         <li Class="PatchOperationReplace">
           <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimple"]/ingredients</xpath>
           <value>
@@ -263,6 +267,7 @@
                   </categories>
                   <thingDefs>
                     <li>Milk</li>
+                    <li>VCE_Cheese</li>
                   </thingDefs>
                 </filter>
                 <count>0.25</count>
@@ -317,6 +322,7 @@
                   </categories>
                   <thingDefs>
                     <li>Milk</li>
+                    <li>VCE_Cheese</li>
                   </thingDefs>
                 </filter>
                 <count>1</count>
@@ -365,7 +371,7 @@
           </value>
         </li>
 
-        <!-- fine x1: 0.25 egg/milk + 0.2 flour + 0.05 butter -->
+        <!-- fine x1: 0.25 egg/milk/cheese + 0.2 flour + 0.05 butter -->
         <li Class="PatchOperationReplace">
           <xpath>Defs/RecipeDef[defName="VCE_CookBakeFine"]/ingredients</xpath>
           <value>
@@ -377,6 +383,7 @@
                   </categories>
                   <thingDefs>
                     <li>Milk</li>
+                    <li>VCE_Cheese</li>
                   </thingDefs>
                 </filter>
                 <count>0.25</count>
@@ -439,6 +446,7 @@
                   </categories>
                   <thingDefs>
                     <li>Milk</li>
+                    <li>VCE_Cheese</li>
                   </thingDefs>
                 </filter>
                 <count>1</count>
@@ -495,7 +503,7 @@
           </value>
         </li>
 
-        <!-- lavish x1: 0.5 egg/milk + 0.2 flour + 0.2 ghee -->
+        <!-- lavish x1: 0.5 egg/milk/cheese + 0.2 flour + 0.2 ghee -->
         <li Class="PatchOperationReplace">
           <xpath>Defs/RecipeDef[defName="VCE_CookBakeLavish"]/ingredients</xpath>
           <value>
@@ -507,6 +515,7 @@
                   </categories>
                   <thingDefs>
                     <li>Milk</li>
+                    <li>VCE_Cheese</li>
                   </thingDefs>
                 </filter>
                 <count>0.5</count>
@@ -569,6 +578,7 @@
                   </categories>
                   <thingDefs>
                     <li>Milk</li>
+                    <li>VCE_Cheese</li>
                   </thingDefs>
                 </filter>
                 <count>2</count>
@@ -637,6 +647,7 @@
                   </categories>
                   <thingDefs>
                     <li>Milk</li>
+                    <li>VCE_Cheese</li>
                   </thingDefs>
                 </filter>
                 <count>0.5</count>

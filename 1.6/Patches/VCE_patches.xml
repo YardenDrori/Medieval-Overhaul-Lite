@@ -62,7 +62,7 @@
     <value>
       <statBases>
         <MarketValue>7</MarketValue>
-        <Nutrition>0.1</Nutrition>
+        <Nutrition>0.05</Nutrition>
       </statBases>
     </value>
   </Operation>
