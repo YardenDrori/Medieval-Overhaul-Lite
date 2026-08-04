@@ -1,6 +1,5 @@
 add more ways to spawn/find golems
 
-fix wine mood
 merge brewing barrels
 make proper pickled tomatoes texture currently using pickled cacti temporarily
 
@@ -8,12 +7,12 @@ decide on tool system
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
 
-  imorted wine
-
-  make dishes apply to recipe instead of per building and add support for nutrient paste
-fix furntiture (beds) to use more than just cloth eg silk
+wine prod chain
 
 update bone desc
 
-fix dishes (bowls used) count for soup production
+nerf default meal mood buffs
 
+dishes rework
+
+economy rebalance
