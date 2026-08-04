@@ -2,7 +2,7 @@
 <Defs>
   <ThoughtDef>
     <defName>MOL_ConsumedJamFromMeal</defName>
-    <durationDays>0.25</durationDays>
+    <durationDays>1</durationDays>
     <stages>
       <li>
         <label>ate something jammed</label>
@@ -14,12 +14,24 @@
 
   <ThoughtDef>
     <defName>MOL_ConsumedPicklesFromMeal</defName>
-    <durationDays>0.25</durationDays>
+    <durationDays>1</durationDays>
     <stages>
       <li>
         <label>ate something pickled</label>
         <description>That had a kick to it! I like it.</description>
-        <baseMoodEffect>3</baseMoodEffect>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>MOL_ConsumedCheeseFromMeal</defName>
+    <durationDays>1</durationDays>
+    <stages>
+      <li>
+        <label>ate something cheesy</label>
+        <description>Cheese makes everything better.</description>
+        <baseMoodEffect>4</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
