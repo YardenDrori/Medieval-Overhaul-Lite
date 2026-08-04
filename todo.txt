@@ -1,13 +1,10 @@
 add more ways to spawn/find golems
 
-merge brewing barrels
 make proper pickled tomatoes texture currently using pickled cacti temporarily
 
 decide on tool system
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
-
-wine prod chain
 
 update bone desc
 

@@ -35,4 +35,111 @@
     </products>
     <researchPrerequisite>Brewing</researchPrerequisite>
   </RecipeDef>
+
+  <!-- Beer -->
+  <RecipeDef>
+    <defName>MOL_MakeBeer</defName>
+    <label>ferment beer</label>
+    <description>Ferment beer from wort.</description>
+    <jobString>Fermenting.</jobString>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>250</workAmount>
+    <recipeUsers>
+      <li>MOL_FermentingBarrel</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Wort</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Wort</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Beer>1</Beer>
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>false</isStaticRecipe>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>Wort</li>
+            </thingDefs>
+            <count>1</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>Beer</output>
+            <count>1</count>
+          </li>
+        </products>
+        <ratio>1</ratio>
+        <ticksPerItemOut>14400</ticksPerItemOut>
+        <cycles>1</cycles>
+      </li>
+    </modExtensions>
+    <displayPriority>100</displayPriority>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>MOL_MakeWine</defName>
+    <label>ferment wine</label>
+    <description>Ferment wine from must.</description>
+    <jobString>Fermenting.</jobString>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>250</workAmount>
+    <recipeUsers>
+      <li>MOL_FermentingBarrel</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VFEM2_Must</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VFEM2_Must</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <VFEM2_Wine>1</VFEM2_Wine>
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>false</isStaticRecipe>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>VFEM2_Must</li>
+            </thingDefs>
+            <count>1</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>VFEM2_Wine</output>
+            <count>1</count>
+          </li>
+        </products>
+        <ratio>1</ratio>
+        <ticksPerItemOut>14400</ticksPerItemOut>
+        <cycles>1</cycles>
+      </li>
+    </modExtensions>
+    <displayPriority>200</displayPriority>
+  </RecipeDef>
+  <!-- Wine -->
 </Defs>

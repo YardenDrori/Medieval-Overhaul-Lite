@@ -1,0 +1,21 @@
+<Patch>
+  <!-- Can't remove it cause verse bitches -->
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="FermentingBarrel"]/thingCategories</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="FermentingBarrel"]/minifiedDef</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="FermentingBarrel"]/designationCategory</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="FermentingBarrel"]/uiOrder</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="FermentingBarrel"]/building</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="FermentingBarrel"]/researchPrerequisites</xpath>
+  </Operation>
+</Patch>
