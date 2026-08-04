@@ -1,7 +1,5 @@
 add more ways to spawn/find golems
 
-6 -  <!-- TODO: Add our own cheese press thingy with its own mood thought -->
-add apiaries
 fix wine mood
 merge brewing barrels
 make proper pickled tomatoes texture currently using pickled cacti temporarily

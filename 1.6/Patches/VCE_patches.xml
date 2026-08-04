@@ -75,6 +75,18 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Cheese"]/ingestible</xpath>
+    <value>
+      <ingestible>
+        <preferability>MealSimple</preferability>
+        <specialThoughtAsIngredient>MOL_ConsumedCheeseFromMeal</specialThoughtAsIngredient>
+        <ingestEffect>EatMeat</ingestEffect>
+        <ingestSound>Meal_Eat</ingestSound>
+        <maxNumToIngestAtOnce>12</maxNumToIngestAtOnce>
+      </ingestible>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_Cheese"]/comps</xpath>
     <value>
       <comps>
