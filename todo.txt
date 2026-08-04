@@ -15,7 +15,6 @@ do dubs bad hygiene water pouches
   make dishes apply to recipe instead of per building and add support for nutrient paste
 fix furntiture (beds) to use more than just cloth eg silk
 
-add cheese press
 update bone desc
 
 fix dishes (bowls used) count for soup production
