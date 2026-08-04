@@ -3,7 +3,7 @@
   <ThingDef ParentName="DrugBase">
     <defName>VFEM2_Wine</defName>
     <label>wine</label>
-    <description>A large bottle of a strong alcoholic beverage that is made from fermented grapes. Excessive consumption can lead to alcohol blackouts and, over time, addiction. Consuming wine increases psychic sensitivity.</description>
+    <description>Fermented grape juice that humans have been getting into for about 10,000 years, probably because someone forgot about a jar of grapes and found the result agreeable. Wine can taste complex and pairs well with food, but its main effect is still intoxication. Excessive consumption can lead to alcohol blackouts and, over time, addiction.</description>
     <graphicData>
       <texPath>Things/Item/Drug/MOL_Wine</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
@@ -88,9 +88,6 @@
             <offset>-0.02</offset>
           </li>
         </capMods>
-        <statOffsets>
-          <PsychicSensitivity>0.05</PsychicSensitivity>
-        </statOffsets>
       </li>
       <li>
         <minSeverity>0.25</minSeverity>
@@ -107,9 +104,6 @@
             <offset>-0.05</offset>
           </li>
         </capMods>
-        <statOffsets>
-          <PsychicSensitivity>0.1</PsychicSensitivity>
-        </statOffsets>
       </li>
       <li>
         <minSeverity>0.4</minSeverity>
@@ -128,9 +122,6 @@
             <offset>-0.10</offset>
           </li>
         </capMods>
-        <statOffsets>
-          <PsychicSensitivity>0.15</PsychicSensitivity>
-        </statOffsets>
       </li>
       <li>
         <minSeverity>0.7</minSeverity>
@@ -149,9 +140,6 @@
             <offset>-0.10</offset>
           </li>
         </capMods>
-        <statOffsets>
-          <PsychicSensitivity>0.2</PsychicSensitivity>
-        </statOffsets>
       </li>
       <li>
         <minSeverity>0.9</minSeverity>
@@ -184,22 +172,22 @@
       <li>
         <label>alcohol warmth</label>
         <description>I just feel a bit more relaxed after that drink. That's good.</description>
-        <baseMoodEffect>10</baseMoodEffect>
+        <baseMoodEffect>6</baseMoodEffect>
       </li>
       <li>
         <label>quite inebriated</label>
         <description>I'm a bit wobbly! And this is quite enjoyable.</description>
-        <baseMoodEffect>14</baseMoodEffect>
+        <baseMoodEffect>12</baseMoodEffect>
       </li>
       <li>
         <label>drunk</label>
         <description>I feel so uninhibited and unafraid! This is a great time!</description>
-        <baseMoodEffect>20</baseMoodEffect>
+        <baseMoodEffect>18</baseMoodEffect>
       </li>
       <li>
         <label>hammered</label>
         <description>Wooo! What's going on?</description>
-        <baseMoodEffect>26</baseMoodEffect>
+        <baseMoodEffect>24</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
