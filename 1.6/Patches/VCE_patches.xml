@@ -74,9 +74,6 @@
           <daysToRotStart>120</daysToRotStart>
           <rotDestroys>true</rotDestroys>
         </li>
-        <li Class="CompProperties_Ingredients">
-
-        </li>
         <li Class="VEF.Things.CompProperties_LabelByIngredients">
           <overrides>
             <li>
