@@ -1,7 +1,5 @@
 add more ways to spawn/find golems
 
-make proper pickled tomatoes texture currently using pickled cacti temporarily
-
 decide on tool system
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
