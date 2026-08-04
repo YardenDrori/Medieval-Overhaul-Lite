@@ -4,7 +4,7 @@
   <ThingDef ParentName="ResourceVerbBase">
     <defName>MOL_Bone</defName>
     <label>bone</label>
-    <description>Animal bones left over from butchering. Can be carved into primitive tools, ground into fertilizer for enriching soil, or boiled into an unappetizing emergency stew when food is scarce.</description>
+    <description>Animal bones left over from butchering. Can be ground into fertilizer for enriching soil, or harvested for the marrow hidden within it.</description>
     <graphicData>
       <texPath>Things/Item/Resource/MOL_Bone</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>

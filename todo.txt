@@ -4,10 +4,6 @@ decide on tool system
 decide on ICE BLOCKS mechanic
 do dubs bad hygiene water pouches
 
-update bone desc
-
-nerf default meal mood buffs
-
 dishes rework
 
 economy rebalance
