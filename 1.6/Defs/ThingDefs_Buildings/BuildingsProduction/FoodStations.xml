@@ -6,7 +6,7 @@
     <thingClass>ProductionExpanded.Building_Processor</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
-      <texPath>Things/Buildings/VCE_Pot</texPath>
+      <texPath>Things/Building/Production/MOL_Pot/MOL_Pot</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(1.5,1.5)</drawSize>
       <shaderType>CutoutComplex</shaderType>
@@ -67,8 +67,11 @@
       <li Class="CompProperties_Flickable"/>
       <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
         <maxCapacity>1</maxCapacity>
+        <showGizmo>false</showGizmo>
         <hasIdlePowerCost>true</hasIdlePowerCost>
-        <usesOnTexture>false</usesOnTexture>
+        <usesOnTexture>true</usesOnTexture>
+        <keepOnTextureOnFinish>true</keepOnTextureOnFinish>
+        <showOnTextureWhenPaused>true</showOnTextureWhenPaused>
         <shouldDecayOnStopped>true</shouldDecayOnStopped>
         <!-- Soup left in an unpowered pot spoils after ~2 in-game hours and is destroyed -->
         <ruinsWhenUnpowered>true</ruinsWhenUnpowered>
@@ -79,5 +82,74 @@
       </li>
     </comps>
     <minifiedDef>MinifiedThing</minifiedDef>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>MOL_CheesePress</defName>
+    <label>cheese press</label>
+    <description>A cheese press is a device for pressing whey from curds when making cheese. Pressing influences the cheese's hardness and texture and will also determine the shape of the block or wheel of cheese.</description>
+    <thingClass>ProductionExpanded.Building_Processor</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <drawSize>(2,2)</drawSize>
+      <texPath>Things/Buildings/VCE_CheesePress</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <rect>(0.05,0.1,0.9,0.9)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.75, 0.35, 0.33)</volume>
+      </shadowData>
+    </graphicData>
+    <neverMultiSelect>true</neverMultiSelect>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.45</fillPercent>
+    <pathCost>60</pathCost>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <statBases>
+      <WorkToBuild>600</WorkToBuild>
+      <Mass>10</Mass>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <costList>
+      <Steel>10</Steel>
+      <WoodLog>30</WoodLog>
+    </costList>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <building>
+      <isMealSource>true</isMealSource>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <size>(2,1)</size>
+    <tickerType>Rare</tickerType>
+    <rotatable>true</rotatable>
+    <designationCategory>Production</designationCategory>
+    <constructEffect>ConstructWood</constructEffect>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
+        <maxCapacity>50</maxCapacity>
+        <hasIdlePowerCost>false</hasIdlePowerCost>
+        <usesOnTexture>false</usesOnTexture>
+        <shouldDecayOnStopped>true</shouldDecayOnStopped>
+        <hasTempRequirements>true</hasTempRequirements>
+        <maxTempC>34</maxTempC>
+        <minTempC>16</minTempC>
+        <ticksToRuin>5000</ticksToRuin>
+        <soundInput>Corpse_Drop</soundInput>
+        <soundStartCycle>Roof_Start</soundStartCycle>
+        <soundExtract>Standard_Drop</soundExtract>
+      </li>
+    </comps>
   </ThingDef>
 </Defs>

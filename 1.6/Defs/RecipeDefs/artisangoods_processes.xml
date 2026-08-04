@@ -1,5 +1,61 @@
 <?xml version="1.0"?>
 <Defs>
+  <!-- Cheese -->
+  <RecipeDef>
+    <defName>MOL_ProcessCheese</defName>
+    <label>press cheese</label>
+    <description>Press cheese from milk.</description>
+    <jobString>pressing cheese</jobString>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>250</workAmount>
+    <recipeUsers>
+      <li>MOL_CheesePress</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Milk</li>
+            <li>InsectJelly</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Milk</li>
+        <li>InsectJelly</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <VCE_Cheese>9</VCE_Cheese>
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>false</isStaticRecipe>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>Milk</li>
+              <li>InsectJelly</li>
+            </thingDefs>
+            <count>1</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>VCE_Cheese</output>
+            <count>1</count>
+          </li>
+        </products>
+        <ratio>0.91</ratio>
+        <ticksPerItemOut>1800</ticksPerItemOut>
+        <cycles>1</cycles>
+      </li>
+    </modExtensions>
+    <displayPriority>100</displayPriority>
+  </RecipeDef>
   <!-- Vinegar -->
   <RecipeDef>
     <defName>MOL_ProcessVinegar</defName>
