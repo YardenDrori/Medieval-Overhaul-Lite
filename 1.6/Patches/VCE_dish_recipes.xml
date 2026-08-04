@@ -14,10 +14,10 @@
   item counts for the condiment slot). Nutrition per unit of the ingredients used here:
 
       oil / vinegar / balsamic / olive oil / cheese   0.1
-      butter / ghee / honey / flour / rice / milk     0.05
+      butter / ghee / / flour / rice / milk     0.05
       wine                                            0.08
 
-  So 0.1 MOL_Oils = one oil, 0.15 VFEM2_Honey = three honey, 0.08 VFEM2_Wine = one wine.
+  So 0.1 MOL_Oils = one oil, 0.15 VFEM2_= three , 0.08 VFEM2_Wine = one wine.
   Butter and ghee were bumped from 0.01 to 0.05 in Items_ArtisanalGoods.xml for exactly
   this reason - at 0.01 a "0.2 ghee" lavish bake would have eaten twenty ghee.
 
@@ -47,7 +47,7 @@
 
       simple grill   0.55 meat
       fine grill     0.4 meat      0.08 wine
-      lavish grill   0.65 meat     0.08 wine      0.15 honey
+      lavish grill   0.65 meat     0.08 wine      0.15 
       gourmet grill  = lavish                                          1 condiment
 
       norimaki       0.25 fish     0.075 rice
@@ -110,14 +110,11 @@
           </value>
         </li>
 
-        <!-- Grill bases: wine and honey. Neither has a <thingDefs> node to append to, and
-             honey is AnimalProductRaw which the grill filters do not list either. -->
         <li Class="PatchOperationAdd">
           <xpath>Defs/RecipeDef[@Name="VCE_CookGrillMealBase"]/fixedIngredientFilter</xpath>
           <value>
             <thingDefs>
               <li>VFEM2_Wine</li>
-              <li>VFEM2_Honey</li>
             </thingDefs>
           </value>
         </li>
@@ -126,7 +123,6 @@
           <value>
             <thingDefs>
               <li>VFEM2_Wine</li>
-              <li>VFEM2_Honey</li>
             </thingDefs>
           </value>
         </li>
@@ -135,7 +131,6 @@
           <value>
             <thingDefs>
               <li>VFEM2_Wine</li>
-              <li>VFEM2_Honey</li>
             </thingDefs>
           </value>
         </li>
@@ -144,7 +139,6 @@
           <value>
             <thingDefs>
               <li>VFEM2_Wine</li>
-              <li>VFEM2_Honey</li>
             </thingDefs>
           </value>
         </li>
@@ -879,7 +873,7 @@
              carries the Condiments merge tag. MOL_OliveOil carries that tag (it is what
              makes its AC_ConsumedInfusedOil thought propagate), so on this recipe alone the
              count is denominated in items. Ten keeps it level with the lavish soup's ten
-             bottles. Only olive oil is affected: no other oil, vinegar, ghee, wine or honey
+             bottles. Only olive oil is affected: no other oil, vinegar, ghee, wine or 
              we use has the tag, and the 0.1-scale slots on the gourmet meal, bake, grill and
              sushi resolve to one item under either getter. -->
         <li Class="PatchOperationReplace">
@@ -1016,7 +1010,7 @@
           </value>
         </li>
 
-        <!-- lavish: 0.65 meat + 0.08 wine + 0.15 honey (three honey) -->
+        <!-- lavish: 0.65 meat + 0.08 wine + 0.15 butter -->
         <li Class="PatchOperationReplace">
           <xpath>Defs/RecipeDef[defName="VCE_CookGrillLavish"]/ingredients</xpath>
           <value>
@@ -1040,7 +1034,8 @@
               <li>
                 <filter>
                   <thingDefs>
-                    <li>VFEM2_Honey</li>
+                    <li>AC_Butter</li>
+                    <li>AC_Ghee</li>
                   </thingDefs>
                 </filter>
                 <count>0.15</count>
@@ -1072,7 +1067,8 @@
               <li>
                 <filter>
                   <thingDefs>
-                    <li>VFEM2_Honey</li>
+                    <li>AC_Butter</li>
+                    <li>AC_Ghee</li>
                   </thingDefs>
                 </filter>
                 <count>0.6</count>
@@ -1105,7 +1101,8 @@
               <li>
                 <filter>
                   <thingDefs>
-                    <li>VFEM2_Honey</li>
+                    <li>AC_Butter</li>
+                    <li>AC_Ghee</li>
                   </thingDefs>
                 </filter>
                 <count>0.15</count>

@@ -20,4 +20,3 @@ update bone desc
 
 fix dishes (bowls used) count for soup production
 
-Remove honey
