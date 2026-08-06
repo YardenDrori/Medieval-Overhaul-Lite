@@ -16,7 +16,7 @@
       <MaxHitPoints>30</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <Beauty>-1</Beauty>
-      <MarketValue>1</MarketValue>
+      <MarketValue>2.6</MarketValue>
       <Mass>0.02</Mass>
       <Nutrition>0.05</Nutrition>
     </statBases>
@@ -47,8 +47,8 @@
       <drawSize>(1,1)</drawSize>
     </graphicData>
     <statBases>
-      <MarketValue>1.5</MarketValue>
-      <Nutrition>0.1</Nutrition>
+      <MarketValue>3.25</MarketValue>
+      <Nutrition>0.06</Nutrition>
     </statBases>
     <thingCategories>
       <li>MeatRaw</li>
@@ -68,7 +68,5 @@
         <rotDestroys>true</rotDestroys>
       </li>
     </comps>
-    <ingestible>
-    </ingestible>
   </ThingDef>
 </Defs>

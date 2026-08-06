@@ -10,7 +10,7 @@
     </descriptionHyperlinks>
     <statBases>
       <MaxHitPoints>65</MaxHitPoints>
-      <Nutrition>0.2</Nutrition>
+      <Nutrition>0.5</Nutrition>
     </statBases>
     <graphicData>
       <texPath>Things/Plants/Crops/LentilPlant</texPath>
@@ -25,7 +25,7 @@
       <harvestTag>Standard</harvestTag>
       <maxMeshCount>9</maxMeshCount>
       <harvestedThingDef>MOL_RawLentils</harvestedThingDef>
-      <harvestYield>10</harvestYield>
+      <harvestYield>8</harvestYield>
       <sowTags>
         <li>Ground</li>
         <li>Hydroponics</li>

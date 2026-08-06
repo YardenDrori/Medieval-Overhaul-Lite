@@ -14,7 +14,7 @@
     <soundDrop>Wood_Drop</soundDrop>
     <tickerType>Rare</tickerType>
     <statBases>
-      <MarketValue>1.0</MarketValue>
+      <MarketValue>1.2</MarketValue>
       <MaxHitPoints>100</MaxHitPoints>
       <Mass>0.25</Mass>
       <Flammability>0.02</Flammability>
@@ -52,7 +52,6 @@
     </stuffProps>
     <thingCategories>
       <li>ResourcesRaw</li>
-      <li>MeatRaw</li>
     </thingCategories>
     <techHediffsTags>
       <li>Poor</li>
@@ -84,7 +83,7 @@
       <MaxHitPoints>30</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <Beauty>-1</Beauty>
-      <MarketValue>1</MarketValue>
+      <MarketValue>1.2</MarketValue>
       <Mass>0.02</Mass>
       <Nutrition>0.03</Nutrition>
     </statBases>

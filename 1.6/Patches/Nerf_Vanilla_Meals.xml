@@ -37,6 +37,8 @@
         <thingDefs>
           <li>AC_Oil</li>
           <li>AC_Vinegar</li>
+          <li>AC_Butter</li>
+          <li>AC_Ghee</li>
         </thingDefs>
       </defaultIngredientFilter>
     </value>
@@ -58,6 +60,8 @@
         </disallowedThingDefs>
         <thingDefs>
           <li>AC_Oil</li>
+          <li>AC_Butter</li>
+          <li>AC_Ghee</li>
         </thingDefs>
       </defaultIngredientFilter>
     </value>
@@ -80,6 +84,8 @@
         </disallowedThingDefs>
         <thingDefs>
           <li>AC_Oil</li>
+          <li>AC_Butter</li>
+          <li>AC_Ghee</li>
         </thingDefs>
       </defaultIngredientFilter>
     </value>
@@ -101,6 +107,8 @@
         </disallowedThingDefs>
         <thingDefs>
           <li>AC_Oil</li>
+          <li>AC_Butter</li>
+          <li>AC_Ghee</li>
         </thingDefs>
       </defaultIngredientFilter>
     </value>
@@ -166,6 +174,9 @@
     <xpath>Defs/RecipeDef[defName="CookMealFineBulk_Meat"]</xpath>
   </Operation>
 
+  <!-- Butter and ghee live in AC_ArtisanProducts rather than MOL_Oils, so they are listed
+       by thingDef wherever a fat is accepted. They are dairy, not meat, so the vegetarian
+       variants take them too — only MOL_Tallow is barred there. -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealFine"]/ingredients</xpath>
     <value>
@@ -175,6 +186,10 @@
             <li>MOL_Oils</li>
             <li>MOL_Vinegars</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
         </filter>
         <count>0.1</count>
       </li>
@@ -190,6 +205,10 @@
             <li>MOL_Oils</li>
             <li>MOL_Vinegars</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
           <disallowedThingDefs>
             <li>MOL_Tallow</li>
           </disallowedThingDefs>
@@ -208,6 +227,10 @@
             <li>MOL_Oils</li>
             <li>MOL_Vinegars</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
         </filter>
         <count>0.4</count>
       </li>
@@ -223,6 +246,10 @@
             <li>MOL_Oils</li>
             <li>MOL_Vinegars</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
           <disallowedThingDefs>
             <li>MOL_Tallow</li>
           </disallowedThingDefs>
@@ -285,11 +312,12 @@
        (Contrast the fine meals above, which use a single <li> whose filter accepts
        MOL_Oils or MOL_Vinegars, making them interchangeable.)
 
-       The fat slot follows the same rule the fine meals use: any oil for the mixed
+       The fat slot follows the same rule the fine meals use: any oil (or butter/ghee,
+       which sit in AC_ArtisanProducts and so have to be named by thingDef) for the mixed
        recipe, tallow-free for vegetarian. The acid slot is plain MOL_Vinegars
        everywhere. (The carnivore variants are deleted, see above.) -->
 
-  <!-- CookMealLavish — 0.1 any oil + 0.1 any vinegar -->
+  <!-- CookMealLavish — 0.1 any fat + 0.1 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavish"]/ingredients</xpath>
     <value>
@@ -298,6 +326,10 @@
           <categories>
             <li>MOL_Oils</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
         </filter>
         <count>0.1</count>
       </li>
@@ -312,7 +344,7 @@
     </value>
   </Operation>
 
-  <!-- CookMealLavish_Veg — 0.1 non-tallow oil + 0.1 any vinegar -->
+  <!-- CookMealLavish_Veg — 0.1 non-tallow fat + 0.1 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavish_Veg"]/ingredients</xpath>
     <value>
@@ -321,6 +353,10 @@
           <categories>
             <li>MOL_Oils</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
           <disallowedThingDefs>
             <li>MOL_Tallow</li>
           </disallowedThingDefs>
@@ -338,7 +374,7 @@
     </value>
   </Operation>
 
-  <!-- CookMealLavishBulk — 0.4 any oil + 0.4 any vinegar -->
+  <!-- CookMealLavishBulk — 0.4 any fat + 0.4 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavishBulk"]/ingredients</xpath>
     <value>
@@ -347,6 +383,10 @@
           <categories>
             <li>MOL_Oils</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
         </filter>
         <count>0.4</count>
       </li>
@@ -361,7 +401,7 @@
     </value>
   </Operation>
 
-  <!-- CookMealLavishBulk_Veg — 0.4 non-tallow oil + 0.4 any vinegar -->
+  <!-- CookMealLavishBulk_Veg — 0.4 non-tallow fat + 0.4 any vinegar -->
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/RecipeDef[defName="CookMealLavishBulk_Veg"]/ingredients</xpath>
     <value>
@@ -370,6 +410,10 @@
           <categories>
             <li>MOL_Oils</li>
           </categories>
+          <thingDefs>
+            <li>AC_Butter</li>
+            <li>AC_Ghee</li>
+          </thingDefs>
           <disallowedThingDefs>
             <li>MOL_Tallow</li>
           </disallowedThingDefs>
@@ -422,7 +466,9 @@
        ingredient slot that nothing satisfies makes the bill silently unfillable.
        (Tallow is fine either way: it is also in MeatRaw, so FoodRaw already covers it.)
        Adding the categories here also makes the explicit <thingDefs><li>AC_Oil</li></thingDefs>
-       above redundant; harmless, left in place.
+       above redundant; harmless, left in place. The AC_Butter and AC_Ghee entries in those
+       same thingDefs lists are NOT redundant — butter and ghee sit directly under
+       AC_ArtisanProducts, so no category listed here would tick them.
 
        These must run after the PatchOperationAdd blocks that create defaultIngredientFilter,
        hence their position at the end of the file. -->

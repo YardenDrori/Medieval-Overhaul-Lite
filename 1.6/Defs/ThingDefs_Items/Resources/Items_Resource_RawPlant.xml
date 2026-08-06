@@ -10,8 +10,8 @@
       <texPath>Things/Item/Resource/PlantFoodRaw/RawLentils</texPath>
     </graphicData>
     <statBases>
-      <MarketValue>0.44</MarketValue>
-      <Nutrition>0.02</Nutrition>
+      <MarketValue>0.8</MarketValue>
+      <Nutrition>0.04</Nutrition>
     </statBases>
     <ingestible>
       <tasteThought>AteRawFood</tasteThought>
@@ -102,7 +102,7 @@
     </graphicData>
     <statBases>
       <Nutrition>0.01</Nutrition>
-      <MarketValue>1.2</MarketValue>
+      <MarketValue>2</MarketValue>
     </statBases>
     <ingestible>
       <foodType>Seed</foodType>
@@ -128,7 +128,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>10</MarketValue>
+      <MarketValue>1.2</MarketValue>
     </statBases>
     <comps>
       <li Class="CompProperties_Rottable">

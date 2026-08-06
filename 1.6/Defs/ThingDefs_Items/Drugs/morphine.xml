@@ -16,7 +16,7 @@
     <rotatable>false</rotatable>
     <statBases>
       <WorkToMake>600</WorkToMake>
-      <MarketValue>36</MarketValue>
+      <MarketValue>21</MarketValue>
       <Mass>0.1</Mass>
     </statBases>
     <techLevel>Medieval</techLevel>

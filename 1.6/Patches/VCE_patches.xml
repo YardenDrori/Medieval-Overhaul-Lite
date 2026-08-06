@@ -44,6 +44,12 @@
       <harvestedThingDef>MOL_RawSugarcane</harvestedThingDef>
     </value>
   </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_RawSugar"]/statBases/MarketValue</xpath>
+    <value>
+      <MarketValue>7.5</MarketValue>
+    </value>
+  </Operation>
   <!-- Cheese -->
   <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_Cheese"]</xpath>
@@ -69,7 +75,7 @@
     <xpath>Defs/ThingDef[defName="VCE_Cheese"]/statBases</xpath>
     <value>
       <statBases>
-        <MarketValue>7</MarketValue>
+        <MarketValue>3.5</MarketValue>
         <Nutrition>0.05</Nutrition>
       </statBases>
     </value>
@@ -145,26 +151,125 @@
 
 
   <!-- bakes nutritional value -->
-  <Operation Class="PatchOperationReplace">
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_SimpleBake"]/statBases/Nutrition</xpath>
     <value>
       <Nutrition>0.9</Nutrition>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace">
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_FineBake"]/statBases/Nutrition</xpath>
     <value>
       <Nutrition>0.9</Nutrition>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace">
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_LavishBake"]/statBases/Nutrition</xpath>
     <value>
       <Nutrition>0.9</Nutrition>
     </value>
   </Operation>
-  <Operation Class="PatchOperationReplace">
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_GourmetBake"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <!-- Bakes market value. Priced at input cost + 0.012 silver per unit of work (the
+       vanilla cooking wage). The bakes consume dairy, flour, butter and ghee rather
+       than raw crops, so at VCE's original 15/20/40/70 every tier destroyed value.
+       Counts here assume butter and ghee at Nutrition 0.1: fine takes 1 butter,
+       lavish and gourmet take 2 ghee each. -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_SimpleBake"]/statBases/MarketValue</xpath>
+    <value>
+      <MarketValue>23</MarketValue>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_FineBake"]/statBases/MarketValue</xpath>
+    <value>
+      <MarketValue>30</MarketValue>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_LavishBake"]/statBases/MarketValue</xpath>
+    <value>
+      <MarketValue>55</MarketValue>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_GourmetBake"]/statBases/MarketValue</xpath>
+    <value>
+      <MarketValue>94</MarketValue>
+    </value>
+  </Operation>
+  <!-- Flour -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_Flour"]/statBases/MarketValue</xpath>
+    <value>
+      <MarketValue>2</MarketValue>
+    </value>
+  </Operation>
+
+  <!-- All meals normalised to 0.9 nutrition so every tier of every family shares
+       one output, and the in/out ratios are set purely by the recipes. -->
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_FineGrill"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_LavishGrill"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_GourmetGrill"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_RuinedFineGrill"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_RuinedLavishGrill"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_RuinedGourmetGrill"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CookedSoupSimple"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CookedSoupLavish"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_CookedSoupGourmet"]/statBases/Nutrition</xpath>
+    <value>
+      <Nutrition>0.9</Nutrition>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_MealGourmet"]/statBases/Nutrition</xpath>
     <value>
       <Nutrition>0.9</Nutrition>
     </value>

@@ -13,7 +13,7 @@
     <stackLimit>10</stackLimit>
     <statBases>
       <DeteriorationRate>0.5</DeteriorationRate>
-      <MarketValue>20</MarketValue>
+      <MarketValue>19</MarketValue>
       <Mass>0.3</Mass>
       <Flammability>0.5</Flammability>
       <Nutrition>0.08</Nutrition>

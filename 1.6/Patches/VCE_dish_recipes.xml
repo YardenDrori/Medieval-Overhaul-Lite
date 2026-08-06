@@ -394,7 +394,7 @@
                     <li>VCE_Flour</li>
                   </thingDefs>
                 </filter>
-                <count>0.2</count>
+                <count>0.15</count>
               </li>
               <li>
                 <filter>
@@ -402,7 +402,7 @@
                     <li>AC_Butter</li>
                   </thingDefs>
                 </filter>
-                <count>0.05</count>
+                <count>0.1</count>
               </li>
             </ingredients>
           </value>
@@ -457,7 +457,7 @@
                     <li>VCE_Flour</li>
                   </thingDefs>
                 </filter>
-                <count>0.8</count>
+                <count>0.6</count>
               </li>
               <li>
                 <filter>
@@ -465,7 +465,7 @@
                     <li>AC_Butter</li>
                   </thingDefs>
                 </filter>
-                <count>0.2</count>
+                <count>0.4</count>
               </li>
             </ingredients>
           </value>
@@ -779,6 +779,7 @@
               </disallowedThingDefs>
               <thingDefs>
                 <li>AC_Butter</li>
+                <li>AC_Ghee</li>
               </thingDefs>
             </defaultIngredientFilter>
           </value>
@@ -810,6 +811,7 @@
                   </categories>
                   <thingDefs>
                     <li>AC_Butter</li>
+                    <li>AC_Ghee</li>
                   </thingDefs>
                 </filter>
                 <count>1</count>
@@ -897,7 +899,7 @@
                     <li>MOL_OliveOil</li>
                   </thingDefs>
                 </filter>
-                <count>10</count>
+                <count>1</count>
               </li>
               <li>
                 <filter>
@@ -952,7 +954,7 @@
                     <li>MeatRaw</li>
                   </categories>
                 </filter>
-                <count>0.55</count>
+                <count>0.45</count>
               </li>
             </ingredients>
           </value>
@@ -967,7 +969,7 @@
                     <li>MeatRaw</li>
                   </categories>
                 </filter>
-                <count>2.2</count>
+                <count>1.8</count>
               </li>
             </ingredients>
           </value>
@@ -984,7 +986,7 @@
                     <li>MeatRaw</li>
                   </categories>
                 </filter>
-                <count>0.4</count>
+                <count>0.35</count>
               </li>
               <li>
                 <filter>
@@ -992,7 +994,7 @@
                     <li>VFEM2_Wine</li>
                   </thingDefs>
                 </filter>
-                <count>0.08</count>
+                <count>0.16</count>
               </li>
             </ingredients>
           </value>
@@ -1007,7 +1009,7 @@
                     <li>MeatRaw</li>
                   </categories>
                 </filter>
-                <count>1.6</count>
+                <count>1.4</count>
               </li>
               <li>
                 <filter>
@@ -1015,7 +1017,7 @@
                     <li>VFEM2_Wine</li>
                   </thingDefs>
                 </filter>
-                <count>0.32</count>
+                <count>0.64</count>
               </li>
             </ingredients>
           </value>
@@ -1032,7 +1034,7 @@
                     <li>MeatRaw</li>
                   </categories>
                 </filter>
-                <count>0.65</count>
+                <count>0.55</count>
               </li>
               <li>
                 <filter>
@@ -1040,7 +1042,7 @@
                     <li>VFEM2_Wine</li>
                   </thingDefs>
                 </filter>
-                <count>0.08</count>
+                <count>0.16</count>
               </li>
               <li>
                 <filter>
@@ -1049,7 +1051,7 @@
                     <li>AC_Ghee</li>
                   </thingDefs>
                 </filter>
-                <count>0.15</count>
+                <count>0.2</count>
               </li>
             </ingredients>
           </value>
@@ -1065,7 +1067,7 @@
                     <li>MeatRaw</li>
                   </categories>
                 </filter>
-                <count>2.6</count>
+                <count>2.2</count>
               </li>
               <li>
                 <filter>
@@ -1073,7 +1075,7 @@
                     <li>VFEM2_Wine</li>
                   </thingDefs>
                 </filter>
-                <count>0.32</count>
+                <count>0.64</count>
               </li>
               <li>
                 <filter>
@@ -1082,7 +1084,7 @@
                     <li>AC_Ghee</li>
                   </thingDefs>
                 </filter>
-                <count>0.6</count>
+                <count>0.8</count>
               </li>
             </ingredients>
           </value>
@@ -1099,7 +1101,7 @@
                     <li>MeatRaw</li>
                   </categories>
                 </filter>
-                <count>0.65</count>
+                <count>0.55</count>
               </li>
               <li>
                 <filter>
@@ -1107,7 +1109,7 @@
                     <li>VFEM2_Wine</li>
                   </thingDefs>
                 </filter>
-                <count>0.08</count>
+                <count>0.16</count>
               </li>
               <li>
                 <filter>
@@ -1116,7 +1118,7 @@
                     <li>AC_Ghee</li>
                   </thingDefs>
                 </filter>
-                <count>0.15</count>
+                <count>0.2</count>
               </li>
               <li>
                 <filter>
@@ -1191,25 +1193,25 @@
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VCE_Norimaki"]/statBases/Nutrition</xpath>
           <value>
-            <Nutrition>0.7</Nutrition>
+            <Nutrition>0.9</Nutrition>
           </value>
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VCE_Uramaki"]/statBases/Nutrition</xpath>
           <value>
-            <Nutrition>0.75</Nutrition>
+            <Nutrition>0.9</Nutrition>
           </value>
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VCE_Futomaki"]/statBases/Nutrition</xpath>
           <value>
-            <Nutrition>0.65</Nutrition>
+            <Nutrition>0.9</Nutrition>
           </value>
         </li>
         <li Class="PatchOperationReplace">
           <xpath>Defs/ThingDef[defName="VCE_Oshizushi"]/statBases/Nutrition</xpath>
           <value>
-            <Nutrition>0.65</Nutrition>
+            <Nutrition>0.9</Nutrition>
           </value>
         </li>
 
@@ -1224,7 +1226,7 @@
                     <li>Fish</li>
                   </categories>
                 </filter>
-                <count>0.5</count>
+                <count>0.25</count>
               </li>
               <li>
                 <filter>
@@ -1232,7 +1234,7 @@
                     <li>RawRice</li>
                   </thingDefs>
                 </filter>
-                <count>0.15</count>
+                <count>0.55</count>
               </li>
             </ingredients>
           </value>
@@ -1262,7 +1264,7 @@
                     <li>Fish</li>
                   </categories>
                 </filter>
-                <count>2</count>
+                <count>1</count>
               </li>
               <li>
                 <filter>
@@ -1270,7 +1272,7 @@
                     <li>RawRice</li>
                   </thingDefs>
                 </filter>
-                <count>0.6</count>
+                <count>2.2</count>
               </li>
             </ingredients>
           </value>
@@ -1309,7 +1311,7 @@
                     <li>RawRice</li>
                   </thingDefs>
                 </filter>
-                <count>0.15</count>
+                <count>0.3</count>
               </li>
               <li>
                 <filter>
@@ -1355,7 +1357,7 @@
                     <li>RawRice</li>
                   </thingDefs>
                 </filter>
-                <count>0.6</count>
+                <count>1.2</count>
               </li>
               <li>
                 <filter>
@@ -1394,7 +1396,7 @@
                     <li>Fish</li>
                   </categories>
                 </filter>
-                <count>1</count>
+                <count>1.25</count>
               </li>
               <li>
                 <filter>
@@ -1402,7 +1404,7 @@
                     <li>RawRice</li>
                   </thingDefs>
                 </filter>
-                <count>0.2</count>
+                <count>0.25</count>
               </li>
               <li>
                 <filter>
@@ -1440,7 +1442,7 @@
                     <li>Fish</li>
                   </categories>
                 </filter>
-                <count>4</count>
+                <count>5</count>
               </li>
               <li>
                 <filter>
@@ -1448,7 +1450,7 @@
                     <li>RawRice</li>
                   </thingDefs>
                 </filter>
-                <count>0.8</count>
+                <count>1</count>
               </li>
               <li>
                 <filter>
@@ -1488,7 +1490,7 @@
                     <li>Fish</li>
                   </categories>
                 </filter>
-                <count>1</count>
+                <count>1.25</count>
               </li>
               <li>
                 <filter>
@@ -1496,7 +1498,7 @@
                     <li>RawRice</li>
                   </thingDefs>
                 </filter>
-                <count>0.2</count>
+                <count>0.25</count>
               </li>
               <li>
                 <filter>

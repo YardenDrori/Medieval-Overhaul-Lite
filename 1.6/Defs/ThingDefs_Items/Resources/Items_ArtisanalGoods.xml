@@ -30,10 +30,10 @@
       <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>10</MarketValue>
+      <MarketValue>4.5</MarketValue>
       <!-- 0.05, same as milk: cooking recipes measure ingredients in nutrition, so this
            is what makes "0.05 butter" in a bake mean one butter rather than five. -->
-      <Nutrition>0.05</Nutrition>
+      <Nutrition>0.1</Nutrition>
       <Flammability>1</Flammability>
       <Mass>0.2</Mass>
     </statBases>
@@ -84,9 +84,9 @@
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>40</MarketValue>
+      <MarketValue>7</MarketValue>
       <!-- Matches butter; see the note there. -->
-      <Nutrition>0.05</Nutrition>
+      <Nutrition>0.1</Nutrition>
       <Flammability>1</Flammability>
       <Mass>0.2</Mass>
     </statBases>
@@ -116,7 +116,7 @@
       <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>10</MarketValue>
+      <MarketValue>6</MarketValue>
       <Nutrition>0.1</Nutrition>
       <Flammability>2</Flammability>
       <Mass>0.3</Mass>
@@ -161,7 +161,7 @@
       <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>6</MarketValue>
+      <MarketValue>3.5</MarketValue>
       <Nutrition>0.1</Nutrition>
       <Flammability>0.5</Flammability>
       <Mass>0.3</Mass>
@@ -199,7 +199,7 @@
       <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>33</MarketValue>
+      <MarketValue>7</MarketValue>
       <Nutrition>0.1</Nutrition>
       <Flammability>0.5</Flammability>
       <Mass>0.3</Mass>
@@ -225,7 +225,7 @@
       <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>15</MarketValue>
+      <MarketValue>12</MarketValue>
       <Nutrition>0.25</Nutrition>
       <Flammability>0.1</Flammability>
       <Mass>0.2</Mass>
@@ -263,7 +263,7 @@
       <graphicClass>VEF.Graphics.Graphic_StackCountByIngredient</graphicClass>
     </graphicData>
     <statBases>
-      <MarketValue>15</MarketValue>
+      <MarketValue>12</MarketValue>
       <Nutrition>0.25</Nutrition>
       <Flammability>0.5</Flammability>
       <Mass>0.1</Mass>
@@ -380,7 +380,7 @@
       <drawSize>0.75</drawSize>
     </graphicData>
     <statBases>
-      <MarketValue>45</MarketValue>
+      <MarketValue>15</MarketValue>
       <Flammability>0.5</Flammability>
       <Mass>0.05</Mass>
     </statBases>
