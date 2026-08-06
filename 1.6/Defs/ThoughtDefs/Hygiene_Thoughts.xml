@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>MOL_WashedWithSoap</defName>
+    <durationDays>1</durationDays>
+    <stages>
+      <li>
+        <label>washed with soap</label>
+        <description>Scrubbing down with a proper bar of soap is a small luxury. I feel genuinely clean.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

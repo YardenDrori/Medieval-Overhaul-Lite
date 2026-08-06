@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Gives AC_Soap a use: showers and bathtubs hold a stock of soap and spend one bar per
+       wash for a small mood bonus. Patched onto the abstract bases so every variant
+       (ShowerStuff, ShowerSimple, ShowerAdvStuff, BathtubStuff) picks it up. Running out
+       of soap doesn't disable the fixture, it just costs the bonus. -->
+
+  <Operation Class="PatchOperationAdd" MayRequire="dubwise.dubsbadhygiene">
+    <xpath>Defs/ThingDef[@Name="DubsDirtyBathtubBase"]</xpath>
+    <value>
+      <comps>
+        <li Class="MOExpandedLite.CompProperties_SoapConsumer">
+          <fuelLabel>Soap</fuelLabel>
+          <fuelGizmoLabel>Soap</fuelGizmoLabel>
+          <fuelCapacity>10</fuelCapacity>
+          <soapPerUse>1</soapPerUse>
+          <washedThought>MOL_WashedWithSoap</washedThought>
+          <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+          <initialConfigurableTargetFuelLevel>10</initialConfigurableTargetFuelLevel>
+          <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+          <fuelFilter>
+            <thingDefs>
+              <li>AC_Soap</li>
+            </thingDefs>
+          </fuelFilter>
+        </li>
+      </comps>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd" MayRequire="dubwise.dubsbadhygiene">
+    <xpath>Defs/ThingDef[@Name="DubsDirtyShowerBase"]</xpath>
+    <value>
+      <comps>
+        <li Class="MOExpandedLite.CompProperties_SoapConsumer">
+          <fuelLabel>Soap</fuelLabel>
+          <fuelGizmoLabel>Soap</fuelGizmoLabel>
+          <fuelCapacity>10</fuelCapacity>
+          <soapPerUse>1</soapPerUse>
+          <washedThought>MOL_WashedWithSoap</washedThought>
+          <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+          <initialConfigurableTargetFuelLevel>10</initialConfigurableTargetFuelLevel>
+          <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+          <fuelFilter>
+            <thingDefs>
+              <li>AC_Soap</li>
+            </thingDefs>
+          </fuelFilter>
+        </li>
+      </comps>
+    </value>
+  </Operation>
+
+</Patch>
