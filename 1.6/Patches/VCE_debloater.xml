@@ -5,4 +5,9 @@
   <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/VEF.Graphics.GraphicOffsets[defName="VCE_CheeseGraphicOffsets"]</xpath>
   </Operation>
+
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcookesushi">
+    <xpath>Defs/ThingDef[defName="VCE_SoyFermenter"]</xpath>
+  </Operation>
+
 </Patch>

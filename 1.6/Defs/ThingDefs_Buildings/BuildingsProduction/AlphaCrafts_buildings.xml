@@ -92,84 +92,84 @@
     <minifiedDef>MinifiedThing</minifiedDef>
   </ThingDef>
 
-  <ThingDef ParentName="BuildingBase">
-    <defName>AC_OilPressWorkshop</defName>
-    <label>oil press workshop</label>
-    <description>A specialized building where fruits, nuts, and seeds are processed into high-quality oils. Essential for crafting cooking oils, skincare products, and artisan goods. Includes a butter clarifier accesory and a small frier.</description>
-    <thingClass>Building_WorkTable</thingClass>
-    <graphicData>
-      <texPath>Things/Building/Production/AC_OilMachine</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(1.5,1.5)</drawSize>
-      <damageData>
-        <cornerTL>Damage/Corner</cornerTL>
-        <cornerTR>Damage/Corner</cornerTR>
-        <cornerBL>Damage/Corner</cornerBL>
-        <cornerBR>Damage/Corner</cornerBR>
-      </damageData>
-    </graphicData>
-    <tickerType>Normal</tickerType>
-    <costList>
-      <Steel>50</Steel>
-      <Chemfuel>10</Chemfuel>
-    </costList>
-    <altitudeLayer>Building</altitudeLayer>
-    <rotatable>true</rotatable>
-    <neverMultiSelect>true</neverMultiSelect>
-    <uiIconScale>0.8</uiIconScale>
-    <fillPercent>0.5</fillPercent>
-    <useHitPoints>True</useHitPoints>
-    <statBases>
-      <Mass>10</Mass>
-      <WorkToBuild>1000</WorkToBuild>
-      <MaxHitPoints>150</MaxHitPoints>
-      <Flammability>1.5</Flammability>
-    </statBases>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
-    <thingCategories>
-      <li>BuildingsProduction</li>
-    </thingCategories>
-    <building>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-      <buildingTags>
-        <li>Production</li>
-      </buildingTags>
-    </building>
-    <size>(1,1)</size>
-    <designationCategory>Production</designationCategory>
-    <passability>PassThroughOnly</passability>
-    <pathCost>70</pathCost>
-    <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
-    <surfaceType>Item</surfaceType>
-    <researchPrerequisites>
-      <li>MOL_ArtisanAdvanced</li>
-    </researchPrerequisites>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <shortCircuitInRain>true</shortCircuitInRain>
-        <basePowerConsumption>30</basePowerConsumption>
-      </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_AffectedByFacilities">
-        <linkableFacilities>
-          <li>ToolCabinet</li>
-        </linkableFacilities>
-      </li>
-      <li Class="CompProperties_ReportWorkSpeed">
-        <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat>
-      </li>
-    </comps>
-    <placeWorkers>
-      <li>PlaceWorker_ShowFacilitiesConnections</li>
-      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
-      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
-    </placeWorkers>
-    <minifiedDef>MinifiedThing</minifiedDef>
-  </ThingDef>
+  <!-- <ThingDef ParentName="BuildingBase"> -->
+  <!--   <defName>AC_OilPressWorkshop</defName> -->
+  <!--   <label>oil press workshop</label> -->
+  <!--   <description>A specialized building where fruits, nuts, and seeds are processed into high-quality oils. Essential for crafting cooking oils, skincare products, and artisan goods. Includes a butter clarifier accesory and a small frier.</description> -->
+  <!--   <thingClass>Building_WorkTable</thingClass> -->
+  <!--   <graphicData> -->
+  <!--     <texPath>Things/Building/Production/AC_OilMachine</texPath> -->
+  <!--     <graphicClass>Graphic_Multi</graphicClass> -->
+  <!--     <drawSize>(1.5,1.5)</drawSize> -->
+  <!--     <damageData> -->
+  <!--       <cornerTL>Damage/Corner</cornerTL> -->
+  <!--       <cornerTR>Damage/Corner</cornerTR> -->
+  <!--       <cornerBL>Damage/Corner</cornerBL> -->
+  <!--       <cornerBR>Damage/Corner</cornerBR> -->
+  <!--     </damageData> -->
+  <!--   </graphicData> -->
+  <!--   <tickerType>Normal</tickerType> -->
+  <!--   <costList> -->
+  <!--     <Steel>50</Steel> -->
+  <!--     <Chemfuel>10</Chemfuel> -->
+  <!--   </costList> -->
+  <!--   <altitudeLayer>Building</altitudeLayer> -->
+  <!--   <rotatable>true</rotatable> -->
+  <!--   <neverMultiSelect>true</neverMultiSelect> -->
+  <!--   <uiIconScale>0.8</uiIconScale> -->
+  <!--   <fillPercent>0.5</fillPercent> -->
+  <!--   <useHitPoints>True</useHitPoints> -->
+  <!--   <statBases> -->
+  <!--     <Mass>10</Mass> -->
+  <!--     <WorkToBuild>1000</WorkToBuild> -->
+  <!--     <MaxHitPoints>150</MaxHitPoints> -->
+  <!--     <Flammability>1.5</Flammability> -->
+  <!--   </statBases> -->
+  <!--   <inspectorTabs> -->
+  <!--     <li>ITab_Bills</li> -->
+  <!--   </inspectorTabs> -->
+  <!--   <thingCategories> -->
+  <!--     <li>BuildingsProduction</li> -->
+  <!--   </thingCategories> -->
+  <!--   <building> -->
+  <!--     <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity> -->
+  <!--     <buildingTags> -->
+  <!--       <li>Production</li> -->
+  <!--     </buildingTags> -->
+  <!--   </building> -->
+  <!--   <size>(1,1)</size> -->
+  <!--   <designationCategory>Production</designationCategory> -->
+  <!--   <passability>PassThroughOnly</passability> -->
+  <!--   <pathCost>70</pathCost> -->
+  <!--   <hasInteractionCell>True</hasInteractionCell> -->
+  <!--   <interactionCellOffset>(0,0,-1)</interactionCellOffset> -->
+  <!--   <surfaceType>Item</surfaceType> -->
+  <!--   <researchPrerequisites> -->
+  <!--     <li>MOL_ArtisanAdvanced</li> -->
+  <!--   </researchPrerequisites> -->
+  <!--   <comps> -->
+  <!--     <li Class="CompProperties_Power"> -->
+  <!--       <compClass>CompPowerTrader</compClass> -->
+  <!--       <shortCircuitInRain>true</shortCircuitInRain> -->
+  <!--       <basePowerConsumption>30</basePowerConsumption> -->
+  <!--     </li> -->
+  <!--     <li Class="CompProperties_Flickable"/> -->
+  <!--     <li Class="CompProperties_AffectedByFacilities"> -->
+  <!--       <linkableFacilities> -->
+  <!--         <li>ToolCabinet</li> -->
+  <!--       </linkableFacilities> -->
+  <!--     </li> -->
+  <!--     <li Class="CompProperties_ReportWorkSpeed"> -->
+  <!--       <workSpeedStat>WorkTableWorkSpeedFactor</workSpeedStat> -->
+  <!--     </li> -->
+  <!--   </comps> -->
+  <!--   <placeWorkers> -->
+  <!--     <li>PlaceWorker_ShowFacilitiesConnections</li> -->
+  <!--     <li>PlaceWorker_ReportWorkSpeedPenalties</li> -->
+  <!--     <li>PlaceWorker_PreventInteractionSpotOverlap</li> -->
+  <!--   </placeWorkers> -->
+  <!--   <minifiedDef>MinifiedThing</minifiedDef> -->
+  <!-- </ThingDef> -->
 
   <ThingDef ParentName="BuildingBase">
     <defName>AC_DairyProcessingStation</defName>
@@ -414,7 +414,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>AC_Infuser</defName>
     <label>infuser</label>
-    <description>A specialized workstation designed to steep herbs, fruits, and exotic ingredients into other artisan crafts. By carefully controlling temperature and infusion time, it creates infused oils, vinegars, and other artisanal delicacies.</description>
+    <description>A specialized workstation designed to steep herbs, and exotic ingredients into other artisan crafts. By carefully controlling temperature and infusion time, it creates and infuses oils and vinegars.</description>
     <thingClass>ProductionExpanded.Building_Processor</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>

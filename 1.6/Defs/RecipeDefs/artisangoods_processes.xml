@@ -60,8 +60,9 @@
   <RecipeDef>
     <defName>MOL_ProcessSoySauce</defName>
     <label>ferment soy sauce</label>
-    <description>ferment soy sauce from raw soy beans.</description>
+    <description>Ferment soy sauce from raw soy beans. Two beans make one bottle of sauce.</description>
     <jobString>fermenting soy sauce</jobString>
+    <allowMixingIngredients>true</allowMixingIngredients>
     <workAmount>1000</workAmount>
     <recipeUsers>
       <li>MOL_FermentingBarrel</li>
@@ -73,7 +74,7 @@
             <li>VCE_RawSoybean</li>
           </thingDefs>
         </filter>
-        <count>30</count>
+        <count>2</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -82,26 +83,28 @@
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <VCE_SoySauce>15</VCE_SoySauce>
+      <VCE_SoySauce>1</VCE_SoySauce>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.RecipeExtension_Processor">
-        <isStaticRecipe>true</isStaticRecipe>
+        <isStaticRecipe>false</isStaticRecipe>
         <ingredients>
           <li>
             <thingDefs>
               <li>VCE_RawSoybean</li>
             </thingDefs>
-            <count>30</count>
+            <count>2</count>
           </li>
         </ingredients>
         <products>
           <li>
             <output>VCE_SoySauce</output>
-            <count>15</count>
+            <count>1</count>
           </li>
         </products>
-        <ticksPerItemOut>600000</ticksPerItemOut>
+        <ratio>0.5</ratio>
+        <capacityFactor>1.25</capacityFactor>
+        <ticksPerItemOut>60000</ticksPerItemOut>
         <cycles>1</cycles>
       </li>
     </modExtensions>
@@ -111,8 +114,9 @@
   <RecipeDef>
     <defName>MOL_ProcessVinegar</defName>
     <label>ferment vinegar</label>
-    <description>ferment vinegar from raw ingredients</description>
+    <description>Ferment vinegar from raw ingredients. Two units of produce make one vinegar.</description>
     <jobString>fermenting vinegar</jobString>
+    <allowMixingIngredients>true</allowMixingIngredients>
     <workAmount>1000</workAmount>
     <recipeUsers>
       <li>MOL_FermentingBarrel</li>
@@ -132,7 +136,7 @@
             <!-- <li>VCE_RawTomatoes</li> -->
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>2</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -149,11 +153,11 @@
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <AC_Vinegar>10</AC_Vinegar>
+      <AC_Vinegar>1</AC_Vinegar>
     </products>
     <modExtensions>
       <li Class="ProductionExpanded.RecipeExtension_Processor">
-        <isStaticRecipe>true</isStaticRecipe>
+        <isStaticRecipe>false</isStaticRecipe>
         <ingredients>
           <li>
             <thingDefs>
@@ -167,16 +171,18 @@
               <!-- <li>VCE_RawBeets</li> -->
               <!-- <li>VCE_RawTomatoes</li> -->
             </thingDefs>
-            <count>20</count>
+            <count>2</count>
           </li>
         </ingredients>
         <products>
           <li>
             <output>AC_Vinegar</output>
-            <count>10</count>
+            <count>1</count>
           </li>
         </products>
-        <ticksPerItemOut>120000</ticksPerItemOut>
+        <ratio>0.5</ratio>
+        <capacityFactor>1.25</capacityFactor>
+        <ticksPerItemOut>12000</ticksPerItemOut>
         <cycles>5</cycles>
       </li>
     </modExtensions>
@@ -270,7 +276,7 @@
     <allowMixingIngredients>false</allowMixingIngredients>
     <workAmount>2500</workAmount>
     <recipeUsers>
-      <li>AC_OilPressWorkshop</li>
+      <li>AC_Infuser</li>
       <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
     <ingredients>
@@ -314,7 +320,7 @@
         <baseline>SmokeleafLeaves</baseline>
       </li>
     </modExtensions>
-    <displayPriority>10</displayPriority>
+    <displayPriority>1</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_ExtractPerfume</defName>
@@ -388,6 +394,7 @@
     <soundWorking>Recipe_CookMeal</soundWorking>
     <workAmount>3700</workAmount>
     <recipeUsers>
+      <li>AC_ArtisanWorkshop</li>
       <li>AC_BottlingStation</li>
     </recipeUsers>
     <researchPrerequisite>MOL_ArtisanAdvanced</researchPrerequisite>
@@ -476,6 +483,7 @@
         </exclusions>
       </li>
     </modExtensions>
+    <displayPriority>50</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_PreserveFruitAsJamViaSugar</defName>

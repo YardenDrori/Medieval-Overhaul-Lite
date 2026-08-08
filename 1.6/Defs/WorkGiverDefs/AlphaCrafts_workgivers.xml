@@ -25,22 +25,22 @@
     <prioritizeSustains>true</prioritizeSustains>
   </WorkGiverDef>
 
-  <WorkGiverDef>
-    <defName>AC_DoBillsOilPressWorkshop</defName>
-    <label>press produce</label>
-    <giverClass>WorkGiver_DoBill</giverClass>
-    <workType>Cooking</workType>
-    <priorityInType>20</priorityInType>
-    <fixedBillGiverDefs>
-      <li>AC_OilPressWorkshop</li>
-    </fixedBillGiverDefs>
-    <verb>pressing produce</verb>
-    <gerund>pressing produce at</gerund>
-    <requiredCapacities>
-      <li>Manipulation</li>
-    </requiredCapacities>
-    <prioritizeSustains>true</prioritizeSustains>
-  </WorkGiverDef>
+  <!-- <WorkGiverDef> -->
+  <!--   <defName>AC_DoBillsOilPressWorkshop</defName> -->
+  <!--   <label>press produce</label> -->
+  <!--   <giverClass>WorkGiver_DoBill</giverClass> -->
+  <!--   <workType>Cooking</workType> -->
+  <!--   <priorityInType>20</priorityInType> -->
+  <!--   <fixedBillGiverDefs> -->
+  <!--     <li>AC_OilPressWorkshop</li> -->
+  <!--   </fixedBillGiverDefs> -->
+  <!--   <verb>pressing produce</verb> -->
+  <!--   <gerund>pressing produce at</gerund> -->
+  <!--   <requiredCapacities> -->
+  <!--     <li>Manipulation</li> -->
+  <!--   </requiredCapacities> -->
+  <!--   <prioritizeSustains>true</prioritizeSustains> -->
+  <!-- </WorkGiverDef> -->
 
   <WorkGiverDef>
     <defName>AC_DoBillsDairyProcessingStation</defName>
