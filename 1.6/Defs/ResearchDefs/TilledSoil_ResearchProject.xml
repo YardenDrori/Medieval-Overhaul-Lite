@@ -6,8 +6,11 @@
     <description>Soil enriched with bone meal fertilizer. Plants grow faster in this nutrient-rich ground, but the enrichment is consumed during the harvest and must be reapplied for the next crop.</description>
     <baseCost>400</baseCost>
     <techLevel>Medieval</techLevel>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>0.00</researchViewY>
+    <!-- Same tab as the artisanal projects, purely so it stops sharing coordinates with
+         them (and with vanilla's early Main-tab projects) and rendering on top. -->
+    <tab>MOL_Artisanal</tab>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>6.00</researchViewY>
   </ResearchProjectDef>
 </Defs>
 

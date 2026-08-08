@@ -4,6 +4,7 @@
 
   AlphaCrafts_buildings_patches.xml is gone; everything it did is folded in here:
     - research gates are MOL_ArtisanBasic / MOL_ArtisanAdvanced, not the AC_ projects
+      (AC_ArtisanWorkshop is ungated - the gate is on its recipes, see the research file)
     - AC_VinegarCask and AC_Infuser run on Production Expanded's processor instead of
       PipeSystem: thingClass Building_Processor, ITab_Bills, CompProperties_ResourceProcessor,
       and 10W idle power draw. No PipeSystem comp and no PipeSystem.ProcessDef survives, which
@@ -71,9 +72,9 @@
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
-    <researchPrerequisites>
-      <li>MOL_ArtisanBasic</li>
-    </researchPrerequisites>
+    <!-- Deliberately ungated. This is the milling bench as much as it is the artisanal one:
+         flour and sugar have to be available from the start, so the research gate sits on
+         the artisanal recipes that run here (MOL_ArtisanBasic) rather than on the building. -->
     <comps>
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>

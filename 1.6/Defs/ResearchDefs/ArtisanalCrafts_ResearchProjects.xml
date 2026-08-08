@@ -1,39 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  The mod's own research tree. Everything lives in the MOL_Artisanal tab rather than the
+  Main tab, because these all used to sit at researchViewX 2.00 / researchViewY 0.00 and
+  therefore rendered stacked on top of each other on top of vanilla's early projects.
+
+  Layout of the tab (x = column, y = row):
+
+      x0                  x1                 x2
+      artisanal crafts -> preserving      -> complex artisanal goods
+                       -> condiments
+      bakery
+      sushi
+      grilling
+      soup cooking
+      enriched soil
+
+  Cross-tab prerequisites (Smithing, Electricity, both in Main) are legal; the tree just
+  does not draw a line to them.
+
+  AC_ArtisanWorkshop is deliberately NOT gated - it is the bench you grind flour and press
+  sugar on from day one. What "artisanal crafts" buys is the *recipes* that turn those
+  staples into artisanal goods, so the gate sits on each recipe instead of on the building.
+
+  What gates what is documented on each project. The actual wiring lives in:
+    - FoodStations.xml / AlphaCrafts_buildings.xml   (building researchPrerequisites)
+    - artisangoods_processes.xml, artisan_milling_recipes.xml, drug_recipeDefs.xml
+    - Patches/research_gating.xml                    (everything owned by VCE / VCE Sushi)
+
+  Desserts are deliberately left ungated: they are weak enough that a research cost is not
+  worth it.
+-->
 <Defs>
+
+  <ResearchTabDef>
+    <defName>MOL_Artisanal</defName>
+    <label>artisanal</label>
+    <generalTitle>Artisanal crafts and cooking</generalTitle>
+    <generalDescription>Traditional food production: milling, preserving, condiments, and the specialty dishes built on top of them.</generalDescription>
+  </ResearchTabDef>
+
+  <!-- ===================== Artisanal line ===================== -->
+
+  <!-- The medieval gate for the artisan workshop's own product line: oil pressing, butter
+       churning, perfume extraction and soap. NOT the workshop itself, and not the flour and
+       sugar milling that runs on it - those are free. -->
   <ResearchProjectDef>
     <defName>MOL_ArtisanBasic</defName>
-    <label>basic artisanal goods</label>
-    <description>Unlocks a range of specialized artisanal processes, enabling colonists to craft unique products using traditional methods and tools.</description>
+    <label>artisanal crafts</label>
+    <description>Unlocks a range of specialized artisanal processes, enabling colonists to craft unique products using traditional methods and tools. The artisan workshop can press oils, churn butter, extract perfumes and mix soap once these techniques are known - milling grain and cane needs no such training.</description>
     <baseCost>200</baseCost>
     <techLevel>Medieval</techLevel>
-    <researchViewX>2.00</researchViewX>
+    <tab>MOL_Artisanal</tab>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>0.50</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Gates: MOL_CheesePress and the cheese process, pickling, and jamming. -->
+  <ResearchProjectDef>
+    <defName>MOL_Preserves</defName>
+    <label>food preservation</label>
+    <description>Unlocks a range of methods to preserve food such as pickling, pressing cheese and setting fruit into jam, making food last longer unrefrigerated, more calorie dense, and tastier to boot.</description>
+    <baseCost>250</baseCost>
+    <techLevel>Medieval</techLevel>
+    <tab>MOL_Artisanal</tab>
+    <prerequisites>
+      <li>MOL_ArtisanBasic</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
     <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
+
+  <!-- Gates: every VCE condiment recipe. Replaces VCE_CondimentsResearch, which is deleted
+       in Patches/research_gating.xml. -->
+  <ResearchProjectDef>
+    <defName>MOL_Condiments</defName>
+    <label>food condiments</label>
+    <description>A condiment is a spice, sauce, or preparation added to food during or after cooking, to impart or enhance a flavour. Condiments are cut, mixed and bottled at the artisan workshop, and a single serving lifts any gourmet dish.</description>
+    <baseCost>350</baseCost>
+    <techLevel>Medieval</techLevel>
+    <tab>MOL_Artisanal</tab>
+    <prerequisites>
+      <li>MOL_ArtisanBasic</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>1.00</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Gates: AC_DairyProcessingStation, AC_BottlingStation and AC_Infuser, plus the
+       infuser-only processes (balsamic, EVOO). Every one of those buildings draws power and
+       costs industrial components - 25W, 50W and 50W + 10W idle respectively - so this is
+       Industrial and requires Electricity. Soap and pickling used to hang off it and have
+       since moved to MOL_ArtisanBasic and MOL_Preserves, leaving nothing unpowered here. -->
   <ResearchProjectDef>
     <defName>MOL_ArtisanAdvanced</defName>
     <label>complex artisanal goods</label>
-    <description>Unlocks a range of more complex artisanal processes. Enabling the creation of more complex and unique products.</description>
+    <description>Unlocks a range of more complex artisanal processes, enabling the creation of more complex and unique products. The stations it unlocks - the dairy processor, the bottling station and the infuser - all run on power.</description>
     <baseCost>600</baseCost>
-    <techLevel>Medieval</techLevel>
+    <techLevel>Industrial</techLevel>
+    <tab>MOL_Artisanal</tab>
+    <prerequisites>
+      <li>Electricity</li>
+    </prerequisites>
     <researchViewX>2.00</researchViewX>
-    <researchViewY>0.00</researchViewY>
+    <researchViewY>0.50</researchViewY>
   </ResearchProjectDef>
+
+  <!-- ===================== Specialty dishes ===================== -->
+
+  <!-- Gates: VCE_Grill and every grill recipe. Smithing carried over from VCE_Grilling,
+       which this replaces - the grill is a metal grate over a fire. -->
   <ResearchProjectDef>
-    <defName>MOL_Preserves</defName>
-    <label>food preservation techniques</label>
-    <description>Unlocks a range of methods to preserve food such as pickling, aging, fermenting and various other methods, making food last longer unrefridgerated, more calorie dense, and tastier to boot!</description>
-    <baseCost>200</baseCost>
+    <defName>MOL_Grilling</defName>
+    <label>grilling</label>
+    <description>Grilling applies dry radiant heat directly to the surface of food, searing meat and vegetables quickly and giving them a flavour no pot or oven can. Unlocks the grill and the grill dishes.</description>
+    <baseCost>250</baseCost>
     <techLevel>Medieval</techLevel>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>0.00</researchViewY>
+    <tab>MOL_Artisanal</tab>
+    <prerequisites>
+      <li>Smithing</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>4.00</researchViewY>
   </ResearchProjectDef>
+
+  <!-- Gates: MOL_FueledOven, MOL_ElectricOven and every bake recipe. Stands alone: flour is
+       free, so there is nothing upstream of an oven to require. -->
   <ResearchProjectDef>
-    <defName>MOL_SpecialtyFood</defName>
-    <label>specialty dishes</label>
-    <description>Unlock a range of new food categories: Grills, Soups, Sushi, and Bakes along with their respective cooking stations. Specialty meals have a far better ratio of raw ingredients but need specific ingredients such as flour or olive oil to make. Additionally a variety of condiments can now be made and applied to gourmet meals applying a wide range of positive effects.</description>
-    <baseCost>600</baseCost>
+    <defName>MOL_Bakery</defName>
+    <label>bakery</label>
+    <description>Baking cooks food in the dry, enclosed heat of a stone oven rather than over an open flame. Unlocks the fueled and electric ovens and the full range of bakes.</description>
+    <baseCost>300</baseCost>
     <techLevel>Medieval</techLevel>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>0.00</researchViewY>
+    <tab>MOL_Artisanal</tab>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>2.00</researchViewY>
   </ResearchProjectDef>
+
+  <!-- Gates: VCE_SushiPrepTable and every sushi recipe. Stands alone - the vinegar the
+       higher tiers want comes off the fermenting barrel, which is behind Brewing, not
+       behind preserving. -->
+  <ResearchProjectDef>
+    <defName>MOL_Sushi</defName>
+    <label>sushi</label>
+    <description>Raw fish, seasoned rice and a sharp knife. Unlocks the sushi prep table and the sushi dishes, which lean on vinegar from the fermenting barrel for everything above the simplest roll.</description>
+    <baseCost>300</baseCost>
+    <techLevel>Medieval</techLevel>
+    <tab>MOL_Artisanal</tab>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>3.00</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Gates: MOL_ElectricPot and every soup recipe. Electricity carried over from
+       VCE_SoupCooking, which this replaces - the pot is an electric appliance and soup left
+       in an unpowered one is destroyed. -->
+  <ResearchProjectDef>
+    <defName>MOL_SoupCooking</defName>
+    <label>soup cooking</label>
+    <description>Ingredients submerged in water and simmered over an extended period, so their flavours deepen and blend. Unlocks the electric pot and the soup dishes; one uncooked soup cooks down into ten servings.</description>
+    <baseCost>450</baseCost>
+    <techLevel>Industrial</techLevel>
+    <tab>MOL_Artisanal</tab>
+    <prerequisites>
+      <li>Electricity</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>5.00</researchViewY>
+  </ResearchProjectDef>
+
+
 </Defs>

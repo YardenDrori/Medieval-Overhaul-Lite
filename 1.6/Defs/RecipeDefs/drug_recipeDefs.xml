@@ -44,6 +44,9 @@
     <jobString>Fermenting.</jobString>
     <allowMixingIngredients>true</allowMixingIngredients>
     <workAmount>250</workAmount>
+    <!-- Stated explicitly rather than left to MOL_FermentingBarrel's own Brewing gate, so
+         beer and wine visibly share one prerequisite. -->
+    <researchPrerequisite>Brewing</researchPrerequisite>
     <recipeUsers>
       <li>MOL_FermentingBarrel</li>
     </recipeUsers>
@@ -96,6 +99,7 @@
     <jobString>Fermenting.</jobString>
     <allowMixingIngredients>true</allowMixingIngredients>
     <workAmount>250</workAmount>
+    <researchPrerequisite>Brewing</researchPrerequisite>
     <recipeUsers>
       <li>MOL_FermentingBarrel</li>
     </recipeUsers>

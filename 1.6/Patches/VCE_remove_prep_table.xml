@@ -10,8 +10,8 @@
     - VCE_AchievementKitchenNightmare-> already removed in VCE_remove_deprecated.xml
       (that file also loads first: "deprecated" < "prep").
 
-  VCE_CondimentsResearch is deliberately left alone: the moved recipes no longer need it,
-  but VCE's other condiment content still lists it.
+  VCE_CondimentsResearch is gone: research_gating.xml repoints every recipe that listed it
+  onto MOL_Condiments and then deletes the project.
 
   <success>Always</success> everywhere, same reasoning as VCE_remove_deprecated.xml —
   MayRequire alone does not suppress the error when the mod is absent.

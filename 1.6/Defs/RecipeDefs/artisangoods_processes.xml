@@ -8,6 +8,7 @@
     <jobString>pressing cheese</jobString>
     <allowMixingIngredients>true</allowMixingIngredients>
     <workAmount>250</workAmount>
+    <researchPrerequisite>MOL_Preserves</researchPrerequisite>
     <recipeUsers>
       <li>MOL_CheesePress</li>
     </recipeUsers>
@@ -64,6 +65,13 @@
     <jobString>fermenting soy sauce</jobString>
     <allowMixingIngredients>true</allowMixingIngredients>
     <workAmount>1000</workAmount>
+    <!-- Same shape as vinegar, but the product is a VCE_Condiments item rather than a
+         cooking ingredient, so the second gate is condiments rather than preserving.
+         Without this it would be free, the barrel no longer gating anything. -->
+    <researchPrerequisites>
+      <li>Brewing</li>
+      <li>MOL_Condiments</li>
+    </researchPrerequisites>
     <recipeUsers>
       <li>MOL_FermentingBarrel</li>
     </recipeUsers>
@@ -118,6 +126,13 @@
     <jobString>fermenting vinegar</jobString>
     <allowMixingIngredients>true</allowMixingIngredients>
     <workAmount>1000</workAmount>
+    <!-- Both are required (RecipeDef.AvailableNow ANDs the list): controlled fermentation
+         from Brewing, and souring produce to keep it from Preserves. The barrel itself no
+         longer gates anything. -->
+    <researchPrerequisites>
+      <li>Brewing</li>
+      <li>MOL_Preserves</li>
+    </researchPrerequisites>
     <recipeUsers>
       <li>MOL_FermentingBarrel</li>
     </recipeUsers>
@@ -275,6 +290,7 @@
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>false</allowMixingIngredients>
     <workAmount>2500</workAmount>
+    <researchPrerequisite>MOL_ArtisanBasic</researchPrerequisite>
     <recipeUsers>
       <li>AC_Infuser</li>
       <li>AC_ArtisanWorkshop</li>
@@ -332,6 +348,7 @@
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>false</allowMixingIngredients>
     <workAmount>2500</workAmount>
+    <researchPrerequisite>MOL_ArtisanBasic</researchPrerequisite>
     <recipeUsers>
       <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
@@ -397,7 +414,7 @@
       <li>AC_ArtisanWorkshop</li>
       <li>AC_BottlingStation</li>
     </recipeUsers>
-    <researchPrerequisite>MOL_ArtisanAdvanced</researchPrerequisite>
+    <researchPrerequisite>MOL_Preserves</researchPrerequisite>
     <ingredients>
       <li Name="VegIngredient">
         <filter>
@@ -495,6 +512,7 @@
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>false</allowMixingIngredients>
     <workAmount>3000</workAmount>
+    <researchPrerequisite>MOL_Preserves</researchPrerequisite>
     <recipeUsers>
       <li>AC_BottlingStation</li>
       <li>AC_ArtisanWorkshop</li>
@@ -753,7 +771,7 @@
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>true</allowMixingIngredients>
-    <researchPrerequisite>MOL_ArtisanAdvanced</researchPrerequisite>
+    <researchPrerequisite>MOL_ArtisanBasic</researchPrerequisite>
     <recipeUsers>
       <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
@@ -848,6 +866,7 @@
     <soundWorking>Recipe_CookMeal</soundWorking>
     <allowMixingIngredients>false</allowMixingIngredients>
     <workAmount>6500</workAmount>
+    <researchPrerequisite>MOL_ArtisanBasic</researchPrerequisite>
     <recipeUsers>
       <li>AC_DairyProcessingStation</li>
       <li>AC_ArtisanWorkshop</li>

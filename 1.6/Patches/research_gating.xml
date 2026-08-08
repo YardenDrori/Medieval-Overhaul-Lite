@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Repoints every Vanilla Cooking Expanded gate onto the mod's own research tree
+  (ArtisanalCrafts_ResearchProjects.xml), then deletes the VCE projects left orphaned by it.
+
+  Why any of this is needed: VCE gates its dishes at the *building*, not the recipe. Bakes
+  and sushi have no research prerequisite of their own at all - so once VCE_dish_recipes.xml
+  moved the bakes onto MOL's ovens (which had no gate either) and MOL_CheesePress replaced
+  VCE's (deleting VCE_CheeseMaking with it), the entire bake, sushi and cheese line was
+  buildable and cookable on day one. Grills and soups were gated, but by VCE projects
+  duplicating what this mod now defines itself.
+
+  Mapping:
+
+      VCE_CondimentsResearch  -> MOL_Condiments      (deleted)
+      VCE_Grilling            -> MOL_Grilling        (deleted)
+      VCE_SoupCooking         -> MOL_SoupCooking     (deleted)
+      (nothing)               -> MOL_Bakery          for VCE_CookBake*
+      (nothing)               -> MOL_Sushi           for VCE_SushiPrepTable + sushi recipes
+
+  Desserts are deliberately not gated.
+
+  Recipe gates are added on the abstract *MealBase defs rather than on each child: no VCE
+  dish recipe declares its own researchPrerequisite, so every child inherits cleanly and the
+  bulk variants come along for free.
+
+  <success>Always</success> on the removals for the same reason as VCE_remove_deprecated.xml:
+  MayRequire does not suppress the error when the mod is absent, only <success> does. The
+  FindMod blocks below need no such guard - they no-op when the mod is missing.
+-->
+<Patch>
+
+  <!-- ============================================================================
+       VANILLA COOKING EXPANDED
+       ============================================================================ -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Cooking Expanded</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- ==================== Condiments ==================== -->
+
+        <!-- Every VCE condiment recipe carries this one element; matching on its value
+             catches all of them at once, and any the sushi module adds too. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[researchPrerequisite="VCE_CondimentsResearch"]/researchPrerequisite</xpath>
+          <value>
+            <researchPrerequisite>MOL_Condiments</researchPrerequisite>
+          </value>
+        </li>
+
+        <!-- ==================== Grills ==================== -->
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VCE_Grill"]/researchPrerequisites</xpath>
+          <value>
+            <researchPrerequisites>
+              <li>MOL_Grilling</li>
+            </researchPrerequisites>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGrillMealBase"]</xpath>
+          <value>
+            <researchPrerequisite>MOL_Grilling</researchPrerequisite>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetGrillMealBase"]</xpath>
+          <value>
+            <researchPrerequisite>MOL_Grilling</researchPrerequisite>
+          </value>
+        </li>
+
+        <!-- ==================== Soups ====================
+             VCE writes these as <researchPrerequisite><li>VCE_SoupCooking</li></...>, i.e.
+             the singular field holding a list, so the whole element is replaced rather than
+             its contents. Only the recipes need repointing: VCE_ElectricPot itself is
+             deleted in VCE_remove_deprecated.xml, MOL_ElectricPot having replaced it. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[starts-with(defName, "VCE_CookSoup")]/researchPrerequisite</xpath>
+          <value>
+            <researchPrerequisite>MOL_SoupCooking</researchPrerequisite>
+          </value>
+        </li>
+
+        <!-- ==================== Bakes ====================
+             No VCE bake recipe had any research prerequisite; both bases get one. The ovens
+             themselves are gated in FoodStations.xml. -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookBakeMealBase"]</xpath>
+          <value>
+            <researchPrerequisite>MOL_Bakery</researchPrerequisite>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetBakeMealBase"]</xpath>
+          <value>
+            <researchPrerequisite>MOL_Bakery</researchPrerequisite>
+          </value>
+        </li>
+
+        <!-- ==================== Orphaned VCE projects ====================
+             Removed last, once nothing references them. VCE_DeepFrying, VCE_Canning and
+             VCE_CheeseMaking are already gone in VCE_remove_deprecated.xml, so this empties
+             the Cooking Expanded research tab entirely - the tab def goes with them. -->
+        <li Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>Defs/ResearchProjectDef[
+            defName="VCE_CondimentsResearch" or
+            defName="VCE_Grilling" or
+            defName="VCE_SoupCooking"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>Defs/ResearchTabDef[defName="VCE_Cooking"]</xpath>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+  <!-- ============================================================================
+       VANILLA COOKING EXPANDED - SUSHI
+       The prep table ships with its researchPrerequisites block commented out and none of
+       the sushi recipes declare one, so the whole line was free.
+       ============================================================================ -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Cooking Expanded - Sushi</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="VCE_SushiPrepTable"]</xpath>
+          <value>
+            <researchPrerequisites>
+              <li>MOL_Sushi</li>
+            </researchPrerequisites>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookSushiMealBase"]</xpath>
+          <value>
+            <researchPrerequisite>MOL_Sushi</researchPrerequisite>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookFineSushiMealBase"]</xpath>
+          <value>
+            <researchPrerequisite>MOL_Sushi</researchPrerequisite>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="VCE_CookGourmetSushiMealBase"]</xpath>
+          <value>
+            <researchPrerequisite>MOL_Sushi</researchPrerequisite>
+          </value>
+        </li>
+
+        <!-- Surimi is butchery, not sushi: it stays on the butcher table, ungated. -->
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

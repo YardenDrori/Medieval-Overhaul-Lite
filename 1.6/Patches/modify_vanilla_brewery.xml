@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- The brewery uses the wooden Medieval Overhaul art (see replace_textures.xml),
+       which ships with masks, so make it stuffable from wood like the rest of the
+       medieval woodwork. The 120 WoodLog from the vanilla costList becomes the
+       stuff cost; the Steel stays as a flat cost for the fittings. -->
+
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="Brewery"]/costList/WoodLog</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="Brewery"]</xpath>
+    <value>
+      <stuffCategories>
+        <li>Woody</li>
+      </stuffCategories>
+      <costStuffCount>120</costStuffCount>
+    </value>
+  </Operation>
+</Patch>

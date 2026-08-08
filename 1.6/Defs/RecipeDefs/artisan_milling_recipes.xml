@@ -3,6 +3,17 @@
   Wheat -> flour and sugarcane -> sugar. These used to run on VCE_CondimentPrepTable;
   the prep table is removed in Patches/VCE_remove_prep_table.xml and everything it did
   now happens at AC_ArtisanWorkshop.
+
+  Flour is ungated on purpose, along with the workshop itself. Milling grain is not an
+  artisanal technique, and flour is the base ingredient of the whole bake line - locking it
+  behind research (it used to be VCE_CondimentsResearch, of all things) put a paywall under
+  content that is meant to be reachable early.
+
+  Sugar is not: it sits behind MOL_Preserves. Nothing in the mod consumes sugar except
+  MOL_PreserveFruitAsJamViaSugar, which is behind that same project, so gating the two
+  together avoids a cross-dependency where the recipe is unlocked and its input is not.
+  (VCE_RawSugar is itself a VCE_Condiments item, so preserving also buys the ability to
+  spoon sugar onto a gourmet dish.)
 -->
 <Defs>
   <RecipeDef>
@@ -33,7 +44,6 @@
     <recipeUsers>
       <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
-    <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
     <displayPriority>30</displayPriority>
   </RecipeDef>
   <RecipeDef>
@@ -61,10 +71,10 @@
     <products>
       <VCE_RawSugar>1</VCE_RawSugar>
     </products>
+    <researchPrerequisite>MOL_Preserves</researchPrerequisite>
     <recipeUsers>
       <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
-    <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
     <displayPriority>40</displayPriority>
   </RecipeDef>
 </Defs>

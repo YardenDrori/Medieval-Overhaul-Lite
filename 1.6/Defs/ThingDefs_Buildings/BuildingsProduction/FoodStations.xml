@@ -45,7 +45,7 @@
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
     <researchPrerequisites>
-      <li>VCE_SoupCooking</li>
+      <li>MOL_SoupCooking</li>
     </researchPrerequisites>
     <building>
       <isMealSource>true</isMealSource>
@@ -133,6 +133,11 @@
     <rotatable>true</rotatable>
     <designationCategory>Production</designationCategory>
     <constructEffect>ConstructWood</constructEffect>
+    <!-- VCE_CheeseMaking is deleted in VCE_remove_deprecated.xml, so without this the press
+         and its cheese process cost no research at all. -->
+    <researchPrerequisites>
+      <li>MOL_Preserves</li>
+    </researchPrerequisites>
     <inspectorTabs>
       <li>ITab_Bills</li>
     </inspectorTabs>
@@ -212,9 +217,9 @@
     <tickerType>Rare</tickerType>
     <rotatable>true</rotatable>
     <designationCategory>Production</designationCategory>
-    <researchPrerequisites>
-      <li>Brewing</li>
-    </researchPrerequisites>
+    <!-- Ungated, like AC_ArtisanWorkshop: it is a wooden barrel, and every process that runs
+         in it carries its own research prerequisites (see drug_recipeDefs.xml for beer and
+         wine, artisangoods_processes.xml for vinegar and soy sauce). -->
   </ThingDef>
 
   <!-- Remnant from stolen def -->
@@ -284,6 +289,9 @@
         <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
       </li>
     </comps>
+    <researchPrerequisites>
+      <li>MOL_Bakery</li>
+    </researchPrerequisites>
     <building>
       <isMealSource>true</isMealSource>
       <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
@@ -325,6 +333,11 @@
       </li>
       <li Class="CompProperties_Flickable"/>
     </comps>
+    <!-- 350W and two industrial components: Electricity on top of the bakery project. -->
+    <researchPrerequisites>
+      <li>MOL_Bakery</li>
+      <li>Electricity</li>
+    </researchPrerequisites>
     <building>
       <isMealSource>true</isMealSource>
       <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
