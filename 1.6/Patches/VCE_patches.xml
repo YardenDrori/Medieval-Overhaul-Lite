@@ -50,15 +50,10 @@
       <MarketValue>7.5</MarketValue>
     </value>
   </Operation>
-  <!-- Cheese -->
-  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_Cheese"]</xpath>
-    <value>
-      <modExtensions>
-        <li Class="Dishes.NoBowlOnIngest, Dishes"/>
-      </modExtensions>
-    </value>
-  </Operation>
+  <!-- Cheese
+       No Dishes mod extension is needed here: Dishes only hands out a dirty plate or cup
+       for defs that carry GiveBowlOnIngest / GiveCupOnIngest, so cheese eaten on its own
+       already produces no dish. -->
   <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_Cheese"]/description</xpath>
     <value>

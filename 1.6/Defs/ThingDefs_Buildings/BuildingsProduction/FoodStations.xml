@@ -216,4 +216,118 @@
       <li>Brewing</li>
     </researchPrerequisites>
   </ThingDef>
+
+  <!-- Remnant from stolen def -->
+  <ThingDef ParentName="BenchBase" Name="MOL_1X3WorkbenchBase" Abstract="True">
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <size>(3,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <techLevel>Medieval</techLevel>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="MOL_1X3WorkbenchBase">
+    <defName>MOL_FueledOven</defName>
+    <label>fueled oven</label>
+    <thingClass>Building_WorkTable_HeatPush</thingClass>
+    <description>A wood-fueled cooking table with a stone oven designed for baking meals.</description>
+    <graphicData>
+      <texPath>Things/Building/Production/MOL_OvenFueled/MOL_OvenFueled</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <!-- Cutout, not CutoutComplex: this texture ships no _m mask, and CutoutComplex
+           applies the stuff colour only where the mask says to. The art is fully
+           greyscale, so plain Cutout tints the whole thing by the stone used. -->
+      <shaderType>Cutout</shaderType>
+      <drawSize>(5,2)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <staticSunShadowHeight>0.3</staticSunShadowHeight>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <costList>
+      <WoodLog>20</WoodLog>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>100.0</fuelConsumptionRate>
+        <fuelCapacity>50.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>WoodLog</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+      </li>
+    </comps>
+    <building>
+      <isMealSource>true</isMealSource>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="MOL_1X3WorkbenchBase">
+    <defName>MOL_ElectricOven</defName>
+    <label>electric oven</label>
+    <thingClass>Building_WorkTable_HeatPush</thingClass>
+    <description>An electricity-powered cooking table with a stone oven designed for baking meals.</description>
+    <graphicData>
+      <texPath>Things/Building/Production/MOL_OvenElectric/MOL_OvenElectric</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(3.5,1.5)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <staticSunShadowHeight>0.3</staticSunShadowHeight>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>60</costStuffCount>
+    <costList>
+      <WoodLog>20</WoodLog>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>350</basePowerConsumption>
+        <idlePowerDraw>250</idlePowerDraw>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <building>
+      <isMealSource>true</isMealSource>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+  </ThingDef>
 </Defs>

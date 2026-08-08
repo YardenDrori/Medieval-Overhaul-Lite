@@ -255,6 +255,19 @@
              Bulk workAmounts are halved along with their output, so the cooking rate is
              unchanged. -->
 
+        <!-- Bakes belong in an oven, not on a stove. Every VCE_CookBake* recipe (simple,
+             fine, lavish, gourmet and their bulk variants) is moved off ElectricStove and
+             FueledStove onto the two MOL ovens. -->
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[starts-with(defName, "VCE_CookBake")]/recipeUsers</xpath>
+          <value>
+            <recipeUsers>
+              <li>MOL_FueledOven</li>
+              <li>MOL_ElectricOven</li>
+            </recipeUsers>
+          </value>
+        </li>
+
         <!-- simple x1: 0.25 egg/milk/cheese + 0.2 flour -->
         <li Class="PatchOperationReplace">
           <xpath>Defs/RecipeDef[defName="VCE_CookBakeSimple"]/ingredients</xpath>
