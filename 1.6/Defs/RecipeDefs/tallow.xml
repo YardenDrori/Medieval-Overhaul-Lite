@@ -23,5 +23,6 @@
       <li>ElectricStove</li>
       <li>FueledStove</li>
     </recipeUsers>
+    <displayPriority>1429</displayPriority>
   </RecipeDef>
 </Defs>
