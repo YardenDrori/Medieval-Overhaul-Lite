@@ -1,18 +1,5 @@
 add more ways to spawn/find golems
 
-Add Loom
-
-Textures:
-Replace vanilla brewery textures
-Replace vanilla butcher table
-Replace vanilla art bench?
-Replace vanilla stone cutter bench?
-Replace vanilla tailor bench
-Replce dubs well
-=-=Maybe merge these two:=-=
-Replace VCE Prep table
-Replace VCE Artisanal workshop
-
 Research stuff
 
-Nerv vanilla meal moods
+ferny's menu mod

@@ -24,7 +24,7 @@
     <description>A flexible workshop dedicated to various small-scale artisanal processes that don't fit into larger categories. It provides space and tools for specialized crafting, ensuring no resource goes to waste in the colony's production line.\n\nDoubles as a prep bench: grain is milled into flour, cane into sugar, and condiments are cut, mixed and bottled here.\n\nCan also be used as a low efficiency workshop to press oils, churn butter and create jams.</description>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
-      <texPath>Things/Building/Production/AC_ArtisanCraftsTable</texPath>
+      <texPath>Things/Building/Production/MOL_RusticCookingTable/MOL_RusticCookingTable</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
       <drawSize>(3.5,1.5)</drawSize>
       <shaderType>CutoutComplex</shaderType>
@@ -64,7 +64,7 @@
         <li>Production</li>
       </buildingTags>
     </building>
-    <size>(2,1)</size>
+    <size>(3,1)</size>
     <designationCategory>Production</designationCategory>
     <passability>PassThroughOnly</passability>
     <pathCost>70</pathCost>

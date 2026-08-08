@@ -101,4 +101,70 @@
       <texPath>Things/Item/Resource/PlantFoodRaw/MOL_RawMushrooms</texPath>
     </value>
   </Operation>
+
+  <!-- ===================== Production benches ===================== -->
+  <!-- Medieval art from Medieval Overhaul. These textures ship with masks, so the
+       benches that default to Cutout are moved to CutoutComplex. -->
+
+  <!-- Brewery -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Brewery"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Building/Production/MOL_TableBrewery/MOL_TableBrewery</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="Brewery"]/graphicData/shaderType</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="Brewery"]/graphicData/shaderType</xpath>
+      <value>
+        <shaderType>CutoutComplex</shaderType>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[defName="Brewery"]/graphicData</xpath>
+      <value>
+        <shaderType>CutoutComplex</shaderType>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <!-- Butcher table -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="TableButcher"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Building/Production/MOL_TableButcher/MOL_TableButcher</texPath>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="TableButcher"]/graphicData/shaderType</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="TableButcher"]/graphicData/shaderType</xpath>
+      <value>
+        <shaderType>CutoutComplex</shaderType>
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[defName="TableButcher"]/graphicData</xpath>
+      <value>
+        <shaderType>CutoutComplex</shaderType>
+      </value>
+    </nomatch>
+  </Operation>
+
+  <!-- Sculpting table -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="TableSculpting"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Building/Production/MOL_TableSculpting/MOL_TableSculpting</texPath>
+    </value>
+  </Operation>
+
+  <!-- Stonecutter's table -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="TableStonecutter"]/graphicData/texPath</xpath>
+    <value>
+      <texPath>Things/Building/Production/MOL_TableStonecutter/MOL_TableStonecutter</texPath>
+    </value>
+  </Operation>
 </Patch>
