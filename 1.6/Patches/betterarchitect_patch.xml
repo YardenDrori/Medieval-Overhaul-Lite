@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!--
+    Better Architect Menu (ferny.BetterArchitect) support.
+
+    Everything is wrapped in a mod check, so this whole file is a no-op when Better
+    Architect is not active. Category choices mirror Ferny's own patches for Medieval
+    Overhaul and Alpha Crafts so MOL's buildings land where their MO/AC counterparts do.
+
+    Note: patches run on raw XML before def inheritance, so buildings that inherit
+    their designationCategory from an abstract base are patched on the base itself.
+  -->
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Better Architect Menu</li>
+      <li>ferny.BetterArchitect</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+<!-- BEDROOM -->
+
+        <!-- Covers the log/wicker/straw/fur beds and the rustic fine beds,
+             all of which inherit from this base. -->
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[@Name="MOL_BasicBedBase"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Bedroom</designationCategory>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="MOL_RoyalTudorBed"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Bedroom</designationCategory>
+          </value>
+        </li>
+
+<!-- LIGHTING -->
+
+        <!-- MOL_Candle, MOL_Candles, MOL_CandleStand, MOL_RoyalCandleStand -->
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[@Name="MOL_CandleBase"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Lighting</designationCategory>
+          </value>
+        </li>
+
+<!-- KITCHEN -->
+
+        <!-- MOL_FueledOven and MOL_ElectricOven inherit from this base. -->
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[@Name="MOL_1X3WorkbenchBase"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Kitchen</designationCategory>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="MOL_ElectricPot"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Kitchen</designationCategory>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="MOL_CheesePress"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Kitchen</designationCategory>
+          </value>
+        </li>
+
+        <!-- Matches Ferny's placement of vanilla FermentingBarrel. -->
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="MOL_FermentingBarrel"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Kitchen</designationCategory>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="AC_DairyProcessingStation"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Kitchen</designationCategory>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="AC_BottlingStation"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Kitchen</designationCategory>
+          </value>
+        </li>
+
+<!-- PRODUCTION -->
+
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="AC_ArtisanWorkshop"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Production</designationCategory>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="AC_Infuser"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Production</designationCategory>
+          </value>
+        </li>
+
+<!-- FARMING -->
+
+        <!-- Ferny puts DankPyon_PlowedSoil in Farm rather than a floors sub-menu. -->
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/VEF.Maps.ActiveTerrainDef[defName="MOL_SoilTilled"]/designationCategory</xpath>
+          <value>
+            <designationCategory>Ferny_Farming</designationCategory>
+          </value>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

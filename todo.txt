@@ -1,5 +1,3 @@
 add more ways to spawn/find golems
 
 Research stuff
-
-ferny's menu mod
