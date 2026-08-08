@@ -1,7 +1,18 @@
 add more ways to spawn/find golems
 
-decide on ICE BLOCKS mechanic
+Add Loom
 
-dishes rework
+Textures:
+Replace vanilla brewery textures
+Replace vanilla butcher table
+Replace vanilla art bench?
+Replace vanilla stone cutter bench?
+Replace vanilla tailor bench
+Replce dubs well
+=-=Maybe merge these two:=-=
+Replace VCE Prep table
+Replace VCE Artisanal workshop
 
-fix wood having weird textures
+Research stuff
+
+Nerv vanilla meal moods
