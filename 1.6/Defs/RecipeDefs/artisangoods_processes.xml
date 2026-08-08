@@ -56,6 +56,57 @@
     </modExtensions>
     <displayPriority>100</displayPriority>
   </RecipeDef>
+  <!-- Soy sauce -->
+  <RecipeDef>
+    <defName>MOL_ProcessSoySauce</defName>
+    <label>ferment soy sauce</label>
+    <description>ferment soy sauce from raw soy beans.</description>
+    <jobString>fermenting soy sauce</jobString>
+    <workAmount>1000</workAmount>
+    <recipeUsers>
+      <li>MOL_FermentingBarrel</li>
+    </recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VCE_RawSoybean</li>
+          </thingDefs>
+        </filter>
+        <count>30</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VCE_RawSoybean</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <VCE_SoySauce>15</VCE_SoySauce>
+    </products>
+    <modExtensions>
+      <li Class="ProductionExpanded.RecipeExtension_Processor">
+        <isStaticRecipe>true</isStaticRecipe>
+        <ingredients>
+          <li>
+            <thingDefs>
+              <li>VCE_RawSoybean</li>
+            </thingDefs>
+            <count>30</count>
+          </li>
+        </ingredients>
+        <products>
+          <li>
+            <output>VCE_SoySauce</output>
+            <count>15</count>
+          </li>
+        </products>
+        <ticksPerItemOut>600000</ticksPerItemOut>
+        <cycles>1</cycles>
+      </li>
+    </modExtensions>
+    <displayPriority>600</displayPriority>
+  </RecipeDef>
   <!-- Vinegar -->
   <RecipeDef>
     <defName>MOL_ProcessVinegar</defName>
@@ -64,7 +115,7 @@
     <jobString>fermenting vinegar</jobString>
     <workAmount>1000</workAmount>
     <recipeUsers>
-      <li>AC_VinegarCask</li>
+      <li>MOL_FermentingBarrel</li>
     </recipeUsers>
     <ingredients>
       <li>
@@ -129,7 +180,7 @@
         <cycles>5</cycles>
       </li>
     </modExtensions>
-    <displayPriority>100</displayPriority>
+    <displayPriority>500</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_ProcessBalsamic</defName>
@@ -263,6 +314,7 @@
         <baseline>SmokeleafLeaves</baseline>
       </li>
     </modExtensions>
+    <displayPriority>10</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_ExtractPerfume</defName>
@@ -275,7 +327,7 @@
     <allowMixingIngredients>false</allowMixingIngredients>
     <workAmount>2500</workAmount>
     <recipeUsers>
-      <li>AC_OilPressWorkshop</li>
+      <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
     <ingredients>
       <li>
@@ -324,6 +376,7 @@
         <baseline>RawBerries</baseline>
       </li>
     </modExtensions>
+    <displayPriority>80</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_PickleVegetables</defName>
@@ -426,7 +479,7 @@
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_PreserveFruitAsJamViaSugar</defName>
-    <label>preserve fruit as jam vis sugar</label>
+    <label>jam fruit</label>
     <description>A process that transforms fresh fruits into a sweet, spreadable preserve by cooking them with sugar. This method captures the fruit's flavor while extending its shelf life.</description>
     <jobString>Preserving fruit.</jobString>
     <workSpeedStat>CookSpeed</workSpeedStat>
@@ -519,6 +572,7 @@
         </exclusions>
       </li>
     </modExtensions>
+    <displayPriority>50</displayPriority>
   </RecipeDef>
   <!-- <RecipeDef> -->
   <!--   <defName>MOL_PreserveFruitAsJamViaHoney</defName> -->
@@ -773,6 +827,8 @@
     <skillRequirements>
       <Cooking>6</Cooking>
     </skillRequirements>
+
+    <displayPriority>90</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_ChurnButter</defName>
@@ -826,6 +882,7 @@
         <baseline>RawCorn</baseline>
       </li>
     </modExtensions>
+    <displayPriority>20</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_ClarifyButterIntoGhee</defName>
@@ -838,7 +895,7 @@
     <allowMixingIngredients>false</allowMixingIngredients>
     <workAmount>9000</workAmount>
     <recipeUsers>
-      <li>AC_OilPressWorkshop</li>
+      <li>AC_DairyProcessingStation</li>
     </recipeUsers>
     <ingredients>
       <li>

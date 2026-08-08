@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deletes VCE's condiment prep table. All of its recipes were moved onto AC_ArtisanWorkshop
+  by VCE_prep_table_merge.xml, which loads first (alphabetical patch order).
+
+  Remaining references to VCE_CondimentPrepTable across the active mod list, and how each
+  is handled:
+    - RecipeDef/recipeUsers          -> rewritten by VCE_prep_table_merge.xml
+    - WorkGiverDef VCE_DoBillsPrep   -> removed below (fixedBillGiverDefs would dangle)
+    - VCE_AchievementKitchenNightmare-> already removed in VCE_remove_deprecated.xml
+      (that file also loads first: "deprecated" < "prep").
+
+  VCE_CondimentsResearch is deliberately left alone: the moved recipes no longer need it,
+  but VCE's other condiment content still lists it.
+
+  <success>Always</success> everywhere, same reasoning as VCE_remove_deprecated.xml —
+  MayRequire alone does not suppress the error when the mod is absent.
+-->
+<Patch>
+
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/ThingDef[defName="VCE_CondimentPrepTable"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/WorkGiverDef[defName="VCE_DoBillsPrep"]</xpath>
+  </Operation>
+
+</Patch>

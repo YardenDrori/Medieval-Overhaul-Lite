@@ -8,8 +8,9 @@
   errors afterwards.
 
   Kept deliberately: VCE_CondimentsResearch, VCE_SoupCooking and VCE_Grilling. Surviving
-  defs we rely on (VCE_CondimentPrepTable, VCE_ElectricPot, VCE_Grill, the soup and
-  condiment recipes) list them as research prerequisites.
+  defs we rely on (VCE_ElectricPot, VCE_Grill, the soup and condiment recipes) list them
+  as research prerequisites. The prep table itself is removed separately, in
+  VCE_remove_prep_table.xml, after its recipes move to AC_ArtisanWorkshop.
 
   Defs are grouped one Operation per def type.
 

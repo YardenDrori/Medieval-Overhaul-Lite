@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Merges every VCE_CondimentPrepTable recipe into AC_ArtisanWorkshop.
+
+  The prep table itself is deleted in VCE_remove_prep_table.xml, which loads after this
+  file (alphabetical patch order: "prep" < "remove"). This file must therefore catch
+  EVERY recipeUsers reference, or the removal leaves a dangling cross-reference.
+
+  Rather than listing recipes by name, the single Replace below rewrites every
+  <li>VCE_CondimentPrepTable</li> that appears under any RecipeDef/recipeUsers. RimWorld's
+  PatchOperationReplace applies to all matched nodes, so this picks up prep-table recipes
+  from optional mods too without needing a MayRequire block per mod.
+
+  Recipes moved with the current mod list (vcooke + vcookesushi + vplantse):
+    VCE core     - VCE_ChopCondiments, VCE_MakeSalt, VCE_MakeSaltfromBlocks,
+                   VCE_AgaveNectar, VCE_InsectJellyPreserves, VCE_Mayo,
+                   VCE_SmokeleafButter, VCE_ChocolateSyrup
+    VCE (VPE)    - VCE_Ketchup, VCE_HotSauce
+    VCE Sushi    - VCE_WasabiPaste
+  Vanilla Brewing Expanded's three powder recipes would also be caught if it were ever
+  enabled; nothing here breaks if it is not.
+
+  No recipe already lists AC_ArtisanWorkshop, so the replace cannot produce a duplicate
+  entry. AC_DoBillsArtisanTable (AlphaCrafts_workgivers.xml) already serves the workshop,
+  so the moved bills are picked up by pawns without a new WorkGiver.
+-->
+<Patch>
+
+  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef/recipeUsers/li[text()="VCE_CondimentPrepTable"]</xpath>
+    <value>
+      <li>AC_ArtisanWorkshop</li>
+    </value>
+  </Operation>
+
+  <!-- ============ Bill list ordering ============
+
+    The artisan workshop's full order, lowest displayPriority first (RimWorld sorts the
+    add-bill menu by -displayPriority, so smaller = higher up):
+
+       10  press oil            MOL_PressOil
+       20  churn butter         MOL_ChurnButter
+       30  make wheat           MOL_process_wheat_to_flour
+       40  make sugar           MOL_process_cane_to_sugar
+       50  jam fruit            MOL_PreserveFruitAsJamViaSugar
+       60-70                    the ex-prep-table recipes, below
+       80  extract perfume      MOL_ExtractPerfume
+       90  craft artisan soap   AC_MakeSoap
+
+    Everything outside 60-70 is set directly in the def files (artisangoods_processes.xml
+    and artisan_milling_recipes.xml). The VCE recipes are foreign defs and none of them
+    declares displayPriority, so each gets one added here.
+
+    Values inside the block are distinct rather than shared: ties fall through to an
+    unstable sort, which would let the group reshuffle between sessions.
+
+    These eleven recipes have no other recipeUser now, so the numbers only affect the
+    artisan workshop. The five MOL/AC recipes above do appear on other benches
+    (oil press, dairy station, bottling station) and will sort first there too — harmless,
+    but that is why their numbers are small.
+  -->
+
+  <!-- VCE core -->
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_MakeSalt"]</xpath>
+    <value>
+      <displayPriority>60</displayPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_MakeSaltfromBlocks"]</xpath>
+    <value>
+      <displayPriority>61</displayPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_Mayo"]</xpath>
+    <value>
+      <displayPriority>62</displayPriority>
+    </value>
+  </Operation>
+
+  <!-- VCE's Vanilla Plants Expanded module -->
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vplantse">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_Ketchup"]</xpath>
+    <value>
+      <displayPriority>63</displayPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vplantse">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_HotSauce"]</xpath>
+    <value>
+      <displayPriority>64</displayPriority>
+    </value>
+  </Operation>
+
+  <!-- VCE core, continued -->
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_ChocolateSyrup"]</xpath>
+    <value>
+      <displayPriority>65</displayPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_AgaveNectar"]</xpath>
+    <value>
+      <displayPriority>66</displayPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_InsectJellyPreserves"]</xpath>
+    <value>
+      <displayPriority>67</displayPriority>
+    </value>
+  </Operation>
+
+  <!-- VCE Sushi -->
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcookesushi">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_WasabiPaste"]</xpath>
+    <value>
+      <displayPriority>68</displayPriority>
+    </value>
+  </Operation>
+
+  <!-- VCE core: the two odd ones out, parked at the end of the block -->
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_SmokeleafButter"]</xpath>
+    <value>
+      <displayPriority>69</displayPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/RecipeDef[defName="VCE_ChopCondiments"]</xpath>
+    <value>
+      <displayPriority>70</displayPriority>
+    </value>
+  </Operation>
+
+</Patch>

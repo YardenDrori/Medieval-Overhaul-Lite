@@ -21,7 +21,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>AC_ArtisanWorkshop</defName>
     <label>artisan workshop</label>
-    <description>A flexible workshop dedicated to various small-scale artisanal processes that don't fit into larger categories. It provides space and tools for specialized crafting, ensuring no resource goes to waste in the colony's production line.\n\nCan also be used as a low efficiency workshop to press oils, churn butter and create jams.</description>
+    <description>A flexible workshop dedicated to various small-scale artisanal processes that don't fit into larger categories. It provides space and tools for specialized crafting, ensuring no resource goes to waste in the colony's production line.\n\nDoubles as a prep bench: grain is milled into flour, cane into sugar, and condiments are cut, mixed and bottled here.\n\nCan also be used as a low efficiency workshop to press oils, churn butter and create jams.</description>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
       <texPath>Things/Building/Production/AC_ArtisanCraftsTable</texPath>
@@ -153,7 +153,7 @@
         <shortCircuitInRain>true</shortCircuitInRain>
         <basePowerConsumption>30</basePowerConsumption>
       </li>
-      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
           <li>ToolCabinet</li>
@@ -232,7 +232,7 @@
         <shortCircuitInRain>true</shortCircuitInRain>
         <basePowerConsumption>25</basePowerConsumption>
       </li>
-      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
           <li>ToolCabinet</li>
@@ -319,7 +319,7 @@
         <shortCircuitInRain>true</shortCircuitInRain>
         <basePowerConsumption>50</basePowerConsumption>
       </li>
-      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Flickable"/>
     </comps>
     <placeWorkers>
       <li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -331,85 +331,85 @@
 
   <!-- ===================== Processors ===================== -->
 
-  <ThingDef ParentName="BuildingBase">
-    <defName>AC_VinegarCask</defName>
-    <label>artisan fermenter</label>
-    <description>A multi-chambered, purpose-built vessel designed for fermenting a wide range of ingredients, from dairy to grains and fruits. This fermenter allows precise control over complex fermentation processes, enabling the creation of a variety of artisan products like vinegar, miso, kefir, and sake. Ideal for producing high-quality goods with distinct flavors and textures from various cultures. Includes a meat curing chamber.</description>
-    <thingClass>ProductionExpanded.Building_Processor</thingClass>
-    <drawerType>MapMeshAndRealTime</drawerType>
-    <graphicData>
-      <texPath>Things/Building/Production/AC_VinegarCask</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(1.5,1.5)</drawSize>
-      <shaderType>CutoutComplex</shaderType>
-      <damageData>
-        <cornerTL>Damage/Corner</cornerTL>
-        <cornerTR>Damage/Corner</cornerTR>
-        <cornerBL>Damage/Corner</cornerBL>
-        <cornerBR>Damage/Corner</cornerBR>
-      </damageData>
-    </graphicData>
-    <thingCategories>
-      <li>BuildingsProduction</li>
-    </thingCategories>
-    <costList>
-      <Steel>50</Steel>
-      <ComponentIndustrial>1</ComponentIndustrial>
-    </costList>
-    <altitudeLayer>Building</altitudeLayer>
-    <rotatable>true</rotatable>
-    <neverMultiSelect>true</neverMultiSelect>
-    <uiIconScale>0.8</uiIconScale>
-    <fillPercent>0.5</fillPercent>
-    <useHitPoints>True</useHitPoints>
-    <statBases>
-      <Mass>10</Mass>
-      <WorkToBuild>800</WorkToBuild>
-      <MaxHitPoints>100</MaxHitPoints>
-      <Flammability>0.2</Flammability>
-    </statBases>
-    <tickerType>Rare</tickerType>
-    <size>(1,1)</size>
-    <designationCategory>Production</designationCategory>
-    <passability>PassThroughOnly</passability>
-    <pathCost>70</pathCost>
-    <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
-    <surfaceType>Item</surfaceType>
-    <researchPrerequisites>
-      <li>MOL_ArtisanAdvanced</li>
-    </researchPrerequisites>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
-    <building>
-      <buildingTags>
-        <li>Production</li>
-      </buildingTags>
-    </building>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <shortCircuitInRain>false</shortCircuitInRain>
-        <basePowerConsumption>50</basePowerConsumption>
-        <idlePowerDraw>10</idlePowerDraw>
-      </li>
-      <li Class="CompProperties_Flickable" />
-      <li Class="ProductionExpanded.CompProperties_ResourceProcessor">
-        <maxCapacity>30</maxCapacity>
-        <hasIdlePowerCost>true</hasIdlePowerCost>
-        <usesOnTexture>false</usesOnTexture>
-        <hasTempRequirements>true</hasTempRequirements>
-        <maxTempC>30</maxTempC>
-        <minTempC>8</minTempC>
-        <soundInput>Corpse_Drop</soundInput>
-        <soundStartCycle>FlickSwitch</soundStartCycle>
-        <showGizmo>false</showGizmo>
-        <soundExtract>Standard_Drop</soundExtract>
-      </li>
-    </comps>
-    <minifiedDef>MinifiedThing</minifiedDef>
-  </ThingDef>
+  <!-- <ThingDef ParentName="BuildingBase"> -->
+  <!--   <defName>AC_VinegarCask</defName> -->
+  <!--   <label>artisan fermenter</label> -->
+  <!--   <description>A multi-chambered, purpose-built vessel designed for fermenting a wide range of ingredients, from dairy to grains and fruits. This fermenter allows precise control over complex fermentation processes, enabling the creation of a variety of artisan products like vinegar, miso, kefir, and sake. Ideal for producing high-quality goods with distinct flavors and textures from various cultures. Includes a meat curing chamber.</description> -->
+  <!--   <thingClass>ProductionExpanded.Building_Processor</thingClass> -->
+  <!--   <drawerType>MapMeshAndRealTime</drawerType> -->
+  <!--   <graphicData> -->
+  <!--     <texPath>Things/Building/Production/AC_VinegarCask</texPath> -->
+  <!--     <graphicClass>Graphic_Multi</graphicClass> -->
+  <!--     <drawSize>(1.5,1.5)</drawSize> -->
+  <!--     <shaderType>CutoutComplex</shaderType> -->
+  <!--     <damageData> -->
+  <!--       <cornerTL>Damage/Corner</cornerTL> -->
+  <!--       <cornerTR>Damage/Corner</cornerTR> -->
+  <!--       <cornerBL>Damage/Corner</cornerBL> -->
+  <!--       <cornerBR>Damage/Corner</cornerBR> -->
+  <!--     </damageData> -->
+  <!--   </graphicData> -->
+  <!--   <thingCategories> -->
+  <!--     <li>BuildingsProduction</li> -->
+  <!--   </thingCategories> -->
+  <!--   <costList> -->
+  <!--     <Steel>50</Steel> -->
+  <!--     <ComponentIndustrial>1</ComponentIndustrial> -->
+  <!--   </costList> -->
+  <!--   <altitudeLayer>Building</altitudeLayer> -->
+  <!--   <rotatable>true</rotatable> -->
+  <!--   <neverMultiSelect>true</neverMultiSelect> -->
+  <!--   <uiIconScale>0.8</uiIconScale> -->
+  <!--   <fillPercent>0.5</fillPercent> -->
+  <!--   <useHitPoints>True</useHitPoints> -->
+  <!--   <statBases> -->
+  <!--     <Mass>10</Mass> -->
+  <!--     <WorkToBuild>800</WorkToBuild> -->
+  <!--     <MaxHitPoints>100</MaxHitPoints> -->
+  <!--     <Flammability>0.2</Flammability> -->
+  <!--   </statBases> -->
+  <!--   <tickerType>Rare</tickerType> -->
+  <!--   <size>(1,1)</size> -->
+  <!--   <designationCategory>Production</designationCategory> -->
+  <!--   <passability>PassThroughOnly</passability> -->
+  <!--   <pathCost>70</pathCost> -->
+  <!--   <hasInteractionCell>True</hasInteractionCell> -->
+  <!--   <interactionCellOffset>(0,0,-1)</interactionCellOffset> -->
+  <!--   <surfaceType>Item</surfaceType> -->
+  <!--   <researchPrerequisites> -->
+  <!--     <li>MOL_ArtisanAdvanced</li> -->
+  <!--   </researchPrerequisites> -->
+  <!--   <inspectorTabs> -->
+  <!--     <li>ITab_Bills</li> -->
+  <!--   </inspectorTabs> -->
+  <!--   <building> -->
+  <!--     <buildingTags> -->
+  <!--       <li>Production</li> -->
+  <!--     </buildingTags> -->
+  <!--   </building> -->
+  <!--   <comps> -->
+  <!--     <li Class="CompProperties_Power"> -->
+  <!--       <compClass>CompPowerTrader</compClass> -->
+  <!--       <shortCircuitInRain>false</shortCircuitInRain> -->
+  <!--       <basePowerConsumption>50</basePowerConsumption> -->
+  <!--       <idlePowerDraw>10</idlePowerDraw> -->
+  <!--     </li> -->
+  <!--     <li Class="CompProperties_Flickable" /> -->
+  <!--     <li Class="ProductionExpanded.CompProperties_ResourceProcessor"> -->
+  <!--       <maxCapacity>30</maxCapacity> -->
+  <!--       <hasIdlePowerCost>true</hasIdlePowerCost> -->
+  <!--       <usesOnTexture>false</usesOnTexture> -->
+  <!--       <hasTempRequirements>true</hasTempRequirements> -->
+  <!--       <maxTempC>30</maxTempC> -->
+  <!--       <minTempC>8</minTempC> -->
+  <!--       <soundInput>Corpse_Drop</soundInput> -->
+  <!--       <soundStartCycle>FlickSwitch</soundStartCycle> -->
+  <!--       <showGizmo>false</showGizmo> -->
+  <!--       <soundExtract>Standard_Drop</soundExtract> -->
+  <!--     </li> -->
+  <!--   </comps> -->
+  <!--   <minifiedDef>MinifiedThing</minifiedDef> -->
+  <!-- </ThingDef> -->
 
   <ThingDef ParentName="BuildingBase">
     <defName>AC_Infuser</defName>
@@ -474,7 +474,7 @@
         <basePowerConsumption>50</basePowerConsumption>
         <idlePowerDraw>10</idlePowerDraw>
       </li>
-      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Flickable"/>
       <!-- usesOnTexture stays false, as the patch had it. AC_InfuserFull_*.png is shipped
            alongside AC_Infuser if you ever want the in-progress graphic: set usesOnTexture
            true and onTextureKeyWord to Full (see VCE_ElectricPot in VCE_patches.xml). -->

@@ -1,17 +1,8 @@
 <?xml version="1.0"?>
 <Patch>
-  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_CondimentPrepTable"]/label</xpath>
-    <value>
-      <label>prep table</label>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace" MayRequire="vanillaexpanded.vcooke">
-    <xpath>Defs/ThingDef[defName="VCE_CondimentPrepTable"]/description</xpath>
-    <value>
-      <description>A working table to cut, slice and prepare ingredients or condiments used in a variety of recipes.</description>
-    </value>
-  </Operation>
+  <!-- The VCE_CondimentPrepTable label/description tweaks that used to live here are gone:
+       the table itself is removed in VCE_remove_prep_table.xml and its recipes now run on
+       AC_ArtisanWorkshop. -->
   <!-- Wheat -->
   <Operation Class="PatchOperationAdd" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant</xpath>

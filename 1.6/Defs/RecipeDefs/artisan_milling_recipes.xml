@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
+<!--
+  Wheat -> flour and sugarcane -> sugar. These used to run on VCE_CondimentPrepTable;
+  the prep table is removed in Patches/VCE_remove_prep_table.xml and everything it did
+  now happens at AC_ArtisanWorkshop.
+-->
 <Defs>
   <RecipeDef>
     <defName>MOL_process_wheat_to_flour</defName>
@@ -26,10 +31,10 @@
       <VCE_Flour>3</VCE_Flour>
     </products>
     <recipeUsers>
-      <li>VCE_CondimentPrepTable</li>
+      <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
     <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
-    <displayPriority>1</displayPriority>
+    <displayPriority>30</displayPriority>
   </RecipeDef>
   <RecipeDef>
     <defName>MOL_process_cane_to_sugar</defName>
@@ -57,9 +62,9 @@
       <VCE_RawSugar>1</VCE_RawSugar>
     </products>
     <recipeUsers>
-      <li>VCE_CondimentPrepTable</li>
+      <li>AC_ArtisanWorkshop</li>
     </recipeUsers>
     <researchPrerequisite>VCE_CondimentsResearch</researchPrerequisite>
-    <displayPriority>2</displayPriority>
+    <displayPriority>40</displayPriority>
   </RecipeDef>
 </Defs>
