@@ -30,6 +30,18 @@
 -->
 <Patch>
 
+  <!-- Schematic books can grant progress in the tabs listed here; vanilla ships <Main/> and
+       VCE appended VCE_Cooking. MOL_Artisanal takes that slot, so schematics keep working on
+       cooking research exactly as they did before. Not inside a FindMod block: the tab is
+       ours and exists whether or not VCE is loaded. -->
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/ThingDef[defName="Schematic"]/comps/li[@Class="CompProperties_Book"]/doers/li[@Class="BookOutcomeProperties_GainResearch"]/tabs</xpath>
+    <value>
+      <MOL_Artisanal />
+    </value>
+  </Operation>
+
   <!-- ============================================================================
        VANILLA COOKING EXPANDED
        ============================================================================ -->
@@ -118,6 +130,15 @@
           <xpath>Defs/ResearchTabDef[defName="VCE_Cooking"]</xpath>
         </li>
 
+        <!-- VCE's own SchematicsPatch.xml adds VCE_Cooking to the schematic book's list of
+             research tabs it can grant progress in. That reference outlives the tab and
+             throws a cross-reference error, so it goes too. VCE loads before this mod, so
+             its add has already happened by the time this runs. -->
+        <li Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="Schematic"]/comps/li[@Class="CompProperties_Book"]/doers/li[@Class="BookOutcomeProperties_GainResearch"]/tabs/VCE_Cooking</xpath>
+        </li>
+
       </operations>
     </match>
   </Operation>
@@ -162,6 +183,14 @@
         </li>
 
         <!-- Surimi is butchery, not sushi: it stays on the butcher table, ungated. -->
+
+        <!-- VCE_SoyFermentation gated exactly one thing, VCE_SoyFermenter, and the fermenter
+             is deleted in VCE_debloater.xml (MOL_FermentingBarrel makes the soy sauce now).
+             The project was left behind pointing at the deleted VCE_Cooking tab. -->
+        <li Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>Defs/ResearchProjectDef[defName="VCE_SoyFermentation"]</xpath>
+        </li>
 
       </operations>
     </match>
