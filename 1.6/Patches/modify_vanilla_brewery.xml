@@ -9,6 +9,13 @@
     <xpath>Defs/ThingDef[defName="Brewery"]/costList/WoodLog</xpath>
   </Operation>
 
+  <!-- Vanilla sets <constructEffect>ConstructWood</constructEffect>, which RimWorld flags as
+       a config error once the def is stuffable (the stuff's own construct animation always
+       wins). Dropping it silences that on Brewery and on the generated Frame_Brewery. -->
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[defName="Brewery"]/constructEffect</xpath>
+  </Operation>
+
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/ThingDef[defName="Brewery"]</xpath>
     <value>

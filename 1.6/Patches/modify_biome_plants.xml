@@ -39,9 +39,12 @@
       <MOL_Plant_FeverVine_Wild>0.003</MOL_Plant_FeverVine_Wild>
     </value>
   </Operation>
-  <!-- drugs. Guarded on the Operation rather than inlined above: the coffee plant only
-       exists when Brewing Expanded is loaded, and this mod does not require it. -->
+  <!-- drugs. Split out of the block above because the coffee plant only exists when Brewing
+       Expanded is loaded, and this mod does not require it. As elsewhere, <success>Always</success>
+       is what actually suppresses the failure - MayRequire on an Operation does not gate it,
+       it only documents which mod the block belongs to. -->
   <Operation Class="PatchOperationAdd" MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">
+    <success>Always</success>
     <xpath>Defs/BiomeDef[defName="TropicalRainforest"]/wildPlants</xpath>
     <value>
       <VBE_Plant_Coffee>0.002</VBE_Plant_Coffee>
@@ -202,6 +205,7 @@
   </Operation>
   <!-- Aspen Forest -->
   <Operation Class="PatchOperationAdd" MayRequire="regrowth.botr.aspenforest">
+    <success>Always</success>
     <xpath>Defs/BiomeDef[defName="RG_AspenForest"]/wildPlants</xpath>
     <value>
       <!-- drug -->
@@ -214,6 +218,7 @@
     </value>
   </Operation>
   <Operation Class="PatchOperationRemove" MayRequire="regrowth.botr.aspenforest">
+    <success>Always</success>
     <xpath>Defs/BiomeDef[defName="RG_AspenForest"]/wildPlants/Plant_HealrootWild</xpath>
   </Operation>
 </Patch>
