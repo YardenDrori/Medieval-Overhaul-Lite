@@ -322,7 +322,7 @@
             <key>Dye</key>
             <value>Rainbow</value>
           </li>
-          <li>
+          <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">
             <key>VBE_RawCoffee</key>
             <value>Midnight Absolute</value>
           </li>
@@ -330,7 +330,7 @@
             <key>MOL_RawPoppy</key>
             <value>Red Opulence</value>
           </li>
-          <li>
+          <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">
             <key>VBE_RawTobacco</key>
             <value>Tabac Absolu</value>
           </li>

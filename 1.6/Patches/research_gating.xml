@@ -116,14 +116,25 @@
 
         <!-- ==================== Orphaned VCE projects ====================
              Removed last, once nothing references them. VCE_DeepFrying, VCE_Canning and
-             VCE_CheeseMaking are already gone in VCE_remove_deprecated.xml, so this empties
-             the Cooking Expanded research tab entirely - the tab def goes with them. -->
+             VCE_CheeseMaking are already gone in VCE_remove_deprecated.xml. Anything left in
+             the Cooking Expanded tab is moved to MOL_Artisanal, then the tab def goes. -->
         <li Class="PatchOperationRemove">
           <success>Always</success>
           <xpath>Defs/ResearchProjectDef[
             defName="VCE_CondimentsResearch" or
             defName="VCE_Grilling" or
             defName="VCE_SoupCooking"]</xpath>
+        </li>
+        <!-- The tab is not actually empty by this point: the Bakery and Haute modules are
+             separate mods that ship their own projects (VCE_DecorativeBaking, VCE_HauteCuisine)
+             pointing at it, and any future module would too. Repoint whatever still references
+             the tab onto ours before deleting it, rather than naming the modules one by one. -->
+        <li Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ResearchProjectDef[tab="VCE_Cooking"]/tab</xpath>
+          <value>
+            <tab>MOL_Artisanal</tab>
+          </value>
         </li>
         <li Class="PatchOperationRemove">
           <success>Always</success>

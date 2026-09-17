@@ -359,10 +359,10 @@
             <li>RawBerries</li>
             <li>Ambrosia</li>
             <li>MOL_RawCarrot</li>
-            <li>VBE_RawCoffee</li>
+            <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">VBE_RawCoffee</li>
             <li>Dye</li>
             <li>MOL_RawPoppy</li>
-            <li>VBE_RawTobacco</li>
+            <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">VBE_RawTobacco</li>
           </thingDefs>
         </filter>
         <count>25</count>
@@ -373,10 +373,10 @@
         <li>RawBerries</li>
         <li>Ambrosia</li>
         <li>MOL_RawCarrot</li>
-        <li>VBE_RawCoffee</li>
+        <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">VBE_RawCoffee</li>
         <li>Dye</li>
         <li>MOL_RawPoppy</li>
-        <li>VBE_RawTobacco</li>
+        <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">VBE_RawTobacco</li>
       </thingDefs>
     </fixedIngredientFilter>
     <defaultIngredientFilter>
@@ -384,10 +384,10 @@
         <li>RawBerries</li>
         <li>Ambrosia</li>
         <li>MOL_RawCarrot</li>
-        <li>VBE_RawCoffee</li>
+        <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">VBE_RawCoffee</li>
         <li>Dye</li>
         <li>MOL_RawPoppy</li>
-        <li>VBE_RawTobacco</li>
+        <li MayRequire="blacksparrow.BrewingExpandedButOnlyTheGoodParts">VBE_RawTobacco</li>
       </thingDefs>
     </defaultIngredientFilter>
     <workSkill>Cooking</workSkill>
