@@ -9,6 +9,13 @@
   is invisible to the plain "1.6" entry and the compat content genuinely does not load unless
   the IfModActive check passes. Later entries win, so the compat patches run after the ones
   in 1.6/Patches.
+
+  Ordering against Progression: Production itself is not pinned in About.xml and must not be.
+  This mod already declares loadBefore ferny.progressionagriculture, Progression: Core loads
+  after Agriculture and Progression: Production loads after Core, so adding a loadAfter on
+  ferny.progressionproduction here completes a cycle and RimWorld's auto-sorter gives up.
+  Nothing in this folder needs it: the content is gated by IfModActive, and every operation
+  in the patch file targets defs only this mod owns.
 -->
 <loadFolders>
   <v1.6>
