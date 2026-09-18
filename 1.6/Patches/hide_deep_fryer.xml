@@ -46,14 +46,33 @@
        and its BuildingsProduction thing category, which is enough for a ThingSetMaker to
        hand the player a minified one as trader stock or a quest reward. It would be a
        workbench with no bills, since every recipe that used it is gone, so take it off the
-       table entirely. The def has no tradeability of its own and BuildingBase sets none,
-       hence AddOrReplace rather than Replace. -->
-  <Operation Class="PatchOperationAddOrReplace" MayRequire="vanillaexpanded.vcooke">
-    <success>Always</success>
+       table entirely.
+
+       Neither the fryer nor BuildingBase declares tradeability, so this has to add the node
+       rather than replace it - but another mod may have added one first, and PatchOperationAdd
+       would then leave two. Hence the inner conditional. The outer one is what keeps the
+       nomatch branch from firing (and failing) when VCE is absent and the ThingDef does not
+       exist at all.
+
+       Note there is no vanilla add-or-replace operation: PatchOperationAddOrReplace belongs
+       to the XML Extensions mod, which is not a dependency here. -->
+  <Operation Class="PatchOperationConditional" MayRequire="vanillaexpanded.vcooke">
     <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]</xpath>
-    <value>
-      <tradeability>None</tradeability>
-    </value>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]/tradeability</xpath>
+      <match Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]/tradeability</xpath>
+        <value>
+          <tradeability>None</tradeability>
+        </value>
+      </match>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]</xpath>
+        <value>
+          <tradeability>None</tradeability>
+        </value>
+      </nomatch>
+    </match>
   </Operation>
 
 </Patch>
