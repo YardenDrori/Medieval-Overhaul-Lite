@@ -29,7 +29,12 @@
 
   <!-- ============ VCE core ============ -->
 
-  <!-- Deep-fried and canned foods, and the three buildings. -->
+  <!-- Deep-fried and canned foods, and two of the three buildings.
+
+       VCE_DeepFrier is deliberately NOT in this list. Progression: Education adds it to
+       the Cooking skill's requiredBuildings whenever VCE is active, with no guard, so
+       deleting the def leaves an unresolvable cross-reference. The fryer is kept and
+       pulled out of the architect instead - see hide_deep_fryer.xml. -->
   <Operation Class="PatchOperationRemove" MayRequire="vanillaexpanded.vcooke">
     <success>Always</success>
     <xpath>Defs/ThingDef[
@@ -41,7 +46,6 @@
       defName="VCE_CannedFruit" or
       defName="VCE_CannedAP" or
       defName="VCE_CannedFish" or
-      defName="VCE_DeepFrier" or
       defName="VCE_CanningMachine" or
       defName="VCE_CheesePress"]</xpath>
   </Operation>

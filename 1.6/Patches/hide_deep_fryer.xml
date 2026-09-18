@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  VCE's deep fryer has no place in a medieval playthrough, but it cannot simply be deleted:
+  Progression: Education adds VCE_DeepFrier to the Cooking skill's requiredBuildings in an
+  unguarded PatchOperationAdd that runs whenever VCE is active, so removing the def produces
+
+    Could not resolve cross-reference to Verse.ThingDef named VCE_DeepFrier
+    (wanter=requiredBuildings)
+
+  So the def stays and is made unbuildable instead: with no designationCategory it never
+  reaches the architect and RimWorld generates no blueprint or frame for it. The
+  requiredBuildings entry still resolves, and it is harmless there - Progression: Education
+  unions the list into its set of valid learning benches, so the surviving VCE_Grill keeps
+  covering Cooking on its own.
+
+  Everything the fryer did is already gone via VCE_remove_deprecated.xml: its recipes, its
+  work giver, the deep-fried food defs and the VCE_DeepFrying research. Stripping
+  researchPrerequisites here is what keeps that last deletion from becoming a cross-reference
+  error of its own.
+
+  Every operation is guarded - the conditional ones stay quiet if another mod got there
+  first, and the add carries <success>Always</success> - so the file is silent when VCE is
+  absent. MayRequire documents that the whole file is about VCE.
+-->
+<Patch>
+
+  <!-- Pull it out of the architect menu. Better Architect Menu repoints this same node to
+       Ferny_Kitchen, but its operation carries <success>Always</success>, so it no-ops
+       whichever way round the two mods load. -->
+  <Operation Class="PatchOperationConditional" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]/designationCategory</xpath>
+    <match Class="PatchOperationRemove">
+      <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]/designationCategory</xpath>
+    </match>
+  </Operation>
+
+  <!-- Its only entry is VCE_DeepFrying, which VCE_remove_deprecated.xml deletes. -->
+  <Operation Class="PatchOperationConditional" MayRequire="vanillaexpanded.vcooke">
+    <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]/researchPrerequisites</xpath>
+    <match Class="PatchOperationRemove">
+      <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]/researchPrerequisites</xpath>
+    </match>
+  </Operation>
+
+  <!-- With no designationCategory the fryer can never be built, but it keeps a minifiedDef
+       and its BuildingsProduction thing category, which is enough for a ThingSetMaker to
+       hand the player a minified one as trader stock or a quest reward. It would be a
+       workbench with no bills, since every recipe that used it is gone, so take it off the
+       table entirely. The def has no tradeability of its own and BuildingBase sets none,
+       hence AddOrReplace rather than Replace. -->
+  <Operation Class="PatchOperationAddOrReplace" MayRequire="vanillaexpanded.vcooke">
+    <success>Always</success>
+    <xpath>Defs/ThingDef[defName="VCE_DeepFrier"]</xpath>
+    <value>
+      <tradeability>None</tradeability>
+    </value>
+  </Operation>
+
+</Patch>

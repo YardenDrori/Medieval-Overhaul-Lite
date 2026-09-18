@@ -1,5 +1,0 @@
-<Patch>
-  <Operation Class="PatchOperationRemove">
-    <xpath>Defs/TerrainDef[defName="VCE_TilledSoil"]</xpath>
-  </Operation>
-</Patch>

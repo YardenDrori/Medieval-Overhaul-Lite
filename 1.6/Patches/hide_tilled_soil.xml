@@ -1,0 +1,12 @@
+<Patch>
+  <!-- VPE's tilled soil is superseded by MOL_SoilTilled. Keep the def around (VFE-Tribals
+       and others patch it, and old saves may have the terrain placed) but pull it out of
+       the architect so it can no longer be built. Conditional so it stays quiet if another
+       mod already stripped the category. -->
+  <Operation Class="PatchOperationConditional" MayRequire="VanillaExpanded.VPlantsE">
+    <xpath>Defs/TerrainDef[defName="VCE_TilledSoil"]/designationCategory</xpath>
+    <match Class="PatchOperationRemove">
+      <xpath>Defs/TerrainDef[defName="VCE_TilledSoil"]/designationCategory</xpath>
+    </match>
+  </Operation>
+</Patch>
