@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The first two entries restate RimWorld's default for this mod - the mod root (Textures,
+  Sounds) plus the "1.6" folder (Assemblies, Defs, Patches) - so adding this file changes
+  nothing about the base mod. The third entry is the point: it loads only when
+  Progression: Production is active.
+
+  A load folder is scanned for its Defs/Patches/Textures/... subfolders only, so "1.6/Compat"
+  is invisible to the plain "1.6" entry and the compat content genuinely does not load unless
+  the IfModActive check passes. Later entries win, so the compat patches run after the ones
+  in 1.6/Patches.
+-->
+<loadFolders>
+  <v1.6>
+    <li>/</li>
+    <li>1.6</li>
+    <li IfModActive="ferny.progressionproduction">1.6/Compat/ProgressionProduction</li>
+  </v1.6>
+</loadFolders>

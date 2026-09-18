@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One research project per building, the way Progression: Production does it. Loads only when
+  ferny.progressionproduction is active (see LoadFolders.xml); without it the mod's own tree
+  in Defs/ResearchDefs/ArtisanalCrafts_ResearchProjects.xml is left exactly as it is.
+
+  Everything here sits in the vanilla Main tab rather than MOL_Artisanal, so the split-out
+  building projects read as part of the continuous Progression tree. The parents they hang
+  off are still in MOL_Artisanal; a cross-tab prerequisite is legal, the tree just does not
+  draw a line to it.
+
+  Layout - the band at y 14..16 is below everything vanilla (max y 5.6), below every
+  Progression module installed here, and below the band Production Expanded's own compat
+  folder uses (y 9..13):
+
+      x9                    x10                x11                x12
+  y14 artisan workshop      dairy processor    bottling station   infuser
+  y15 fermenting barrel     cheese press
+  y16 fueled oven        -> electric oven
+
+  WHY THESE STILL HANG OFF THE OLD PROJECTS, unlike the Production Expanded side, where each
+  building project hangs off Electricity or MicroelectronicsBasics directly and the old hub
+  was retired: in this mod the *recipes* carry their own gates, not just the buildings. A
+  fueled oven researched without MOL_Bakery would be a bench with no bakes on it, and an
+  infuser without MOL_ArtisanAdvanced would have nothing to infuse. So the recipe projects
+  stay upstream of the benches that run them, and what actually splits is one project gating
+  several buildings turning into one project per building. The old projects keep their recipe
+  duties and their descriptions are corrected in the matching patch file.
+
+  WHAT IS NOT SPLIT, and why:
+    - MOL_Grilling, MOL_Sushi, MOL_SoupCooking already gate exactly one building each
+      (VCE_Grill, VCE_SushiPrepTable, MOL_ElectricPot) plus its recipes. Already one project
+      per building; splitting the recipes off would add a project and unlock nothing.
+    - MOL_ArtisanBasic, MOL_Condiments and MOL_TilledSoil gate no buildings at all.
+    - The beds and candles sit on vanilla's ComplexFurniture. Furniture is
+      ferny.progressionfurniture's business, not Production's, and that mod is not what this
+      folder is gated on.
+
+  ClassicStart on the artisan workshop and the fermenting barrel: vanilla's PlayerColony
+  faction grants every project carrying that tag at game start (PlayerTribe grants TribalStart
+  instead). Both buildings are ungated in the base mod - the workshop deliberately so, since
+  it is where flour is ground and sugar pressed from day one - and the tag keeps that true for
+  a standard start while still making a tribal / Progression start earn them.
+-->
+<Defs>
+
+<!-- ============================================================================
+     ARTISAN LINE
+     ============================================================================ -->
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_ArtisanWorkshop</defName>
+    <label>artisan workshop</label>
+    <description>A bench of querns, presses and churns for working staples out of a raw harvest. Grinding grain into flour and pressing cane into sugar needs nothing more than the bench itself; the finer processes are learned separately.</description>
+    <baseCost>200</baseCost>
+    <tab>Main</tab>
+    <techLevel>Medieval</techLevel>
+    <researchViewX>9.00</researchViewX>
+    <researchViewY>14.00</researchViewY>
+    <tags>
+      <li>ClassicStart</li>
+    </tags>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_DairyProcessor</defName>
+    <label>dairy processing station</label>
+    <description>A powered separator and pasteuriser, splitting raw milk into cream, curd and whey far faster and more cleanly than a churn and a muslin cloth ever managed.</description>
+    <baseCost>400</baseCost>
+    <tab>Main</tab>
+    <techLevel>Industrial</techLevel>
+    <researchViewX>10.00</researchViewX>
+    <researchViewY>14.00</researchViewY>
+    <prerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_BottlingStation</defName>
+    <label>bottling station</label>
+    <description>A powered line for filling, capping and sealing bottles, so a batch of anything liquid leaves the workshop ready to store rather than ready to spoil.</description>
+    <baseCost>400</baseCost>
+    <tab>Main</tab>
+    <techLevel>Industrial</techLevel>
+    <researchViewX>11.00</researchViewX>
+    <researchViewY>14.00</researchViewY>
+    <prerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_Infuser</defName>
+    <label>infuser</label>
+    <description>A heated, agitated vessel that drives flavour out of one ingredient and into another over hours instead of months. The only route to a proper balsamic or a cold-pressed oil worth the name.</description>
+    <baseCost>450</baseCost>
+    <tab>Main</tab>
+    <techLevel>Industrial</techLevel>
+    <researchViewX>12.00</researchViewX>
+    <researchViewY>14.00</researchViewY>
+    <prerequisites>
+      <li>MOL_ArtisanAdvanced</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+<!-- ============================================================================
+     PRESERVING
+     ============================================================================ -->
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_FermentingBarrel</defName>
+    <label>fermenting barrel</label>
+    <description>A coopered oak barrel, tight enough to hold a brew through fermentation without letting the air spoil it. The foundation of every drink and half the condiments worth having.</description>
+    <baseCost>200</baseCost>
+    <tab>Main</tab>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>9.00</researchViewX>
+    <researchViewY>15.00</researchViewY>
+    <tags>
+      <li>ClassicStart</li>
+    </tags>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_CheesePress</defName>
+    <label>cheese press</label>
+    <description>A screw press and a set of moulds for driving the whey out of curd and holding the wheel under weight while it knits. Milk keeps for days; cheese keeps for a winter.</description>
+    <baseCost>250</baseCost>
+    <tab>Main</tab>
+    <techLevel>Medieval</techLevel>
+    <researchViewX>10.00</researchViewX>
+    <researchViewY>15.00</researchViewY>
+    <prerequisites>
+      <li>MOL_Preserves</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+<!-- ============================================================================
+     BAKING
+     ============================================================================ -->
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_FueledOven</defName>
+    <label>fueled oven</label>
+    <description>A stone dome fired with wood and swept clean before the bread goes in, holding its heat long after the fire is out. Dry, even and enclosed, which is everything an open flame is not.</description>
+    <baseCost>250</baseCost>
+    <tab>Main</tab>
+    <techLevel>Medieval</techLevel>
+    <researchViewX>9.00</researchViewX>
+    <researchViewY>16.00</researchViewY>
+    <prerequisites>
+      <li>MOL_Bakery</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>MOL_Prog_ElectricOven</defName>
+    <label>electric oven</label>
+    <description>Heating elements and a thermostat in place of a fire and a practised guess. No fuel to haul, no ash to sweep, and the same temperature on the hundredth bake as the first.</description>
+    <baseCost>400</baseCost>
+    <tab>Main</tab>
+    <techLevel>Industrial</techLevel>
+    <researchViewX>10.00</researchViewX>
+    <researchViewY>16.00</researchViewY>
+    <prerequisites>
+      <li>MOL_Prog_FueledOven</li>
+      <li>Electricity</li>
+    </prerequisites>
+  </ResearchProjectDef>
+
+</Defs>

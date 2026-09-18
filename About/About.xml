@@ -31,6 +31,9 @@
   <loadAfter>
     <li>ludeon.rimworld</li>
     <li>blacksparrow.productionexpanded</li>
+    <!-- Ordering hint only. The compat content in 1.6/Compat/ProgressionProduction is gated
+         by LoadFolders.xml, not by this; loading last just keeps its overrides on top. -->
+    <li>ferny.progressionproduction</li>
     <li>dubwise.dubsbadhygiene</li>
     <li>vanillaexpanded.vtexe</li>
     <li>vanillaexpanded.vplantse</li>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Repoints every building this mod owns onto the per-building project defined in
+  Defs/ProgressionProduction_ResearchProjects.xml, the way Progression: Production gates
+  things.
+
+  This whole file lives in a load folder guarded by IfModActive="ferny.progressionproduction"
+  (see LoadFolders.xml), so no PatchOperationFindMod wrapper is needed - the file does not
+  load at all when Progression: Production is absent, and neither do the projects it points
+  at. Every defName below is this mod's own, so nothing here needs <success>Always</success>:
+  a failure is a real error and should be loud.
+
+  Replace vs Add: the six buildings that already declare <researchPrerequisites> get a
+  Replace, the two that declare nothing get an Add. If a building's gating is ever changed in
+  Defs/ThingDefs_Buildings the matching operation has to move between the two lists, and the
+  patch will error until it does - which is the intent.
+
+  Mapping (old gate -> new):
+
+      artisan workshop      (none)                    -> MOL_Prog_ArtisanWorkshop
+      fermenting barrel     (none)                    -> MOL_Prog_FermentingBarrel
+      cheese press          MOL_Preserves             -> MOL_Prog_CheesePress
+      fueled oven           MOL_Bakery                -> MOL_Prog_FueledOven
+      electric oven         MOL_Bakery + Electricity  -> MOL_Prog_ElectricOven
+      dairy processor       MOL_ArtisanAdvanced       -> MOL_Prog_DairyProcessor
+      bottling station      MOL_ArtisanAdvanced       -> MOL_Prog_BottlingStation
+      infuser               MOL_ArtisanAdvanced       -> MOL_Prog_Infuser
+
+  The old projects are not deleted and not orphaned - every one of them still gates the
+  recipes documented on it in ArtisanalCrafts_ResearchProjects.xml, and each new building
+  project sits downstream of its old one so no bench is ever unlocked before the recipes that
+  run on it. What they no longer do is unlock buildings, so the two descriptions that promise
+  specific benches are corrected at the bottom of this file.
+
+  VCE_Grill, VCE_SushiPrepTable and MOL_ElectricPot are untouched: MOL_Grilling, MOL_Sushi and
+  MOL_SoupCooking already gate exactly one building each. The beds and candles are untouched
+  too - they sit on vanilla's ComplexFurniture, which is Progression: Furniture's business
+  rather than Progression: Production's.
+-->
+<Patch>
+
+<!-- ============================================================================
+     ARTISAN LINE
+     ============================================================================ -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="AC_ArtisanWorkshop"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_ArtisanWorkshop</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+  <!-- The workshop's own advanced processes now sit behind the bench they run on. Nearly a
+       no-op on a standard start, where MOL_Prog_ArtisanWorkshop is granted by ClassicStart;
+       it is the tribal start this orders correctly. MOL_ArtisanBasic declares no
+       <prerequisites> of its own, hence Add of the whole element rather than Replace. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ResearchProjectDef[defName="MOL_ArtisanBasic"]</xpath>
+    <value>
+      <prerequisites>
+        <li>MOL_Prog_ArtisanWorkshop</li>
+      </prerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="AC_DairyProcessingStation"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_DairyProcessor</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="AC_BottlingStation"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_BottlingStation</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="AC_Infuser"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_Infuser</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+<!-- ============================================================================
+     PRESERVING
+     ============================================================================ -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="MOL_FermentingBarrel"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_FermentingBarrel</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="MOL_CheesePress"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_CheesePress</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+<!-- ============================================================================
+     BAKING
+     ============================================================================ -->
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="MOL_FueledOven"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_FueledOven</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+  <!-- Electricity drops off the list: MOL_Prog_ElectricOven already requires it. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="MOL_ElectricOven"]/researchPrerequisites</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>MOL_Prog_ElectricOven</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+<!-- ============================================================================
+     DESCRIPTIONS THAT NAMED BUILDINGS THEY NO LONGER UNLOCK
+     ============================================================================ -->
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ResearchProjectDef[defName="MOL_Bakery"]/description</xpath>
+    <value>
+      <description>Baking cooks food in the dry, enclosed heat of a stone oven rather than over an open flame. Unlocks the full range of bakes and opens up the oven to bake them in.</description>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ResearchProjectDef[defName="MOL_ArtisanAdvanced"]/description</xpath>
+    <value>
+      <description>Unlocks a range of more complex artisanal processes, enabling the creation of more complex and unique products, and opens up the powered stations that run them - the dairy processor, the bottling station and the infuser - each a project of its own.</description>
+    </value>
+  </Operation>
+
+</Patch>
